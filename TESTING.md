@@ -2,8 +2,6 @@
 
 ## Validators
 
-### Validators used
-
 ### HTML validation
 
 ### CSS validation
