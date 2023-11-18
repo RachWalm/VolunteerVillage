@@ -42,6 +42,10 @@ Happy coding!
 
 ## UX design
 
+### Wireframes
+
+The [wireframes](document/initial-wireframes.pdf) that were built were for an index page to draw in the volunteer, for a volunteer profile page that can be created and updated by people wishing to volunteer, a page explaining how to use the system and a co-ordinators page. Some of these had both large monitor and small device setups displayed.
+
 ## Features
 
 ## Technologies
@@ -111,35 +115,29 @@ and the purple 'create' button was pressed.
 
 ![reveal](document/reveal.png)
 
-7. The port was set to 8000
+7. The URL's were set, disable_collectstatic was set to 1, port was set to 8000 and the secret key was provided the value.
 
-![port](document/port.png)
+![configvars](document/config.png)
 
-8. The build packs were then chosen, firstly the purple button add build packs was pressed, then the icon for python. The purple button for add build packs was pressed again and the icon for JSNode
-
-![packs](document/build-packs.png)
-
-![pythonJSNode](document/icons.png)
-
-9. Now we used the menu navigation bar again, this time to select deploy
+8. Now we used the menu navigation bar again, this time to select deploy
 
 ![nav](document/nav-bar.png)
 
-10. The deployment method was selected by clicking on the GitHub icon and it stated that it was connected to github
+9. The deployment method was selected by clicking on the GitHub icon and it stated that it was connected to github
 
 ![method](document/choose-git.png)
 
-11. The repository was chosen by searching my github
+10. The repository was chosen by searching my github
 
 ![find](document/find.png)
 ![connect](document/connect.png)
 ![connected](document/connected.png)
 
-12. Automatic deployment was chosen so that it would update every time the changes were pushed to git
+11. Automatic deployment was chosen so that it would update every time the changes were pushed to git
 
 ![auto](document/auto.png)
 
-13. It was deployed
+12. It was deployed
 
 ![deployed](document/deployed.png)
 
