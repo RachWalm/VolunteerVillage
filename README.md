@@ -37,3 +37,9 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 ---
 
 Happy coding!
+
+
+
+https://pypi.org/project/django-select-multiple-field/
+https://docs.djangoproject.com/en/4.2/ref/models/fields/#choices
+https://django-phonenumber-field.readthedocs.io/en/latest/

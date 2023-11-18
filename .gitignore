@@ -10,3 +10,4 @@ cloudinary_python.txt
 .venv
 Pipfile
 Pipfile.lock
+db.sqlite3
