@@ -46,6 +46,12 @@ Happy coding!
 
 The [wireframes](document/initial-wireframes.pdf) that were built were for an index page to draw in the volunteer, for a volunteer profile page that can be created and updated by people wishing to volunteer, a page explaining how to use the system and a co-ordinators page. Some of these had both large monitor and small device setups displayed.
 
+### Relationship diagram
+
+The different apps and relationships were discussed and as the idea formed a rough initial relationship diagram was developed.
+
+![relationship diagram](document/relationships.png)
+
 ## Features
 
 ## Technologies
