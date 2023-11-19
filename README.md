@@ -87,6 +87,9 @@ The different apps and relationships were discussed and as the idea formed a rou
 ### Libraries
 
 https://pypi.org/project/django-select-multiple-field/
+
+this needed django utils six installed
+
 https://docs.djangoproject.com/en/4.2/ref/models/fields/#choices
 https://django-phonenumber-field.readthedocs.io/en/latest/
 
@@ -171,6 +174,10 @@ select multiple from a list
 
 ```pip install django-select-multiple-field```
 
+select multiple from a list requried additionally django utils six installed
+
+```pip install django-utils-six```
+```pip install django-utils```
 
 ### Cloning
 

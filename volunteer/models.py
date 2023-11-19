@@ -2,11 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from phonenumber_field.modelfields import PhoneNumberField
-from select_multiple_field.codecs import SelectMultipleField
+# from select_multiple_field.codecs import SelectMultipleField
+from django import forms
 
-
-
-# Create your models here.
 
 class VolunteerProfile(models.Model):
     user_name = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -24,11 +22,11 @@ class VolunteerProfile(models.Model):
         verbose_name='Last Name',
         help_text='format: required, max_length=50',
     )
-    phone = models.models.PhoneNumberField(
-        max_length=11,
-        blank=False,
-        null=False,
-    )
+    # phone = models.models.PhoneNumberField(
+    #     max_length=11,
+    #     blank=False,
+    #     null=False,
+    # )
     created_on = models.DateTimeField(
         auto_now_add=True,
     )
@@ -47,7 +45,7 @@ class VolunteerProfile(models.Model):
         default=False,
     )
     
-class Skills(models.Model):
+class Skills(forms.Form):
         user_name = models.ForeignKey(User, on_delete=models.CASCADE)
         ADMINISTRATION = "AD",
         COMPANIONSHIP = "CO",
@@ -73,11 +71,13 @@ class Skills(models.Model):
             (SHOPPING, ("Shopping")),
             (TUTORING, ("Tutoring")),
         )
-    
-        skills = SelectMultipleField(
-            max_length=30,
-            choices=SKILL_CHOICES
-            )
+
+        multi_select = forms.MultipleChoiceField(choices=SKILL_CHOICES, widget=forms.CheckboxSelectMultiple)
+        
+        # skills = SelectMultipleField(
+        #     max_length=30,
+        #     choices=SKILL_CHOICES
+        #     )
 
     
 class TimePeriod(models.Model):
