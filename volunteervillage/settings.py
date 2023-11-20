@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #'select_multiple_field',
     'cloudinary',
     'volunteer',
+    'coordinator',
 ]
 
 MIDDLEWARE = [

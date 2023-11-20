@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from phonenumber_field.modelfields import PhoneNumberField
 # from select_multiple_field.codecs import SelectMultipleField
-from django import forms
+# from django import forms
 from django.core.validators import MaxValueValidator
 
 
@@ -64,7 +64,7 @@ class Skills(models.Model):
                 'TU': 'TUTORING',
             }
         
-        skills = models.ManyToManyField(SkillChoices)
+        skills = models.ManyToManyField('self')
 
         # multi_select = forms.MultipleChoiceField(choices=SKILL_CHOICES, widget=forms.CheckboxSelectMultiple)
         
@@ -111,4 +111,4 @@ class TimePeriod(models.Model):
             'SUNEV': models.BooleanField(default=False),
         }
         
-    slots = models.ManyToManyField(TimeSlots)
+    slots = models.ManyToManyField('self')
