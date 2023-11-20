@@ -170,14 +170,14 @@ Phone number field
 
 ```pip install "django-phonenumber-field[phonenumberslite]"```
 
-select multiple from a list
+<!-- select multiple from a list - not used as required loads of other apps installed see below and some weren't compatible : used multiple choice field from forms instead
 
 ```pip install django-select-multiple-field```
 
 select multiple from a list requried additionally django utils six installed
 
 ```pip install django-utils-six```
-```pip install django-utils```
+```pip install django-utils``` -->
 
 ### Cloning
 
