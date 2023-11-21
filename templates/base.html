@@ -6,6 +6,7 @@
 <head>
     <title>Volunteer Village</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset ="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
@@ -15,6 +16,17 @@
 
 <body>
     <!-- Navigation bar-->
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="{% url 'home' %}">Home</a>
+            </li>
+        </ul>
+
+    <!--Site name-->
+    <h1>
+        Volunteer Village
+    </h1>    
 
     <main>
         {% block content %}
