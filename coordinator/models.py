@@ -2,7 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class CoordinatorProfile(models.Model):
-    user_name = models.ForeignKey(User, on_delete=models.CASCADE)
+    '''Details of the coordinator and link to which charities they are associated with'''
+    user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     fname = models.CharField(
         max_length=50,
         null=False,
@@ -17,10 +18,11 @@ class CoordinatorProfile(models.Model):
         verbose_name='Last Name',
         help_text='format: required, max_length=50',
     )
-    coordinators_charities = models.ManyToManyField("self", verbose_name=("coordinators associated charities"))
+    coordinators_charities = models.ManyToManyField("coordinator.CharityProfile", verbose_name=("coordinators associated charities"))
     
     
 class CharityProfile(models.Model):
+    '''Details of the charity and link to which coordinators they are associated with'''
     charity_name = models.CharField(
     max_length=50,
     null=False,
@@ -33,11 +35,12 @@ class CharityProfile(models.Model):
         blank=False,
         verbose_name='Charity Description',
     )
-    charities_coordinators = models.ManyToManyField("Coordinator.CoordinatorProfile", verbose_name=("coordinators associated with charity"))
+    charities_coordinators = models.ManyToManyField("coordinator.CoordinatorProfile", verbose_name=("coordinators associated with charity"))
     
 class Feedback(models.Model):
+    '''Details of the coordinator making the notes and volunteer they are associated with'''
     coordinator = models.ManyToManyField(
-        "Coordinator.CoordinatorProfile",
+        "coordinator.CoordinatorProfile",
         verbose_name=("Coordinator"))
     volunteer = models.ManyToManyField(
         User,
