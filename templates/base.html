@@ -19,7 +19,22 @@
     <nav class="navbar">
         <ul>
             <li>
-                <a href="{% url 'home' %}">Home</a>
+                <a href="{% url 'home' %}">Home Page</a>
+            </li>
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'account_logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{% url 'account_signup' %}">Sign up to Volunteer</a>
+                </li>
+                <li>
+                    <a href="{% url 'account_login' %}">Log in</a>
+                </li>
+            {% endif %}
+            <li>
+                <a href="{% url 'account_login' %}">Coordinator</a>
             </li>
         </ul>
 
