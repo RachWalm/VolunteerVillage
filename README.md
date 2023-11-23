@@ -84,6 +84,10 @@ The different apps and relationships were discussed and as the idea formed a rou
 
 [Responsive viewer extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb) 
 
+### images
+
+<a href="https://www.freepik.com/free-photo/man-cutting-grass-with-lawn-mover-back-yard_8828103.htm#query=mowing%20lawn&position=0&from_view=search&track=ais&uuid=1f1d6d2e-ade9-4baf-b4d2-4fda06f92667#position=0&query=mowing%20lawn">Image by senivpetro</a> on Freepik
+
 ### Libraries
 
 https://pypi.org/project/django-select-multiple-field/

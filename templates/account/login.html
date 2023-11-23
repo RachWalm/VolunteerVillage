@@ -21,8 +21,8 @@
             {% element fields form=form unlabeled=True %} 
             {% endelement %} 
 
-            {% if redirect_field_value %} 
-            {% endif %} 
+            <!--{% if redirect_field_value %} 
+            {% endif %} -->
 
         {% endslot %} 
     {% slot actions %} 
@@ -32,5 +32,5 @@
     {% endslot %} 
 {% endelement %} 
 
-{% include "socialaccount/snippets/login.html" with page_layout="entrance" %} 
+<!-- {% include "socialaccount/snippets/login.html" with page_layout="entrance" %} -->
 {% endblock content %}

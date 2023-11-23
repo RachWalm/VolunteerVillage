@@ -19,11 +19,14 @@
     <nav class="navbar">
         <ul>
             <li>
-                <a href="{% url 'home' %}">Home Page</a>
+                <a href="{% url 'index' %}">Home Page</a>
             </li>
             {% if user.is_authenticated %}
                 <li>
                     <a href="{% url 'account_logout' %}">Logout</a>
+                </li>
+                <li>
+                    <a href="{% url 'add' %}">Add profile</a>
                 </li>
                 {% else %}
                 <li>
@@ -37,6 +40,19 @@
                 <a href="{% url 'account_login' %}">Coordinator</a>
             </li>
         </ul>
+    </nav>
+
+    <div>
+        {% for message in messages %}
+            <div class="alert {{message.tags }} alert-dismissible fade show" id="msg"
+            role="alert">
+                {{ message | safe}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+
+        {% endfor %}
+    </div> 
 
     <!--Site name-->
     <h1>
