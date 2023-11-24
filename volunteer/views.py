@@ -20,9 +20,9 @@ def read_profile(request):
 def add_profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('add_profile')
+        if form.is_valid():
+            form.save()
+            return redirect('add_profile')
     form = ProfileForm()
     context = {'form': form}
     return render(request, 'volunteer/add_profile.html', context)
