@@ -21,13 +21,13 @@ def read_profile(request):
 def add_profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST)
-        form2 = SkillsForm(request.POST)
+        #form2 = SkillsForm(request.POST)
         if form.is_valid():
             form.save()
-        if form2.is_valid():
-            form2.save()
-        return redirect('add_profile')
-    form = ProfileForm()
+        # if form2.is_valid():
+        #     form2.save()
+        return redirect('add')
+    form = ProfileForm
     context = {'form': form}
     return render(request, 'volunteer/add_profile.html', context)
 

@@ -46,7 +46,7 @@ class VolunteerProfile(models.Model):
         help_text='format: required, max_length=50',
     )
     phone = PhoneNumberField(
-        max_length=11,
+        max_length=12,
         blank=False,
         null=False,
     )
