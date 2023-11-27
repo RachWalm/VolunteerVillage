@@ -1,12 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
-<p> user profile pages </p>
+
+<h2>Create a profile</h2>
 
 <form method="post">
     {{ form.as_p }}
+    {{ form2.as_p }}
     {% csrf_token %}
     <button type="submit" class="btn">Submit</button>
 </form>
+
 
 {% endblock %}
