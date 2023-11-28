@@ -3,17 +3,19 @@
 {% block content %}
 
 <h2>Your profile - {{user.username }}</h2>
-{{ profile }}
-<table>
-    <tr>
-        <td>First Name</td>
-        <td>{{ user.email }}</td>
-    </tr>
-    <tr>
-        <td>Last Name</td>
-        <td>{{ user.username.fname }}</td>
-    </tr>
-</table>
+{{ person }} 
 
+<table>
+        <p>1</p>
+            <tr>
+                <td>First Name</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <td>Last Name</td>
+                <td>{{ person.lname }}</td>
+            </tr>     
+</table>
+{{ personlogged_in }}
 
 {% endblock %}

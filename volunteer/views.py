@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.models import User
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import VolunteerProfile
@@ -11,9 +12,11 @@ def home(request):
 
 
 def read_profile(request):
-    profile = VolunteerProfile.objects.all()
+    personlogged_in = User.username
+    person = VolunteerProfile.objects.filter(user_name_id='1').values()
     context = {
-        'profile': profile
+        'person': person,
+        'personlogged_in': personlogged_in
     }
     return render(request, 'volunteer/read_profile.html', context)
 
@@ -21,14 +24,20 @@ def read_profile(request):
 def add_profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST)
-        #form2 = SkillsForm(request.POST)
-        if form.is_valid():
+        form2 = SkillsForm(request.POST)
+        #form3 = TimePeriodForm(request.POST)
+        if form.is_valid() and form2.is_valid():
             form.save()
-        # if form2.is_valid():
-        #     form2.save()
-        return redirect('add')
-    form = ProfileForm
-    context = {'form': form}
+            form2.save()
+            #form3.save()
+        return redirect('read')
+    form = ProfileForm()
+    form2 = SkillsForm()
+    #form3 = TimePeriodForm()
+    context = {'form': form,
+                'form2': form2,
+                #'form3': form3
+                }
     return render(request, 'volunteer/add_profile.html', context)
 
 def edit_item(request, item_id):

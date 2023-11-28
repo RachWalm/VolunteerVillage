@@ -68,7 +68,7 @@ class VolunteerProfile(models.Model):
         default=False,
     )
     
-    def get_fname(self):
+    '''def get_fname(self):
         """Get the first name of the volunteer"""
         return [self.fname]
     
@@ -94,32 +94,32 @@ class VolunteerProfile(models.Model):
     
     def get_special_skills_description(self):
         """Get the information provided by volunteer of special skills"""
-        return [self.special_skills_description]
+        return [self.special_skills_description]'''
     
     
 class Skills(models.Model):
     '''Choose which type of volunteering they would like to do according to skills'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
-    class SkillChoices():
-        skill_dict = {
-            'AD': 'ADMINISTRATION',
-            'CO': 'COMPANIONSHIP',
-            'DI': 'DIY',
-            'DR': 'DRIVING',
-            'EV': 'EVENTS',
-            'EN': 'ENVIRONMENTAL',
-            'FU': 'FUNDRAISING',
-            'GA': 'GARDENING',
-            'RE': 'READING',
-            'SH': 'SHOPPING',
-            'TU': 'TUTORING',
-        }
     
-    skills = models.ManyToManyField('self')
+    skill_choices = [
+        ('AD', 'ADMINISTRATION'),
+        ('CO', 'COMPANIONSHIP'),
+        ('DI', 'DIY'),
+        ('DR', 'DRIVING'),
+        ('EV', 'EVENTS'),
+        ('EN', 'ENVIRONMENTAL'),
+        ('FU', 'FUNDRAISING'),
+        ('GA', 'GARDENING'),
+        ('RE', 'READING'),
+        ('SH', 'SHOPPING'),
+        ('TU', 'TUTORING'),
+    ]
+    
+    skills = models.ManyToManyField('self', choices=skill_choices)
     
     def get_skills(self):
         """Get the chosen categories of skills of the volunteer"""
-        return [self.skills]
+        return self.skills.all()
 
         # multi_select = forms.MultipleChoiceField(choices=SKILL_CHOICES, widget=forms.CheckboxSelectMultiple)
         
@@ -145,19 +145,19 @@ class TimePeriod(models.Model):
     section_of_day = models.IntegerField(choices=PART_OF_DAY, default = 0),
     day = models.IntegerField(choices=DAYS_OF_WEEK, default = 0),
     
-    def get_time_length_hours(self):
-        """Get the number of hours the volunteer can be available"""
-        return [self.time_length_hours]
+    # def get_time_length_hours(self):
+    #     """Get the number of hours the volunteer can be available"""
+    #     return [self.time_length_hours]
     
-    def get_time_length_hours(self):
-        """Get the number of days the volunteer can be available"""
-        return [self.time_length_days]
+    # def get_time_length_hours(self):
+    #     """Get the number of days the volunteer can be available"""
+    #     return [self.time_length_days]
     
-    def get_section_of_day(self):
-        """Get which parts of the day volunteer can be available"""
-        return [self.section_of_day]
+    # def get_section_of_day(self):
+    #     """Get which parts of the day volunteer can be available"""
+    #     return [self.section_of_day]
     
-    def get_day(self):
-        """Get which day of the week the volunteer can be available"""
-        return [self.day]
+    # def get_day(self):
+    #     """Get which day of the week the volunteer can be available"""
+    #     return [self.day]
     
