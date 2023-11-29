@@ -94,7 +94,10 @@ class VolunteerProfile(models.Model):
     def get_special_skills_description(self):
         """Get the information provided by volunteer of special skills"""
         return [self.special_skills_description]'''
-    
+
+
+class skilled(models.Model):
+    '''Actual Skill that the volunteer chooses'''    
     
 class Skills(models.Model):
     '''Choose which type of volunteering they would like to do according to skills'''
@@ -143,11 +146,7 @@ class TimePeriod(models.Model):
         ])
     section_of_day = models.IntegerField(choices=PART_OF_DAY, default = 0)
     day = models.IntegerField(choices=DAYS_OF_WEEK, default = 0)
-    time_length_hours = models.PositiveSmallIntegerField(
-        default=0,
-        validators=[
-            MaxValueValidator(168), #168 hours in a week
-        ])
+    
     
     # def get_time_length_hours(self):
     #     """Get the number of hours the volunteer can be available"""

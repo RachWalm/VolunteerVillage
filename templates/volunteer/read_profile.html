@@ -3,21 +3,60 @@
 {% block content %}
 
 <h2>Your profile - {{user.username }}</h2>
-{{ person }} 
+
 
 <table>
-    {% if user.username == personlogged_in  %}   
-        <p>1</p>
-    {% endif %}
-        <tr>
-            <td>First Name</td>
-            <td>{{ user.email }}</td>
-        </tr>
-        <tr>
-            <td>Last Name</td>
-            <td>{{ person.lname }}</td>
-        </tr>     
+    {% for individual in people %}
+    <tr>
+        <td>First Name</td>
+        <td>{{ individual.fname }}</td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <td>{{ individual.lname }}</td>
+    </tr>
+    <tr>
+        <td>Phone number</td>
+        <td>{{ individual.phone }}</td>
+    </tr>
+    <tr>
+        <td>Set up profile</td>
+        <td>{{ individual.created_on }}</td>
+    </tr>
+    <tr>
+        <td>Last updated</td>
+        <td>{{ individual.updated_on }}</td>
+    </tr>
+    <tr>
+        <td>Profile picture</td>
+        <td>{{ individual.profile_picture }}</td>
+    </tr>
+    <tr>
+        <td>Special Skills description</td>
+        <td>{{ individual.special_skills_description }}</td>
+    </tr>
+    <tr>
+        <td>Activated?</td>
+        <td>{{ individual.activated }}</td>
+    </tr>
+    {% endfor %}
+    {% for skill in skills %}
+    <tr>
+        <td>Skills</td>
+        <td>{{ skill.skills }}</td>
+    </tr>
+    {% endfor %}
+    {% for available in availabilities%}
+    <tr>
+        <td>Availabilities</td>
+        <td>{{ available.time_length_hours }} 
+            {{ available.time_length_days }}
+            {{ available.section_of_day}}
+            {{ available.day }}
+        </td>
+    </tr>
+    {% endfor %}     
 </table>
-{{ personlogged_in }}
+
 
 {% endblock %}

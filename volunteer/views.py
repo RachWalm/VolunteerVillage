@@ -13,9 +13,13 @@ def home(request):
 
 def read_profile(request):
     personlogged_in = User.username
-    person = VolunteerProfile.objects.filter(user_name_id='2').values()
+    people = VolunteerProfile.objects.filter(user_name_id='1').values()
+    skills = Skills.objects.filter(user_name_id ='1').values()
+    availabilities = TimePeriod.objects.filter(user_name_id ='1').values()
     context = {
-        'person': person,
+        'people': people,
+        'skills':skills,
+        'availabilities': availabilities,
         'personlogged_in': personlogged_in
     }
     return render(request, 'volunteer/read_profile.html', context)
@@ -28,8 +32,8 @@ def add_profile(request):
         form3 = TimeForm(request.POST)
         if form.is_valid() and form2.is_valid() and form3.is_valid():
             form.save()
-            # form2.save()
-            # form3.save()
+            form2.save()
+            form3.save()
         return redirect('read')
     form = ProfileForm()
     form2 = SkillsForm()
@@ -40,15 +44,15 @@ def add_profile(request):
                 }
     return render(request, 'volunteer/add_profile.html', context)
 
-def edit_item(request, item_id):
-    item = get_object_or_404(VolunteerProfile, id=item_id)
-    if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=item)
-        if form.is_valid():
-            form.save()
-            return redirect('add_volunteer')
-    form = ProfileForm(instance=item)
-    context = {
-        'form': form
-    }
-    return render(request, 'volunteer/add_profile.html', context)
+# def edit_item(request, item_id):
+#     item = get_object_or_404(VolunteerProfile, id=item_id)
+#     if request.method == 'POST':
+#         form = ProfileForm(request.POST, instance=item)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('add_volunteer')
+#     form = ProfileForm(instance=item)
+#     context = {
+#         'form': form
+#     }
+#     return render(request, 'volunteer/add_profile.html', context)
