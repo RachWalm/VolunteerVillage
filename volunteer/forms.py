@@ -1,6 +1,7 @@
 from .models import VolunteerProfile, Skills, TimePeriod
 from django import forms
 
+
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = VolunteerProfile
@@ -19,8 +20,7 @@ class SkillsForm(forms.ModelForm):
         }
         
         
-# class TimePeriodForm(forms.ModelForm):
-#     class Meta:
-#         model = TimePeriod
-#         fields = ('user_name',)
-        
+class TimeForm(forms.ModelForm):
+    class Meta:
+        model = TimePeriod
+        fields = ('user_name', 'time_length_hours', 'time_length_days', 'section_of_day', 'day')

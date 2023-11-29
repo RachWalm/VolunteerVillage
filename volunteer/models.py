@@ -6,7 +6,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 # from django import forms
 from django.core.validators import MaxValueValidator
 
-
 # Section of the days that they are available
 PART_OF_DAY = (
     (0, 'None'),
@@ -102,17 +101,17 @@ class Skills(models.Model):
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     
     skill_choices = [
-        ('AD', 'ADMINISTRATION'),
-        ('CO', 'COMPANIONSHIP'),
-        ('DI', 'DIY'),
-        ('DR', 'DRIVING'),
-        ('EV', 'EVENTS'),
-        ('EN', 'ENVIRONMENTAL'),
-        ('FU', 'FUNDRAISING'),
-        ('GA', 'GARDENING'),
-        ('RE', 'READING'),
-        ('SH', 'SHOPPING'),
-        ('TU', 'TUTORING'),
+        ('1', 'ADMINISTRATION'),
+        ('2', 'COMPANIONSHIP'),
+        ('3', 'DIY'),
+        ('4', 'DRIVING'),
+        ('5', 'EVENTS'),
+        ('6', 'ENVIRONMENTAL'),
+        ('7', 'FUNDRAISING'),
+        ('8', 'GARDENING'),
+        ('9', 'READING'),
+        ('10', 'SHOPPING'),
+        ('11', 'TUTORING'),
     ]
     
     skills = models.ManyToManyField('self', choices=skill_choices)
@@ -131,19 +130,24 @@ class Skills(models.Model):
     
 class TimePeriod(models.Model):
     '''How long the volunteer can spend and when the volunteer is available'''
-    user_name = models.OneToOneField(User, on_delete=models.CASCADE),
+    user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     time_length_hours = models.PositiveSmallIntegerField(
         default=0,
         validators=[
             MaxValueValidator(168), #168 hours in a week
-        ]),
+        ])    
     time_length_days = models.PositiveSmallIntegerField(
         default=0,
         validators=[
             MaxValueValidator(7), #7 days in a week
-        ]),
-    section_of_day = models.IntegerField(choices=PART_OF_DAY, default = 0),
-    day = models.IntegerField(choices=DAYS_OF_WEEK, default = 0),
+        ])
+    section_of_day = models.IntegerField(choices=PART_OF_DAY, default = 0)
+    day = models.IntegerField(choices=DAYS_OF_WEEK, default = 0)
+    time_length_hours = models.PositiveSmallIntegerField(
+        default=0,
+        validators=[
+            MaxValueValidator(168), #168 hours in a week
+        ])
     
     # def get_time_length_hours(self):
     #     """Get the number of hours the volunteer can be available"""
@@ -160,4 +164,3 @@ class TimePeriod(models.Model):
     # def get_day(self):
     #     """Get which day of the week the volunteer can be available"""
     #     return [self.day]
-    

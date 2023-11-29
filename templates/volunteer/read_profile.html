@@ -6,15 +6,17 @@
 {{ person }} 
 
 <table>
+    {% if user.username == personlogged_in  %}   
         <p>1</p>
-            <tr>
-                <td>First Name</td>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <td>Last Name</td>
-                <td>{{ person.lname }}</td>
-            </tr>     
+    {% endif %}
+        <tr>
+            <td>First Name</td>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <td>Last Name</td>
+            <td>{{ person.lname }}</td>
+        </tr>     
 </table>
 {{ personlogged_in }}
 
