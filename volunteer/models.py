@@ -160,6 +160,6 @@ class TimePeriod(models.Model):
     #     """Get which parts of the day volunteer can be available"""
     #     return [self.section_of_day]
     
-    # def get_day(self):
-    #     """Get which day of the week the volunteer can be available"""
-    #     return [self.day]
+    def get_day(self):
+        """Get which day of the week the volunteer can be available"""
+        return 2 #dict(DAYS_OF_WEEK) #[self.day]

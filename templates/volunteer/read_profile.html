@@ -48,12 +48,20 @@
     {% endfor %}
     {% for available in availabilities%}
     <tr>
-        <td>Availabilities</td>
-        <td>{{ available.time_length_hours }} 
-            {{ available.time_length_days }}
-            {{ available.section_of_day}}
-            {{ available.day }}
-        </td>
+        <td>Availabilities - time in hours</td>
+        <td>{{ available.time_length_hours }}</td>
+    </tr>
+    <tr>
+        <td>Availabilities - time in days</td>
+        <td>{{ available.time_length_days }}
+    </tr>
+    <tr>
+        <td>Availabilities - Section of day available</td>
+        <td>{{ section_name }}</td>
+    </tr>
+    <tr>
+        <td>Availabilities - Which days of the week</td>
+        <td> {{ day_name }}</td>
     </tr>
     {% endfor %}     
 </table>

@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import VolunteerProfile, Skills, TimePeriod
+from .models import VolunteerProfile, Skills, TimePeriod, DAYS_OF_WEEK, PART_OF_DAY
 from .forms import ProfileForm, SkillsForm, TimeForm
 # Create your views here.
 
@@ -16,11 +16,17 @@ def read_profile(request):
     people = VolunteerProfile.objects.filter(user_name_id='1').values()
     skills = Skills.objects.filter(user_name_id ='1').values()
     availabilities = TimePeriod.objects.filter(user_name_id ='1').values()
+    time = get_object_or_404(TimePeriod).day
+    section = get_object_or_404(TimePeriod).section_of_day
+    section_name = PART_OF_DAY[section][1]
+    day_name = DAYS_OF_WEEK[time][1]
     context = {
         'people': people,
         'skills':skills,
         'availabilities': availabilities,
-        'personlogged_in': personlogged_in
+        'personlogged_in': personlogged_in,
+        'day_name': day_name,
+        'section_name': section_name
     }
     return render(request, 'volunteer/read_profile.html', context)
 

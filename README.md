@@ -90,6 +90,10 @@ The different apps and relationships were discussed and as the idea formed a rou
 
 ### Libraries
 
+allauth
+
+go through requirements.txt
+
 https://pypi.org/project/django-select-multiple-field/
 
 this needed django utils six installed
