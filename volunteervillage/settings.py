@@ -33,6 +33,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['volunteervillage-8a4d89acc796.herokuapp.com', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://volunteervillage-8a4d89acc796.herokuapp.com', 'https://127.0.0.1']
 
 # Application definition
 

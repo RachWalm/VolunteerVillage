@@ -11,13 +11,13 @@ class ProfileForm(forms.ModelForm):
 class SkillsForm(forms.ModelForm):
     class Meta:
         model = Skills
-        fields = ('user_name', 'skills',)
-        widgets = {
-            'skills': forms.Select(
-                attrs={
-                    'class': 'form-control', 'required': True
-                })
-        }
+        fields = ('user_name', 'skilled',)
+        # widgets = {
+        #     'skills': forms.Select(
+        #         attrs={
+        #             'class': 'form-control', 'required': True
+        #         })
+        # }
         
         
 class TimeForm(forms.ModelForm):
