@@ -12,10 +12,11 @@ def home(request):
 
 
 def read_profile(request):
-    personlogged_in = User.username
-    people = VolunteerProfile.objects.filter(user_name_id='1').values()
-    skills = Skills.objects.filter(user_name_id ='1').values()
-    availabilities = TimePeriod.objects.filter(user_name_id ='1').values()
+    # user = get_object_or_404(User, id=pk)
+    pk_logged_in = request.user.pk
+    people = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).values()
+    skills = Skills.objects.filter(user_name_id =pk_logged_in).values()
+    availabilities = TimePeriod.objects.filter(user_name_id =pk_logged_in).values()
     time = get_object_or_404(TimePeriod, pk=1).day
     section = get_object_or_404(TimePeriod, pk=1).section_of_day
     able = get_object_or_404(Skills, pk=1).skilled
@@ -26,7 +27,7 @@ def read_profile(request):
         'people': people,
         'skills': skills,
         'availabilities': availabilities,
-        'personlogged_in': personlogged_in,
+        'pk_logged_in': pk_logged_in,
         'day_name': day_name,
         'section_name': section_name,
         'skill_name':skill_name,
