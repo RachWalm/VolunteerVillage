@@ -3,6 +3,7 @@
 {% block content %}
 
 <h2>Your profile - {{user.username }} {{ request.user.username }} {{request.user.email }} {{ request.user.pk }} {{pk_logged_in}} </h2>
+<h3> {{ availabilities }} {{ time }} {{ able }} {{ section}} </h3>
 
 
 <table>
@@ -40,12 +41,10 @@
         <td>{{ individual.activated }}</td>
     </tr>
     {% endfor %}
-    {% for skill in skills %}
     <tr>
         <td>Skills</td>
         <td>{{ skill_name }}</td>
     </tr>
-    {% endfor %}
     {% for available in availabilities%}
     <tr>
         <td>Availabilities - time in hours</td>
@@ -55,6 +54,7 @@
         <td>Availabilities - time in days</td>
         <td>{{ available.time_length_days }}
     </tr>
+    {% endfor %}
     <tr>
         <td>Availabilities - Section of day available</td>
         <td>{{ section_name }}</td>
@@ -62,8 +62,7 @@
     <tr>
         <td>Availabilities - Which days of the week</td>
         <td> {{ day_name }}</td>
-    </tr>
-    {% endfor %}     
+    </tr> 
 </table>
 
 

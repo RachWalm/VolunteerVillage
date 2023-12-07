@@ -12,17 +12,19 @@ def home(request):
 
 
 def read_profile(request):
-    # user = get_object_or_404(User, id=pk)
+    # user = get_object_or_404(User, id=pk) NEED TO LOOK AT WHICH VARIABLES STILL NEEDED ON PAGE
     pk_logged_in = request.user.pk
     people = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).values()
     skills = Skills.objects.filter(user_name_id =pk_logged_in).values()
     availabilities = TimePeriod.objects.filter(user_name_id =pk_logged_in).values()
-    time = get_object_or_404(TimePeriod, pk=1).day
-    section = get_object_or_404(TimePeriod, pk=1).section_of_day
-    able = get_object_or_404(Skills, pk=1).skilled
+    for available in availabilities:
+        time = available['day']
+        section = available['section_of_day']
+    for skill in skills:
+        able = skill['skilled']
     section_name = PART_OF_DAY[section][1]
     day_name = DAYS_OF_WEEK[time][1]
-    skill_name = SkillChoices.SKILL_CHOICES[able - 1][1]
+    skill_name = SkillChoices.SKILL_CHOICES[able-1][1] # first is corresponding number -1
     context = {
         'people': people,
         'skills': skills,
@@ -31,6 +33,9 @@ def read_profile(request):
         'day_name': day_name,
         'section_name': section_name,
         'skill_name':skill_name,
+        'time':time,
+        'able':able,
+        'section':section,
     }
     return render(request, 'volunteer/read_profile.html', context)
 
