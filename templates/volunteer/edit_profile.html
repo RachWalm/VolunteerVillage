@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Edit a profile</h2>
+
+{{ people }} {{ skilled }} {{ availabilities }} {{ pk_logged_in }}
+
+<form method="post">
+    {{ form.as_p }}
+    {{ form2.as_p }}
+    {{ form3.as_p }}
+    {% csrf_token %}
+    <button type="submit" class="btn">Submit</button>
+</form>
+
+
+{% endblock %}

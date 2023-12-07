@@ -59,15 +59,30 @@ def add_profile(request):
                 }
     return render(request, 'volunteer/add_profile.html', context)
 
-# def edit_item(request, item_id):
-#     item = get_object_or_404(VolunteerProfile, id=item_id)
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, instance=item)
-#         if form.is_valid():
-#             form.save()
-#             return redirect('add_volunteer')
-#     form = ProfileForm(instance=item)
-#     context = {
-#         'form': form
-#     }
-#     return render(request, 'volunteer/add_profile.html', context)
+def edit_profile(request):
+    pk_logged_in = request.user.pk
+    people = get_object_or_404(VolunteerProfile, id=pk_logged_in)
+    skilled = get_object_or_404(Skills, user_name_id =pk_logged_in)
+    availabilities = get_object_or_404(TimePeriod, user_name_id =pk_logged_in)
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, instance=people)
+        form2 = SkillsForm(request.POST, instance=skilled)
+        form3 = TimeForm(request.POST, instance=availabilities)
+        if form.is_valid()and form2.is_valid() and form3.is_valid():
+            form.save()
+            form2.save()
+            form3.save()
+            return redirect('read')
+    form = ProfileForm(instance = people)
+    form2 = SkillsForm(instance = skilled)
+    form3 = TimeForm(instance = availabilities)
+    context = {
+        'form': form,
+        'form2': form2,
+        'form3': form3,
+        'people': people,
+        'skilled': skilled,
+        'availabilities': availabilities,
+        'pk_logged_in': pk_logged_in
+    }
+    return render(request, 'volunteer/edit_profile.html', context)

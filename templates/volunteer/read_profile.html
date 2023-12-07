@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+
 {% block content %}
 
 <h2>Your profile - {{user.username }} {{ request.user.username }} {{request.user.email }} {{ request.user.pk }} {{pk_logged_in}} </h2>
@@ -64,6 +65,7 @@
         <td> {{ day_name }}</td>
     </tr> 
 </table>
-
-
+<button>
+<a href="{% url 'edit' %}">Edit profile</a>
+</button>
 {% endblock %}
