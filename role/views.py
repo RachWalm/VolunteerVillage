@@ -13,7 +13,7 @@ def role(request):
         form = RoleForm(request.POST)
         if form.is_valid() :
             form.save()
-        return redirect('read')
+        return redirect('add')
     form = RoleForm()
     context = {'form': form,
                 }
