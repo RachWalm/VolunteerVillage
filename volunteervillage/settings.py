@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     #'select_multiple_field',
     'volunteer',
     'coordinator',
+    'role',
 ]
 
 SITE_ID = 1

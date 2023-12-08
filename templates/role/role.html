@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Are you signing up as a Volunteer?</h2>
+<h3> Please sign up as a Volunteer unless specifically told otherwise</h3>
+<p> All accounts undergo activation, so don't worry if you make a mistake, your account will not be activated.<p/>
+
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit" class="btn">Submit</button>
+</form>
+
+
+{% endblock %}
