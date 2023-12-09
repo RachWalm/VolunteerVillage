@@ -13,8 +13,19 @@ def role(request):
         form = RoleForm(request.POST)
         if form.is_valid() :
             form.save()
+        # pk_logged_in = request.user.pk
+        # titles = Role.objects.filter(user_name_id =pk_logged_in).values()
+        # for title in titles:
+        #     capability = title['role']
+        #     if capability == 'Volunteer':
         return redirect('add')
+            # elif capability == 'Coordinator':
+            #     return redirect('pending')
+            # else:
+            #     return redirect('index')
     form = RoleForm()
     context = {'form': form,
+                #'title':title,
+                #'capability':capability
                 }
     return render(request, 'role/role.html', context)
