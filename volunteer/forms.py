@@ -5,10 +5,8 @@ from django import forms
 class ProfileForm(forms.ModelForm):
     class Meta:
         model = VolunteerProfile
-        fields = ('user_name', 'fname', 'lname', 'phone', 'profile_picture', 'special_skills_description',)
-        # widgets = {
-        #     'user_name': forms.HiddenInput(),
-        # }
+        fields = ('fname', 'lname', 'phone', 'profile_picture', 'special_skills_description',)
+        
 
         
 class SkillsForm(forms.ModelForm):
