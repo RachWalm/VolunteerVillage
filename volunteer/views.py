@@ -77,35 +77,6 @@ def add_profile(request):
     return render(request, 'volunteer/add_profile.html', context)
 
 
-# def add_profile(request):
-#     pk_logged_in = request.user.pk
-#     # people = get_object_or_404(VolunteerProfile, id=pk_logged_in)
-#     # skilled = get_object_or_404(Skills, user_name_id =pk_logged_in)
-#     # availabilities = get_object_or_404(TimePeriod, user_name_id =pk_logged_in)
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST)
-#         form2 = SkillsForm(request.POST)
-#         form3 = TimeForm(request.POST)
-#         if form.is_valid() and form2.is_valid() and form3.is_valid():
-#             form.save()
-#             form2.save()
-#             form3.save()
-#             return redirect('read')
-#     form = ProfileForm()
-#     form2 = SkillsForm()
-#     form3 = TimeForm()
-#     context = {
-#         'form': form,
-#         'form2': form2,
-#         'form3': form3,
-#         # 'people': people,
-#         # 'skilled': skilled,
-#         # 'availabilities': availabilities,
-#         'pk_logged_in': pk_logged_in
-#     }
-#     return render(request, 'volunteer/add_profile.html', context)
-
-
 def edit_profile(request):
     pk_logged_in = request.user.pk
     people = get_object_or_404(VolunteerProfile, id=pk_logged_in)
@@ -139,3 +110,5 @@ def delete_profile(request):
     user = get_object_or_404(User, id=pk_logged_in)
     user.delete()
     return redirect('index')
+
+# messages.add_message(request, messages.SUCCESS, 'Comment deleted!')

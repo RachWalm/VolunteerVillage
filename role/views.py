@@ -9,23 +9,31 @@ def home(request):
     return render(request, 'index.html')
 
 def role(request):
+    pk_logged_in = request.user.pk
     if request.method == 'POST':
         form = RoleForm(request.POST)
         if form.is_valid() :
             form.save()
-        # pk_logged_in = request.user.pk
-        # titles = Role.objects.filter(user_name_id =pk_logged_in).values()
-        # for title in titles:
-        #     capability = title['role']
-        #     if capability == 'Volunteer':
-        return redirect('add')
-            # elif capability == 'Coordinator':
-            #     return redirect('pending')
-            # else:
-            #     return redirect('index')
+        title = Role.objects.filter(user_name_id =pk_logged_in).values()
+        if title[0]['role'] == 1:
+            return redirect('add')
+        elif title[0]['role'] == 2:
+            return redirect('pending')
+        else:
+            return redirect('index')
     form = RoleForm()
-    context = {'form': form,
-                #'title':title,
-                #'capability':capability
-                }
+    context = {'form': form,}
     return render(request, 'role/role.html', context)
+
+def login_success(request):
+    """
+    Redirects users based on the role that the need to use the site
+    """
+    pk_logged_in = request.user.pk
+    title = Role.objects.filter(user_name_id =pk_logged_in).values()
+    if title[0]['role'] == 1:
+        return redirect('read')
+    elif title[0]['role'] == 2:
+        return redirect('co_dashboard')
+    else:
+        return redirect('index')
