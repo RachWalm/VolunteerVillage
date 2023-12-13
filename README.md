@@ -101,6 +101,10 @@ this needed django utils six installed
 https://docs.djangoproject.com/en/4.2/ref/models/fields/#choices
 https://django-phonenumber-field.readthedocs.io/en/latest/
 
+https://stackoverflow.com/questions/20138049/redirect-user-to-another-url-with-django-allauth-log-in-signal
+
+Django documentation
+
 ## Deployment
 
 ### Heroku Deployment

@@ -42,8 +42,9 @@ def read_profile(request):
 
 def add_profile(request):
     pk_logged_in = request.user.pk
-    volunteer_logged_in = get_object_or_404(User, id=pk_logged_in)
-    #logged_in_user = volunteer_logged_in.username
+    # people = get_object_or_404(VolunteerProfile, id=pk_logged_in)
+    # skilled = get_object_or_404(Skills, user_name_id =pk_logged_in)
+    # availabilities = get_object_or_404(TimePeriod, user_name_id =pk_logged_in)
     if request.method == 'POST':
         form = ProfileForm(request.POST)
         form2 = SkillsForm(request.POST)
@@ -52,19 +53,21 @@ def add_profile(request):
             form.save()
             form2.save()
             form3.save()
-        return redirect('read')
-    form = ProfileForm(initial={"user_name":volunteer_logged_in,})
-    form2 = SkillsForm(initial={"name":request.user.username,
-                                "user_name":volunteer_logged_in,})
-    form3 = TimeForm(initial={"name":request.user.username,
-                            "user_name":volunteer_logged_in,})
-    context = {'form': form,
-                'form2': form2,
-                'form3': form3,
-                'volunteer_logged_in':volunteer_logged_in,
-                #'logged_in_user':logged_in_user,
-                }
+            return redirect('read')
+    form = ProfileForm()
+    form2 = SkillsForm()
+    form3 = TimeForm()
+    context = {
+        'form': form,
+        'form2': form2,
+        'form3': form3,
+        # 'people': people,
+        # 'skilled': skilled,
+        # 'availabilities': availabilities,
+        'pk_logged_in': pk_logged_in
+    }
     return render(request, 'volunteer/add_profile.html', context)
+
 
 def edit_profile(request):
     pk_logged_in = request.user.pk
@@ -75,7 +78,7 @@ def edit_profile(request):
         form = ProfileForm(request.POST, instance=people)
         form2 = SkillsForm(request.POST, instance=skilled)
         form3 = TimeForm(request.POST, instance=availabilities)
-        if form.is_valid()and form2.is_valid() and form3.is_valid():
+        if form.is_valid() and form2.is_valid() and form3.is_valid():
             form.save()
             form2.save()
             form3.save()
@@ -93,3 +96,9 @@ def edit_profile(request):
         'pk_logged_in': pk_logged_in
     }
     return render(request, 'volunteer/edit_profile.html', context)
+
+def delete_item(request):
+    pk_logged_in = request.user.pk
+    user = get_object_or_404(User, id=pk_logged_in)
+    user.delete()
+    return redirect('index')
