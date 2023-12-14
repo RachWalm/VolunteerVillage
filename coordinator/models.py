@@ -19,7 +19,10 @@ class CoordinatorProfile(models.Model):
         help_text='format: required, max_length=50',
     )
     coordinators_charities = models.ManyToManyField("coordinator.CharityProfile", verbose_name=("coordinators associated charities"))
-    
+    activated = models.BooleanField(
+        default=False,
+    )
+
     
 class CharityProfile(models.Model):
     '''Details of the charity and link to which coordinators they are associated with'''
