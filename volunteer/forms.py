@@ -12,9 +12,9 @@ class ProfileForm(forms.ModelForm):
 class SkillsForm(forms.ModelForm):
     class Meta:
         model = Skills
-        fields = ('user_name', 'name', 'skilled',)
+        fields = ('skilled',)
         # widgets = {
-        #     'user_name': forms.HiddenInput(),
+        #     'user_name': initial= request.user,
         #     'name': forms.HiddenInput(),
         #     #'skilled': forms.SelectMultiple(),
         # }
@@ -23,7 +23,7 @@ class SkillsForm(forms.ModelForm):
 class TimeForm(forms.ModelForm):
     class Meta:
         model = TimePeriod
-        fields = ('user_name', 'name', 'time_length_hours', 'time_length_days', 'section_of_day', 'day',)
+        fields = ('time_length_hours', 'time_length_days', 'section_of_day', 'day',)
         # widgets = {
         #     'user_name': forms.HiddenInput(),
         #     'name': forms.HiddenInput(),

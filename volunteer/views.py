@@ -59,7 +59,7 @@ def add_profile(request):
         }
         form3_data = {
             'user_name': request.user,
-            'name': request.POST['name'],
+            'name': request.user,
             'time_length_days': request.POST['time_length_days'],
             'time_length_hours': request.POST['time_length_hours'],
             'section_of_day': request.POST['section_of_day'],
@@ -78,11 +78,16 @@ def add_profile(request):
             profile = form.save(commit=False)
             profile.user_name = request.user
             form.save()
-            ability = form.save(commit=False)
+            print('test6')
+            ability = form2.save(commit=False)
+            print('test8')
             ability.user_name = request.user
+            print('test9')
             ability.name = request.user
+            print('test10')
             form2.save()
-            time = form.save(commit=False)
+            print('test7')
+            time = form3.save(commit=False)
             time.user_name = request.user
             time.name = request.user
             form3.save()
