@@ -41,6 +41,8 @@ def read_profile(request):
 
 def add_profile(request):
     form= ProfileForm
+    form2= SkillsForm
+    form3=TimeForm
     if request.method == 'POST':
         form_data = {
             'user_name': request.user,
@@ -50,29 +52,53 @@ def add_profile(request):
             'profile_picture': request.POST['profile_picture'], 
             'special_skills_description': request.POST['special_skills_description'],
         }
+        form2_data = {
+            'user_name': request.user,
+            'name': request.user,
+            'skilled': request.POST['skilled'],
+        }
+        form3_data = {
+            'user_name': request.user,
+            # 'name': request.POST['name'],
+            'time_length_days': request.POST['time_length_days'],
+            'time_length_hours': request.POST['time_length_hours'],
+            'section_of_day': request.POST['section_of_day'],
+            'day': request.POST['day'],
+        }
 
         print('test')
         form = ProfileForm(form_data) 
-        # form2 = SkillsForm(request.POST)
-        # form3 = TimeForm(request.POST)
-        if form.is_valid(): # and form2.is_valid() and form3.is_valid():
+        form2 = SkillsForm(form2_data)
+        form3 = TimeForm(form3_data)
+        print(form.is_valid)
+        print(form2.is_valid)
+        print(form2.errors.as_data())
+        if form.is_valid() and form2.is_valid(): # and form3.is_valid():
             print('tesst5')
             profile = form.save(commit=False)
             profile.user_name = request.user
             form.save()
-            # form2.save()
+            ability = form.save(commit=False)
+            ability.user_name = request.user
+            ability.name = request.user
+            form2.save()
+            # time = form.save(commit=False)
+            # time.user_name = request.user
+            # # time.name = request.user
             # form3.save()
             print(form)
+            # print(form2)
+            # print(form3)
             print('test4')
         else:
             print(form.errors)
         return redirect('index')
     context = {
         'form': form,
-        'form':ProfileForm(),
-        # 'form2': form2,
-        # 'form3': form3
-        # 'pk_logged_in': pk_logged_in
+        # 'form':ProfileForm(),
+        'form2': form2,
+        'form3': form3,
+        # 'pk_logged_in': pk_logged_in,
         }
     return render(request, 'volunteer/add_profile.html', context)
 
