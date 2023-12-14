@@ -23,7 +23,7 @@ class SkillsForm(forms.ModelForm):
 class TimeForm(forms.ModelForm):
     class Meta:
         model = TimePeriod
-        fields = ('time_length_hours', 'time_length_days', 'section_of_day', 'day',)
+        fields = ('user_name', 'name', 'time_length_hours', 'time_length_days', 'section_of_day', 'day',)
         # widgets = {
         #     'user_name': forms.HiddenInput(),
         #     'name': forms.HiddenInput(),
