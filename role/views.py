@@ -46,6 +46,8 @@ def login_success(request):
         title = Role.objects.filter(user_name_id =pk_logged_in).values()
         VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists()
         CP_exists = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in).exists()
+        co_profile = CoordinatorProfile.objects.filter(user_name_id =pk_logged_in).values()
+        print(co_profile[0]['activated'])
         print(title[0]['role'])
         print(VP_exists)
         print(CP_exists)
@@ -56,7 +58,10 @@ def login_success(request):
         elif title[0]['role'] == 2 and CP_exists == False:
             return redirect('addco') #will later take you to coordinator dashboard when set up
         elif title[0]['role'] == 2 and CP_exists:
-            return redirect('dashboard')
+            if co_profile:
+                return redirect('dashboard')
+            else:
+                return redirect('pending')
         else:
             return redirect('index')
     else:
