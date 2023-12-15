@@ -11,16 +11,25 @@ def home(request):
     return render(request, 'index.html')
 
 def role(request):
+    form = RoleForm
     pk_logged_in = request.user.pk
     if request.method == 'POST':
-        form = RoleForm(request.POST)
+        form_data_role = {
+            'user_name': request.user,
+            'name': request.user,
+            'role': request.POST['role'],
+        }
+        form = RoleForm(form_data_role)
         if form.is_valid() :
+            role=form.save(commit=False)
+            role.user_name = request.user
+            role.name = request.user
             form.save()
         title = Role.objects.filter(user_name_id =pk_logged_in).values()
         if title[0]['role'] == 1:
             return redirect('add')
         elif title[0]['role'] == 2:
-            return redirect('pending')
+            return redirect('addco')
         else:
             return redirect('index')
     form = RoleForm()
@@ -32,16 +41,23 @@ def login_success(request):
     Redirects users based on the role that the need to use the site
     """
     pk_logged_in = request.user.pk
-    title = Role.objects.filter(user_name_id =pk_logged_in).values()
-    VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists()
-    CP_exists = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in).exists()
-    print(title[0]['role'])
-    print(VP_exists)
-    if title[0]['role'] == 1 and VP_exists:
-        return redirect('read')
-    elif title[0]['role'] == 1 and VP_exists == False:
-        return redirect('add')
-    elif title[0]['role'] == 2 and CP_exists == False:
-        return redirect('addco') #will later take you to coordinator dashboard when set up
+    role_exists = Role.objects.filter(user_name_id=pk_logged_in).exists()
+    if role_exists:
+        title = Role.objects.filter(user_name_id =pk_logged_in).values()
+        VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists()
+        CP_exists = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in).exists()
+        print(title[0]['role'])
+        print(VP_exists)
+        print(CP_exists)
+        if title[0]['role'] == 1 and VP_exists:
+            return redirect('read')
+        elif title[0]['role'] == 1 and VP_exists == False:
+            return redirect('add')
+        elif title[0]['role'] == 2 and CP_exists == False:
+            return redirect('addco') #will later take you to coordinator dashboard when set up
+        elif title[0]['role'] == 2 and CP_exists:
+            return redirect('dashboard')
+        else:
+            return redirect('index')
     else:
-        return redirect('index')
+        return redirect('role')
