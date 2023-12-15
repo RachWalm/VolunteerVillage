@@ -58,10 +58,12 @@ def login_success(request):
         elif title[0]['role'] == 2 and CP_exists == False:
             return redirect('addco') #will later take you to coordinator dashboard when set up
         elif title[0]['role'] == 2 and CP_exists:
-            if co_profile:
+            if co_profile[0]['activated']:
                 return redirect('dashboard')
-            else:
+            elif co_profile[0]['activated'] == False:
                 return redirect('pending')
+            else:
+                return redirect('index')
         else:
             return redirect('index')
     else:
