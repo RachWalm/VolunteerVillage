@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import VolunteerProfile, Skills, TimePeriod, DAYS_OF_WEEK, PART_OF_DAY, SkillChoices
@@ -95,6 +96,7 @@ def add_profile(request):
             print(form2)
             print(form3)
             print('test4')
+            messages.add_message(request, messages.SUCCESS, 'Profile sent for approval -  then you will be matched!')
         else:
             print(form.errors)
         return redirect('index')
@@ -106,6 +108,7 @@ def add_profile(request):
         # 'pk_logged_in': pk_logged_in,
         }
     return render(request, 'volunteer/add_profile.html', context)
+
 
 
 def edit_profile(request):

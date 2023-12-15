@@ -47,10 +47,10 @@ def login_success(request):
         VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists()
         CP_exists = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in).exists()
         co_profile = CoordinatorProfile.objects.filter(user_name_id =pk_logged_in).values()
-        print(co_profile[0]['activated'])
-        print(title[0]['role'])
-        print(VP_exists)
-        print(CP_exists)
+        # print(co_profile[0]['activated'])
+        # print(title[0]['role'])
+        # print(VP_exists)
+        # print(CP_exists)
         if title[0]['role'] == 1 and VP_exists:
             return redirect('read')
         elif title[0]['role'] == 1 and VP_exists == False:
