@@ -71,30 +71,39 @@ def add_profile(request):
         form = ProfileForm(form_data) 
         form2 = SkillsForm(form2_data)
         form3 = TimeForm(form3_data)
+        # skill_queryset = SkillChoices.objects.filter().values()
+        # skill_list = set(skill_queryset.values_list())
+        # print(skill_queryset)
+        # print(skill_list)
         for field in form2:
             print("field Error:", field.name, field.errors)
-        if form.is_valid() and form3.is_valid(): # and form2.is_valid():
+        if form.is_valid() and form3.is_valid() and form2.is_valid():
             print(form.is_valid)
             print(form2.is_valid)
             print(form3.is_valid)
             print('tesst5')
-            profile = form.save(commit=False)
-            profile.user_name = request.user
-            profile.name = request.user
+            # profile = form.save(commit=False)
+            # profile.user_name = request.user
+            # profile.name = request.user
             # profile.time_link =  request.user
             # profile.skills_link = request.user
-            form.save()
+            # form.save()
             print('test6')
-            # ability = form2.save(commit=False)
-            # skill = form2.cleaned_data['skills']
-            # print(skill)
+            ability = form2.save(commit=False)
+            skill = form2.cleaned_data['skilled']
+            print(skill)
             # Skills.skilled.set(skill)
-            # ability.user_name = request.user
+            ability.user_name = request.user
             print('test9')
-            # ability.name = request.user
+            ability.name = request.user
+            # variable = ability.skilled()
+            # print(variable)
+            # Skills.skilled = ability.skilled.set(skill)
             print('test10')
-            # form2.save()
-            # form2.save_m2m()
+            # ability.skilled.set(skill)
+            form2.save()
+            # ability.skilled.set(skill)
+            # ability.skilled.add()
             print('test7')
             time = form3.save(commit=False)
             time.user_name = request.user
