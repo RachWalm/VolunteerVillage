@@ -71,33 +71,42 @@ def add_profile(request):
         form = ProfileForm(form_data) 
         form2 = SkillsForm(form2_data)
         form3 = TimeForm(form3_data)
-        print(form.is_valid)
-        print(form2.is_valid)
-        print(form2.is_valid)
-        if form.is_valid() and form2.is_valid() and form3.is_valid():
+        for field in form2:
+            print("field Error:", field.name, field.errors)
+        if form.is_valid() and form3.is_valid(): # and form2.is_valid():
+            print(form.is_valid)
+            print(form2.is_valid)
+            print(form3.is_valid)
             print('tesst5')
             profile = form.save(commit=False)
             profile.user_name = request.user
+            profile.name = request.user
+            # profile.time_link =  request.user
+            # profile.skills_link = request.user
             form.save()
             print('test6')
-            ability = form2.save(commit=False)
-            print('test8')
-            ability.user_name = request.user
+            # ability = form2.save(commit=False)
+            # skill = form2.cleaned_data['skills']
+            # print(skill)
+            # Skills.skilled.set(skill)
+            # ability.user_name = request.user
             print('test9')
-            ability.name = request.user
+            # ability.name = request.user
             print('test10')
-            form2.save()
+            # form2.save()
+            # form2.save_m2m()
             print('test7')
             time = form3.save(commit=False)
             time.user_name = request.user
             time.name = request.user
-            form3.save()
-            print(form)
+            # form3.save()
+            # print(form)
             print(form2)
-            print(form3)
+            # print(form3)
             print('test4')
             messages.add_message(request, messages.SUCCESS, 'Profile sent for approval -  then you will be matched!')
         else:
+            print('testelse')
             print(form.errors)
         return redirect('index')
     context = {

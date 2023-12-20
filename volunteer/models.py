@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 from cloudinary.models import CloudinaryField
+from django_mysql.models import ListCharField
+from django.contrib.postgres.fields import ArrayField
 from phonenumber_field.modelfields import PhoneNumberField
 # from select_multiple_field.codecs import SelectMultipleField
 # from django import forms
@@ -30,6 +32,8 @@ DAYS_OF_WEEK = (
 
 class SkillChoices(models.Model):
     '''List of the skill choices model'''
+    skill_choices= models.CharField(max_length=50)
+    # makechoice_link = models.ForeignKey("volunteer.Skills", verbose_name=("skill"), on_delete=models.CASCADE,)
     SKILL_CHOICES = (
         (1, 'ADMINISTRATION'),
         (2, 'COMPANIONSHIP'),
@@ -43,12 +47,34 @@ class SkillChoices(models.Model):
         (10, 'SHOPPING'),
         (11, 'TUTORING'),
     )
+    
+#     from django.contrib.postgres.fields import ArrayField
+#     from django.db import models
+
+
+# class ChessBoard(models.Model):
+#     board = ArrayField(
+#         ArrayField(
+#             models.CharField(max_length=10, blank=True),
+#             size=8,
+#         ),
+#         size=8,
+#     )
+    
+    # skill_choices = ListCharField(
+    #     base_field=models.IntegerField(),
+    #     max_length=(2 * 11),
+    #     choices="SKILL_CHOICES")
+    
+    def __str__(self):
+        return self.skill_choices
 
 
 class TimePeriod(models.Model):
     '''How long the volunteer can spend and when the volunteer is available'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
+    # timed = models.ManyToManyField("volunteer.Skills", verbose_name=("Time")) 
     time_length_hours = models.PositiveSmallIntegerField(
         default=0,
         validators=[
@@ -86,8 +112,8 @@ class Skills(models.Model):
     '''Choose which type of volunteering they would like to do according to skills'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    skilled = models.IntegerField(choices=SkillChoices.SKILL_CHOICES,)   
-    time_link = models.ManyToManyField(TimePeriod, through="VolunteerProfile")
+    skilled = models.ManyToManyField("volunteer.SkillChoices", verbose_name=("skills"), related_name=("choices"))   
+    # link = models.ForeignKey("volunteer.VolunteerProfile", verbose_name=("VProfile"), on_delete=models.CASCADE, null=True, blank=True) #I think this needs to be  a link to volunteer profile
     
     def __str__(self):
         return self.name
@@ -106,8 +132,10 @@ class Skills(models.Model):
 class VolunteerProfile(models.Model):
     """Personal information about the volunteer"""
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
-    time_link = models.ForeignKey(TimePeriod, on_delete=models.CASCADE, null=True, blank=True)
-    skills_link = models.ForeignKey(Skills, on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=128)
+    # time_link = models.ForeignKey(TimePeriod, on_delete=models.CASCADE)
+    # skills_link = models.ForeignKey("volunteer.Skills", verbose_name=("Skills linked to profile"),on_delete=models.CASCADE)
+    # skill_choices_link = models.ForeignKey(SkillChoices, on_delete=models.CASCADE)
     fname = models.CharField(
         max_length=50,
         null=False,
@@ -144,6 +172,9 @@ class VolunteerProfile(models.Model):
     activated = models.BooleanField(
         default=False,
     )
+
+def __str__(self):
+    return self.name
     
     '''def get_fname(self):
         """Get the first name of the volunteer"""

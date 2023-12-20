@@ -13,11 +13,7 @@ class SkillsForm(forms.ModelForm):
     class Meta:
         model = Skills
         fields = ('skilled',)
-        # widgets = {
-        #     'user_name': initial= request.user,
-        #     'name': forms.HiddenInput(),
-        #     #'skilled': forms.SelectMultiple(),
-        # }
+        widgets = {'skilled': forms.SelectMultiple(),}
         
         
 class TimeForm(forms.ModelForm):
