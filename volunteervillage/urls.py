@@ -23,5 +23,6 @@ urlpatterns = [
     path("", include("role.urls"), name="role-urls"),
     path("", include("coordinator.urls"), name="coordinator-urls"),
     path("", include("volunteer.urls"), name="volunteer-urls"),
+    path("", include("charity.urls"), name="charity-urls"),
     path('accounts/', include('allauth.urls')),    
 ]

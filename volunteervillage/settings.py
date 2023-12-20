@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'volunteer',
     'coordinator',
     'role',
+    'charity',
 ]
 
 SITE_ID = 1

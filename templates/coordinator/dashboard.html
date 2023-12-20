@@ -2,4 +2,15 @@
 
 {% block content %}
 <h2> Coordinator Dashboard</h2>
+
+{% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'account_logout' %}">Logout</a>
+                </li>
+                <li>
+                    <a href="{% url 'add_charity' %}">Add Charity profile</a>
+                </li>
+                
+            {% endif %}
+
 {%endblock%}

@@ -30,12 +30,10 @@ DAYS_OF_WEEK = (
 )
 
 
-
 class SkillChoices(models.Model):
     '''List of the skill choices model'''
     skill_choices= models.CharField(max_length=50)
     # makechoice_link = models.ForeignKey("volunteer.Skills", verbose_name=("skill"), on_delete=models.CASCADE,)
-    
     SKILL_CHOICES = (
         (1, 'ADMINISTRATION'),
         (2, 'COMPANIONSHIP'),
@@ -53,10 +51,6 @@ class SkillChoices(models.Model):
 #     from django.contrib.postgres.fields import ArrayField
 #     from django.db import models
 
-def SavedList():
-    skill_queryset = SkillChoices.objects.filter().values()
-    skill_list = set(skill_queryset.values_list())
-    return skill_list
 
 # class ChessBoard(models.Model):
 #     board = ArrayField(
@@ -118,11 +112,11 @@ class Skills(models.Model):
     '''Choose which type of volunteering they would like to do according to skills'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    skilled = models.ManyToManyField("volunteer.SkillChoices", verbose_name=("skills"), related_name=("choices"), choices=SavedList())   
+    skilled = models.ManyToManyField("volunteer.SkillChoices", verbose_name=("skills"), related_name=("choices"))   
     # link = models.ForeignKey("volunteer.VolunteerProfile", verbose_name=("VProfile"), on_delete=models.CASCADE, null=True, blank=True) #I think this needs to be  a link to volunteer profile
     
     def __str__(self):
-        return str(self.name)
+        return self.name
     
     # def get_skills(self):
     #     """Get the chosen categories of skills of the volunteer"""
@@ -209,5 +203,3 @@ def __str__(self):
     def get_special_skills_description(self):
         """Get the information provided by volunteer of special skills"""
         return [self.special_skills_description]'''
-
-
