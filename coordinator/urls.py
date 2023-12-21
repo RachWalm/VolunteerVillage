@@ -7,4 +7,5 @@ urlpatterns = [
     path("coordinator/pending", views.pending, name="pending"),
     path("coordinator/dashboard", views.dashboard, name="dashboard"),
     path("coordinator/add_profile", views.add_profile_co, name="addco"),
+    path("coordinator/update_profile", views.edit_profile_co, name="updateco"),
 ]

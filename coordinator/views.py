@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CoordinatorProfile
-from .forms import ProfileFormCo
+from .forms import ProfileFormCo, ProfileFormCoUpdate
 
 # Create your views here.
 
@@ -11,6 +11,7 @@ def pending(request):
     return render(request, 'coordinator/pending.html')
 
 def dashboard(request):
+    # which_coordinator(request)
     return render(request, 'coordinator/dashboard.html')
 
 def home(request):
@@ -42,3 +43,51 @@ def add_profile_co(request):
         'form': form,
         }
     return render(request, 'coordinator/add_profile.html', context)
+
+
+# def which_coordinator(request):
+#     print('witch')
+    
+#     form=ProfileFormCo
+#     if request.method == 'POST':
+#         form_data_co = {
+#             'fname': request.POST['fname'],
+#             'lname': request.POST['lname'],
+#         }
+#     form=ProfileFormCo(form_data_co)
+#     if form.is_valid():
+#         print('which')
+#         # print(first_input)
+#         # print(last_input)
+
+    
+
+def edit_profile_co(request):
+    pk_logged_in = request.user.pk
+    co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
+    print(co_profile_all)
+    which_coordinator(request)
+    co_profile = get_object_or_404(CoordinatorProfile, lname="one").id
+    print(co_profile)
+    profile = get_object_or_404(CoordinatorProfile, id=co_profile)
+    if request.method == 'POST':
+        form = ProfileFormCoUpdate(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    form = ProfileFormCoUpdate(instance = profile)
+    
+    context = {
+        'form': form,
+        'profile': profile,
+        'pk_logged_in': pk_logged_in
+    }
+    return render(request, 'coordinator/update_profile.html', context)
+
+def delete_profile_co(request):
+    pk_logged_in = request.user.pk
+    user = get_object_or_404(User, id=pk_logged_in)
+    user.delete()
+    return redirect('dashboard')
+
+# messages.add_message(request, messages.SUCCESS, 'Comment deleted!')

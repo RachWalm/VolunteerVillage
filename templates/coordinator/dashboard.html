@@ -4,13 +4,24 @@
 <h2> Coordinator Dashboard</h2>
 
 {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'account_logout' %}">Logout</a>
-                </li>
-                <li>
-                    <a href="{% url 'add_charity' %}">Add Charity profile</a>
-                </li>
+    <li>
+        <a href="{% url 'account_logout' %}">Logout</a>
+    </li>
+    <li>
+        <a href="{% url 'add_charity' %}">Add Charity profile</a>
+    </li>
+    <li>
+        <a href="{% url 'updateco' %}">Update a coordinator profile</a>
+    </li>
                 
-            {% endif %}
+{% endif %}
+
+<h2>Update a profile</h2>
+
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit" class="btn">Submit</button>
+</form>
 
 {%endblock%}
