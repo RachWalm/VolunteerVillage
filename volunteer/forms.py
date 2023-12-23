@@ -13,7 +13,11 @@ class SkillsForm(forms.ModelForm):
     class Meta:
         model = Skills
         fields = ('skilled',)
-        widgets = {'skilled': forms.SelectMultiple(),}
+        widgets = {'skilled': forms.SelectMultiple(
+                attrs={
+                    'class': 'form-control',
+                    'title': 'select skills',
+                },)}
         
         
 class TimeForm(forms.ModelForm):
