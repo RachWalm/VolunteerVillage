@@ -5,6 +5,12 @@
 <h2>Update a coordinator profile</h2>
 
 <form method="post">
+    {{ choose_form.as_p }}
+    {% csrf_token %}
+    <button type="submit" class="btn">Submit</button>
+</form>
+
+<form method="post">
     {{ form.as_p }}
     {% csrf_token %}
     <button type="submit" class="btn">Submit</button>

@@ -23,6 +23,10 @@ class CoordinatorProfile(models.Model):
         default=False,
     )
 
+
+class ChooseCoordinator(models.Model):
+    first = models.CharField(max_length=128)
+    last = models.CharField(max_length=128)
     
 class Feedback(models.Model):
     '''Details of the coordinator making the notes and volunteer they are associated with'''

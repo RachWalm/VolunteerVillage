@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CoordinatorProfile
-from .forms import ProfileFormCo, ProfileFormCoUpdate
+from .forms import ProfileFormCo, ProfileFormCoUpdate, ChooseCo
 
 # Create your views here.
 
@@ -45,6 +45,31 @@ def add_profile_co(request):
     return render(request, 'coordinator/add_profile.html', context)
 
 
+def choose_edit_co_profile(request):
+    form=ChooseCo
+    if request.method == 'POST':
+        form_data_co = {
+            'first': request.POST['first'],
+            'last': request.POST['last'],
+        }
+        print('test')
+        choose_form = ChooseCo(form_data_co) 
+        queryset = CoordinatorProfile.objects.values_list()
+        # post = get_object_or_404(queryset, slug=slug)
+        # choose_form = ChooseCo(data=request.POST)
+        if choose_form.is_valid():
+            choose = choose_form.save(commit=False)
+            choose.save()
+        else:
+            print(form.errors)
+        return redirect('updateco')
+
+    context = {
+        'form': form,
+        }
+    return render(request, 'coordinator/dashboard.html', context)
+
+
 # def which_coordinator(request):
 #     print('witch')
     
@@ -66,7 +91,7 @@ def edit_profile_co(request):
     pk_logged_in = request.user.pk
     co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
     print(co_profile_all)
-    which_coordinator(request)
+    # which_coordinator(request)
     co_profile = get_object_or_404(CoordinatorProfile, lname="one").id
     print(co_profile)
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)

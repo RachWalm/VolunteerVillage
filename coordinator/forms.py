@@ -1,4 +1,4 @@
-from .models import CoordinatorProfile
+from .models import CoordinatorProfile, ChooseCoordinator
 from django import forms
 
 class ProfileFormCo(forms.ModelForm):
@@ -10,3 +10,8 @@ class ProfileFormCoUpdate(forms.ModelForm):
     class Meta:
         model = CoordinatorProfile
         fields = ('fname', 'lname','activated')
+        
+class ChooseCo(forms.ModelForm):
+    class Meta:
+        model = ChooseCoordinator
+        fields = ('first', 'last',)

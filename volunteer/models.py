@@ -32,7 +32,7 @@ DAYS_OF_WEEK = (
 
 class SkillChoices(models.Model):
     '''List of the skill choices model'''
-    skill_choices= models.CharField(max_length=50)
+    name= models.CharField(max_length=50)
     # makechoice_link = models.ForeignKey("volunteer.Skills", verbose_name=("skill"), on_delete=models.CASCADE,)
     # SKILL_CHOICES = (
     #     (1, 'ADMINISTRATION'),
@@ -67,7 +67,7 @@ class SkillChoices(models.Model):
     #     choices="SKILL_CHOICES")
     
     def __str__(self):
-        return self.skill_choices
+        return self.name
 
 
 class TimePeriod(models.Model):
@@ -112,7 +112,7 @@ class Skills(models.Model):
     '''Choose which type of volunteering they would like to do according to skills'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    skilled = models.ManyToManyField("volunteer.SkillChoices", verbose_name=("skills"), related_name=("choices"), choices= SkillChoices.objects.filter().values_list())   
+    skilled = models.ManyToManyField("volunteer.SkillChoices", verbose_name=("skills"), related_name=("choices"),) #choices= SkillChoices.objects.filter().values_list())   
     # link = models.ForeignKey("volunteer.VolunteerProfile", verbose_name=("VProfile"), on_delete=models.CASCADE, null=True, blank=True) #I think this needs to be  a link to volunteer profile
     
     def __str__(self):
