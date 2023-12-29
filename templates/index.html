@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block content %}
     <section>
         <div>
@@ -7,6 +9,7 @@
         </div>
         <div>
             <h3>Gardening</h3>
+            <img id="gardening" src="{% static 'images/gardening.jpg' %}" alt="mowing grass">
             <p>
                 Do you possess that magical touch with plants?
                 Can you turn a desert into an oasis paradise? 
