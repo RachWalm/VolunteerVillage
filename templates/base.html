@@ -16,7 +16,7 @@
 
 <body>
     <!-- Navigation bar-->
-    <nav class="navbar">
+    <nav class="navbar navbar-fixed-top navbar-right">
         <ul>
             <li>
                 <a href="{% url 'index' %}">Home Page</a>
@@ -58,9 +58,11 @@
     </div> 
 
     <!--Site name-->
+    <div class="row">
     <h1>
         Volunteer Village
-    </h1>    
+    </h1>
+    </div>    
 
     <main>
         {% block content %}
