@@ -272,3 +272,10 @@ Image by <a href="https://www.freepik.com/free-photo/close-up-father-helping-kid
 
 Women reading
 Image by <a href="https://pixabay.com/users/nigelcohen-2990028/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7321085">Nigel Cohen</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7321085">Pixabay
+
+event
+Image by <a href="https://www.freepik.com/free-photo/group-people-volunteering-foodbank-poor-people_15574024.htm#from_view=detail_serie">Freepik</a>
+
+https://compressnow.com/
+
+canava design the logo

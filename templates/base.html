@@ -15,8 +15,22 @@
 </head>
 
 <body>
+    <div class="row">
+    <!--logo-->
+    <img class="rounded-circle img-responsive col-lg-1" id="logo" src="{% static 'images/logo.jpg' %}" alt="logo for volunteer village of hands">
+    <div class="col-lg-10">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg"
+            role="alert">
+                {{ message | safe}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                </button>
+            </div>
+
+        {% endfor %}
+    </div> 
     <!-- Navigation bar-->
-    <nav class="navbar navbar-fixed-top navbar-right">
+    <nav class="navbar navbar-nav navbar-fixed-top navbar-right col-lg-1">
         <ul>
             <li>
                 <a href="{% url 'index' %}">Home Page</a>
@@ -44,22 +58,11 @@
             </li>
         </ul>
     </nav>
-
-    <div>
-        {% for message in messages %}
-            <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg"
-            role="alert">
-                {{ message | safe}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-                </button>
-            </div>
-
-        {% endfor %}
-    </div> 
+    </div>
 
     <!--Site name-->
     <div class="row">
-    <h1>
+    <h1 class="text-center">
         Volunteer Village
     </h1>
     </div>    
