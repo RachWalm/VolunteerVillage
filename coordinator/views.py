@@ -45,54 +45,26 @@ def add_profile_co(request):
     return render(request, 'coordinator/add_profile.html', context)
 
 
-def choose_edit_co_profile(request):
-    form=ChooseCo
-    if request.method == 'POST':
-        form_data_co = {
-            'first': request.POST['first'],
-            'last': request.POST['last'],
+def search_coordinators(request):
+    if request.method == "POST":
+        searched = request.POST['search_co']
+        co_profile_all=CoordinatorProfile.objects.filter(fname=searched).values()
+        context = {
+            'searched':searched,
+            'co_profile_all':co_profile_all,
         }
-        print('test')
-        choose_form = ChooseCo(form_data_co) 
-        queryset = CoordinatorProfile.objects.values_list()
-        # post = get_object_or_404(queryset, slug=slug)
-        # choose_form = ChooseCo(data=request.POST)
-        if choose_form.is_valid():
-            choose = choose_form.save(commit=False)
-            choose.save()
-        else:
-            print(form.errors)
-        return redirect('updateco')
-
-    context = {
-        'form': form,
-        }
-    return render(request, 'coordinator/dashboard.html', context)
+        return render(request, 'coordinator/choose_profile.html', context)
+    else:
+        return render(request, 'coordinator/choose_profile.html',)
 
 
-# def which_coordinator(request):
-#     print('witch')
-    
-#     form=ProfileFormCo
-#     if request.method == 'POST':
-#         form_data_co = {
-#             'fname': request.POST['fname'],
-#             'lname': request.POST['lname'],
-#         }
-#     form=ProfileFormCo(form_data_co)
-#     if form.is_valid():
-#         print('which')
-#         # print(first_input)
-#         # print(last_input)
 
-    
-
-def edit_profile_co(request):
+def edit_profile_co(request, id):
     pk_logged_in = request.user.pk
     co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
     print(co_profile_all)
     # which_coordinator(request)
-    co_profile = get_object_or_404(CoordinatorProfile, lname="one").id
+    co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
     print(co_profile)
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
     if request.method == 'POST':

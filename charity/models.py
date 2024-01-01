@@ -17,3 +17,6 @@ class CharityProfile(models.Model):
         verbose_name='Charity Description',
     )
     charities_coordinators = models.ManyToManyField("coordinator.CoordinatorProfile", verbose_name=("coordinators associated with charity"))
+    
+    def __str__(self):
+        return self.charity_name

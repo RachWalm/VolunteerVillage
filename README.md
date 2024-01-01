@@ -279,3 +279,7 @@ Image by <a href="https://www.freepik.com/free-photo/group-people-volunteering-f
 https://compressnow.com/
 
 canava design the logo
+
+search bar
+
+https://www.youtube.com/watch?v=AGtae4L5BbI

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2> Which coordinator do you want to update?</h2>
+
+<h3>Update a coordinator profile</h3>
+<form method=POST action="{% url 'searchco' %}">
+    {% csrf_token %}
+    <input type="search" placeholder="First name" aria-label="Coordinator first name search" name="search_co">
+    <button class="btn" type="submit">Search Coordinators</button>
+</form>
+
+{% if searched %}
+    <h2>You searched for {{ searched }}</h2>
+{% else %}
+    <h2>You didn't enter a name</h2>
+{% endif %}
+
+<ul>
+{% for alls in co_profile_all %}
+<li>{{ alls.fname }}
+{{ alls.lname }}
+<a href="/coordinator/update_profile/{{ alls.id }}">
+<button class="btn" type="submit">Select</button> 
+</a>
+</li>
+{% endfor %}
+</ul>
+
+{% if user.is_authenticated %}
+<ul>    
+    <li>
+        <a href="{% url 'account_logout' %}">Logout</a>
+    </li>
+    <li>
+        <a href="{% url 'add_charity' %}">Add Charity profile</a>
+    </li>
+    <li>
+        <a href="{% url 'searchco' %}">Update a coordinator profile</a>
+    </li>
+</ul>
+                
+{% endif %}
+
+<form method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit" class="btn">Submit</button>
+</form>
+
+{%endblock%}
