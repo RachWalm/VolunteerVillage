@@ -16,7 +16,7 @@
     <h2>You need to enter a charity name</h2>
 {% endif %}
 
-{% if content %}
+{% if searched and content %}
     <ul>
     {% for alls in charity_profile_all %}
     <li>{{ alls.charity_name }}
