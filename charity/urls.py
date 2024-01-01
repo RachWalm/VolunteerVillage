@@ -8,4 +8,5 @@ urlpatterns = [
     path("charity/choose_charity", views.search_charity, name="search_charity"),
     path("charity/update_charity/<id>", views.edit_charity, name="edit_charity"),
     path("charity/read_charity/<id>", views.read_charity, name="read_charity"),
+    path("charity/delete_charity/<id>", views.delete_charity, name="delete_charity"),
 ]

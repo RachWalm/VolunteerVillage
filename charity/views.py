@@ -74,10 +74,9 @@ def edit_charity(request, id):
     }
     return render(request, 'charity/update_charity.html', context)
 
-def delete_charity(request):
-    pk_logged_in = request.user.pk
-    user = get_object_or_404(User, id=pk_logged_in)
-    user.delete()
+def delete_charity(request, id):
+    # pk_logged_in = request.user.pk
+    charity = get_object_or_404(CharityProfile, id=id)
+    charity.delete()
     return redirect('dashboard')
-
-# messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+    # messages.add_message(request, messages.SUCCESS, 'Charity information deleted!')
