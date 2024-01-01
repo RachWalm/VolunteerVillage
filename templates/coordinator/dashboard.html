@@ -18,10 +18,4 @@
                 
 {% endif %}
 
-<form method="post">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button type="submit" class="btn">Submit</button>
-</form>
-
 {%endblock%}

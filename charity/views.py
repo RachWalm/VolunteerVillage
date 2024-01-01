@@ -14,23 +14,22 @@ def home(request):
 def add_charity(request):
     form= CharityForm
     if request.method == 'POST':
-        form_data_co = {
-            'user_name': request.user,
-        }
+        # form_data_co = {
+        #     'user_name': request.user,
+        # }
 
         print('test')
-        form = ProfileFormCo(form_data_co) 
-        print(form.is_valid)
+        form = CharityForm(request.POST) 
         if form.is_valid(): 
             print('tesst5')
-            profile = form.save(commit=False)
-            profile.user_name = request.user
+            # profile = form.save(commit=False)
+            # profile.user_name = request.user
             form.save()
             print(form)
             print('test4')
         else:
             print(form.errors)
-        return redirect('pending')
+        return redirect('dashboard')
     context = {
         'form': form,
         }
