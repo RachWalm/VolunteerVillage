@@ -20,7 +20,10 @@
 {% for alls in charity_profile_all %}
 <li>{{ alls.charity_name }}
 <a href="/charity/update_charity/{{ alls.id }}">
-<button class="btn" type="submit">Select</button> 
+    <button class="btn" type="submit">Update charity information</button> 
+</a>
+<a href="/charity/read_charity/{{ alls.id }}">
+    <button class="btn" type="submit">Look at charity information</button> 
 </a>
 </li>
 {% endfor %}

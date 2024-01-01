@@ -22,7 +22,7 @@ def add_charity(request):
     context = {
         'form': form,
         }
-    return render(request, 'coordinator/add_profile.html', context)
+    return render(request, 'charity/add_profile.html', context)
 
 def search_charity(request):
     if request.method == "POST":
@@ -37,15 +37,29 @@ def search_charity(request):
         return render(request, 'charity/choose_charity.html',)
 
 
+def read_charity(request, id):
+    ch_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
+    print(ch_profile)
+    profile = get_object_or_404(CharityProfile, id=ch_profile)
+    coords = profile.charities_coordinators.values()
+    context = {
+        # 'form': form,
+        'profile': profile,
+        'coords':coords,
+        # 'pk_logged_in': pk_logged_in
+    }
+    return render(request, 'charity/read_charity.html', context)
+    
+    
 
 def edit_charity(request, id):
-    pk_logged_in = request.user.pk
-    co_profile_all=CharityProfile.objects.filter().values() #gives the queryset with all details
-    print(co_profile_all)
+    # pk_logged_in = request.user.pk
+    # co_profile_all=CharityProfile.objects.filter().values() #gives the queryset with all details
+    # print(co_profile_all)
     # which_coordinator(request)
-    co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
-    print(co_profile)
-    profile = get_object_or_404(CharityProfile, id=co_profile)
+    ch_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
+    print(ch_profile)
+    profile = get_object_or_404(CharityProfile, id=ch_profile)
     if request.method == 'POST':
         form = CharityForm(request.POST, instance=profile)
         if form.is_valid():
@@ -56,9 +70,9 @@ def edit_charity(request, id):
     context = {
         'form': form,
         'profile': profile,
-        'pk_logged_in': pk_logged_in
+        # 'pk_logged_in': pk_logged_in
     }
-    return render(request, 'coordinator/update_profile.html', context)
+    return render(request, 'charity/update_charity.html', context)
 
 def delete_charity(request):
     pk_logged_in = request.user.pk
