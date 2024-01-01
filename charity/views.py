@@ -22,15 +22,18 @@ def add_charity(request):
     context = {
         'form': form,
         }
-    return render(request, 'charity/add_profile.html', context)
+    return render(request, 'charity/add_charity.html', context)
 
 def search_charity(request):
     if request.method == "POST":
         searched = request.POST['search']
         charity_profile_all=CharityProfile.objects.filter(charity_name__icontains=searched).values()
+        content = charity_profile_all.exists()
+        print(content)
         context = {
             'searched':searched,
             'charity_profile_all':charity_profile_all,
+            'content':content
         }
         return render(request, 'charity/choose_charity.html', context)
     else:
@@ -79,4 +82,4 @@ def delete_charity(request, id):
     charity = get_object_or_404(CharityProfile, id=id)
     charity.delete()
     return redirect('dashboard')
-    # messages.add_message(request, messages.SUCCESS, 'Charity information deleted!')
+    messages.add_message(request, messages.SUCCESS, 'Charity information deleted!')

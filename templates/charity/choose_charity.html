@@ -13,24 +13,28 @@
 {% if searched %}
     <h2>You searched for {{ searched }}</h2>
 {% else %}
-    <h2>You didn't enter a charity name</h2>
+    <h2>You need to enter a charity name</h2>
 {% endif %}
 
-<ul>
-{% for alls in charity_profile_all %}
-<li>{{ alls.charity_name }}
-    <a href="/charity/read_charity/{{ alls.id }}">
-        <button class="btn" type="submit">Look at charity information</button> 
+{% if content %}
+    <ul>
+    {% for alls in charity_profile_all %}
+    <li>{{ alls.charity_name }}
+        <a href="/charity/read_charity/{{ alls.id }}">
+            <button class="btn" type="submit">Look at charity information</button> 
+        </a>
+        <a href="/charity/update_charity/{{ alls.id }}">
+        <button class="btn" type="submit">Update charity information</button> 
     </a>
-    <a href="/charity/update_charity/{{ alls.id }}">
-    <button class="btn" type="submit">Update charity information</button> 
-</a>
-<a href="/charity/delete_charity/{{ alls.id }}">
-    <button class="btn" type="submit">Delete charity information</button> 
-</a>
-</li>
-{% endfor %}
-</ul>
+    <a href="/charity/delete_charity/{{ alls.id }}">
+        <button class="btn" type="submit">Delete charity information</button> 
+    </a>
+    </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>This search did not find any charities</p>
+{% endif %}
 
 {% if user.is_authenticated %}
 <ul>    
