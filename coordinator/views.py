@@ -48,7 +48,7 @@ def add_profile_co(request):
 def search_coordinators(request):
     if request.method == "POST":
         searched = request.POST['search_co']
-        co_profile_all=CoordinatorProfile.objects.filter(fname=searched).values()
+        co_profile_all=CoordinatorProfile.objects.filter(fname__icontains=searched).values()
         context = {
             'searched':searched,
             'co_profile_all':co_profile_all,
