@@ -1,26 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2> Which coordinator do you want to update?</h2>
+<h2> Which charity do you want to update?</h2>
 
-<h3>Update a coordinator profile</h3>
-<form method=POST action="{% url 'searchco' %}">
+<h3>Update a charity</h3>
+<form method=POST action="{% url 'search_charity' %}">
     {% csrf_token %}
-    <input type="search" placeholder="First name" aria-label="Coordinator first name search" name="search_co">
-    <button class="btn" type="submit">Search Coordinators</button>
+    <input type="search" placeholder="charity name" aria-label="Charity name search" name="search">
+    <button class="btn" type="submit">Search Charity</button>
 </form>
 
 {% if searched %}
     <h2>You searched for {{ searched }}</h2>
 {% else %}
-    <h2>You didn't enter a name</h2>
+    <h2>You didn't enter a charity name</h2>
 {% endif %}
 
 <ul>
-{% for alls in co_profile_all %}
-<li>{{ alls.fname }}
-{{ alls.lname }}
-<a href="/coordinator/update_profile/{{ alls.id }}">
+{% for alls in charity_profile_all %}
+<li>{{ alls.charity_name }}
+<a href="/charity/update_charity/{{ alls.id }}">
 <button class="btn" type="submit">Select</button> 
 </a>
 </li>
