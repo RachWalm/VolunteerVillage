@@ -18,13 +18,13 @@ class CoordinatorProfile(models.Model):
         verbose_name='Last Name',
         help_text='format: required, max_length=50',
     )
-    coordinators_charities = models.ManyToManyField("charity.CharityProfile", verbose_name=("coordinators associated charities"), symmetrical=True,)
+    coordinators_charities = models.ManyToManyField("charity.CharityProfile", verbose_name=("coordinators associated charities"))
     activated = models.BooleanField(
         default=False,
     )
     
     def __str__(self):
-        return str(self.user_name)
+        return str(self.fname + " " + self.lname)
 
 
 class ChooseCoordinator(models.Model):  #probably don't need this model, but will delete when sure

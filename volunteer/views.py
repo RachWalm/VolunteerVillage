@@ -73,39 +73,39 @@ def add_profile(request):
         form3 = TimeForm(form3_data)
         for field in form2:
             print("field Error:", field.name, field.errors)
-        if form.is_valid() and form3.is_valid() and form2.is_valid():
+        if form.is_valid() and form3.is_valid(): # and form2.is_valid():
             print(form.is_valid)
             print(form2.is_valid)
             print(form3.is_valid)
             print('tesst5')
-            # profile = form.save(commit=False)
-            # profile.user_name = request.user
-            # profile.name = request.user
-            # form.save()
-            # print('test6')
-            ability = form2.save(commit=False)
-            skill = form2.cleaned_data['skilled']
-            print(skill)
+            profile = form.save(commit=False)
+            profile.user_name = request.user
+            profile.name = request.user
+            form.save()
+            print('test6')
+            # ability = form2.save(commit=False)
+            # skill = form2.cleaned_data['skilled']
+            # print(skill)
             # Skills.skilled.set(skill)
-            ability.user_name = request.user
-            print('test9')
-            ability.name = request.user
-            print('test10')
+            # ability.user_name = request.user
+            # print('test9')
+            # ability.name = request.user
+            # print('test10')
             # ability.save()
             # print(str(ability.skilled))
             # ability.skilled = skill
-            ability.skilled.set(str(skill))
-            print(ability.skilled.set(skill))
+            # ability.skilled.set(str(skill))
+            # print(ability.skilled.set(skill))
+            # # ability.save()
             # ability.save()
-            ability.save()
             print('test7')
-            # time = form3.save(commit=False)
-            # time.user_name = request.user
-            # time.name = request.user
-            # form3.save()
-            # print(form)
+            time = form3.save(commit=False)
+            time.user_name = request.user
+            time.name = request.user
+            form3.save()
+            print(form)
             print(form2)
-            # print(form3)
+            print(form3)
             print('test4')
             messages.add_message(request, messages.SUCCESS, 'Profile sent for approval -  then you will be matched!')
         else:

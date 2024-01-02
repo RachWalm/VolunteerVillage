@@ -81,10 +81,10 @@ def edit_profile_co(request, id):
     }
     return render(request, 'coordinator/update_profile.html', context)
 
-def delete_profile_co(request):
-    pk_logged_in = request.user.pk
-    user = get_object_or_404(User, id=pk_logged_in)
-    user.delete()
+def delete_profile_co(request, id):
+    # pk_logged_in = request.user.pk
+    coordinator = get_object_or_404(CoordinatorProfile, id=id)
+    coordinator.delete()
     return redirect('dashboard')
 
 # messages.add_message(request, messages.SUCCESS, 'Comment deleted!')

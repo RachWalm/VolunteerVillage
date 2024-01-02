@@ -12,3 +12,11 @@ for (let button of deleteButtons) {
         deleteModal.show();
     });
 }
+
+for (let button of deleteButtons) {
+    button.addEventListener("click", (e) => {
+        let id = e.target.getAttribute("coordinator_id");
+        deleteConfirm.href = `delete_profile/${id}`;
+        deleteModal.show();
+    });
+}
