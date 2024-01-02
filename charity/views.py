@@ -45,6 +45,7 @@ def read_charity(request, id):
     print(ch_profile)
     profile = get_object_or_404(CharityProfile, id=ch_profile)
     coords = profile.charities_coordinators.values()
+    print(coords)
     context = {
         # 'form': form,
         'profile': profile,

@@ -11,7 +11,7 @@ class ProfileFormCoUpdate(forms.ModelForm):
         model = CoordinatorProfile
         fields = ('fname', 'lname','activated')
         
-class ChooseCo(forms.ModelForm):
-    class Meta:
-        model = ChooseCoordinator
-        fields = ('first', 'last',)
+# class ChooseCo(forms.ModelForm):
+#     class Meta:
+#         model = ChooseCoordinator
+#         fields = ('first', 'last',)

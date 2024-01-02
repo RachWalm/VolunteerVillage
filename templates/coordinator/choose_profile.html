@@ -21,25 +21,17 @@
 <li>{{ alls.fname }}
 {{ alls.lname }}
 <a href="/coordinator/update_profile/{{ alls.id }}">
-<button class="btn" type="submit">Select</button> 
+<button class="btn" type="submit">Update name / activate</button> 
 </a>
+</li>
+<li>
+    <a href="/coordinator/see_profile/{{ alls.id }}">
+        <button class="btn" type="submit">See profile</button> 
+    </a>
 </li>
 {% endfor %}
 </ul>
 
-{% if user.is_authenticated %}
-<ul>    
-    <li>
-        <a href="{% url 'account_logout' %}">Logout</a>
-    </li>
-    <li>
-        <a href="{% url 'add_charity' %}">Add Charity profile</a>
-    </li>
-    <li>
-        <a href="{% url 'searchco' %}">Update a coordinator profile</a>
-    </li>
-</ul>
-                
-{% endif %}
+
 
 {%endblock%}

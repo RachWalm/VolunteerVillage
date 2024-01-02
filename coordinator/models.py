@@ -18,7 +18,7 @@ class CoordinatorProfile(models.Model):
         verbose_name='Last Name',
         help_text='format: required, max_length=50',
     )
-    coordinators_charities = models.ManyToManyField("charity.CharityProfile", verbose_name=("coordinators associated charities"), symmetrical=True)
+    coordinators_charities = models.ManyToManyField("charity.CharityProfile", verbose_name=("coordinators associated charities"), symmetrical=True,)
     activated = models.BooleanField(
         default=False,
     )

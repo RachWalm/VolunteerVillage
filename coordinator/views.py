@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CoordinatorProfile
-from .forms import ProfileFormCo, ProfileFormCoUpdate, ChooseCo
+from .forms import ProfileFormCo, ProfileFormCoUpdate
 
 # Create your views here.
 
@@ -48,7 +48,7 @@ def add_profile_co(request):
 def search_coordinators(request):
     if request.method == "POST":
         searched = request.POST['search_co']
-        co_profile_all=CoordinatorProfile.objects.filter(fname__icontains=searched).values()
+        co_profile_all=CoordinatorProfile.objects.filter(fname=searched).values()
         context = {
             'searched':searched,
             'co_profile_all':co_profile_all,
@@ -88,3 +88,17 @@ def delete_profile_co(request):
     return redirect('dashboard')
 
 # messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
+
+def read_coordinator(request, id):
+    co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
+    print(co_profile)
+    profile = get_object_or_404(CoordinatorProfile, id=co_profile)
+    coords = profile.coordinators_charities.values()
+    print(coords)
+    context = {
+        # 'form': form,
+        'profile': profile,
+        'coords':coords,
+        # 'pk_logged_in': pk_logged_in
+    }
+    return render(request, 'coordinator/see_profile.html', context)
