@@ -23,12 +23,14 @@
         <a href="/charity/read_charity/{{ alls.id }}">
             <button class="btn" type="submit">Look at charity information</button> 
         </a>
+    </li>
+    <li>
         <a href="/charity/update_charity/{{ alls.id }}">
-        <button class="btn" type="submit">Update charity information</button> 
-    </a>
-    <a href="/charity/delete_charity/{{ alls.id }}">
-        <button class="btn" type="submit">Delete charity information</button> 
-    </a>
+            <button class="btn" type="submit">Update charity information</button> 
+        </a>
+    </li>
+    <li>
+        <button class="btn btn-delete" charity_id = {{ alls.id }} type="submit">Delete charity information</button> 
     </li>
     {% endfor %}
     </ul>
@@ -50,5 +52,25 @@
 </ul>
                 
 {% endif %}
+
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete charity?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this charity? This action is permanent and cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/delete.js"></script>
 
 {%endblock%}

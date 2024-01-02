@@ -283,3 +283,7 @@ canava design the logo
 search bar
 
 https://www.youtube.com/watch?v=AGtae4L5BbI
+
+<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+modal for delete from extra blog post on slack
