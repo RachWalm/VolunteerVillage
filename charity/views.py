@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CharityProfile
@@ -16,6 +17,7 @@ def add_charity(request):
         form = CharityForm(request.POST) 
         if form.is_valid(): 
             form.save()
+            messages.add_message(request, messages.SUCCESS, 'Charity information added')
         else:
             print(form.errors)
         return redirect('dashboard')
@@ -68,6 +70,7 @@ def edit_charity(request, id):
         form = CharityForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
+            messages.add_message(request, messages.SUCCESS, 'Charity information updated!')
             return redirect('dashboard')
     form = CharityForm(instance = profile)
     
@@ -82,5 +85,6 @@ def delete_charity(request, id):
     # pk_logged_in = request.user.pk
     charity = get_object_or_404(CharityProfile, id=id)
     charity.delete()
-    return redirect('dashboard')
     messages.add_message(request, messages.SUCCESS, 'Charity information deleted!')
+    return redirect('dashboard')
+    

@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CoordinatorProfile
@@ -34,6 +35,7 @@ def add_profile_co(request):
             profile = form.save(commit=False)
             profile.user_name = request.user
             form.save()
+            messages.add_message(request, messages.SUCCESS, 'Coordinator information saved and needs activating!')
             print(form)
             print('test4')
         else:
@@ -71,6 +73,7 @@ def edit_profile_co(request, id):
         form = ProfileFormCoUpdate(request.POST, instance=profile)
         if form.is_valid():
             form.save()
+            messages.add_message(request, messages.SUCCESS, 'Coordinator information updated!')
             return redirect('dashboard')
     form = ProfileFormCoUpdate(instance = profile)
     
@@ -85,9 +88,9 @@ def delete_profile_co(request, id):
     # pk_logged_in = request.user.pk
     coordinator = get_object_or_404(CoordinatorProfile, id=id)
     coordinator.delete()
+    messages.add_message(request, messages.SUCCESS, 'Coordinator information deleted!')
     return redirect('dashboard')
 
-# messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
 
 def read_coordinator(request, id):
     co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
