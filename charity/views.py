@@ -16,7 +16,11 @@ def add_charity(request):
     if request.method == 'POST':
         form = CharityForm(request.POST) 
         if form.is_valid(): 
+            charity = form.save(commit=False)
             form.save()
+            clean = form.cleaned_data['charities_coordinators']
+            charity.CoordinatorProfiles.set(clean)
+            charity.save()
             messages.add_message(request, messages.SUCCESS, 'Charity information added')
         else:
             print(form.errors)
@@ -64,12 +68,15 @@ def edit_charity(request, id):
     # print(co_profile_all)
     # which_coordinator(request)
     ch_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
-    print(ch_profile)
     profile = get_object_or_404(CharityProfile, id=ch_profile)
     if request.method == 'POST':
         form = CharityForm(request.POST, instance=profile)
         if form.is_valid():
+            charity = form.save(commit=False)
             form.save()
+            clean = form.cleaned_data['charities_coordinators']
+            charity.CoordinatorProfiles.set(clean)
+            charity.save()
             messages.add_message(request, messages.SUCCESS, 'Charity information updated!')
             return redirect('dashboard')
     form = CharityForm(instance = profile)

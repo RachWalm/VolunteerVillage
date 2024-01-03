@@ -19,8 +19,7 @@ class CharityProfile(models.Model):
     charities_coordinators = models.ManyToManyField(
         "coordinator.CoordinatorProfile", 
         verbose_name=("coordinators associated with charity"),
-        symmetrical=False,
-        related_name="CharityProfiles+")
+        related_name="CharityProfiles")
     
     def __str__(self):
         return self.charity_name

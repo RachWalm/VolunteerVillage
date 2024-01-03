@@ -24,8 +24,6 @@ def home(request):
     return render(request, 'index.html')
 
 def add_profile_co(request):
-    pk_logged_in = request.user.pk
-    role = get_object_or_404(Role, id=pk_logged_in)
     form= ProfileFormCo
     if request.method == 'POST':
         form_data_co = {
@@ -50,7 +48,6 @@ def add_profile_co(request):
         return redirect('pending')
     context = {
         'form': form,
-        'role': role,
         }
     return render(request, 'coordinator/add_profile.html', context)
 

@@ -20,8 +20,7 @@ class CoordinatorProfile(models.Model):
     )
     coordinators_charities = models.ManyToManyField("charity.CharityProfile", 
                                                     verbose_name=("coordinators associated charities"),
-                                                    symmetrical=False,
-                                                    related_name="CoordinatorProfiles+")
+                                                    related_name="CoordinatorProfiles")
     activated = models.BooleanField(
         default=False,
     )
