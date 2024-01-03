@@ -21,22 +21,22 @@ def read_profile(request):
     for available in availabilities:
         time = available['day']
         section = available['section_of_day']
-    for skill in skills:
-        able = skill['skilled']
-    section_name = PART_OF_DAY[section][1]
-    day_name = DAYS_OF_WEEK[time][1]
-    skill_name = SkillChoices.SKILL_CHOICES[able-1][1] # first is corresponding number -1
+    # for skill in skills:
+    #     able = skill['skilled']
+    # section_name = PART_OF_DAY[section][1]
+    # day_name = DAYS_OF_WEEK[time][1]
+    # skill_name = SkillChoices.SKILL_CHOICES[able-1][1] # first is corresponding number -1
     context = {
         'people': people,
         'skills': skills,
         'availabilities': availabilities,
         'pk_logged_in': pk_logged_in,
-        'day_name': day_name,
-        'section_name': section_name,
-        'skill_name':skill_name,
-        'time':time,
-        'able':able,
-        'section':section,
+        # 'day_name': day_name,
+        # 'section_name': section_name,
+        # 'skill_name':skill_name,
+        # 'time':time,
+        # 'able':able,
+        # 'section':section,
     }
     return render(request, 'volunteer/read_profile.html', context)
 
@@ -73,7 +73,7 @@ def add_profile(request):
         form3 = TimeForm(form3_data)
         for field in form2:
             print("field Error:", field.name, field.errors)
-        if form.is_valid() and form3.is_valid(): # and form2.is_valid():
+        if form.is_valid() and form3.is_valid() and form2.is_valid():
             print(form.is_valid)
             print(form2.is_valid)
             print(form3.is_valid)
@@ -83,15 +83,21 @@ def add_profile(request):
             profile.name = request.user
             form.save()
             print('test6')
-            # ability = form2.save(commit=False)
+            ability = form2.save(commit=False)
             # skill = form2.cleaned_data['skilled']
             # print(skill)
             # Skills.skilled.set(skill)
-            # ability.user_name = request.user
-            # print('test9')
-            # ability.name = request.user
-            # print('test10')
-            # ability.save()
+            ability.user_name = request.user
+            print('test9')
+            ability.name = request.user
+            print('test10')
+            form2.save()
+            clean = form2.cleaned_data['skilled']
+            print('clean = ' + clean)
+            ability.skilled.set(clean)
+            # print('ability = ' + ability)
+            ability.save()
+            print('test13')
             # print(str(ability.skilled))
             # ability.skilled = skill
             # ability.skilled.set(str(skill))
@@ -111,7 +117,7 @@ def add_profile(request):
         else:
             print('testelse')
             print(form.errors)
-        return redirect('index')
+        return redirect('read')
     context = {
         'form': form,
         # 'form':ProfileForm(),
