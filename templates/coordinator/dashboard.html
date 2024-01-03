@@ -1,13 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2> Coordinator Dashboard</h2>
+<h2 class="text-center"> Coordinator Dashboard</h2>
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated and role.role == 2 %}
+
 <ul>    
-    <li>
-        <a href="{% url 'account_logout' %}">Logout</a>
-    </li>
     <li>
         <a href="{% url 'add_charity' %}">Add Charity profile</a>
     </li>
@@ -15,10 +13,13 @@
         <a href="{% url 'search_charity' %}">Update Charity profile</a>
     </li>
     <li>
-        <a href="{% url 'searchco' %}">Update a coordinator profile</a>
+        <a href="{% url 'searchco' %}">Update a coordinator profile name or activate</a>
     </li>
 </ul>
-                
+{% else %}
+<h3 class="text-center">
+    You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+</h3>                 
 {% endif %}
 
 {%endblock%}

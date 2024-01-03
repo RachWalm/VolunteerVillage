@@ -3,7 +3,7 @@
 {% block content %}
 <h2> Coordinator - {{ profile }}</h2>
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated and role.role == 2 %}
 <ul>    
     <li>
         <a href="{% url 'account_logout' %}">Logout</a>
@@ -46,5 +46,7 @@
         <h4> {{ coord.charity_name }}</h4>
     {%endfor %}
     </div>
+
+{% endif %}
 
 {%endblock%}

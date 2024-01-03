@@ -35,7 +35,7 @@
     </div>
     <div class="col-1">
     {% if user.is_authenticated %}
-        <p>Logged in</p>
+        <p>Logged in as {{ user }}</p>
     {% else %}
         <p>Not logged in</p>
     {% endif %}
@@ -51,13 +51,7 @@
                 <li>
                     <a href="{% url 'account_logout' %}">Logout</a>
                 </li>
-                <li>
-                    <a href="{% url 'add' %}">Add profile</a>
-                </li>
-                <li>
-                    <a href="{% url 'read' %}">See profile</a>
-                </li>
-                {% else %}
+            {% else %}
                 <li>
                     <a href="{% url 'account_signup' %}">Sign up</a>
                 </li>
@@ -65,9 +59,6 @@
                     <a href="{% url 'account_login' %}">Log in</a>
                 </li>
             {% endif %}
-            <li>
-                <a href="{% url 'account_login' %}">Coordinator</a>
-            </li>
         </ul>
     </nav>
     </div>
@@ -87,7 +78,9 @@
 
     <!-- Footer -->
     <footer class="fixed-bottom">
-        <p class="text-center">Made by Rachel Walmsley as a Code Institute Project</p>
+        <div class="card-footer bg-light style="--bs-bg-opacity: 1;"">
+        <p class="text-center text-muted">Made by Rachel Walmsley as a Code Institute Project</p>
+        </div>
     </footer>
     <script>
         setTimeout(function () {

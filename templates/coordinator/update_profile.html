@@ -4,11 +4,14 @@
 
 <h2>Update a coordinator profile</h2>
 
+{% if user.is_authenticated and role.role == 2 %}
+
 <form method="post">
     {{ form.as_p }}
     {% csrf_token %}
     <button type="submit" class="btn">Update</button>
 </form>
 
+{% endif %}
 
 {% endblock %}
