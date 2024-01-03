@@ -4,22 +4,7 @@
 <h2> Coordinator - {{ profile }}</h2>
 
 {% if user.is_authenticated and role.role == 2 %}
-<ul>    
-    <li>
-        <a href="{% url 'account_logout' %}">Logout</a>
-    </li>
-    <li>
-        <a href="{% url 'add_charity' %}">Add Charity profile</a>
-    </li>
-    <li>
-        <a href="{% url 'search_charity' %}">Update Charity profile</a>
-    </li>
-    <li>
-        <a href="{% url 'searchco' %}">Update a coordinator profile</a>
-    </li>
-</ul>
-                
-{% endif %}
+
 
 <div class=row>
     <div class="col-3">
