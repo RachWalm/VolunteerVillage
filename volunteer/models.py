@@ -112,7 +112,7 @@ class Skills(models.Model):
     '''Choose which type of volunteering they would like to do according to skills'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    skilled = models.ManyToManyField("volunteer.SkillChoices", verbose_name=("skills"), related_name=("choices"),) #choices= SkillChoices.objects.filter().values_list())   
+    skilled = models.ManyToManyField("volunteer.SkillChoices", verbose_name=("skills"), related_name=("choices"), symmetrical=False) #choices= SkillChoices.objects.filter().values_list())   
     # link = models.ForeignKey("volunteer.VolunteerProfile", verbose_name=("VProfile"), on_delete=models.CASCADE, null=True, blank=True) #I think this needs to be  a link to volunteer profile
     
     def __str__(self):
