@@ -11,7 +11,7 @@
 </li>
 
 <h2>Your profile - {{user.username }} {{ request.user.username }} {{request.user.email }} {{ request.user.pk }} {{pk_logged_in}} </h2>
-<h3> {{ availabilities }} {{ time }} {{ able }} {{ section}} </h3>
+<h3> {{ availabilities }} {{ time }} {{ able }} {{ section}} {{ true_pairs}} </h3>
 
 
 <table>
@@ -64,13 +64,9 @@
     </tr>
     {% endfor %}
     <tr>
-        <td>Availabilities - Section of day available</td>
-        <td>{{ section_name }}</td>
+        <td>Availabilities - section and day available</td>
+        <td>{{ true_pairs }}</td>
     </tr>
-    <tr>
-        <td>Availabilities - Which days of the week</td>
-        <td> {{ day_name }}</td>
-    </tr> 
 </table>
 <button>
 <a href="{% url 'edit' %}">Edit profile</a>

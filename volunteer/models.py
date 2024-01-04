@@ -33,7 +33,7 @@ DAYS_OF_WEEK = (
 class SkillChoices(models.Model):
     '''List of the skill choices model'''
     name= models.CharField(max_length=50)
-    profile = models.ManyToManyField("volunteer.Skills", verbose_name=("skilled"), related_name=("SkillChoices"),)
+    # profile = models.ManyToManyField("Skills", verbose_name=("users"), related_name=("SkillChoices"),)
     # makechoice_link = models.ForeignKey("volunteer.Skills", verbose_name=("skill"), on_delete=models.CASCADE,)
     # SKILL_CHOICES = (
     #     (1, 'ADMINISTRATION'),
@@ -86,8 +86,30 @@ class TimePeriod(models.Model):
         validators=[
             MaxValueValidator(7), #7 days in a week
         ])
-    section_of_day = models.IntegerField(choices=PART_OF_DAY, default = 0)
-    day = models.IntegerField(choices=DAYS_OF_WEEK, default = 0)
+    mon_am = models.BooleanField(default=False,)
+    mon_pm = models.BooleanField(default=False,)
+    mon_ev = models.BooleanField(default=False, null=False, blank=True,)
+    tue_am = models.BooleanField(default=False,)
+    tue_pm = models.BooleanField(default=False,)
+    tue_ev = models.BooleanField(default=False,)
+    wed_am = models.BooleanField(default=False,)
+    wed_pm = models.BooleanField(default=False, verbose_name = "Wednesday Afternoon")
+    wed_ev = models.BooleanField(default=False,)
+    thu_am = models.BooleanField(default=False,)
+    thu_pm = models.BooleanField(default=False,)
+    thu_ev = models.BooleanField(default=False,)
+    fri_am = models.BooleanField(default=False,)
+    fri_pm = models.BooleanField(default=False,)
+    fri_ev = models.BooleanField(default=False,)
+    sat_am = models.BooleanField(default=False,)
+    sat_pm = models.BooleanField(default=False,)
+    sat_ev = models.BooleanField(default=False,)
+    sun_am = models.BooleanField(default=False,)
+    sun_pm = models.BooleanField(default=False,)
+    sun_ev = models.BooleanField(default=False,)
+    
+        # section_of_day = models.IntegerField(choices=PART_OF_DAY, default = 0)
+    # day = models.IntegerField(choices=DAYS_OF_WEEK, default = 0)
     
     def __str__(self):
         return self.name
@@ -113,7 +135,7 @@ class Skills(models.Model):
     '''Choose which type of volunteering they would like to do according to skills'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    skilled = models.ManyToManyField("volunteer.SkillChoices", verbose_name=("skills"), related_name=("Skills"),) #choices= SkillChoices.objects.filter().values_list())   
+    skilled = models.ManyToManyField("SkillChoices", verbose_name=("skills"), related_name=("Skills"),) # choices= SkillChoices.objects.filter().values_list())   
     # link = models.ForeignKey("volunteer.VolunteerProfile", verbose_name=("VProfile"), on_delete=models.CASCADE, null=True, blank=True) #I think this needs to be  a link to volunteer profile
     
     def __str__(self):

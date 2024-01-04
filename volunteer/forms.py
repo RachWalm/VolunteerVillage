@@ -13,18 +13,8 @@ class SkillsForm(forms.ModelForm):
     class Meta:
         model = Skills
         fields = ('skilled',)
-        widgets = {'skilled': forms.SelectMultiple(
-                attrs={
-                    'class': 'form-control',
-                    'title': 'select skills',
-                },)}
-        
         
 class TimeForm(forms.ModelForm):
     class Meta:
         model = TimePeriod
-        fields = ('time_length_hours', 'time_length_days', 'section_of_day', 'day',)
-        # widgets = {
-        #     'user_name': forms.HiddenInput(),
-        #     'name': forms.HiddenInput(),
-        # }
+        fields = ('time_length_hours', 'time_length_days', 'mon_am', 'mon_pm', 'mon_ev', 'tue_am', 'tue_pm', 'tue_ev', 'wed_am', 'wed_pm', 'wed_ev', 'thu_am', 'thu_pm', 'thu_ev', 'fri_am', 'fri_pm', 'fri_ev', 'sat_am', 'sat_pm', 'sat_ev', 'sun_am', 'sun_pm', 'sun_ev',)
