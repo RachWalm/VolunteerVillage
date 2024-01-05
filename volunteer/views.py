@@ -136,9 +136,9 @@ def add_profile(request):
             time.name = request.user
             print(form3)
             form3.save()
-            print(form)
-            print(form2)
-            print(form3)
+            # print(form)
+            # print(form2)
+            # print(form3)
             print('test4')
             messages.add_message(request, messages.SUCCESS, 'Profile sent for approval -  then you will be matched!')
         else:
