@@ -48,19 +48,7 @@ class SkillChoices(models.Model):
     #     (10, 'SHOPPING'),
     #     (11, 'TUTORING'),
     # )
-    
-#     from django.contrib.postgres.fields import ArrayField
-#     from django.db import models
 
-
-# class ChessBoard(models.Model):
-#     board = ArrayField(
-#         ArrayField(
-#             models.CharField(max_length=10, blank=True),
-#             size=8,
-#         ),
-#         size=8,
-#     )
     
     # skill_choices = ListCharField(
     #     base_field=models.IntegerField(),
@@ -86,7 +74,7 @@ class TimePeriod(models.Model):
         validators=[
             MaxValueValidator(7), #7 days in a week
         ])
-    mon_am = models.BooleanField(default=False, null=True, blank=True)
+    mon_am = models.BooleanField(default=False, blank=True)
     mon_pm = models.BooleanField(default=False, null=True, blank=True)
     mon_ev = models.BooleanField(default=False, null=True, blank=True)
     tue_am = models.BooleanField(default=False, null=True, blank=True)
@@ -114,23 +102,7 @@ class TimePeriod(models.Model):
     def __str__(self):
         return self.name
     
-    # def get_time_length_hours(self):
-    #     """Get the number of hours the volunteer can be available"""
-    #     return [self.time_length_hours]
     
-    # def get_time_length_hours(self):
-    #     """Get the number of days the volunteer can be available"""
-    #     return [self.time_length_days]
-    
-    # def get_section_of_day(self):
-    #     """Get which parts of the day volunteer can be available"""
-    #     return [self.section_of_day]
-    
-    # def get_day(self):
-    #     """Get which day of the week the volunteer can be available"""
-    #     return 2 #dict(DAYS_OF_WEEK) #[self.day]
-
-
 class Skills(models.Model):
     '''Choose which type of volunteering they would like to do according to skills'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -141,24 +113,11 @@ class Skills(models.Model):
     def __str__(self):
         return self.name
     
-    # def get_skills(self):
-    #     """Get the chosen categories of skills of the volunteer"""
-    #     return self.skills.all()
-
-        # multi_select = forms.MultipleChoiceField(choices=SKILL_CHOICES, widget=forms.CheckboxSelectMultiple)
-        
-        # skills = SelectMultipleField(
-        #     max_length=30,
-        #     choices=SKILL_CHOICES             settings.AUTH_USER_MODEL        choices=SkillChoices.SKILL_CHOICES,
-        #     )
 
 class VolunteerProfile(models.Model):
     """Personal information about the volunteer"""
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    # time_link = models.ForeignKey(TimePeriod, on_delete=models.CASCADE)
-    # skills_link = models.ForeignKey("volunteer.Skills", verbose_name=("Skills linked to profile"),on_delete=models.CASCADE)
-    # skill_choices_link = models.ForeignKey(SkillChoices, on_delete=models.CASCADE)
     fname = models.CharField(
         max_length=50,
         null=False,

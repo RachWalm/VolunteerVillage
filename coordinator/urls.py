@@ -11,4 +11,5 @@ urlpatterns = [
     path("coordinator/choose_profile", views.search_coordinators, name="searchco"),
     path("coordinator/see_profile/<id>", views.read_coordinator, name="readco"),
     path("coordinator/delete_profile/<id>", views.delete_profile_co, name="deleteco"),
+    path("coordinator/search_volunteer", views.search_volunteer, name="searchvol"),
 ]

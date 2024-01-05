@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2> Search for a volunteer to complete your task</h2>
+
+<form method=POST action="{% url 'searchvol' %}">
+    {% csrf_token %}
+    <input type="search" placeholder="First name" aria-label="search" name="search_vol">
+    <button class="btn" type="submit">Search Volunteers</button>
+</form>
+
+{{ all_time_periods }}
+
+{%endblock%}

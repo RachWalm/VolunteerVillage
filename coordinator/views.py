@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CoordinatorProfile
+from volunteer.models import TimePeriod
 from .forms import ProfileFormCo, ProfileFormCoUpdate
 from role.models import Role
 
@@ -13,12 +14,12 @@ def pending(request):
     return render(request, 'coordinator/pending.html')
 
 def dashboard(request):
-    pk_logged_in = request.user.pk
-    role = get_object_or_404(Role, id=pk_logged_in)
-    context = {
-        'role': role,
-        }
-    return render(request, 'coordinator/dashboard.html', context)
+    # pk_logged_in = request.user.pk
+    # role = get_object_or_404(Role, id=pk_logged_in)
+    # context = {
+    #     'role': role,
+    #     }
+    return render(request, 'coordinator/dashboard.html')
 
 def home(request):
     return render(request, 'index.html')
@@ -118,3 +119,33 @@ def read_coordinator(request, id):
         # 'pk_logged_in': pk_logged_in
     }
     return render(request, 'coordinator/see_profile.html', context)
+
+def search_volunteer(request):
+    all_time_periods = TimePeriod.objects.all().values()
+    # print(all_time_periods)
+    # availabilities = TimePeriod.objects.filter(user_name_id =pk_logged_in).values()
+    mon_ev = True
+    
+    true_session = []
+    for all_time_period in all_time_periods:
+        print(all_time_period)
+        # if all_time_period.values() == True:
+        #     print(all_time_period.values())
+        for period in all_time_period: # for some reason period is a string of keys not key:value pairs
+            print(period)
+        
+            # print(all_time_period)
+            # for periods in all_time_period:
+            #     print(periods)
+            # true_session += volunteer
+            # true_session = [{key for key, value in available.items() if value is True} for available in availabilities]
+    context = {
+        # 'form': form,
+        # 'profile': profile,
+        # 'coords':coords,
+        # 'role': role,
+        # 'pk_logged_in': pk_logged_in
+        'all_time_periods': all_time_periods,
+        'true_session': true_session,
+    }
+    return render(request, 'coordinator/search_volunteer.html', context)
