@@ -1,1 +1,1 @@
-web: gunicorn volunteervillage.wsgi
+web: gunicorn volunteervillage.wsgi:application
