@@ -18,8 +18,8 @@ def add_charity(request):
         if form.is_valid(): 
             charity = form.save(commit=False)
             form.save()
-            clean = form.cleaned_data['charities_coordinators']
-            charity.CoordinatorProfiles.set(clean)
+            # clean = form.cleaned_data['charities_coordinators']
+            # charity.CoordinatorProfiles.set(clean)
             charity.save()
             messages.add_message(request, messages.SUCCESS, 'Charity information added')
         else:
@@ -74,8 +74,8 @@ def edit_charity(request, id):
         if form.is_valid():
             charity = form.save(commit=False)
             form.save()
-            clean = form.cleaned_data['charities_coordinators']
-            charity.CoordinatorProfiles.set(clean)
+            # clean = form.cleaned_data['charities_coordinators']
+            # charity.CoordinatorProfiles.set(clean)
             charity.save()
             messages.add_message(request, messages.SUCCESS, 'Charity information updated!')
             return redirect('dashboard')

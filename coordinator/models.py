@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+# from charity.models import CharityProfile
 
 class CoordinatorProfile(models.Model):
     '''Details of the coordinator and link to which charities they are associated with'''
@@ -18,9 +19,9 @@ class CoordinatorProfile(models.Model):
         verbose_name='Last Name',
         help_text='format: required, max_length=50',
     )
-    coordinators_charities = models.ManyToManyField("charity.CharityProfile", 
-                                                    verbose_name=("coordinators associated charities"),
-                                                    related_name="CoordinatorProfiles")
+    # coordinators_charities = models.ManyToManyField(CharityProfile, 
+    #                                                 verbose_name=("coordinators associated charities"),
+    #                                                 related_name="CoordinatorProfiles")
     activated = models.BooleanField(
         default=False,
     )

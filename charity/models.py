@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from coordinator.models import CoordinatorProfile
 
 
 class CharityProfile(models.Model):
@@ -17,7 +18,7 @@ class CharityProfile(models.Model):
         verbose_name='Charity Description',
     )
     charities_coordinators = models.ManyToManyField(
-        "coordinator.CoordinatorProfile", 
+        CoordinatorProfile, 
         verbose_name=("coordinators associated with charity"),
         related_name="CharityProfiles")
     
