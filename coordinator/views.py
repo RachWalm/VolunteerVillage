@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CoordinatorProfile
-from volunteer.models import TimePeriod
+from volunteer.models import VolunteerProfile
 from .forms import ProfileFormCo, ProfileFormCoUpdate
 from role.models import Role
 
@@ -121,9 +121,9 @@ def read_coordinator(request, id):
     return render(request, 'coordinator/see_profile.html', context)
 
 def search_volunteer(request):
-    all_time_periods = TimePeriod.objects.all().values()
+    all_time_periods = VolunteerProfile.objects.all().values()
     # print(all_time_periods)
-    # availabilities = TimePeriod.objects.filter(user_name_id =pk_logged_in).values()
+    # availabilities = VolunteerProfile.objects.filter(user_name_id =pk_logged_in).values()
     mon_ev = True
     
     true_session = []
