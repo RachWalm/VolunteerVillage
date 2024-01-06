@@ -1,33 +1,33 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
-from cloudinary.models import CloudinaryField
-from django_mysql.models import ListCharField
-from django.contrib.postgres.fields import ArrayField
-from phonenumber_field.modelfields import PhoneNumberField
+# from cloudinary.models import CloudinaryField
+# from django_mysql.models import ListCharField
+# from django.contrib.postgres.fields import ArrayField
+# from phonenumber_field.modelfields import PhoneNumberField
 # from select_multiple_field.codecs import SelectMultipleField
 # from django import forms
 from django.core.validators import MaxValueValidator
 
-# Section of the days that they are available
-PART_OF_DAY = (
-    (0, 'None'),
-    (1, 'Morning'),
-    (2, 'Afternoon'),
-    (3, 'Evening'),
-)
+# # Section of the days that they are available
+# PART_OF_DAY = (
+#     (0, 'None'),
+#     (1, 'Morning'),
+#     (2, 'Afternoon'),
+#     (3, 'Evening'),
+# )
 
-# Which days they are available
-DAYS_OF_WEEK = (
-    (0, 'None'),
-    (1, 'Monday'),
-    (2, 'Tuesday'),
-    (3, 'Wednesday'),
-    (4, 'Thursday'),
-    (5, 'Friday'),
-    (6, 'Saturday'),
-    (7, 'Sunday'),
-)
+# # Which days they are available
+# DAYS_OF_WEEK = (
+#     (0, 'None'),
+#     (1, 'Monday'),
+#     (2, 'Tuesday'),
+#     (3, 'Wednesday'),
+#     (4, 'Thursday'),
+#     (5, 'Friday'),
+#     (6, 'Saturday'),
+#     (7, 'Sunday'),
+# )
 
 
 class SkillChoices(models.Model):
@@ -98,15 +98,15 @@ class SkillChoices(models.Model):
 #         return self.name
     
     
-class Skills(models.Model):
-    '''Choose which type of volunteering they would like to do according to skills'''
-    user_name = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=128)
-    skilled = models.ManyToManyField("SkillChoices", verbose_name=("skills"), related_name=("Skills"),) # choices= SkillChoices.objects.filter().values_list())   
-    # link = models.ForeignKey("volunteer.VolunteerProfile", verbose_name=("VProfile"), on_delete=models.CASCADE, null=True, blank=True) #I think this needs to be  a link to volunteer profile
+# class Skills(models.Model):
+#     '''Choose which type of volunteering they would like to do according to skills'''
+#     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
+#     name = models.CharField(max_length=128)
+#     skilled = models.ManyToManyField("SkillChoices", verbose_name=("skills"), related_name=("Skills"),) # choices= SkillChoices.objects.filter().values_list())   
+#     # link = models.ForeignKey("volunteer.VolunteerProfile", verbose_name=("VProfile"), on_delete=models.CASCADE, null=True, blank=True) #I think this needs to be  a link to volunteer profile
     
-    def __str__(self):
-        return self.name
+#     def __str__(self):
+#         return self.name
     
 
 class VolunteerProfile(models.Model):
@@ -141,6 +141,8 @@ class VolunteerProfile(models.Model):
     # profile_picture = CloudinaryField(
     #     'image', default='placeholder',
     # )
+    skilled = models.ManyToManyField(SkillChoices, verbose_name=("Skill Options"),
+        related_name="VolunteerProfiles")
     special_skills_description = models.TextField(
         null=False,
         blank=True,
@@ -159,9 +161,9 @@ class VolunteerProfile(models.Model):
         validators=[
             MaxValueValidator(7), #7 days in a week
         ])
-    mon_am = models.BooleanField(default=False, blank=True)
+    mon_am = models.BooleanField(default=False, null=True, blank=True)
     mon_pm = models.BooleanField(default=False, null=True, blank=True)
-    mon_ev = models.BooleanField(default=False, null=True, blank=True)
+    mon_ev = models.BooleanField(default=False, null=True, blank=True )
     tue_am = models.BooleanField(default=False, null=True, blank=True)
     tue_pm = models.BooleanField(default=False, null=True, blank=True)
     tue_ev = models.BooleanField(default=False, null=True, blank=True)

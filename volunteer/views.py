@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import VolunteerProfile, Skills, DAYS_OF_WEEK, PART_OF_DAY, SkillChoices
-from .forms import ProfileForm, SkillsForm
+from .models import VolunteerProfile, SkillChoices
+from .forms import ProfileForm
 # Create your views here.
 
 
@@ -14,20 +14,21 @@ def home(request):
 
 def read_profile(request):
     pk_logged_in = request.user.pk
+    profile = get_object_or_404(VolunteerProfile, user_name_id = pk_logged_in)
     people = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).values()
-    skills = Skills.objects.filter(user_name_id =pk_logged_in).values()
+    skills = profile.skilled.values()
     true_pairs = [{key for key, value in available.items() if value is True} for available in people]
     context = {
         'people': people,
-        'skills': skills,
         'pk_logged_in': pk_logged_in,
-        'true_pairs': true_pairs
+        'true_pairs': true_pairs,
+        'skills': skills
     }
     return render(request, 'volunteer/read_profile.html', context)
 
 def add_profile(request):
     form= ProfileForm
-    form2= SkillsForm
+    # form2= SkillsForm
     if request.method == 'POST':
         form_data = {
             'user_name': request.user,
@@ -73,7 +74,6 @@ def add_profile(request):
         #     print("field Error:", field.name, field.errors)
         if form.is_valid(): # and form2.is_valid():
             print(form.is_valid)
-            print(form2.is_valid)
             print('tesst5')
             profile = form.save(commit=False)
             profile.user_name = request.user
@@ -112,7 +112,7 @@ def add_profile(request):
         return redirect('read')
     context = {
         'form': form,
-        'form2': form2,
+        # 'form2': form2,
         }
     return render(request, 'volunteer/add_profile.html', context)
 
@@ -120,23 +120,15 @@ def add_profile(request):
 
 def edit_profile(request):
     pk_logged_in = request.user.pk
-    people = get_object_or_404(VolunteerProfile, id=pk_logged_in)
-    skilled = get_object_or_404(Skills, user_name_id =pk_logged_in)
     availabilities = get_object_or_404(VolunteerProfile, user_name_id =pk_logged_in)
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=people)
-        form2 = SkillsForm(request.POST, instance=skilled)
-        if form.is_valid() and form2.is_valid():
+        form = ProfileForm(request.POST, instance=availabilities)
+        if form.is_valid():
             form.save()
-            form2.save()
             return redirect('read')
-    form = ProfileForm(instance = people)
-    form2 = SkillsForm(instance = skilled)
+    form = ProfileForm(instance = availabilities)
     context = {
         'form': form,
-        'form2': form2,
-        'people': people,
-        'skilled': skilled,
         'availabilities': availabilities,
         'pk_logged_in': pk_logged_in
     }

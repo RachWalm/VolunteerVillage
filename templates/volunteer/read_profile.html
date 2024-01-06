@@ -10,14 +10,15 @@
     <a href="{% url 'read' %}">See profile</a>
 </li>
 
-<h2>Your profile - {{user.username }} </h3>
+<h2>Your profile - {{ user.username }} {{ user.id }}</h3>
+
 
 
 <table>
     {% for individual in people %}
     <tr>
         <td>First Name</td>
-        <td>{{ individual.fname }}</td>
+        <td>{{ individual.fname }} </td>
     </tr>
     <tr>
         <td>Last Name</td>
@@ -36,8 +37,12 @@
         <td>{{ individual.updated_on }}</td>
     </tr>
     <tr>
-        <td>Profile picture</td>
-        <td>{{ individual.profile_picture }}</td>
+        <td>Skills </td>
+        <td>
+            {% for skill in skills %}
+                <h4> {{ skill.name }} </h4>
+            {%endfor %}
+        </td>
     </tr>
     <tr>
         <td>Special Skills description</td>
@@ -47,19 +52,13 @@
         <td>Activated?</td>
         <td>{{ individual.activated }}</td>
     </tr>
-    {% endfor %}
-    <tr>
-        <td>Skills</td>
-        <td>{{ skill_name }}</td>
-    </tr>
-    {% for available in availabilities%}
     <tr>
         <td>Availabilities - time in hours</td>
-        <td>{{ available.time_length_hours }}</td>
+        <td>{{ individual.time_length_hours }}</td>
     </tr>
     <tr>
         <td>Availabilities - time in days</td>
-        <td>{{ available.time_length_days }}
+        <td>{{ individual.time_length_days }}
     </tr>
     {% endfor %}
     <tr>

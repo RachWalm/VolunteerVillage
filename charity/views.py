@@ -53,10 +53,8 @@ def read_charity(request, id):
     coords = profile.charities_coordinators.values()
     print(coords)
     context = {
-        # 'form': form,
         'profile': profile,
         'coords':coords,
-        # 'pk_logged_in': pk_logged_in
     }
     return render(request, 'charity/read_charity.html', context)
     
