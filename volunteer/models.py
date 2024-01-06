@@ -132,7 +132,7 @@ class VolunteerProfile(models.Model):
         verbose_name='Last Name',
         help_text='format: required, max_length=50',
     )
-    phone = PhoneNumberField(
+    phone = models.CharField(
         max_length=12,
         blank=False,
         null=False,
