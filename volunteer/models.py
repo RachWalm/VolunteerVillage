@@ -141,7 +141,9 @@ class VolunteerProfile(models.Model):
     # profile_picture = CloudinaryField(
     #     'image', default='placeholder',
     # )
-    skilled = models.ManyToManyField(SkillChoices, verbose_name=("Skill Options"),
+    skilled = models.ManyToManyField(
+        SkillChoices, 
+        verbose_name=("Activity options"),
         related_name="VolunteerProfiles")
     special_skills_description = models.TextField(
         null=False,

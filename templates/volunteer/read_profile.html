@@ -63,7 +63,9 @@
     {% endfor %}
     <tr>
         <td>Availabilities - section and day available</td>
-        <td>{{ true_pairs }}</td>
+        <td>{% for true_pair in true_pairs %}
+            {{ true_pair }}</td>
+            {% endfor %}
     </tr>
 </table>
 <button>

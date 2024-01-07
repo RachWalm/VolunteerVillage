@@ -153,6 +153,8 @@ Phone number field
 
 pip install django-bootstrap5
 
+pip install whitenoise
+
 pip install django-allauth
 
 <!-- select multiple from a list - not used as required loads of other apps installed see below and some weren't compatible : used multiple choice field from forms instead
