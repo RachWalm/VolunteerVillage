@@ -35,6 +35,7 @@ def add_profile(request):
             'fname': request.POST['fname'],
             'lname': request.POST['lname'],
             'phone': request.POST['phone'], 
+            'skilled': request.POST['skilled'],
             'special_skills_description': request.POST['special_skills_description'],
             'user_name': request.user,
             'name': request.user,

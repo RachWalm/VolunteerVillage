@@ -52,8 +52,6 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'phonenumber_field',
-    #'select_multiple_field',
     'volunteer',
     'coordinator',
     'role',
