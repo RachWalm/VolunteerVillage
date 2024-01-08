@@ -15,7 +15,7 @@
 
 
 <table>
-    {% for individual in people %}
+    {% for individual in peoples %}
     <tr>
         <td>First Name</td>
         <td>{{ individual.fname }} </td>
@@ -63,9 +63,11 @@
     {% endfor %}
     <tr>
         <td>Availabilities - section and day available</td>
-        <td>{% for true_pair in true_pairs %}
-            {{ true_pair }}</td>
+        <td>
+            {% for session in sessions %}
+            {{ session }}, 
             {% endfor %}
+        </td>
     </tr>
 </table>
 <button>

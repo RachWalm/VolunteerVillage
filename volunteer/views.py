@@ -12,17 +12,29 @@ def home(request):
     return render(request, 'index.html')
 
 
+def get_verbose_name(name):
+    session = VolunteerProfile._meta.get_field(name)
+    verbose = session.verbose_name
+    return verbose
+
 def read_profile(request):
     pk_logged_in = request.user.pk
     profile = get_object_or_404(VolunteerProfile, user_name_id = pk_logged_in)
-    people = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).values()
+    peoples = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).values()
     skills = profile.skilled.values()
-    true_pairs = [{key for key, value in available.items() if value is True} for available in people]
+    true_pairs = [{key for key, value in people.items() if value is True} for people in peoples]
+    sessions =[]
+    for true_pair in true_pairs:
+        for pair in true_pair:
+            pair = get_verbose_name(pair)
+            sessions.append(pair)
+    print(true_pairs)
     context = {
-        'people': people,
+        'peoples': peoples,
         'pk_logged_in': pk_logged_in,
         'true_pairs': true_pairs,
-        'skills': skills
+        'skills': skills,
+        'sessions': sessions
     }
     return render(request, 'volunteer/read_profile.html', context)
 
