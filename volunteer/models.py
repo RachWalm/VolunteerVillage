@@ -2,32 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 # from cloudinary.models import CloudinaryField
-# from django_mysql.models import ListCharField
-# from django.contrib.postgres.fields import ArrayField
-# from phonenumber_field.modelfields import PhoneNumberField
-# from select_multiple_field.codecs import SelectMultipleField
-# from django import forms
 from django.core.validators import MaxValueValidator
-
-# # Section of the days that they are available
-# PART_OF_DAY = (
-#     (0, 'None'),
-#     (1, 'Morning'),
-#     (2, 'Afternoon'),
-#     (3, 'Evening'),
-# )
-
-# # Which days they are available
-# DAYS_OF_WEEK = (
-#     (0, 'None'),
-#     (1, 'Monday'),
-#     (2, 'Tuesday'),
-#     (3, 'Wednesday'),
-#     (4, 'Thursday'),
-#     (5, 'Friday'),
-#     (6, 'Saturday'),
-#     (7, 'Sunday'),
-# )
 
 
 class SkillChoices(models.Model):
@@ -53,61 +28,6 @@ class SkillChoices(models.Model):
     def __str__(self):
         return self.name
 
-
-# class TimePeriod(models.Model):
-#     '''How long the volunteer can spend and when the volunteer is available'''
-#     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=128)
-#     # timed = models.ManyToManyField("volunteer.Skills", verbose_name=("Time")) 
-#     time_length_hours = models.PositiveSmallIntegerField(
-#         default=0,
-#         validators=[
-#             MaxValueValidator(168), #168 hours in a week
-#         ])    
-#     time_length_days = models.PositiveSmallIntegerField(
-#         default=0,
-#         validators=[
-#             MaxValueValidator(7), #7 days in a week
-#         ])
-#     mon_am = models.BooleanField(default=False, blank=True)
-#     mon_pm = models.BooleanField(default=False, null=True, blank=True)
-#     mon_ev = models.BooleanField(default=False, null=True, blank=True)
-#     tue_am = models.BooleanField(default=False, null=True, blank=True)
-#     tue_pm = models.BooleanField(default=False, null=True, blank=True)
-#     tue_ev = models.BooleanField(default=False, null=True, blank=True)
-#     wed_am = models.BooleanField(default=False, null=True, blank=True)
-#     wed_pm = models.BooleanField(default=False, null=True, blank=True, verbose_name = "Wednesday Afternoon")
-#     wed_ev = models.BooleanField(default=False, null=True, blank=True)
-#     thu_am = models.BooleanField(default=False, null=True, blank=True)
-#     thu_pm = models.BooleanField(default=False, null=True, blank=True)
-#     thu_ev = models.BooleanField(default=False, null=True, blank=True)
-#     fri_am = models.BooleanField(default=False, null=True, blank=True)
-#     fri_pm = models.BooleanField(default=False, null=True, blank=True)
-#     fri_ev = models.BooleanField(default=False, null=True, blank=True)
-#     sat_am = models.BooleanField(default=False, null=True, blank=True)
-#     sat_pm = models.BooleanField(default=False, null=True, blank=True)
-#     sat_ev = models.BooleanField(default=False, null=True, blank=True)
-#     sun_am = models.BooleanField(default=False, null=True, blank=True)
-#     sun_pm = models.BooleanField(default=False, null=True, blank=True)
-#     sun_ev = models.BooleanField(default=False, null=True, blank=True)
-    
-#         # section_of_day = models.IntegerField(choices=PART_OF_DAY, default = 0)
-#     # day = models.IntegerField(choices=DAYS_OF_WEEK, default = 0)
-    
-#     def __str__(self):
-#         return self.name
-    
-    
-# class Skills(models.Model):
-#     '''Choose which type of volunteering they would like to do according to skills'''
-#     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
-#     name = models.CharField(max_length=128)
-#     skilled = models.ManyToManyField("SkillChoices", verbose_name=("skills"), related_name=("Skills"),) # choices= SkillChoices.objects.filter().values_list())   
-#     # link = models.ForeignKey("volunteer.VolunteerProfile", verbose_name=("VProfile"), on_delete=models.CASCADE, null=True, blank=True) #I think this needs to be  a link to volunteer profile
-    
-#     def __str__(self):
-#         return self.name
-    
 
 class VolunteerProfile(models.Model):
     """Personal information about the volunteer"""
@@ -246,7 +166,7 @@ class VolunteerProfile(models.Model):
     )
     sun_ev = models.BooleanField(
         default=False,
-        verbose_name="Sunday eveing",
+        verbose_name="Sunday evening",
     )
 
 def __str__(self):

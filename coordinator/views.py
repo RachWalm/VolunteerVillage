@@ -96,9 +96,14 @@ def edit_profile_co(request, id):
     return render(request, 'coordinator/update_profile.html', context)
 
 def delete_profile_co(request, id):
-    # pk_logged_in = request.user.pk
-    coordinator = get_object_or_404(CoordinatorProfile, id=id)
-    coordinator.delete()
+    pk_logged_in = request.user.pk
+    role = get_object_or_404(Role, id=pk_logged_in)
+    co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
+    print(co_profile_all)
+    co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
+    print(co_profile)
+    profile = get_object_or_404(CoordinatorProfile, id=co_profile)
+    profile.delete()
     messages.add_message(request, messages.SUCCESS, 'Coordinator information deleted!')
     return redirect('dashboard')
 
