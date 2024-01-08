@@ -10,7 +10,7 @@
     <a href="{% url 'read' %}">See profile</a>
 </li>
 
-<h2>Your profile - {{ user.username }} {{ user.id }}</h3>
+<h2>Your profile - {{ user.username }} </h3>
 
 
 
@@ -73,19 +73,19 @@
 <button>
 <a href="{% url 'edit' %}">Edit profile</a>
 </button>
-<button>
-    <a href="{% url 'delete' %}">Delete profile</a>
-    </button>
+<li>
+    <button class="btn btn-delete" charity_id="{{ peoples.id }}"" type="submit">Delete all profile information</button> 
+</li>
 
     <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete coordinator?</h5>
+                    <h5 class="modal-title" id="deleteModalLabel">Delete your profile?</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this coordinator? This action is permanent and cannot be undone.
+                    Are you sure you want to delete your profile? This action is permanent and cannot be undone.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
@@ -95,6 +95,6 @@
         </div>
     </div>
 
-    <script src="/static/js/delete.js"></script>
+    <script src="/static/js/deletevolunteer.js"></script>
 
 {% endblock %}

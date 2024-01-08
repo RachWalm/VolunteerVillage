@@ -81,8 +81,7 @@ def edit_profile(request):
 
 def delete_profile(request):
     pk_logged_in = request.user.pk
-    user = get_object_or_404(User, id=pk_logged_in)
-    user.delete()
+    volunteer = get_object_or_404(VolunteerProfile, user_name_id=pk_logged_in)
+    volunteer.delete()
+    messages.add_message(request, messages.SUCCESS, 'Profile deleted!')
     return redirect('index')
-
-# messages.add_message(request, messages.SUCCESS, 'Comment deleted!')
