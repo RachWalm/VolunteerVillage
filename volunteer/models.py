@@ -149,6 +149,7 @@ class VolunteerProfile(models.Model):
         null=False,
         blank=True,
         verbose_name='special skills description',
+        max_length = 500,
     )
     activated = models.BooleanField(
         default=False,
@@ -163,27 +164,90 @@ class VolunteerProfile(models.Model):
         validators=[
             MaxValueValidator(7), #7 days in a week
         ])
-    mon_am = models.BooleanField(default=False, null=True, blank=True)
-    mon_pm = models.BooleanField(default=False, null=True, blank=True)
-    mon_ev = models.BooleanField(default=False, null=True, blank=True )
-    tue_am = models.BooleanField(default=False, null=True, blank=True)
-    tue_pm = models.BooleanField(default=False, null=True, blank=True)
-    tue_ev = models.BooleanField(default=False, null=True, blank=True)
-    wed_am = models.BooleanField(default=False, null=True, blank=True)
-    wed_pm = models.BooleanField(default=False, null=True, blank=True, verbose_name = "Wednesday Afternoon")
-    wed_ev = models.BooleanField(default=False, null=True, blank=True)
-    thu_am = models.BooleanField(default=False, null=True, blank=True)
-    thu_pm = models.BooleanField(default=False, null=True, blank=True)
-    thu_ev = models.BooleanField(default=False, null=True, blank=True)
-    fri_am = models.BooleanField(default=False, null=True, blank=True)
-    fri_pm = models.BooleanField(default=False, null=True, blank=True)
-    fri_ev = models.BooleanField(default=False, null=True, blank=True)
-    sat_am = models.BooleanField(default=False, null=True, blank=True)
-    sat_pm = models.BooleanField(default=False, null=True, blank=True)
-    sat_ev = models.BooleanField(default=False, null=True, blank=True)
-    sun_am = models.BooleanField(default=False, null=True, blank=True)
-    sun_pm = models.BooleanField(default=False, null=True, blank=True)
-    sun_ev = models.BooleanField(default=False, null=True, blank=True)
+    mon_am = models.BooleanField(
+        default=False,
+        verbose_name="Monday morning",
+    )
+    mon_pm = models.BooleanField(
+        default=False,
+        verbose_name="Monday afternoon",
+    )
+    mon_ev = models.BooleanField(
+        default=False,
+        verbose_name="Monday evening",
+    )
+    tue_am = models.BooleanField(
+        default=False,
+        verbose_name="Tuesday morning",
+    )
+    tue_pm = models.BooleanField(
+        default=False,
+        verbose_name="Tuesday afternoon",
+    )
+    tue_ev = models.BooleanField(
+        default=False,
+        verbose_name="Tuesday Evening",
+    )
+    wed_am = models.BooleanField(
+        default=False,
+        verbose_name="Wednesday morning",
+    )
+    wed_pm = models.BooleanField(
+        default=False,
+        verbose_name="Wednesday afternoon",
+    )
+    wed_ev = models.BooleanField(
+        default=False,
+        verbose_name="Wednesday evening",
+    )
+    thu_am = models.BooleanField(
+        default=False,
+        verbose_name="Thursday morning",
+    )
+    thu_pm = models.BooleanField(
+        default=False,
+        verbose_name="Thursday afternoon",
+    )
+    thu_ev = models.BooleanField(
+        default=False,
+        verbose_name="Thursday Evening",
+    )
+    fri_am = models.BooleanField(
+        default=False,
+        verbose_name="Friday morning",
+    )
+    fri_pm = models.BooleanField(
+        default=False,
+        verbose_name="Friday afternoon",
+    )
+    fri_ev = models.BooleanField(
+        default=False,
+        verbose_name="Friday evening",
+    )
+    sat_am = models.BooleanField(
+        default=False,
+        verbose_name="Saturday morning",
+    )
+    sat_pm = models.BooleanField(
+        default=False,
+        verbose_name="Saturday afternoon",
+    )
+    sat_ev = models.BooleanField(
+        default=False,
+        verbose_name="Saturday evening",
+    )
+    sun_am = models.BooleanField(
+        default=False,
+        verbose_name="Sunday morning",
+    )
+    sun_pm = models.BooleanField(
+        default=False,
+        verbose_name="Sunday afternoon",
+    )
+    sun_ev = models.BooleanField(
+        default=False,
+        verbose_name="Sunday eveing",
+    )
 
 def __str__(self):
     return self.name
