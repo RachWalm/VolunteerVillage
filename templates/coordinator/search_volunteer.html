@@ -5,10 +5,19 @@
 
 <form method=POST action="{% url 'searchvol' %}">
     {% csrf_token %}
-    <input type="search" placeholder="First name" aria-label="search" name="search_vol">
+    <select>
+        <option value=""><b>All activities</b></option>
+    {% for activity in activity_list %}
+        <option value="{{ activity }}"> {{ activity}}</option>
+    {% endfor %}
+    </select>   
     <button class="btn" type="submit">Search Volunteers</button>
 </form>
 
 {{ all_time_periods }}
+
+{% for session in sessions %}
+    {{ session }}
+{% endfor %}
 
 {%endblock%}

@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CoordinatorProfile
-from volunteer.models import VolunteerProfile
+from volunteer.models import VolunteerProfile, SkillChoices
 from .forms import ProfileFormCo, ProfileFormCoUpdate
 from role.models import Role
 
@@ -117,40 +117,39 @@ def read_coordinator(request, id):
     coords = profile.coordinators_charities.values()
     print(coords)
     context = {
-        # 'form': form,
         'profile': profile,
         'coords':coords,
         'role': role,
-        # 'pk_logged_in': pk_logged_in
+        
     }
     return render(request, 'coordinator/see_profile.html', context)
 
+def get_verbose_name(name):
+    session = VolunteerProfile._meta.get_field(name)
+    verbose = session.verbose_name
+    return verbose
+
 def search_volunteer(request):
-    all_time_periods = VolunteerProfile.objects.all().values()
-    # print(all_time_periods)
-    # availabilities = VolunteerProfile.objects.filter(user_name_id =pk_logged_in).values()
-    mon_ev = True
+    activities = SkillChoices.objects.all().values()
+    activity_list = []
+    for activity in activities:
+        name = activity.get('name')
+        activity_list.append(name)   
     
-    true_session = []
-    for all_time_period in all_time_periods:
-        print(all_time_period)
-        # if all_time_period.values() == True:
-        #     print(all_time_period.values())
-        for period in all_time_period: # for some reason period is a string of keys not key:value pairs
-            print(period)
-        
-            # print(all_time_period)
-            # for periods in all_time_period:
-            #     print(periods)
-            # true_session += volunteer
-            # true_session = [{key for key, value in available.items() if value is True} for available in availabilities]
+    all_time_periods = VolunteerProfile.objects.all().values()
+    print(all_time_periods)
+    true_pairs = [{key for key, value in period.items() if value is True} for period in all_time_periods]
+    sessions =[]
+    for true_pair in true_pairs:
+        for pair in true_pair:
+            print(pair)
+            pair = get_verbose_name(pair)
+            sessions.append(pair)
     context = {
-        # 'form': form,
-        # 'profile': profile,
-        # 'coords':coords,
         # 'role': role,
         # 'pk_logged_in': pk_logged_in
         'all_time_periods': all_time_periods,
-        'true_session': true_session,
+        'sessions': sessions,
+        'activity_list': activity_list,
     }
     return render(request, 'coordinator/search_volunteer.html', context)
