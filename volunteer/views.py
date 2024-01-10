@@ -51,6 +51,7 @@ def add_profile(request):
             profile.name = request.user
             form.save()
             print('test6')
+            print(form)
             messages.add_message(request, messages.SUCCESS, 'Profile sent for approval -  then you will be matched!')
         else:
             print('testelse')
@@ -70,6 +71,7 @@ def edit_profile(request):
         form = ProfileForm(request.POST, instance=availabilities)
         if form.is_valid():
             form.save()
+            messages.add_message(request, messages.SUCCESS, 'Profile Updated!')
             return redirect('read')
     form = ProfileForm(instance = availabilities)
     context = {
@@ -84,4 +86,4 @@ def delete_profile(request):
     volunteer = get_object_or_404(VolunteerProfile, user_name_id=pk_logged_in)
     volunteer.delete()
     messages.add_message(request, messages.SUCCESS, 'Profile deleted!')
-    return redirect('index')
+    return redirect('add')

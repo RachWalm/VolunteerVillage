@@ -6,12 +6,13 @@
 
 {{ people }} {{ skilled }} {{ availabilities }} {{ pk_logged_in }}
 
-<form method="post">
+<form method="post" id="volunteerForm">
     {{ form.as_table }}
     {% comment %} {{ form2.as_p }} {% endcomment %}
     {% csrf_token %}
-    <button type="submit" class="btn">Submit</button>
+    <button type="submit" id="submithold" class="btn">Submit</button>
 </form>
 
+<script src="/static/js/validationscript.js"></script>
 
 {% endblock %}

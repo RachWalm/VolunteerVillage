@@ -2,15 +2,23 @@
 
 {% block content %}
 
+<li>
+    <a href="{% url 'index' %}">Home page</a>
+</li>
+<li>
+    <a href="{% url 'read' %}">Your profile</a>
+</li>
+
 <h2>Edit a profile</h2>
 
 {{ availabilities }} {{ pk_logged_in }}
 
-<form method="post">
+<form method="post" id="volunteerForm">
     {{ form.as_table }}
     {% csrf_token %}
-    <button type="submit" class="btn">Submit</button>
+    <button type="submit" class="btn" id="submithold">Submit</button>
 </form>
 
+<script src="/static/js/validationscript.js"></script>
 
 {% endblock %}
