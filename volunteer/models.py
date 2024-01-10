@@ -8,23 +8,7 @@ from django.core.validators import MaxValueValidator
 class SkillChoices(models.Model):
     '''List of the skill choices model'''
     name= models.CharField(max_length=50)
-    # profile = models.ManyToManyField("Skills", verbose_name=("users"), related_name=("SkillChoices"),)
-    # makechoice_link = models.ForeignKey("volunteer.Skills", verbose_name=("skill"), on_delete=models.CASCADE,)
-    # SKILL_CHOICES = (
-    #     (1, 'ADMINISTRATION'),
-    #     (2, 'COMPANIONSHIP'),
-    #     (3, 'DIY'),
-    #     (4, 'DRIVING'),
-    #     (5, 'EVENTS'),
-    #     (6, 'ENVIRONMENTAL'),
-    #     (7, 'FUNDRAISING'),
-    #     (8, 'GARDENING'),
-    #     (9, 'READING'),
-    #     (10, 'SHOPPING'),
-    #     (11, 'TUTORING'),
-    # )
-
-
+    
     def __str__(self):
         return self.name
 
