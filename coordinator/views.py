@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 from .models import CoordinatorProfile
 from volunteer.models import VolunteerProfile, SkillChoices
 from .forms import ProfileFormCo, ProfileFormCoUpdate
@@ -141,7 +142,14 @@ def search_volunteer(request):
         session_choice = request.POST.get("session_choice")
         time = day_choice + session_choice
         verbose_time = get_verbose_name(time)
-        print(verbose_time)
+        volunteers = VolunteerProfile.objects.filter(skilled__name__icontains=activity_choice)
+        print(volunteers)
+        volunteers_time = VolunteerProfile.objects.filter(mon_am=True)
+        print(volunteers_time)
+        #             # Q(time__icontains=True) #|
+        #             # Q(description__icontains=query) |
+        #         ).distinct()
+        # print(volunteers)
         context = {
             'activity_list': activity_list,
             'activity_choice': activity_choice,
@@ -149,22 +157,21 @@ def search_volunteer(request):
             }
         return render(request, 'coordinator/search_volunteer.html', context)
     else:
-    
-    # all_time_periods = VolunteerProfile.objects.all().values()
-    # print(all_time_periods)
-    # true_pairs = [{key for key, value in period.items() if value is True} for period in all_time_periods]
-    # sessions =[]
-    # for true_pair in true_pairs:
-    #     for pair in true_pair:
-    #         print(pair)
-    #         pair = get_verbose_name(pair)
-    #         sessions.append(pair)
+        
+        # all_time_periods = VolunteerProfile.objects.all().values()
+        # print(all_time_periods)
+        # true_pairs = [{key for key, value in period.items() if value is True} for period in all_time_periods]
+        # sessions =[]
+        # for true_pair in true_pairs:
+        #     for pair in true_pair:
+        #         print(pair)
+        #         pair = get_verbose_name(pair)
+        #         sessions.append(pair)
         context = {
             # 'role': role,
             # 'pk_logged_in': pk_logged_in
             # 'all_time_periods': all_time_periods,
             # 'sessions': sessions,
             'activity_list': activity_list,
-            # 'activity_choice': activity_choice,
         }
         return render(request, 'coordinator/search_volunteer.html', context)

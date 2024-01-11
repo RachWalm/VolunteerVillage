@@ -7,14 +7,12 @@
     {% csrf_token %}
     <label for="activity_choice">Volunteering activity</label>
     <select name="activity_choice">
-        <option value=""><b>All activities</b></option>
     {% for activity in activity_list %}
         <option value="{{ activity }}"> {{ activity}}</option>
     {% endfor %}
     </select>   
     <label for="day_choice">Volunteering activity</label>
     <select name="day_choice">
-        <option value=""><b>All Days</b></option>
         <option value="mon">Monday</option>
         <option value="tue">Tuesday</option>
         <option value="wed">Wednesday</option>
@@ -25,7 +23,6 @@
     </select>
     <label for="session_choice">Volunteering activity</label>
     <select name="session_choice">
-        <option value=""><b>All sessions</b></option>
         <option value="_am"><b>Morning</b></option>
         <option value="_pm"><b>Afternoon</b></option>
         <option value="_ev"><b>Evening</b></option>
