@@ -3,17 +3,39 @@
 {% block content %}
 <h2> Search for a volunteer to complete your task</h2>
 
-<form method=POST action="{% url 'searchvol' %}">
+<form method="POST" action="{% url 'searchvol' %}">
     {% csrf_token %}
-    <select>
+    <label for="activity_choice">Volunteering activity</label>
+    <select name="activity_choice">
         <option value=""><b>All activities</b></option>
     {% for activity in activity_list %}
         <option value="{{ activity }}"> {{ activity}}</option>
     {% endfor %}
     </select>   
-    <button class="btn" type="submit">Search Volunteers</button>
+    <label for="day_choice">Volunteering activity</label>
+    <select name="day_choice">
+        <option value=""><b>All Days</b></option>
+        <option value="mon">Monday</option>
+        <option value="tue">Tuesday</option>
+        <option value="wed">Wednesday</option>
+        <option value="thu">Thursday</option>
+        <option value="fri">Friday</option>
+        <option value="sat">Saturday</option>
+        <option value="sun">Sunday</option>
+    </select>
+    <label for="session_choice">Volunteering activity</label>
+    <select name="session_choice">
+        <option value=""><b>All sessions</b></option>
+        <option value="_am"><b>Morning</b></option>
+        <option value="_pm"><b>Afternoon</b></option>
+        <option value="_ev"><b>Evening</b></option>
+    </select>
+    <button class="btn" type="submit" value="Submit">Search Volunteers</button>
+    
 </form>
 
+
+<p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
 {{ all_time_periods }}
 
 {% for session in sessions %}

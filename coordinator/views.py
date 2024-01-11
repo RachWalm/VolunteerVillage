@@ -134,22 +134,37 @@ def search_volunteer(request):
     activity_list = []
     for activity in activities:
         name = activity.get('name')
-        activity_list.append(name)   
+        activity_list.append(name)  
+    if request.method == "POST":
+        activity_choice = request.POST.get("activity_choice") 
+        day_choice = request.POST.get("day_choice")
+        session_choice = request.POST.get("session_choice")
+        time = day_choice + session_choice
+        verbose_time = get_verbose_name(time)
+        print(verbose_time)
+        context = {
+            'activity_list': activity_list,
+            'activity_choice': activity_choice,
+            'verbose_time': verbose_time,
+            }
+        return render(request, 'coordinator/search_volunteer.html', context)
+    else:
     
-    all_time_periods = VolunteerProfile.objects.all().values()
-    print(all_time_periods)
-    true_pairs = [{key for key, value in period.items() if value is True} for period in all_time_periods]
-    sessions =[]
-    for true_pair in true_pairs:
-        for pair in true_pair:
-            print(pair)
-            pair = get_verbose_name(pair)
-            sessions.append(pair)
-    context = {
-        # 'role': role,
-        # 'pk_logged_in': pk_logged_in
-        'all_time_periods': all_time_periods,
-        'sessions': sessions,
-        'activity_list': activity_list,
-    }
-    return render(request, 'coordinator/search_volunteer.html', context)
+    # all_time_periods = VolunteerProfile.objects.all().values()
+    # print(all_time_periods)
+    # true_pairs = [{key for key, value in period.items() if value is True} for period in all_time_periods]
+    # sessions =[]
+    # for true_pair in true_pairs:
+    #     for pair in true_pair:
+    #         print(pair)
+    #         pair = get_verbose_name(pair)
+    #         sessions.append(pair)
+        context = {
+            # 'role': role,
+            # 'pk_logged_in': pk_logged_in
+            # 'all_time_periods': all_time_periods,
+            # 'sessions': sessions,
+            'activity_list': activity_list,
+            # 'activity_choice': activity_choice,
+        }
+        return render(request, 'coordinator/search_volunteer.html', context)
