@@ -35,9 +35,27 @@
 <p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
 {{ all_time_periods }}
 
+<table>
 {% for intersection in intersections %}
-    {{ intersection.fname}}
+    <tr>
+        <td>First name</td><td>{{ intersection.fname}}</td>
+    </tr>
+    <tr>
+        <td>Last name</td><td>{{ intersection.lname}}</td>
+    </tr>
+    <tr>
+        <td>Phone number</td><td>{{ intersection.phone}}</td>
+    </tr>
+    <tr>
+        <td>Description of skills</td><td>{{ intersection.special_skills_description }}</td>
+    </tr>
+    <tr>
+        <td>Length of time available </td><td>{{ intersection.time_length_hours }} Hours</td>
+    </tr>
+    <tr>
+        <td>Length of time available</td><td>{{ intersection.time_length_days }} Days</td>
+    </tr>
 {% endfor %}
-
+</table>
 
 {%endblock%}
