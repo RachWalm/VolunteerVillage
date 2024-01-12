@@ -35,8 +35,9 @@
 <p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
 {{ all_time_periods }}
 
-{% for session in sessions %}
-    {{ session }}
+{% for intersection in intersections %}
+    {{ intersection.fname}}
 {% endfor %}
+
 
 {%endblock%}

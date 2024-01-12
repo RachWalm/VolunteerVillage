@@ -130,43 +130,42 @@ def get_verbose_name(name):
     verbose = session.verbose_name
     return verbose
 
+def search_day_session(day_time):
+    # Dynamically query using Q objects
+    session_query = Q(**{f"{day_time}": True})
+    session = VolunteerProfile.objects.filter(session_query)
+    return session
+
+
 def search_volunteer(request):
+    # get the list of activities to populate the dropdown select list
     activities = SkillChoices.objects.all().values()
     activity_list = []
     for activity in activities:
         name = activity.get('name')
-        activity_list.append(name)  
+        activity_list.append(name) 
+    # when searching function below operates
     if request.method == "POST":
-        activity_choice = request.POST.get("activity_choice") 
-        day_choice = request.POST.get("day_choice")
-        session_choice = request.POST.get("session_choice")
-        time = day_choice + session_choice
+        activity_choice = request.POST.get("activity_choice") # user response to activity
+        day_choice = request.POST.get("day_choice") # user response to day
+        session_choice = request.POST.get("session_choice") # user response to session
+        time = day_choice + session_choice # day and session in model field format
+        volunteers_for_session = search_day_session(time)
         verbose_time = get_verbose_name(time)
-        volunteers = VolunteerProfile.objects.filter(skilled__name__icontains=activity_choice)
-        print(volunteers)
-        volunteers_time = VolunteerProfile.objects.filter(mon_am=True)
-        print(volunteers_time)
-        #             # Q(time__icontains=True) #|
-        #             # Q(description__icontains=query) |
-        #         ).distinct()
-        # print(volunteers)
+        volunteers_for_activity = VolunteerProfile.objects.filter(skilled__name__icontains=activity_choice) # queryset filtered by activity user chose
+        intersections = volunteers_for_activity & volunteers_for_session
         context = {
             'activity_list': activity_list,
             'activity_choice': activity_choice,
             'verbose_time': verbose_time,
+            # 'all_time_periods': all_time_periods,
+            # 'sessions': sessions,
+            # 'activity_and_time': activity_and_time,
+            'intersections':intersections,
             }
         return render(request, 'coordinator/search_volunteer.html', context)
     else:
         
-        # all_time_periods = VolunteerProfile.objects.all().values()
-        # print(all_time_periods)
-        # true_pairs = [{key for key, value in period.items() if value is True} for period in all_time_periods]
-        # sessions =[]
-        # for true_pair in true_pairs:
-        #     for pair in true_pair:
-        #         print(pair)
-        #         pair = get_verbose_name(pair)
-        #         sessions.append(pair)
         context = {
             # 'role': role,
             # 'pk_logged_in': pk_logged_in
