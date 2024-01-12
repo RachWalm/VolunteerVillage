@@ -91,6 +91,8 @@ One activity that is superuser exclusively able to do is the option for the supe
 
 Database updates/creations/deletions can also be performed in the admin section of the site.
 
+If someone has signed up as a coordinator that shouldn't have then the superuser can also remove their username from roles and coordinator profiles and then they can resubmit their details as a volunteer.
+
 ### Testing data added to database
 
 
