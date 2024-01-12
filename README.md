@@ -2,11 +2,31 @@
 
 ## Introduction
 
+The volunteer village site was designed to be used by people in two roles. 
+
+The first role is as a volunteer looking to provide voluntary assistance. The second is as a coordinator at Volunteer Village who's attempting to match people who are in need of assistance with appropriate assistance. The volunteer signs up and provides contact information and details of what kind of assistance they are able to provide and when they are free on a weekly basis in a profile form which is saved. 
+
+The second role of coordinator can search the volunteers profiles to be given a list of people who can provide that type of assistance at that time. The coordinator also works with specific charities so has a section to record information on their charities for their own memory and if it needs to be cross-referenced/used by other coordinators. In this way coordinators can match charities (or individuals who contact the organisation) with volunteers and external to the site help them connect.
+
 ## UX design
+
+The aim is to have a landing page that is enthusiastic about volunteering. This should hook the volunteer without making it seem like hard work. From there a new user (coordinator or volunteer) can sign up, select their role and fill out a profile form.
+
+As a volunteer they can then see their profile, edit it and delete their personal details from the account, with the current functionality.
+
+As a coordinator you can activate accounts, modify and delete other coordinators / your own account. It is anticipated that this would be a small voluntary organisation so no HR/IT department to modify other coordinators - but joining or leaving or name changes would need to be operational by coordinators of each other.
+
+Next a coordinator will need to be able to search the list of volunteers by activity and when they are likely to be available, then read their contact details to contact them. So there is a search for volunteers, but this doesn't have any modification/creation/deletion function as their personal data is to stay under control of the volunteers.
+
+Coordinators will also activate the volunteer profiles. This is a manual check which has two purposes, to check it isn't a spam profile and to consider if there is already known opportunities for them to volunteer.
+
+Coordinators will also have their own charities that they work with, there is a section for them to record information in a text box about their charities.
+
+On every page there is the logo for volunteer village which is based around a helping hand coming out of the dark surrounded by holding hands circle motif and has the words volunteer village in the centre. This is mirrored in the favicon on the tab.
 
 ### Wireframes
 
-The [wireframes](document/initial-wireframes.pdf) that were built were for an index page to draw in the volunteer, for a volunteer profile page that can be created and updated by people wishing to volunteer, a page explaining how to use the system and a co-ordinators page. Some of these had both large monitor and small device setups displayed.
+The initial [wireframes](document/initial-wireframes.pdf) that were built were for an index page to draw in the volunteer, for a volunteer profile page that can be created and updated by people wishing to volunteer, a page explaining how to use the system and a coordinators page. Some of these had both large monitor and small device setups displayed. Wireframes were not created for the nice to have pages at this stage such as the charities section and feedback and likes section. 
 
 ### Relationship diagram
 
@@ -18,27 +38,104 @@ The different apps and relationships were discussed and as the idea formed a rou
 
 ### Existing Features
 
+#### Index page
+
+#### Sign up page
+
+#### Log in page
+
+#### Log out page
+
+#### Role choice page
+
+#### Pending activation page
+
+#### Volunteer add profile page
+
+#### Volunteer read their profile page
+
+#### Volunteer edit their profile page
+
+#### Coordinator dashboard page
+
+#### Coordinator activate/edit coordinator profiles page
+
+#### Coordinator search for volunteers page
+
+#### Coordinator activate volunteers page
+
+#### Coordinator add charity page
+
+#### Coordinator choose charity page
+
+#### Coordinator edit charity page
+
+#### Coordinator delete charity page
+
+#### Navigation bars
+The top right navigation bar is for login/signup/logout functionality related to allauth and not specific to the type of user logged in.
+
+#### Logged in/out at top of page
+
+In the top right of the screen next to the nav bar there is an information message that either tells you that you are "Not logged in"  or who you are logged in as (people may have a coordinator and volunteer account).
+
+#### Flash messages
+
+Most activities that involve change contain a flash message. If the user performs an allauth related activity (login/logout etc.) or if the user updates the database in some way a flash message should appear on the screen for 2.5 seconds. Other activities such as searches are apparent by the messages on the screen or results being displayed.
+
+#### Superuser/admin activities
+
+Most activities can be performed by the users in one role or another.
+
+One activity that is superuser exclusively able to do is the option for the super user to change the list of activities that can be selected and searched for. This action only needs to be performed once and both selection and search will be updated. 
+
+Database updates/creations/deletions can also be performed in the admin section of the site.
+
+### Testing data added to database
+
+
 ### Potential Future Feature Developments 
+
+comments and likes area
+
+Improve the model for the days and times as it would be much better if I had managed to use the initial idea of monday = 1 Tuesday = 2 etc and am = 1 pm =2 so then monday am would be 11, this would have given a simpler and lesser number of fields. However, with problems (described in bugs) doing the initial volunteer create profile and time constraints it was decided to go simple for booleans. This would also have made searching for the volunteers that fitted the criteria required simpler. If I had infinite access to more knowledgeable developers I would have discussed this approach with them as I believe it would have saved time in other areas such as the coordinators search of the volunteers.
+
+Once information has been gathered from the text box entries of the coordinators and volunteers entries there, an assessment of the data to look for recurring themes that could be made into fields rather than them typing it out would be a good step.
+
+real time or calendar inputs for emergency or one of events
+
+coordinator can change volunteers availability when weekly stuff occurs to already volunteering.
+
+follow up tools for coordinators
+
+volunteers can search the charities with the permission of the charity.
+
+section to request assistance.
+
+relate amount of time available to commited already time.
 
 ## Bugs
 
 ## Technologies
 
-### languages used
+### Languages used
 
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) was used for the coding of the site.
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/css) was included for styles and layout of the site.
 - [python 3.11.5](https://docs.python.org/3/) for functionality.
+### Frameworks and libaries
+- Django
+- Boostrap
 
 
-### tools
+### Tools
 
 - [VSCode](https://code.visualstudio.com/) was used to create and edit the website.
 - [Git](https://git-scm.com/) was used for the version control and project board to plan the project.
 - [Heroku](https://www.heroku.com/) was used to deploy and host site.
 - [pythontutor](https://pythontutor.com/render.html#mode=edit) for working though my code step by step so I could gain understanding when it didn't behave as I anticipated.
 
-### Web Resources
+### Web resources
 
 - [Chrome-DevTools](https://developer.chrome.com/docs/devtools/) were extremely useful for trying out different code without affecting my core code and particularly when working on responsiveness.
 - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to check for performance and accessibility.
@@ -52,7 +149,7 @@ The different apps and relationships were discussed and as the idea formed a rou
 
 [Responsive viewer extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb) 
 
-### images
+### Images
 
 <a href="https://www.freepik.com/free-photo/man-cutting-grass-with-lawn-mover-back-yard_8828103.htm#query=mowing%20lawn&position=0&from_view=search&track=ais&uuid=1f1d6d2e-ade9-4baf-b4d2-4fda06f92667#position=0&query=mowing%20lawn">Image by senivpetro</a> on Freepik
 
@@ -75,7 +172,7 @@ Django documentation
 
 ## Deployment
 
-### Heroku Deployment
+### Heroku deployment
 
 The deployed version can be accessed on Heroku [here](https://black-jack21-fa4b7e8cb0bf.herokuapp.com/)
 
