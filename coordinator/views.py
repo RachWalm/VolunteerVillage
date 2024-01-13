@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from .models import CoordinatorProfile
 from volunteer.models import VolunteerProfile, SkillChoices
-from .forms import ProfileFormCo, ProfileFormCoUpdate
+from .forms import ProfileFormCo, ProfileFormCoUpdate, ProfileFormVolunteer
 from role.models import Role
 
 # Create your views here.
@@ -167,10 +167,50 @@ def search_volunteer(request):
     else:
         
         context = {
-            # 'role': role,
-            # 'pk_logged_in': pk_logged_in
-            # 'all_time_periods': all_time_periods,
-            # 'sessions': sessions,
             'activity_list': activity_list,
         }
         return render(request, 'coordinator/search_volunteer.html', context)
+    
+def activate_volunteers(request):
+    volunteers_for_activation = VolunteerProfile.objects.filter(activated=False)
+    if request.method == "POST":
+        print("volunteers_for_activation adjusted")
+        context = {
+            'volunteers_for_activation': volunteers_for_activation,
+        }
+        return render(request, 'coordinator/activate_volunteer.html', context)
+    else:
+        context = {
+            'volunteers_for_activation': volunteers_for_activation,
+        }
+        return render(request, 'coordinator/activate_volunteers.html', context)
+    
+def activate_volunteer(request, id):
+    vol_id = id
+    profile = get_object_or_404(VolunteerProfile, id=vol_id)
+    skills = profile.skilled.values()
+    peoples = VolunteerProfile.objects.filter(id=vol_id).values()
+    true_pairs = [{key for key, value in people.items() if value is True} for people in peoples]
+    sessions =[]
+    for true_pair in true_pairs:
+        for pair in true_pair:
+            pair = get_verbose_name(pair)
+            sessions.append(pair)
+    if request.method == 'POST':
+        form = ProfileFormVolunteer(request.POST, instance=profile)
+        if form.is_valid():
+            volunteer = form.save(commit=False)
+            form.save()
+            volunteer.save()
+            messages.add_message(request, messages.SUCCESS, 'Charity information updated!')
+            return redirect('activatevols')
+    form = ProfileFormVolunteer(instance = profile)
+    
+    context = {
+        'form': form,
+        'profile': profile,
+        'skills':skills,
+        'sessions':sessions,
+    }
+    return render(request, 'coordinator/activate_volunteer.html', context)
+    

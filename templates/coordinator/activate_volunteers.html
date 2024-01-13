@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h2>Activate volunteers</h2>
+
+<table>
+    {% for volunteer in volunteers_for_activation %}
+        <tr>
+            <td>First name</td><td>{{ volunteer.fname}} {{ volunteer.lname}}</td>
+            <td> <a href="/coordinator/activate_volunteer/{{ volunteer.id }}">
+                <button class="btn" type="submit">See profile and activate </button> 
+            </a>
+        </td>
+        <tr>
+            
+    {% endfor %}
+    </table>
+
+{% endif %}
+
+{% endblock %}

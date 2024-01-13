@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h2>Activate volunteers</h2>
+
+<table>
+        <tr>
+            <td>First name</td><td>{{ profile.fname}}</td>
+        </tr>
+        <tr>
+            <td>Last name</td><td>{{ profile.lname}}</td>
+        </tr>
+        <tr>
+            <td>Phone number</td><td>{{ profile.phone}}</td>
+        </tr>
+        <tr>
+            <td>Skills </td>
+            <td>
+                {% for skill in skills %}
+                    {{ skill.name }}, <br>
+                {% endfor %}
+
+            </td>
+        </tr>
+        <tr>
+            <td>Description of skills</td><td>{{ profile.special_skills_description }}</td>
+        </tr>
+        <tr>
+            <td>Length of time available </td><td>{{ profile.time_length_hours }} Hours</td>
+        </tr>
+        <tr>
+            <td>Length of time available</td><td>{{ profile.time_length_days }} Days</td>
+        </tr>
+        <tr>
+            <td>Availabilities - section and day available</td>
+            <td>
+                {% for session in sessions %}
+                    {{ session }}, 
+                {% endfor %}
+            </td>
+        </tr> 
+    </table> 
+
+    <form method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <button type="submit" class="btn">Submit</button>
+    </form>
+{% endif %}
+
+{% endblock %}
