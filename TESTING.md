@@ -46,6 +46,8 @@
 
 #### Coordinator delete charity page
 
+#### Coordinator can activate volunteers
+
 #### Navigation bars
 The top right navigation bar is for login/signup/logout functionality related to allauth and not specific to the type of user logged in.
 
