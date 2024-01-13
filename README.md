@@ -72,6 +72,8 @@ The different apps and relationships were discussed and as the idea formed a rou
 
 #### Coordinator delete charity page
 
+#### Coordinator can activate volunteers
+
 #### Navigation bars
 The top right navigation bar is for login/signup/logout functionality related to allauth and not specific to the type of user logged in.
 
@@ -100,13 +102,15 @@ If someone has signed up as a coordinator that shouldn't have then the superuser
 
 comments and likes area
 
+area to save activity requests from public and charities that haven't been fullfilled.
+
 Improve the model for the days and times as it would be much better if I had managed to use the initial idea of monday = 1 Tuesday = 2 etc and am = 1 pm =2 so then monday am would be 11, this would have given a simpler and lesser number of fields. However, with problems (described in bugs) doing the initial volunteer create profile and time constraints it was decided to go simple for booleans. This would also have made searching for the volunteers that fitted the criteria required simpler. If I had infinite access to more knowledgeable developers I would have discussed this approach with them as I believe it would have saved time in other areas such as the coordinators search of the volunteers.
 
 Once information has been gathered from the text box entries of the coordinators and volunteers entries there, an assessment of the data to look for recurring themes that could be made into fields rather than them typing it out would be a good step.
 
 real time or calendar inputs for emergency or one of events
 
-coordinator can change volunteers availability when weekly stuff occurs to already volunteering.
+coordinator can change volunteers availability when weekly stuff occurs to already volunteering. and record volunteering being done.
 
 follow up tools for coordinators
 
