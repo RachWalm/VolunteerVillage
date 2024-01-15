@@ -40,25 +40,65 @@ The different apps and relationships were discussed and as the idea formed a rou
 
 #### Index page
 
+The index page has the same basic heading and footer that is on every page. 
+
+The heading contains a logo, title and the home page and allauth navigation links. It also contains a message as to whether you are logged in (and who you are logged in as) or if you are not logged in. This area also has flash messages when they are relevant.
+
+The footer has information about the developer and project is for Code Institute.
+
 #### Sign up page
+
+This page is built by allauth, but also has the header and footer as previously described.
 
 #### Log in page
 
+#remember me and forgotten password
+
+This page is built by allauth, but also has the header and footer as previously described.
+
 #### Log out page
+
+This page is built by allauth, but also has the header and footer as previously described.
 
 #### Role choice page
 
+This page is part of the sign up process. As users can either be signing up as a volunteer or as a part of the organisation as a coordinator. The dropdown select has volunteer as the default and only visible when you get to the page as this should be the main option chosen. It can then be changed to coordinator by coordinators.
+
+#### Coordinator add profile page
+
+As the information on this page will be visible to all the coordinators it doesn't contain excessive personal information, it just requests first and last name. This should be sufficient for information connection to the coordinators.
+
 #### Pending activation page
+
+As the coordinators will have access to almost all functions and large quantities of data, there is then a step where another coordinator needs to activate the coordinator. This will prevent accidental or malicious access as a coordinator. This is the page that the coordinator is directed to between them signing up and being activated - even if they log out and back in. If they inform another coordinator that they need activating other coordinators can perform this.
 
 #### Volunteer add profile page
 
+If the role of volunteer has been picked then this takes you to the add profile page. There is little action that a volunteer would want to take without a profile. This page requests information such as name, phone number to contact to volunteer with volunteering opportunities. It also establishes which of the activities from the list they would like to do and when they are regularly available. There is a free text box to add any special skills etc that they want to have highlighted. The information on form for the phone number is Javascript validated to ensure that it is a phone number. The number of hours and days is restricted to the number of hours and days in a week through Javascript validation.
+
 #### Volunteer read their profile page
 
+The volunteer is sent to their profile read page when they have added their profile, or log in with a profile in place. Here they can see the information that is held on them. There is also the option to edit the profile - which sends them to a page to perform that(described below), or delete their profile (which is described below).
+
+This isn't editable on this page to avoid accidental clicking and making corrections.
+
 #### Volunteer edit their profile page
+
+If a volunteer clicks to edit their profile then they are directed to a page that is similar to the form to add their original profile but is populated with the currently held information. To edit they must make the relevant changes to the form and then press submit. Unless submit is pressed no changes will be performed.
+
+#### Volunteer can delete the profile information
+
+If a volunteer no longer wants their information to be held then they can choose to delete the information. In the read volunteer profile page there is a delete button, this leads only to their details so they can't delete others details. The delete button doesn't instantly delete it goes to a Javascript coded modal which informs them that the delete cannot be undone and then has the delete button or a cancel button. This prevents unintentional deletion by an accidental button click.
+
+It does allow the user to remove their information but retain their sign in. Once they have confirmed the delete it takes them back to be able to fill out a blank profile as there is little that they can use the site for without a profile.
 
 #### Coordinator dashboard page
 
 #### Coordinator activate/edit coordinator profiles page
+
+If a coordinator signs up to the site there needs to be a restriction on their access as they will have functionality and data access that shouldn't be freely available, so another coordinator has to activate them by ticking the box and submitting. This page can also be used if the coordinator wishes to change their name - marriage, legally changed name etc. As it isn't anticipated that an organisation like this would have an HR sort of role name changes will have to be done by the coordinators. Also should a coordinator leave then the account will need to be deactivated to restrict access to the information on this page. Coordinators are not deleted as they are likely to take breaks from the organisation and want to return to their charities. Also if any historical information becomes part of the functionality in future developments it is likely that the coordinator object would be required after they have left - such as comments made by a coordinator on a volunteer doing an activity.
+
+Should there be no coordinators activated this could be performed for one coordinator by the superuser in the admin section. 
 
 #### Coordinator search for volunteers page
 
@@ -66,16 +106,26 @@ The different apps and relationships were discussed and as the idea formed a rou
 
 #### Coordinator add charity page
 
+Should a new charity wish to be involved then the coordinator can click on the link in the dashboard and add the charity name and a few details in the text box about the charity's needs and information. The charity can also be assigned a coordinator (or two with a back up, or many for a big charity). Then the information is there as to who to get to deal with a charity's request, or if they are away hopefully enough information is in the text box for someone else to assist.
+
 #### Coordinator choose charity page
+
+Once a charity is in the database then coordinators will want access to the information to read/edit/delete. This page allows coordinators to search by the name (partial or full) of the charity and returns a list of the charities that fit the searched text. For each charity there is a look at charity information (which is non-editable to avoid accidental update), an edit and delete button if they need to change the information or if the charity decides to no longer continue the connection.
+
+#### Coordinator view charity page
+
+When the Look at charity information button is pressed a read only version of the information is presented.
 
 #### Coordinator edit charity page
 
-#### Coordinator delete charity page
+On the choose charity page there is the option to edit the charity. This takes you to a form that is the same format as the add charity form, except it is populated with the currently held information, which can be altered. No changes will take effect until the submit button is pressed.
 
-#### Coordinator can activate volunteers
+#### Coordinator delete charity 
+
+In the choose charity page there is a delete button, this leads only to the details of the selected charity so they can't delete others details. The delete button doesn't instantly delete it goes to a Javascript coded modal which informs them that the delete cannot be undone and then has the delete button or a cancel button. This prevents unintentional deletion by an accidental button click.
 
 #### Navigation bars
-The top right navigation bar is for login/signup/logout functionality related to allauth and not specific to the type of user logged in.
+The top right navigation bar is for login/signup/logout functionality related to allauth and not specific to the type of user logged in. Or to go to the home page.
 
 #### Logged in/out at top of page
 
@@ -91,9 +141,11 @@ Most activities can be performed by the users in one role or another.
 
 One activity that is superuser exclusively able to do is the option for the super user to change the list of activities that can be selected and searched for. This action only needs to be performed once and both selection and search will be updated. 
 
-Database updates/creations/deletions can also be performed in the admin section of the site.
+Database updates/creations/deletions for everything can also be performed in the admin section of the site.
 
-If someone has signed up as a coordinator that shouldn't have then the superuser can also remove their username from roles and coordinator profiles and then they can resubmit their details as a volunteer.
+If someone has signed up as a coordinator by mistake that shouldn't have or maliciously then the superuser can also remove their username from roles and coordinator profiles and then they can resubmit their details as a volunteer - or not if they didn't want to be a volunteer.
+
+If there are no coordinators activated (so no one can activate other coordinators) a coordinator can also be activated in the admin panel in the coordinators profile, then the usual procedure for activating coordinators can proceed.
 
 ### Testing data added to database
 
@@ -102,7 +154,7 @@ If someone has signed up as a coordinator that shouldn't have then the superuser
 
 comments and likes area
 
-area to save activity requests from public and charities that haven't been fullfilled.
+area to save activity requests from public and charities that haven't been fullfilled. And historic information
 
 Improve the model for the days and times as it would be much better if I had managed to use the initial idea of monday = 1 Tuesday = 2 etc and am = 1 pm =2 so then monday am would be 11, this would have given a simpler and lesser number of fields. However, with problems (described in bugs) doing the initial volunteer create profile and time constraints it was decided to go simple for booleans. This would also have made searching for the volunteers that fitted the criteria required simpler. If I had infinite access to more knowledgeable developers I would have discussed this approach with them as I believe it would have saved time in other areas such as the coordinators search of the volunteers.
 
@@ -147,7 +199,7 @@ relate amount of time available to commited already time.
 - [Lighthouse](https://developer.chrome.com/docs/lighthouse/overview/) was used to check for performance and accessibility.
 - [HTML-markdown-validator](https://validator.w3.org/) was used to validate the HTML.
 - [CSS-validator](https://jigsaw.w3.org/css-validator/) was used to perform the CSS validation.
-[PEP8Online.com](https://pep8ci.herokuapp.com/) was used to validate python coding
+- [PEP8Online.com](https://pep8ci.herokuapp.com/) was used to validate python coding
 
 [AmIResponsive](https://ui.dev/amiresponsive).
 
