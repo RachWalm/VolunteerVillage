@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if user.is_authenticated and role == 2 %}
+
 <h2> Which charity do you want to update?</h2>
 
 <h3>Update a charity</h3>
@@ -51,6 +54,10 @@
     </li>
 </ul>
                 
+{% else %}
+    <h3 class="text-center">
+        You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+    </h3>                 
 {% endif %}
 
 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">

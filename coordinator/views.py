@@ -14,18 +14,28 @@ from role.models import Role
 def pending(request):
     return render(request, 'coordinator/pending.html')
 
+def role_authenticate(request):
+    pk_logged_in = request.user.pk
+    role_object = get_object_or_404(Role, id=pk_logged_in)
+    role = role_object.role
+    return role
+
 def dashboard(request):
-    # pk_logged_in = request.user.pk
-    # role = get_object_or_404(Role, id=pk_logged_in)
-    # context = {
-    #     'role': role,
-    #     }
-    return render(request, 'coordinator/dashboard.html')
+    role = role_authenticate(request)
+    context = {
+        'role': role,
+        }
+    return render(request, 'coordinator/dashboard.html', context)
 
 def home(request):
-    return render(request, 'index.html')
+    role = role_authenticate(request)
+    context = {
+        'role': role,
+        }
+    return render(request, 'index.html', context)
 
 def add_profile_co(request):
+    role = role_authenticate(request)
     form= ProfileFormCo
     if request.method == 'POST':
         form_data_co = {
@@ -50,13 +60,13 @@ def add_profile_co(request):
         return redirect('pending')
     context = {
         'form': form,
+        'role': role,
         }
     return render(request, 'coordinator/add_profile.html', context)
 
 
 def search_coordinators(request):
-    pk_logged_in = request.user.pk
-    role = get_object_or_404(Role, id=pk_logged_in)
+    role = role_authenticate(request)
     if request.method == "POST":
         searched = request.POST['search_co']
         co_profile_all=CoordinatorProfile.objects.filter(fname=searched).values()
@@ -72,8 +82,7 @@ def search_coordinators(request):
 
 
 def edit_profile_co(request, id):
-    pk_logged_in = request.user.pk
-    role = get_object_or_404(Role, id=pk_logged_in)
+    role = role_authenticate(request)
     co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
     print(co_profile_all)
     # which_coordinator(request)
@@ -91,14 +100,11 @@ def edit_profile_co(request, id):
     context = {
         'form': form,
         'profile': profile,
-        'pk_logged_in': pk_logged_in,
         'role': role,
     }
     return render(request, 'coordinator/update_profile.html', context)
 
 def delete_profile_co(request, id):
-    pk_logged_in = request.user.pk
-    role = get_object_or_404(Role, id=pk_logged_in)
     co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
     print(co_profile_all)
     co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
@@ -110,8 +116,7 @@ def delete_profile_co(request, id):
 
 
 def read_coordinator(request, id):
-    pk_logged_in = request.user.pk
-    role = get_object_or_404(Role, id=pk_logged_in)
+    role = role_authenticate(request)
     co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
     print(co_profile)
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
@@ -121,7 +126,6 @@ def read_coordinator(request, id):
         'profile': profile,
         'coords':coords,
         'role': role,
-        
     }
     return render(request, 'coordinator/see_profile.html', context)
 
@@ -138,6 +142,7 @@ def search_day_session(day_time):
 
 
 def search_volunteer(request):
+    role = role_authenticate(request)
     # get the list of activities to populate the dropdown select list
     activities = SkillChoices.objects.all().values()
     activity_list = []
@@ -158,34 +163,37 @@ def search_volunteer(request):
             'activity_list': activity_list,
             'activity_choice': activity_choice,
             'verbose_time': verbose_time,
-            # 'all_time_periods': all_time_periods,
-            # 'sessions': sessions,
-            # 'activity_and_time': activity_and_time,
             'intersections':intersections,
+            'role':role,
             }
         return render(request, 'coordinator/search_volunteer.html', context)
     else:
         
         context = {
             'activity_list': activity_list,
+            'role':role,
         }
         return render(request, 'coordinator/search_volunteer.html', context)
     
 def activate_volunteers(request):
+    role = role_authenticate(request)
     volunteers_for_activation = VolunteerProfile.objects.filter(activated=False)
     if request.method == "POST":
         print("volunteers_for_activation adjusted")
         context = {
             'volunteers_for_activation': volunteers_for_activation,
+            'role': role,
         }
         return render(request, 'coordinator/activate_volunteer.html', context)
     else:
         context = {
             'volunteers_for_activation': volunteers_for_activation,
+            'role': role,
         }
         return render(request, 'coordinator/activate_volunteers.html', context)
     
 def activate_volunteer(request, id):
+    role = role_authenticate(request)
     vol_id = id
     profile = get_object_or_404(VolunteerProfile, id=vol_id)
     skills = profile.skilled.values()
@@ -211,6 +219,7 @@ def activate_volunteer(request, id):
         'profile': profile,
         'skills':skills,
         'sessions':sessions,
+        'role': role
     }
     return render(request, 'coordinator/activate_volunteer.html', context)
     

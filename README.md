@@ -100,7 +100,9 @@ This is where active coordinators get sent when they log in and is the centre fo
 
 #### Coordinator activate/edit coordinator profiles page
 
-If a coordinator signs up to the site there needs to be a restriction on their access as they will have functionality and data access that shouldn't be freely available, so another coordinator has to activate them by ticking the box and submitting. This page can also be used if the coordinator wishes to change their name - marriage, legally changed name etc. As it isn't anticipated that an organisation like this would have an HR sort of role name changes will have to be done by the coordinators. Also should a coordinator leave then the account will need to be deactivated to restrict access to the information on this page. Coordinators are not deleted as they are likely to take breaks from the organisation and want to return to their charities. Also if any historical information becomes part of the functionality in future developments it is likely that the coordinator object would be required after they have left - such as comments made by a coordinator on a volunteer doing an activity.
+If a coordinator signs up to the site there needs to be a restriction on their access as they will have functionality and data access that shouldn't be freely available, so another coordinator has to activate them by ticking the box and submitting. This page can also be used if the coordinator wishes to change their name - marriage, legally changed name etc. As it isn't anticipated that an organisation like this would have an HR sort of role name changes will have to be done by the coordinators. Also should a coordinator leave temporarily such as materinity leave, then the account will need to be deactivated to restrict access to the information on this page. 
+
+# COORDINATORS CAN BE DELETED DO i WANT THIS OR WILL IT MESS WITH FUTURE DEV?
 
 In the event there are no coordinators activated this could be performed for one coordinator by the superuser in the admin section. 
 

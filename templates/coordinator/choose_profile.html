@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if user.is_authenticated and role == 2 %}
+
 <h2> Which coordinator do you want to update?</h2>
 
-{% if user.is_authenticated %}
+<a href="{% url 'dashboard' %}">Dashboard</a>
 
     <h3>Update a coordinator profile</h3>
     <form method=POST action="{% url 'searchco' %}">
@@ -12,6 +15,10 @@
         <button class="btn" type="submit">Search Coordinators</button>
     </form>
 
+{% else %}
+<h3 class="text-center">
+    You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+</h3>                 
 {% endif %}
 
     {% if searched %}

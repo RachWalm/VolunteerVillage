@@ -2,7 +2,9 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated and role == 2 %}
+
+<a href="{% url 'dashboard' %}">Dashboard</a>
 
 <h2>Activate volunteers</h2>
 
@@ -19,6 +21,10 @@
     {% endfor %}
     </table>
 
-{% endif %}
+    {% else %}
+    <h3 class="text-center">
+        You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+    </h3>                 
+    {% endif %}
 
 {% endblock %}

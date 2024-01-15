@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% if user.is_authenticated and role == 2 %}
+
 <h2> Charity - {{ profile }}</h2>
 
-{% if user.is_authenticated %}
 <ul>    
     <li>
         <a href="{% url 'account_logout' %}">Logout</a>
@@ -18,8 +20,6 @@
         <a href="{% url 'searchco' %}">Update a coordinator profile</a>
     </li>
 </ul>
-                
-{% endif %}
 
 <div class=row>
     <div class="col-3">
@@ -46,5 +46,11 @@
         <h4> {{ coord.fname }} {{ coord.lname }} </h4>
     {%endfor %}
     </div>
+
+{% else %}
+<h3 class="text-center">
+    You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+</h3>                 
+{% endif %}
 
 {%endblock%}

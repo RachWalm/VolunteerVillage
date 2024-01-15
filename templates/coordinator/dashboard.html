@@ -3,7 +3,7 @@
 {% block content %}
 <h2 class="text-center"> Coordinator Dashboard</h2>
 
-{% if user.is_authenticated %}
+{% if user.is_authenticated and role == 2 %}
 
 <ul>    
     <li>
