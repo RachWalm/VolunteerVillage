@@ -20,7 +20,7 @@ Next a coordinator will need to be able to search the list of volunteers by acti
 
 Coordinators will also activate the volunteer profiles. This is a manual check which has two purposes, to check it isn't a spam profile and to consider if there is already known opportunities for them to volunteer.
 
-Coordinators will also have their own charities that they work with, there is a section for them to record information in a text box about their charities.
+Coordinators will also have their own charities that they work with, there is a section for them to record information in a text box about their charities. There is a link showing which coordinators and charities work together.
 
 On every page there is the logo for volunteer village which is based around a helping hand coming out of the dark surrounded by holding hands circle motif and has the words volunteer village in the centre. This is mirrored in the favicon on the tab.
 

@@ -8,9 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (elevenNumbers.test(entry)) {
             if (hours <= 168) {
                 if (days <= 7) {
-                    alert("Days are valid!");
                     var final = document.getElementById("volunteerForm");
-                    console.log(final);
                     final.submit();
                 } else {
                     alert("That is more days than in a week! Please enter 7 or less.");
