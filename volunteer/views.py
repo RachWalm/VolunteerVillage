@@ -41,7 +41,6 @@ def read_profile(request):
 def add_profile(request):
     form= ProfileForm
     if request.method == 'POST':
-        
         form = ProfileForm(request.POST) 
         if form.is_valid(): 
             profile = form.save(commit=False)
@@ -50,7 +49,6 @@ def add_profile(request):
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Profile sent for approval -  then you will be matched!')
         else:
-            print('testelse')
             print(form.errors)
         return redirect('read')
     context = {
@@ -81,5 +79,5 @@ def delete_profile(request):
     pk_logged_in = request.user.pk
     volunteer = get_object_or_404(VolunteerProfile, user_name_id=pk_logged_in)
     volunteer.delete()
-    messages.add_message(request, messages.SUCCESS, 'Profile deleted!')
+    messages.add_message(request, messages.WARNING, 'Profile deleted!')
     return redirect('add')

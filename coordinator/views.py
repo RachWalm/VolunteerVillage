@@ -104,7 +104,7 @@ def delete_profile_co(request, id):
     co_profile = id 
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
     profile.delete()
-    messages.add_message(request, messages.SUCCESS, 'Coordinator information deleted!')
+    messages.add_message(request, messages.WARNING, 'Coordinator information deleted!')
     return redirect('dashboard')
 
 
@@ -207,7 +207,7 @@ def activate_volunteer(request, id):
             volunteer = form.save(commit=False)
             form.save()
             volunteer.save()
-            messages.add_message(request, messages.SUCCESS, 'Charity information updated!')
+            messages.add_message(request, messages.SUCCESS, 'Volunteer activated!')
             return redirect('activatevols')
     form = ProfileFormVolunteer(instance = profile)
     
