@@ -32,17 +32,21 @@ def role_authenticate(request):
 
 def dashboard(request):
     role = role_authenticate(request)
+    co_not_activated = CoordinatorProfile.objects.filter(activated=False)
+    co_not_activated_count = co_not_activated.count()
+    print(co_not_activated)
+    vol_not_activated = VolunteerProfile.objects.filter(activated=False).count()
+    print(vol_not_activated)
     context = {
         'role': role,
+        'co_not_activated':co_not_activated,
+        'co_not_activated_count': co_not_activated_count,
+        'vol_not_activated': vol_not_activated,
         }
     return render(request, 'coordinator/dashboard.html', context)
 
 def home(request):
-    role = role_authenticate(request)
-    context = {
-        'role': role,
-        }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 def add_profile_co(request):
     form= ProfileFormCo

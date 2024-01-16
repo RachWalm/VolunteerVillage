@@ -23,11 +23,7 @@ def role_authenticate(request):
     
     
 def home(request):
-    role = role_authenticate(request)
-    context = {
-        'role': role,
-        }
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 
 def add_charity(request):

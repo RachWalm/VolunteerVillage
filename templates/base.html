@@ -51,6 +51,9 @@
                 <li>
                     <a href="{% url 'account_logout' %}">Logout</a>
                 </li>
+                <li>
+                    <a href="{% url 'login_success' %}">Your starting page</a>
+                </li>
             {% else %}
                 <li>
                     <a href="{% url 'account_signup' %}">Sign up</a>
@@ -68,8 +71,7 @@
     <h1 class="text-center">
         Volunteer Village
     </h1>
-    </div>    
-
+    </div> 
     <main>
         {% block content %}
         <!-- Content of the page -->

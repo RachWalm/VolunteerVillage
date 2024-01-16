@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2 class="text-center"> Coordinator Dashboard</h2>
 
 {% if user.is_authenticated and role == 2 %}
+
+<h2 class="text-center"> Coordinator Dashboard</h2>
+
+<p> {{ co_not_activated_count }} </p>
+
+{% for co_not_activate in co_not_activated %}
+
+<p> {{ co_not_activate.fname }} </p>
+
+{% endfor %}
+
+{{ vol_not_activated }}
 
 <ul>    
     <li>

@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import VolunteerProfile, SkillChoices
+from role.models import Role
 from .forms import ProfileForm
 # Create your views here.
 
