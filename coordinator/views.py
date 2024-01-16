@@ -37,7 +37,6 @@ def home(request):
     return render(request, 'index.html', context)
 
 def add_profile_co(request):
-    role = role_authenticate(request)
     form= ProfileFormCo
     if request.method == 'POST':
         form_data_co = {
@@ -45,24 +44,15 @@ def add_profile_co(request):
             'fname': request.POST['fname'],
             'lname': request.POST['lname'],
         }
-
-        print('test')
         form = ProfileFormCo(form_data_co) 
-        print(form.is_valid)
         if form.is_valid(): 
-            print('tesst5')
             profile = form.save(commit=False)
             profile.user_name = request.user
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Coordinator information saved and needs activating!')
-            print(form)
-            print('test4')
-        else:
-            print(form.errors)
         return redirect('pending')
     context = {
         'form': form,
-        'role': role,
         }
     return render(request, 'coordinator/add_profile.html', context)
 
@@ -85,10 +75,7 @@ def search_coordinators(request):
 
 def edit_profile_co(request, id):
     role = role_authenticate(request)
-    co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
-    print(co_profile_all)
     co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
-    print(co_profile)
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
     if request.method == 'POST':
         form = ProfileFormCoUpdate(request.POST, instance=profile)
@@ -106,10 +93,7 @@ def edit_profile_co(request, id):
     return render(request, 'coordinator/update_profile.html', context)
 
 def delete_profile_co(request, id):
-    co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
-    print(co_profile_all)
     co_profile = id 
-    print(co_profile)
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
     profile.delete()
     messages.add_message(request, messages.SUCCESS, 'Coordinator information deleted!')
@@ -117,17 +101,23 @@ def delete_profile_co(request, id):
 
 
 def read_coordinator(request, id):
-    role = role_authenticate(request)
-    co_profile = id 
-    profile = get_object_or_404(CoordinatorProfile, id=co_profile)
-    coords = CharityProfile.objects.filter(charities_coordinators__id=co_profile)
-    print(coords)
-    context = {
-        'profile': profile,
-        'coords':coords,
-        'role': role,
-    }
-    return render(request, 'coordinator/see_profile.html', context)
+    try:
+        role = role_authenticate(request)
+        co_profile = id 
+        profile = get_object_or_404(CoordinatorProfile, id=co_profile)
+        coords = CharityProfile.objects.filter(charities_coordinators__id=co_profile)
+        context = {
+            'profile': profile,
+            'coords':coords,
+            'role': role,
+        }
+        return render(request, 'coordinator/see_profile.html', context)
+    except AttributeError:
+        error_message = "This coordinator is not currently associated with any charities, please return when charities have had them added."
+        context = {
+            'error_message':error_message
+        }   
+        return render(request, 'coordinator/see_profile.html', context)
 
 def get_verbose_name(name):
     session = VolunteerProfile._meta.get_field(name)
@@ -179,7 +169,6 @@ def activate_volunteers(request):
     role = role_authenticate(request)
     volunteers_for_activation = VolunteerProfile.objects.filter(activated=False)
     if request.method == "POST":
-        print("volunteers_for_activation adjusted")
         context = {
             'volunteers_for_activation': volunteers_for_activation,
             'role': role,
