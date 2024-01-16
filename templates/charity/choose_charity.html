@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
 {% if user.is_authenticated and role == 2 %}
 
 <h2> Which charity do you want to update?</h2>
@@ -41,7 +40,7 @@
     <p>This search did not find any charities</p>
 {% endif %}
 
-{% if user.is_authenticated %}
+
 <ul>    
     <li>
         <a href="{% url 'account_logout' %}">Logout</a>

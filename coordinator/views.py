@@ -6,8 +6,10 @@ from django.http import HttpResponseRedirect
 from django.db.models import Q
 from .models import CoordinatorProfile
 from volunteer.models import VolunteerProfile, SkillChoices
-from .forms import ProfileFormCo, ProfileFormCoUpdate, ProfileFormVolunteer
 from role.models import Role
+from charity.models import CharityProfile
+from .forms import ProfileFormCo, ProfileFormCoUpdate, ProfileFormVolunteer
+
 
 # Create your views here.
 
@@ -85,7 +87,6 @@ def edit_profile_co(request, id):
     role = role_authenticate(request)
     co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
     print(co_profile_all)
-    # which_coordinator(request)
     co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
     print(co_profile)
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
@@ -107,7 +108,7 @@ def edit_profile_co(request, id):
 def delete_profile_co(request, id):
     co_profile_all=CoordinatorProfile.objects.filter().values() #gives the queryset with all details
     print(co_profile_all)
-    co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
+    co_profile = id 
     print(co_profile)
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
     profile.delete()
@@ -117,10 +118,9 @@ def delete_profile_co(request, id):
 
 def read_coordinator(request, id):
     role = role_authenticate(request)
-    co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
-    print(co_profile)
+    co_profile = id 
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
-    coords = profile.coordinators_charities.values()
+    coords = CharityProfile.objects.filter(charities_coordinators__id=co_profile)
     print(coords)
     context = {
         'profile': profile,

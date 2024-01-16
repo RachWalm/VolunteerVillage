@@ -58,7 +58,10 @@ def search_charity(request):
         }
         return render(request, 'charity/choose_charity.html', context)
     else:
-        return render(request, 'charity/choose_charity.html',)
+        context = {
+            'role': role
+        }
+        return render(request, 'charity/choose_charity.html', context)
 
 
 def read_charity(request, id):
