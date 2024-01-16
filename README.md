@@ -38,6 +38,8 @@ The different apps and relationships were discussed and as the idea formed a rou
 
 ### Existing Features
 
+Every page that should only be used by coordinators checked that that only authenticated people can us it in the HTML with an if user.is_authenticated and a check by the function in views role_authenticate, which checks if they are of the correct role and if they have been activated by a coordinator.
+
 #### Index page
 
 The index page has the same basic heading and footer that is on every page. 
@@ -65,6 +67,8 @@ This page is built by allauth, but also has the header and footer as previously 
 This page is part of the sign up process. As users can either be signing up as a volunteer or as a part of the organisation as a coordinator. The dropdown select has volunteer as the default and only visible when you get to the page as this should be the main option chosen. It can then be changed to coordinator by coordinators.
 
 This page currently only has the option of volunteer or coordinator, this could be simply updated as each role is associated with a number to allow for additional roles, such as charity login or different types of coordinator should the organisation grow to require that coordinators are more focused or want the activations restricted to certain personnel. 
+
+Currently, 1 is volunteer and 2 is coordinator. Where it is required that access is blocked 0 has been returned as in the function role_authenticate which is used to restrict pages bringing up their content unless it is a coordinator who is activated.
 
 #### Coordinator add profile page
 
@@ -104,7 +108,9 @@ This is where active coordinators get sent when they log in and is the centre fo
 
 If a coordinator signs up to the site there needs to be a restriction on their access as they will have functionality and data access that shouldn't be freely available, so another coordinator has to activate them by ticking the box and submitting. This page can also be used if the coordinator wishes to change their name - marriage, legally changed name etc. As it isn't anticipated that an organisation like this would have an HR sort of role name changes will have to be done by the coordinators. Also should a coordinator leave temporarily such as materinity leave, then the account will need to be deactivated to restrict access to the information on this page. 
 
-# COORDINATORS CAN BE DELETED DO i WANT THIS OR WILL IT MESS WITH FUTURE DEV?
+As there is a many to many relationship from charities the coordinator also is removed from displaying against that charity.
+
+Although the functionality to delete coordinators is currently in place, this may need to be deactivated were the commenting on the volunteers activities to be implemented. As if that were implemented and coordinators were making the comments and being recorded as making the comments then deleting the coordinator could be problematic. This functionality is here currently as it has no impact on other functionality and might be useful. Were it necessary to remove this functionality to allow other things that require legacy data to function properly then then activate function could be used to deactivate coordinator restricting their access but not their history.
 
 In the event there are no coordinators activated this could be performed for one coordinator by the superuser in the admin section. 
 
@@ -135,6 +141,8 @@ On the choose charity page there is the option to edit the charity. This takes y
 #### Coordinator delete charity 
 
 In the choose charity page there is a delete button, this leads only to the details of the selected charity so they can't delete others details. The delete button doesn't instantly delete it goes to a Javascript coded modal which informs them that the delete cannot be undone and then has the delete button or a cancel button. This prevents unintentional deletion by an accidental button click.
+
+Deleting a charity does not delete any of the coordinators that are stated in the many to many relationship as this is not a ON_CASCADE relationship.
 
 #### Navigation bars
 The top right navigation bar is for login/signup/logout functionality related to allauth and not specific to the type of user logged in. Or to go to the home page.

@@ -12,6 +12,8 @@
 
 ## Features testing - Manual
 
+check each page against role to view it and logged in and activated
+
 #### Index page
 
 #### Sign up page

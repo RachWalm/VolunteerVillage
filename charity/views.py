@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import CharityProfile
+from coordinator.models import CoordinatorProfile
 from .forms import CharityForm
 from role.models import Role
 
@@ -12,8 +13,15 @@ def role_authenticate(request):
     pk_logged_in = request.user.pk
     role_object = get_object_or_404(Role, id=pk_logged_in)
     role = role_object.role
-    return role
-
+    activates_coordinator = CoordinatorProfile.objects.filter(user_name_id=request.user.pk).values()
+    for activate_coordinator in activates_coordinator:
+        active = activate_coordinator['activated']
+    if active:
+        return role
+    else: 
+        return 0
+    
+    
 def home(request):
     role = role_authenticate(request)
     context = {
