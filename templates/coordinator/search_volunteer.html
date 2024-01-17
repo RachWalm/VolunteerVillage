@@ -36,9 +36,11 @@
     
 </form>
 
-
-<p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
-{{ all_time_periods }}
+{% if activity_choice %}
+    <p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
+{% else %}
+        <h2>Please enter a search</h2>
+    {% endif %}
 
 <table>
 {% for intersection in intersections %}

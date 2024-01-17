@@ -30,10 +30,6 @@ class CoordinatorProfile(models.Model):
         return str(self.fname + " " + self.lname)
 
 
-class ChooseCoordinator(models.Model):  #probably don't need this model, but will delete when sure
-    first = models.CharField(max_length=128)
-    last = models.CharField(max_length=128)
-    
 class Feedback(models.Model):
     '''Details of the coordinator making the notes and volunteer they are associated with'''
     coordinator = models.ManyToManyField(
