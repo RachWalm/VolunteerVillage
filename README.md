@@ -6,33 +6,47 @@ The volunteer village site was designed to be used by people in two roles.
 
 The first role is as a volunteer looking to provide voluntary assistance. The second is as a coordinator at Volunteer Village who's attempting to match people who are in need of assistance with appropriate assistance. The volunteer signs up and provides contact information and details of what kind of assistance they are able to provide and when they are free on a weekly basis in a profile form which is saved. 
 
-The second role of coordinator can search the volunteers profiles to be given a list of people who can provide that type of assistance at that time. The coordinator also works with specific charities so has a section to record information on their charities for their own memory and if it needs to be cross-referenced/used by other coordinators. In this way coordinators can match charities (or individuals who contact the organisation) with volunteers and external to the site help them connect.
+The second role of coordinator can search the volunteers profiles to be given a list of people who can provide that type of assistance at that time to match them with requests external to the system. 
 
 ## UX design
 
 The aim is to have a landing page that is enthusiastic about volunteering. This should hook the volunteer without making it seem like hard work. From there a new user (coordinator or volunteer) can sign up, select their role and fill out a profile form.
 
-As a volunteer they can then see their profile, edit it and delete their personal details from the account, with the current functionality.
+On every page there is the logo for volunteer village which is based around a helping hand coming out of the dark surrounded by holding hands circle motif and has the words volunteer village in the centre. This is mirrored in the favicon on the tab.
 
-As a coordinator you can activate accounts, modify and delete other coordinators / your own account. It is anticipated that this would be a small voluntary organisation so no HR/IT department to modify other coordinators - but joining or leaving or name changes would need to be operational by coordinators of each other.
+As a volunteer they can then see their profile, edit it and delete their personal details from the account, having created it at the beginning of the process.
+
+As a coordinator you can activate accounts of other coordinators, modify and delete other coordinators / your own account. It is anticipated that this would be a small voluntary organisation so no HR/IT department to modify other coordinators - but joining or leaving or name changes would need to be operational by coordinators of each other. This allows for security to be put in place so anyone can't just log in as a coordinator.
 
 Next a coordinator will need to be able to search the list of volunteers by activity and when they are likely to be available, then read their contact details to contact them. So there is a search for volunteers, but this doesn't have any modification/creation/deletion function as their personal data is to stay under control of the volunteers.
 
-Coordinators will also activate the volunteer profiles. This is a manual check which has two purposes, to check it isn't a spam profile and to consider if there is already known opportunities for them to volunteer.
+Coordinators will also activate the volunteer profiles. This is a manual check which has two purposes, to check it isn't a spam profile and to consider if there is already known opportunities for them to volunteer at.
 
-Coordinators will also have their own charities that they work with, there is a section for them to record information in a text box about their charities. There is a link showing which coordinators and charities work together.
+There were some ideas that would make the site more useful but are outside prime objective of the site to allow volunteers to sign up and then be matched with requests. These were still initially thought through to avoid coding in such a way as to require an extensive recode to introduce them later.
 
-On every page there is the logo for volunteer village which is based around a helping hand coming out of the dark surrounded by holding hands circle motif and has the words volunteer village in the centre. This is mirrored in the favicon on the tab.
+In an ideal extension the coordinators will also have their own charities that they work with, there is a section for them to record information in a text box about their charities. This text box section is to record information on their charities for their own memory and if it needs to be cross-referenced/used by other coordinators should the primary coordinator be away or a deputy be working with them. There is a link showing which coordinators and charities work together.
+
+It would also be great if feed back or notes on the volunteers could be made by the coordinators. Maybe allowing them to have a star system to show how many activities they have undertaken maybe reaching certain levels gives you a different badge or title. Also where praise has been given by the people they assist that this could be fed back to the volunteers through their page.
+
+I expect that a similar function where notes on a volunteer from one coordinator to other coordinators could be left that isn't seen by the volunteer. Such as when they have contacted someone about something but it wasn't a match so that a different coordinator doesn't attempt the same match.
 
 ### Wireframes
 
 The initial [wireframes](document/initial-wireframes.pdf) that were built were for an index page to draw in the volunteer, for a volunteer profile page that can be created and updated by people wishing to volunteer, a page explaining how to use the system and a coordinators page. Some of these had both large monitor and small device setups displayed. Wireframes were not created for the nice to have pages at this stage such as the charities section and feedback and likes section. 
+
+As the coding progressed some of the wireframes had to be deviated from as some of the nice to have ideas were incorporated and some of the fields that were initially designed in became redundant. Index page followed the wireframe idea, the create volunteer profile page only had one major change to the layout and that was rather than toggles for the activities it was decided that a select list would be more pleasing on the page as there are so many radio buttons for the days and times. The coordinator page was completely redesigned as additional functionality than just the search has been coded. Therefore the coordinator page now shows how many people need activating and links to perform tasks. The volunteer search page was also not styled as the coordinator page was going to be as it was decided that the picture/avatar of the volunteer didn't add any value due to it only being seen by the person it was of and coordinators who were unlikely to ever meet the volunteers. Therefore the search just provides written results.
+
+None of the nice to haves were wireframed as although being aware of them during coding was advantageous to not leave problems for future additions what they would look like is not relevant in initial design.
 
 ### Relationship diagram
 
 The different apps and relationships were discussed and as the idea formed a rough initial relationship diagram was developed.
 
 ![relationship diagram](document/relationships.png)
+
+As can be seen from the relationship diagram sketch the additional Charity section and Star Rating section were considered to avoid future problems should they be added at a later stage. The main bulk of the project centered around getting volunteers to sign up with details and coordinators to search them. Therefore we started with a user, this was intended to be through allauth and would sign up everyone that used the site (except admin/userusers). The user then had a one to one relationship with a profile (whether a coordinator profile or a volunteer profile). It was anticipated to store very little information on the coordinators. The volunteers the initial idea was to split into three sections to keep it modular. One for personal details, one for the skills they were offering and one for timeperiods that they were regularly available. This was ultimately combined as the wireframe had the information all being collected on one page which then has some trouble saving. Three forms on one HTML page just added to the complexity of debugging the view and forms. Multiple models also added complexity to searching the information through three models, so one model containing the personal details/skills/time was created from merging the others.
+
+![final relationship diagram](document/final-relationship.png)
 
 ## Features
 

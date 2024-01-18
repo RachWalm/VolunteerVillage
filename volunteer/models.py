@@ -16,7 +16,7 @@ class SkillChoices(models.Model):
 class VolunteerProfile(models.Model):
     """Personal information about the volunteer"""
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=128)
+    # name = models.CharField(max_length=128)
     fname = models.CharField(
         max_length=50,
         null=False,

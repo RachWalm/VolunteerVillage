@@ -15,14 +15,15 @@
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
-</script>
+    </script>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 
 <body>
-    <div class="row">
+<div class="row">
     <!--logo-->
-    <img class="rounded-circle img-responsive col-3 col-lg-1" id="logo" src="{% static 'images/logo.jpg' %}" alt="logo for volunteer village of hands">
-    <div class="col-6 col-lg-9">
+    <img class="rounded-circle img-responsive col-4 col-sm-3 col-md-2 col-lg-1" id="logo" src="{% static 'images/logo.jpg' %}" alt="logo for volunteer village of hands">
+    <div class="col-8 col-sm-7">
         {% for message in messages %}
             <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg"
             role="alert">
@@ -33,7 +34,7 @@
 
         {% endfor %}
     </div>
-    <div class="col-1">
+    <div class="col-4 col-sm-2 col-md-1">
     {% if user.is_authenticated %}
         <p>Logged in as {{ user }}</p>
     {% else %}
@@ -42,8 +43,9 @@
     </div>
 
     <!-- Navigation bar-->
-    <nav class="navbar navbar-nav navbar-fixed-top navbar-right col-3 col-lg-1">
-        <ul>
+    <div class="col-8 col-md-2">
+    <nav class="navbar navbar-nav navbar-fixed-top navbar-right">
+        <ul class="nav justify-content-end">
             <li>
                 <a href="{% url 'index' %}">Home Page</a>
             </li>
@@ -65,6 +67,7 @@
         </ul>
     </nav>
     </div>
+</div>
 
     <!--Site name-->
     <div class="row">
