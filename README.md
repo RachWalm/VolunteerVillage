@@ -158,6 +158,18 @@ In the choose charity page there is a delete button, this leads only to the deta
 
 Deleting a charity does not delete any of the coordinators that are stated in the many to many relationship as this is not a ON_CASCADE relationship.
 
+#### Defensive programming
+
+The pages where there is sensitive information displayed/updated to/by the coordinator have built into the HTML that the user must be is_authenticated and have a role of 2 which is the integer assigned to coordinators. The pages that display sensitive information to the volunteers use the logged in users information to provide them with just their own information so they can't look at or interact with any other information. This secures the visualisation of the pages. In both these instances you don't get to the page you get sent to the 404 error so you can't manipulate the pages in anyway.
+
+All delete functionality is subject to a modal so that they can choose to halt the delete if it has been clicked in error by cancelling or clicking out of the modal.
+
+The delete function for the volunteers deleting their own information is once again defended by using the logged in person as the information that is deleted.
+
+The other delete functions have the role_authenticate function in the views.py for that action to ensure that they are logged in as a coordinator to be able to delete. If they are not a coordinator then they are redirected to the index page without the delete going ahead. As the setting up the role can be accessed just through sign up I have not put in defensive programming here and if attempting to set a role without being logged in it will have an error. If you attempt to add a volunteer profile without being logged in when you press submit it leads to an error.
+
+
+
 #### Navigation bars
 The top right navigation bar is for login/signup/logout functionality related to allauth and not specific to the type of user logged in. Or to go to the home page.
 

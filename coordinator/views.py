@@ -105,11 +105,15 @@ def edit_profile_co(request, id):
     return render(request, 'coordinator/update_profile.html', context)
 
 def delete_profile_co(request, id):
-    co_profile = id 
-    profile = get_object_or_404(CoordinatorProfile, id=co_profile)
-    profile.delete()
-    messages.add_message(request, messages.WARNING, 'Coordinator information deleted!')
-    return redirect('dashboard')
+    role= role_authenticate(request)
+    if role == 2:
+        co_profile = id 
+        profile = get_object_or_404(CoordinatorProfile, id=co_profile)
+        profile.delete()
+        messages.add_message(request, messages.WARNING, 'Coordinator information deleted!')
+        return redirect('dashboard')
+    else:
+        return redirect ('index')
 
 
 def read_coordinator(request, id):

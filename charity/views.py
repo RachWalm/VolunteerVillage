@@ -103,8 +103,12 @@ def edit_charity(request, id):
     return render(request, 'charity/update_charity.html', context)
 
 def delete_charity(request, id):
-    charity = get_object_or_404(CharityProfile, id=id)
-    charity.delete()
-    messages.add_message(request, messages.WARNING, 'Charity information deleted!')
-    return redirect('dashboard')
+    role = role_authenticate(request)
+    if role == 2:
+        charity = get_object_or_404(CharityProfile, id=id)
+        charity.delete()
+        messages.add_message(request, messages.WARNING, 'Charity information deleted!')
+        return redirect('dashboard')
+    else:
+        return redirect('index')
     
