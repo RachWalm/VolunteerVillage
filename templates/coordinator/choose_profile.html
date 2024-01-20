@@ -32,16 +32,16 @@
     <li>{{ alls.fname }}
     {{ alls.lname }}
     <a href="/coordinator/update_profile/{{ alls.id }}">
-    <button class="btn" type="submit">Update name / activate</button> 
+    <button class="btn btn-outline-info" type="submit">Update name / activate</button> 
     </a>
     </li>
     <li>
         <a href="/coordinator/see_profile/{{ alls.id }}">
-            <button class="btn" type="submit">See profile</button> 
+            <button class="btn btn-outline-info" type="submit">See profile</button> 
         </a>
     </li>
     <li>
-        <button class="btn btn-delete" coordinator_id= {{ alls.id }} type="submit">Delete coordinator information</button> 
+        <button class="btn btn-delete btn-danger" coordinator_id= {{ alls.id }} type="submit">Delete coordinator information</button> 
     </li>
     {% endfor %}
     </ul>

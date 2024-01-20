@@ -9,7 +9,7 @@
 <form method=POST action="{% url 'search_charity' %}">
     {% csrf_token %}
     <input type="search" placeholder="charity name" aria-label="Charity name search" name="search">
-    <button class="btn" type="submit">Search Charity</button>
+    <button class="btn btn-outline-info" type="submit">Search Charity</button>
 </form>
 
 {% if searched %}
@@ -23,16 +23,16 @@
     {% for alls in charity_profile_all %}
     <li>{{ alls.charity_name }}
         <a href="/charity/read_charity/{{ alls.id }}">
-            <button class="btn" type="submit">Look at charity information</button> 
+            <button class="btn btn-outline-info" type="submit">Look at charity information</button> 
         </a>
     </li>
     <li>
         <a href="/charity/update_charity/{{ alls.id }}">
-            <button class="btn" type="submit">Update charity information</button> 
+            <button class="btn btn-outline-info" type="submit">Update charity information</button> 
         </a>
     </li>
     <li>
-        <button class="btn btn-delete" charity_id="{{ alls.id }}"" type="submit">Delete charity information</button> 
+        <button class="btn btn-delete btn-danger" charity_id="{{ alls.id }}" type="submit">Delete charity information</button> 
     </li>
     {% endfor %}
     </ul>

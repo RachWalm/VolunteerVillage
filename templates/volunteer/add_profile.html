@@ -2,12 +2,14 @@
 
 {% block content %}
 
-<h2>Create a profile</h2>
+<h2 class="ms-5">Create your profile</h2>
 
 <form method="post" id="volunteerForm">
-    {{ form.as_table }}
+    <div class="m-5 form-control">
+    {{ form.as_p }}
     {% csrf_token %}
-    <button type="submit" id="submithold" class="btn">Submit</button>
+    <button type="submit" id="submithold" class="btn btn-outline-info">Submit</button>
+    </div>
 </form>
 
 <script src="/static/js/validationscript.js"></script>

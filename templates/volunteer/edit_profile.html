@@ -2,21 +2,23 @@
 
 {% block content %}
 
-<li>
-    <a href="{% url 'index' %}">Home page</a>
-</li>
-<li>
-    <a href="{% url 'read' %}">Your profile</a>
-</li>
+<div class="col-12">
+    <nav class="nav">
+        <a class="nav-link" href="{% url 'index' %}">Home page</a>
+        <a class="nav-link" href="{% url 'edit' %}">Edit profile</a>
+    </nav>
+</div>
 
-<h2>Edit a profile</h2>
+<h2 class="ms-5">Edit your profile</h2>
 
-<h3>On this page you can edit your profile and preferences. Please be aware than until submit has been clicked no changes will be made to your profile.</h3>
+<h3 class="ms-5">On this page you can edit your profile and preferences. Please be aware than until submit has been clicked no changes will be made to your profile.</h3>
 
 <form method="post" id="volunteerForm">
-    {{ form.as_table }}
+    <div class="m-5 form-control">
+    {{ form.as_p }}
     {% csrf_token %}
-    <button type="submit" class="btn" id="submithold">Submit</button>
+    <button type="submit" class="btn btn-outline-info" id="submithold">Submit</button>
+    </div>
 </form>
 
 <script src="/static/js/validationscript.js"></script>

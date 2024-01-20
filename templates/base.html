@@ -19,11 +19,11 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
 </head>
 
-<body>
-<div class="row">
+<body value="#fafff7">
+<div class="row d-flex flex-wrap">
     <!--logo-->
-    <img class="rounded-circle img-responsive col-4 col-sm-3 col-md-2 col-lg-1" id="logo" src="{% static 'images/logo.jpg' %}" alt="logo for volunteer village of hands">
-    <div class="col-8 col-sm-7">
+    <img class="rounded-circle img-responsive col-4 col-sm-3 col-md-2 col-xl-1" id="logo" src="{% static 'images/logo.jpg' %}" alt="logo for volunteer village of hands">
+    <div class="col-8 col-lg-6 col-xl-7">
         {% for message in messages %}
             <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg"
             role="alert">
@@ -34,45 +34,33 @@
 
         {% endfor %}
     </div>
-    <div class="col-4 col-sm-2 col-md-1">
+    <div class="col-4 col-md-2">
     {% if user.is_authenticated %}
-        <p>Logged in as {{ user }}</p>
+        <p class="shadow p-2">Logged in as {{ user }}</p>
     {% else %}
-        <p>Not logged in</p>
+        <p class="shadow p-2">Not logged in</p>
     {% endif %}
     </div>
 
     <!-- Navigation bar-->
-    <div class="col-8 col-md-2">
-    <nav class="navbar navbar-nav navbar-fixed-top navbar-right">
-        <ul class="nav justify-content-end">
-            <li>
-                <a href="{% url 'index' %}">Home Page</a>
-            </li>
+    <div class="col-12 col-sm-6 col-lg-2">
+    <nav class="nav navbar-fixed-top flex-row flex-lg-column">
+                <a class="nav-link" href="{% url 'index' %}">Home Page</a>
             {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'account_logout' %}">Logout</a>
-                </li>
-                <li>
-                    <a href="{% url 'login_success' %}">Your page</a>
-                </li>
+                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'login_success' %}">Your page</a>
             {% else %}
-                <li>
-                    <a href="{% url 'account_signup' %}">Sign up</a>
-                </li>
-                <li>
-                    <a href="{% url 'account_login' %}">Log in</a>
-                </li>
+                    <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+                    <a class="nav-link" href="{% url 'account_login' %}">Log in</a>
             {% endif %}
-        </ul>
     </nav>
     </div>
 </div>
 
     <!--Site name-->
     <div class="row">
-    <h1 class="text-center">
-        Volunteer Village
+    <h1 class="text-center display-1 ">
+        <strong>Volunteer Village</strong>
     </h1>
     </div> 
     <main>
