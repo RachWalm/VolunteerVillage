@@ -46,7 +46,6 @@ def add_profile(request):
         if form.is_valid(): 
             profile = form.save(commit=False)
             profile.user_name = request.user
-            profile.name = request.user
             form.save()
             messages.add_message(request, messages.SUCCESS, 'Profile sent for approval -  then you will be matched!')
         else:

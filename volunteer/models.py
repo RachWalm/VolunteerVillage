@@ -22,14 +22,14 @@ class VolunteerProfile(models.Model):
         null=False,
         blank=False,
         verbose_name='First Name',
-        help_text='format: required, max_length=50',
+        help_text='This is require and has a maximum length of 50 characters',
     )
     lname = models.CharField(
         max_length=50,
         null=False,
         blank=False,
         verbose_name='Last Name',
-        help_text='format: required, max_length=50',
+        help_text='This is require and has a maximum length of 50 characters',
     )
     phone = models.CharField(
         max_length=12,
@@ -39,12 +39,6 @@ class VolunteerProfile(models.Model):
     created_on = models.DateTimeField(
         auto_now_add=True,
     )
-    updated_on = models.DateTimeField(
-        auto_now_add = True,
-    )
-    # profile_picture = CloudinaryField(
-    #     'image', default='placeholder',
-    # )
     skilled = models.ManyToManyField(
         SkillChoices, 
         verbose_name=("Activity options"),
@@ -52,19 +46,22 @@ class VolunteerProfile(models.Model):
     special_skills_description = models.TextField(
         null=False,
         blank=True,
-        verbose_name='special skills description',
+        verbose_name='Information',
         max_length = 500,
+        help_text='If you wish to provide us with specific information about skills - type it here',
     )
     activated = models.BooleanField(
         default=False,
     )
     time_length_hours = models.PositiveSmallIntegerField(
         default=0,
+        verbose_name='Hours per week you can be available',
         validators=[
             MaxValueValidator(168), #168 hours in a week
         ])    
     time_length_days = models.PositiveSmallIntegerField(
         default=0,
+        verbose_name='days per week you can be available',
         validators=[
             MaxValueValidator(7), #7 days in a week
         ])
@@ -156,30 +153,4 @@ class VolunteerProfile(models.Model):
 def __str__(self):
     return self.name
     
-    '''def get_fname(self):
-        """Get the first name of the volunteer"""
-        return [self.fname]
     
-    def get_lname(self):
-        """Get the last name of the volunteer"""
-        return [self.lname]
-    
-    def get_phone(self):
-        """Get the phone number of the volunteer"""
-        return [self.phone]
-    
-    def get_created_on(self):
-        """Get the date the volunteer created the profile"""
-        return [self.created_on]
-    
-    def get_updated_on(self):
-        """Get the date the profile was last updated"""
-        return [self.updated_on]
-    
-    def get_profile_picture(self):
-        """Get the profile picture of the volunteer"""
-        return [self.profile_picture]
-    
-    def get_special_skills_description(self):
-        """Get the information provided by volunteer of special skills"""
-        return [self.special_skills_description]'''
