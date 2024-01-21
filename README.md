@@ -214,6 +214,8 @@ follow up tools for coordinators
 
 volunteers can search the charities with the permission of the charity.
 
+email is an option on sign up but should be possible to update and include or change it later.
+
 section to request assistance.
 
 relate amount of time available to commited already time.

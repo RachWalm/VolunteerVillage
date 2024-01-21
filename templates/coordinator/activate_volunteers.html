@@ -2,29 +2,26 @@
 
 {% block content %}
 
-{% if user.is_authenticated and role == 2 %}
-
-<a href="{% url 'dashboard' %}">Dashboard</a>
-
-<h2>Activate volunteers</h2>
-
-<table>
-    {% for volunteer in volunteers_for_activation %}
-        <tr>
-            <td>First name</td><td>{{ volunteer.fname}} {{ volunteer.lname}}</td>
-            <td> <a href="/coordinator/activate_volunteer/{{ volunteer.id }}">
-                <button class="btn" type="submit">See profile and activate </button> 
-            </a>
-        </td>
-        <tr>
-            
-    {% endfor %}
-    </table>
-
-    {% else %}
-    <h3 class="text-center">
-        You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
-    </h3>                 
-    {% endif %}
-
+<div class="d-flex container container-height align-items-center">
+    <div class="d-flex align-items-center text-center col-12 flex-column">
+        {% if user.is_authenticated and role == 2 %}
+            <h2 class="mb-4">Activate volunteers</h2>
+            <table class="table table-hover">
+                {% for volunteer in volunteers_for_activation %}
+                    <tr>
+                        <td>First name</td><td>{{ volunteer.fname}} {{ volunteer.lname}}</td>
+                        <td> <a href="/coordinator/activate_volunteer/{{ volunteer.id }}">
+                            <button class="btn btn-outline-info" type="submit">See profile and activate </button> 
+                        </a>
+                    </td>
+                    <tr> 
+                {% endfor %}
+            </table>
+        {% else %}
+        <h3 class="text-center">
+            You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+        </h3>                 
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

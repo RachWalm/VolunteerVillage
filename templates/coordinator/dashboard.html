@@ -1,42 +1,69 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="d-flex container container-height align-items-center">
+    <div class="text-center col-12">
+        {% if user.is_authenticated and role == 2 %}
 
-{% if user.is_authenticated and role == 2 %}
+        <h2 class="text-center mb-4"> Coordinator Dashboard</h2>
+        <div class="row">
+            <div class="d-flex col-4">
+                <div class="col">
+                    <div class="col">
+                        <h3>Number of Coordinator profiles awaiting activation</h3>
+                    </div>
+                    <div class="col text-center text-warning fs-1">
+                        <p><strong> {{ co_not_activated_count }} </strong></p>
+                    </div>
+                    <div class="col">
+                        <h4>Names of coordinators awaiting activation</h4>
+                    </div>
+                    <div class="col">
+                        {% for co_not_activate in co_not_activated %}
 
-<h2 class="text-center"> Coordinator Dashboard</h2>
+                        <p> {{ co_not_activate.fname }} </p>
 
-<p> {{ co_not_activated_count }} </p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="d-flex col-4">
+                <div class="col">
+                    <div class="col">
+                        <h3>Number of volunteers awaiting activation</h3>
+                    </div>
+                    <div class="col text-center text-warning fs-1">
+                        <p><strong>{{ vol_not_activated }}</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-{% for co_not_activate in co_not_activated %}
-
-<p> {{ co_not_activate.fname }} </p>
-
-{% endfor %}
-
-{{ vol_not_activated }}
-
-<ul>    
-    <li>
-        <a href="{% url 'add_charity' %}">Add Charity profile</a>
-    </li>
-    <li>
-        <a href="{% url 'search_charity' %}">Update Charity profile</a>
-    </li>
-    <li>
-        <a href="{% url 'searchco' %}">Update a coordinator profile name or activate</a>
-    </li>
-    <li>
-        <a href="{% url 'searchvol' %}">Search for a volunteer</a>
-    </li>
-    <li>
-        <a href="{% url 'activatevols' %}">Activate volunteers</a>
-    </li>
-</ul>
-{% else %}
-<h3 class="text-center">
-    You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
-</h3>                 
-{% endif %}
+        <nav class="nav">
+            <button class="btn btn-outline-info m-2">
+                <a class="nav-link" href="{% url 'add_charity' %}">Add Charity profile</a>
+            </button>
+            <button class="btn btn-outline-info m-2">
+                <a class="nav-link" href="{% url 'search_charity' %}">Update Charity profile</a>
+            </button>
+            <button class="btn btn-outline-info m-2">
+                <a class="nav-link" href="{% url 'searchvol' %}">Search for a volunteer</a>
+            </button>
+            <button class="btn btn-outline-info m-2">
+                <a class="nav-link" href="{% url 'activatevols' %}">Activate volunteers</a>
+            </button>
+            <button class="btn btn-outline-info m-2">
+                <a class="nav-link" href="{% url 'searchco' %}">Coordinator profiles</a>
+            </button>
+        </nav>
+        {% else %}
+        <h3 class="text-center">
+            You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+        </h3>                 
+        {% endif %}
+    </div>
+</div>
 
 {%endblock%}

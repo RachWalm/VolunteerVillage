@@ -2,68 +2,70 @@
 
 {% block content %}
 
-{% if user.is_authenticated and role == 2 %}
+<div class="d-flex container container-height align-items-center">
+    <div class="text-center col-12">
 
-<h2> Which coordinator do you want to update?</h2>
+        {% if user.is_authenticated and role == 2 %}
 
-<a href="{% url 'dashboard' %}">Dashboard</a>
+        <h2 class="mb-3"> Which coordinator do you want to update?</h2>
 
-    <h3>Update a coordinator profile</h3>
-    <form method=POST action="{% url 'searchco' %}">
-        {% csrf_token %}
-        <input type="search" placeholder="First name" aria-label="Coordinator first name search" name="search_co">
-        <button class="btn" type="submit">Search Coordinators</button>
-    </form>
+            <h3 class="mb-3">Update a coordinator profile</h3>
+            <form method=POST action="{% url 'searchco' %}">
+                {% csrf_token %}
+                <input type="search" placeholder="First name" aria-label="Coordinator first name search" name="search_co">
+                <button class="btn" type="submit">Search Coordinators</button>
+            </form>
 
-{% else %}
-<h3 class="text-center">
-    You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
-</h3>                 
-{% endif %}
+        {% else %}
+        <h3 class="text-center">
+            You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+        </h3>                 
+        {% endif %}
 
-    {% if searched %}
-        <h2>You searched for {{ searched }}</h2>
-    {% else %}
-        <h2>You didn't enter a name</h2>
-    {% endif %}
+        {% if searched %}
+            <h2 class="mb-4">You searched for {{ searched }}</h2>
+        {% else %}
+            <h2 class="mb-4">You didn't enter a name</h2>
+        {% endif %}
+        
+        {% for alls in co_profile_all %}
+            <div class="row mt-2">
+            <div class="col-4 col-md-3">
+                {{ alls.fname }}
+                {{ alls.lname }}
+            </div>
+            <div class="col-6 col-md-7">
+            <a href="/coordinator/update_profile/{{ alls.id }}">
+                <button class="btn btn-outline-info" type="submit">Update name / activate</button> 
+            </a>
+            <a href="/coordinator/see_profile/{{ alls.id }}">
+                <button class="btn btn-outline-info" type="submit">See profile</button> 
+            </a>
+                <button class="btn btn-delete btn-danger" coordinator_id= {{ alls.id }} type="submit">Delete coordinator information</button>
+            </div> 
+        </div>
+        {% endfor %}
 
-    <ul>
-    {% for alls in co_profile_all %}
-    <li>{{ alls.fname }}
-    {{ alls.lname }}
-    <a href="/coordinator/update_profile/{{ alls.id }}">
-    <button class="btn btn-outline-info" type="submit">Update name / activate</button> 
-    </a>
-    </li>
-    <li>
-        <a href="/coordinator/see_profile/{{ alls.id }}">
-            <button class="btn btn-outline-info" type="submit">See profile</button> 
-        </a>
-    </li>
-    <li>
-        <button class="btn btn-delete btn-danger" coordinator_id= {{ alls.id }} type="submit">Delete coordinator information</button> 
-    </li>
-    {% endfor %}
-    </ul>
-
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete coordinator?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this coordinator? This action is permanent and cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                    <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete coordinator?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this coordinator? This action is permanent and cannot be undone.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                        <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <script src="/static/js/deletecoordinator.js"></script>
+<script src="/static/js/deletecoordinator.js"></script>
 
 {%endblock%}

@@ -1,42 +1,44 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="d-flex container container-height align-items-center">
+    <div class="col-12">
+        {% if user.is_authenticated and role == 2 %}
 
-{% if user.is_authenticated and role == 2 %}
+        <h2 class="mb-4"> Coordinator - {{ profile }}</h2>
 
-<h2> Coordinator - {{ profile }}</h2>
-
-<a href="{% url 'dashboard' %}">Dashboard</a>
-
-<div class=row>
-    <div class="col-3">
-        <h4> Coordinators first name </h4>
-    </div>
-    <div class="col-3">
-        <h4> {{ profile.fname }} </h4>
+        <div class=row>
+            <div class="col-3">
+                <h4> Coordinators first name </h4>
+            </div>
+            <div class="col-3">
+                <h4> {{ profile.fname }} </h4>
+            </div>
+        </div>
+        <div class=row>
+            <div class="col-3">
+                <h4> Coordinators last name </h4>
+            </div>
+            <div class="col-3">
+                <h5> {{ profile.lname }} </h5>
+            </div>
+        </div>
+        <div class=row>
+            <div class="col-3">
+                <h4> Coordinators Associated charities </h4> 
+            </div>
+            <div class="col-3">
+            {% for coord in coords %}
+                <h4> {{ coord }}</h4>
+            {%endfor %}
+            </div>
+            {% else %}
+            <h3 class="text-center">
+                You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+            </h3>                 
+            {% endif %}
+        </div>
     </div>
 </div>
-<div class=row>
-    <div class="col-3">
-        <h4> Coordinators last name </h4>
-    </div>
-    <div class="col-3">
-        <h5> {{ profile.lname }} </h5>
-    </div>
-</div>
-<div class=row>
-    <div class="col-3">
-        <h4> Coordinators Associated charities </h4> 
-    </div>
-    <div class="col-3">
-    {% for coord in coords %}
-        <h4> {{ coord }}</h4>
-    {%endfor %}
-    </div>
-    {% else %}
-    <h3 class="text-center">
-        You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
-    </h3>                 
-    {% endif %}
 
 {%endblock%}

@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-{% if user.is_authenticated %}
-
-<h2>Create a profile</h2>
-
-<form method="post">
-    {{ form.as_p }}
-    {% csrf_token %}
-    <button type="submit" class="btn">Submit</button>
-</form>
-
-{% endif %}
+<div class="d-flex container container-height align-items-center">
+    <div class="text-center col-12">
+        {% if user.is_authenticated %}
+            <h2>Create a profile</h2>
+            <form method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-info">Submit</button>
+            </form>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock %}

@@ -35,12 +35,14 @@ class VolunteerProfile(models.Model):
         max_length=12,
         blank=False,
         null=False,
+        help_text='Must be 11 digits and numerical',
     )
     created_on = models.DateTimeField(
         auto_now_add=True,
     )
     skilled = models.ManyToManyField(
         SkillChoices, 
+        help_text='To select multiple activities hold control and click',
         verbose_name=("Activity options"),
         related_name="VolunteerProfiles")
     special_skills_description = models.TextField(

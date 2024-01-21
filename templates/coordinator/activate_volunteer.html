@@ -1,60 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="d-flex container container-height align-items-center">
+    <div class="col-12">
 
-{% if user.is_authenticated and role == 2 %}
+    {% if user.is_authenticated and role == 2 %}
 
-<h2>Activate volunteers</h2>
+    <h2 class="mb-4">Activate volunteers</h2>
 
-<a href="{% url 'dashboard' %}">Dashboard</a>
+    <table class="table">
+            <tr>
+                <td>First name</td><td>{{ profile.fname}}</td>
+            </tr>
+            <tr>
+                <td>Last name</td><td>{{ profile.lname}}</td>
+            </tr>
+            <tr>
+                <td>Phone number</td><td>{{ profile.phone}}</td>
+            </tr>
+            <tr>
+                <td>Skills </td>
+                <td>
+                    {% for skill in skills %}
+                        {{ skill.name }}, <br>
+                    {% endfor %}
 
-<table>
-        <tr>
-            <td>First name</td><td>{{ profile.fname}}</td>
-        </tr>
-        <tr>
-            <td>Last name</td><td>{{ profile.lname}}</td>
-        </tr>
-        <tr>
-            <td>Phone number</td><td>{{ profile.phone}}</td>
-        </tr>
-        <tr>
-            <td>Skills </td>
-            <td>
-                {% for skill in skills %}
-                    {{ skill.name }}, <br>
-                {% endfor %}
+                </td>
+            </tr>
+            <tr>
+                <td>Description of skills</td><td>{{ profile.special_skills_description }}</td>
+            </tr>
+            <tr>
+                <td>Length of time available </td><td>{{ profile.time_length_hours }} Hours</td>
+            </tr>
+            <tr>
+                <td>Length of time available</td><td>{{ profile.time_length_days }} Days</td>
+            </tr>
+            <tr>
+                <td>Availabilities - section and day available</td>
+                <td>
+                    {% for session in sessions %}
+                        {{ session }}, 
+                    {% endfor %}
+                </td>
+            </tr> 
+        </table> 
 
-            </td>
-        </tr>
-        <tr>
-            <td>Description of skills</td><td>{{ profile.special_skills_description }}</td>
-        </tr>
-        <tr>
-            <td>Length of time available </td><td>{{ profile.time_length_hours }} Hours</td>
-        </tr>
-        <tr>
-            <td>Length of time available</td><td>{{ profile.time_length_days }} Days</td>
-        </tr>
-        <tr>
-            <td>Availabilities - section and day available</td>
-            <td>
-                {% for session in sessions %}
-                    {{ session }}, 
-                {% endfor %}
-            </td>
-        </tr> 
-    </table> 
-
-    <form method="post">
-        {{ form.as_p }}
-        {% csrf_token %}
-        <button type="submit" class="btn">Submit</button>
-    </form>
-    {% else %}
-    <h3 class="text-center">
-        You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
-    </h3>                 
-    {% endif %}
-
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-outline-info">Submit</button>
+        </form>
+        {% else %}
+        <h3 class="text-center">
+            You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+        </h3>                 
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

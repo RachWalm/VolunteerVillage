@@ -1,74 +1,75 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="d-flex container container-height align-items-center">
+    <div class="text-center col-12">
+        {% if user.is_authenticated and role == 2 %}
 
-{% if user.is_authenticated and role == 2 %}
+        <h2> Search for a volunteer to complete your task</h2>
 
-<h2> Search for a volunteer to complete your task</h2>
+        <form method="POST" action="{% url 'searchvol' %}">
+            {% csrf_token %}
+            <label for="activity_choice">Volunteering activity</label>
+            <select name="activity_choice">
+            {% for activity in activity_list %}
+                <option value="{{ activity }}"> {{ activity}}</option>
+            {% endfor %}
+            </select>   
+            <label for="day_choice">Volunteering activity</label>
+            <select name="day_choice">
+                <option value="mon">Monday</option>
+                <option value="tue">Tuesday</option>
+                <option value="wed">Wednesday</option>
+                <option value="thu">Thursday</option>
+                <option value="fri">Friday</option>
+                <option value="sat">Saturday</option>
+                <option value="sun">Sunday</option>
+            </select>
+            <label for="session_choice">Volunteering activity</label>
+            <select name="session_choice">
+                <option value="_am"><b>Morning</b></option>
+                <option value="_pm"><b>Afternoon</b></option>
+                <option value="_ev"><b>Evening</b></option>
+            </select>
+            <button class="btn btn-outline-info" type="submit" value="Submit">Search Volunteers</button>
+            
+        </form>
 
-<a href="{% url 'dashboard' %}">Dashboard</a>
+        {% if activity_choice %}
+            <p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
+        {% else %}
+                <h2>Please enter a search</h2>
+            {% endif %}
 
-<form method="POST" action="{% url 'searchvol' %}">
-    {% csrf_token %}
-    <label for="activity_choice">Volunteering activity</label>
-    <select name="activity_choice">
-    {% for activity in activity_list %}
-        <option value="{{ activity }}"> {{ activity}}</option>
-    {% endfor %}
-    </select>   
-    <label for="day_choice">Volunteering activity</label>
-    <select name="day_choice">
-        <option value="mon">Monday</option>
-        <option value="tue">Tuesday</option>
-        <option value="wed">Wednesday</option>
-        <option value="thu">Thursday</option>
-        <option value="fri">Friday</option>
-        <option value="sat">Saturday</option>
-        <option value="sun">Sunday</option>
-    </select>
-    <label for="session_choice">Volunteering activity</label>
-    <select name="session_choice">
-        <option value="_am"><b>Morning</b></option>
-        <option value="_pm"><b>Afternoon</b></option>
-        <option value="_ev"><b>Evening</b></option>
-    </select>
-    <button class="btn" type="submit" value="Submit">Search Volunteers</button>
-    
-</form>
+        <table>
+        {% for intersection in intersections %}
+            <tr>
+                <td>First name</td><td>{{ intersection.fname}}</td>
+            </tr>
+            <tr>
+                <td>Last name</td><td>{{ intersection.lname}}</td>
+            </tr>
+            <tr>
+                <td>Phone number</td><td>{{ intersection.phone}}</td>
+            </tr>
+            <tr>
+                <td>Description of skills</td><td>{{ intersection.special_skills_description }}</td>
+            </tr>
+            <tr>
+                <td>Length of time available </td><td>{{ intersection.time_length_hours }} Hours</td>
+            </tr>
+            <tr>
+                <td>Length of time available</td><td>{{ intersection.time_length_days }} Days</td>
+            </tr>
+        {% endfor %}
+        </table>
 
-{% if activity_choice %}
-    <p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
-{% else %}
-        <h2>Please enter a search</h2>
-    {% endif %}
-
-<table>
-{% for intersection in intersections %}
-    <tr>
-        <td>First name</td><td>{{ intersection.fname}}</td>
-    </tr>
-    <tr>
-        <td>Last name</td><td>{{ intersection.lname}}</td>
-    </tr>
-    <tr>
-        <td>Phone number</td><td>{{ intersection.phone}}</td>
-    </tr>
-    <tr>
-        <td>Description of skills</td><td>{{ intersection.special_skills_description }}</td>
-    </tr>
-    <tr>
-        <td>Length of time available </td><td>{{ intersection.time_length_hours }} Hours</td>
-    </tr>
-    <tr>
-        <td>Length of time available</td><td>{{ intersection.time_length_days }} Days</td>
-    </tr>
-{% endfor %}
-</table>
-
-{% else %}
-<h3 class="text-center">
-    You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
-</h3>                 
-{% endif %}
+        {% else %}
+        <h3 class="text-center">
+            You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
+        </h3>                 
+        {% endif %}
+    </div>
+</div>
 
 {%endblock%}
