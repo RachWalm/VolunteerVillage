@@ -34,11 +34,11 @@
 
         {% endfor %}
     </div>
-    <div class="col-4 col-md-2">
+    <div class="col-4 col-md-2 mt-2">
     {% if user.is_authenticated %}
-        <p class="shadow p-2">Logged in as {{ user }}</p>
+        <p class="shadow p-2 align-middle text-center">Logged in as {{ user }}</p>
     {% else %}
-        <p class="shadow p-2">Not logged in</p>
+        <p class="shadow p-2 align-middle text-center">Not logged in</p>
     {% endif %}
     </div>
 
