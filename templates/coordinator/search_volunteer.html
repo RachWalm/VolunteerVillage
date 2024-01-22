@@ -40,9 +40,12 @@
         {% else %}
                 <h2>Please enter a search</h2>
             {% endif %}
-
-        <table>
+        <div class="text-start">
+        <table class="table table-striped">
         {% for intersection in intersections %}
+            <tr>
+                <td><strong>{{ intersection.fname}} {{ intersection.lname}}</strong></td><td></td>
+            </tr>
             <tr>
                 <td>First name</td><td>{{ intersection.fname}}</td>
             </tr>
@@ -63,6 +66,7 @@
             </tr>
         {% endfor %}
         </table>
+        </div>
 
         {% else %}
         <h3 class="text-center">
