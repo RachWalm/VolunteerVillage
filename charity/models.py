@@ -10,7 +10,7 @@ class CharityProfile(models.Model):
     null=False,
     blank=False,
     verbose_name='Charity Name',
-    help_text='format: required, max_length=50',
+    help_text='required, max length 50 characters',
     )
     charity_description = models.TextField(
         null=False,
@@ -19,8 +19,11 @@ class CharityProfile(models.Model):
     )
     charities_coordinators = models.ManyToManyField(
         CoordinatorProfile, 
-        verbose_name=("coordinators associated with charity"),
-        related_name="CharityProfiles")
+        verbose_name=('coordinators associated with charity'),
+        related_name='CharityProfiles',
+        help_text='Hold control and click to select multiple',
+        )
+    
     
     def __str__(self):
         return self.charity_name
