@@ -25,7 +25,8 @@ def read_profile(request):
         for pair in true_pair:
             pair = get_verbose_name(pair)
             sessions.append(pair)
-    print(true_pairs)
+    if 'activated' in sessions:
+        sessions.remove('activated')
     context = {
         'peoples': peoples,
         'pk_logged_in': pk_logged_in,
