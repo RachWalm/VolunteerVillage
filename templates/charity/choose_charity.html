@@ -3,18 +3,14 @@
 {% block content %}
 <div class="d-flex container container-height align-items-center">
     <div class="text-center col-12">
-
         {% if user.is_authenticated and role == 2 %}
-
         <h2> Which charity do you want to update?</h2>
-
         <h3>Update a charity</h3>
         <form method=POST action="{% url 'search_charity' %}">
             {% csrf_token %}
             <input type="search" placeholder="charity name" aria-label="Charity name search" name="search">
             <button class="btn btn-outline-info" type="submit">Search Charity</button>
         </form>
-
         {% if searched %}
             <h2 class="mb-4">You searched for {{ searched }}</h2>
         {% else %}
@@ -41,14 +37,13 @@
             {% endfor %}
         {% else %}
             <p>This search did not find any charities</p>
-        {% endif %}
-                        
+        {% endif %}          
         {% else %}
             <h3 class="text-center">
                 You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
             </h3>                 
         {% endif %}
-
+        <!-- Modal taken from blog-->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -66,8 +61,7 @@
                 </div>
             </div>
         </div>
-
-        <script src="/static/js/deletecharity.js"></script>
     </div>
 </div>
+<script src="/static/js/deletecharity.js"></script>
 {%endblock%}

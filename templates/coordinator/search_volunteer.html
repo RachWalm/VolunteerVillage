@@ -1,12 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="d-flex container container-height align-items-center">
     <div class="text-center col-12">
         {% if user.is_authenticated and role == 2 %}
-
         <h2> Search for a volunteer to complete your task</h2>
-
         <form method="POST" action="{% url 'searchvol' %}">
             {% csrf_token %}
             <label for="activity_choice">Volunteering activity</label>
@@ -32,9 +29,7 @@
                 <option value="_ev"><b>Evening</b></option>
             </select>
             <button class="btn btn-outline-info" type="submit" value="Submit">Search Volunteers</button>
-            
         </form>
-
         {% if activity_choice %}
             <p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
         {% else %}
@@ -67,7 +62,6 @@
         {% endfor %}
         </table>
         </div>
-
         {% else %}
         <h3 class="text-center">
             You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
@@ -75,5 +69,4 @@
         {% endif %}
     </div>
 </div>
-
 {%endblock%}

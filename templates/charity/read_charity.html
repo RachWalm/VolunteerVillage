@@ -4,9 +4,7 @@
 <div class="d-flex container container-height align-items-center">
     <div class="col-12">
         {% if user.is_authenticated and role == 2 %}
-
         <h2 class="mb-5"> Charity - {{ profile }}</h2>
-
         <div class=row>
             <div class="col-3">
                 <h4> Charity name </h4>
@@ -32,7 +30,6 @@
                 <h4> {{ coord.fname }} {{ coord.lname }} </h4>
             {%endfor %}
             </div>
-
         {% else %}
         <h3 class="text-center">
             You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
@@ -40,5 +37,4 @@
         {% endif %}
     </div>
 </div>
-
 {%endblock%}

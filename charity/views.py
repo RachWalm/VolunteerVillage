@@ -1,8 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.models import User
 from django.contrib import messages
-from django.views import generic, View
-from django.http import HttpResponseRedirect
 from .models import CharityProfile
 from coordinator.models import CoordinatorProfile
 from .forms import CharityForm
@@ -45,13 +42,13 @@ def add_charity(request):
         }
     return render(request, 'charity/add_charity.html', context)
 
+
 def search_charity(request):
     role = role_authenticate(request)
     if request.method == "POST":
         searched = request.POST['search']
         charity_profile_all=CharityProfile.objects.filter(charity_name__icontains=searched).values()
         content = charity_profile_all.exists()
-        print(content)
         context = {
             'searched':searched,
             'charity_profile_all':charity_profile_all,
@@ -69,18 +66,15 @@ def search_charity(request):
 def read_charity(request, id):
     role = role_authenticate(request)
     ch_profile = id 
-    print(ch_profile)
     profile = get_object_or_404(CharityProfile, id=ch_profile)
     coords = profile.charities_coordinators.values()
-    print(coords)
     context = {
         'profile': profile,
         'coords':coords,
         'role': role,
     }
     return render(request, 'charity/read_charity.html', context)
-    
-    
+        
 
 def edit_charity(request, id):
     role = role_authenticate(request)
@@ -101,6 +95,7 @@ def edit_charity(request, id):
         'role': role,
     }
     return render(request, 'charity/update_charity.html', context)
+
 
 def delete_charity(request, id):
     role = role_authenticate(request)

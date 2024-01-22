@@ -1,13 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="d-flex container container-height align-items-center">
     <div class="col-12">
-
     {% if user.is_authenticated and role == 2 %}
-
     <h2 class="mb-4">Activate volunteers</h2>
-
     <table class="table">
             <tr>
                 <td>First name</td><td>{{ profile.fname}}</td>
@@ -45,7 +41,6 @@
                 </td>
             </tr> 
         </table> 
-
         <form method="post">
             {{ form.as_p }}
             {% csrf_token %}

@@ -11,10 +11,9 @@ from charity.models import CharityProfile
 from .forms import ProfileFormCo, ProfileFormCoUpdate, ProfileFormVolunteer
 
 
-# Create your views here.
-
 def pending(request):
     return render(request, 'coordinator/pending.html')
+
 
 def role_authenticate(request):
     pk_logged_in = request.user.pk
@@ -28,15 +27,12 @@ def role_authenticate(request):
     else: 
         return 0
     
-    
 
 def dashboard(request):
     role = role_authenticate(request)
     co_not_activated = CoordinatorProfile.objects.filter(activated=False)
     co_not_activated_count = co_not_activated.count()
-    print(co_not_activated)
     vol_not_activated = VolunteerProfile.objects.filter(activated=False).count()
-    print(vol_not_activated)
     context = {
         'role': role,
         'co_not_activated':co_not_activated,
@@ -45,8 +41,10 @@ def dashboard(request):
         }
     return render(request, 'coordinator/dashboard.html', context)
 
+
 def home(request):
     return render(request, 'index.html')
+
 
 def add_profile_co(request):
     form= ProfileFormCo
@@ -84,7 +82,6 @@ def search_coordinators(request):
         return render(request, 'coordinator/choose_profile.html', {'role': role},)
 
 
-
 def edit_profile_co(request, id):
     role = role_authenticate(request)
     co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
@@ -103,6 +100,7 @@ def edit_profile_co(request, id):
         'role': role,
     }
     return render(request, 'coordinator/update_profile.html', context)
+
 
 def delete_profile_co(request, id):
     role= role_authenticate(request)
@@ -134,6 +132,7 @@ def read_coordinator(request, id):
             'error_message':error_message
         }   
         return render(request, 'coordinator/see_profile.html', context)
+
 
 def get_verbose_name(name):
     session = VolunteerProfile._meta.get_field(name)
@@ -174,12 +173,12 @@ def search_volunteer(request):
             }
         return render(request, 'coordinator/search_volunteer.html', context)
     else:
-        
         context = {
             'activity_list': activity_list,
             'role':role,
         }
         return render(request, 'coordinator/search_volunteer.html', context)
+    
     
 def activate_volunteers(request):
     role = role_authenticate(request)
@@ -196,6 +195,7 @@ def activate_volunteers(request):
             'role': role,
         }
         return render(request, 'coordinator/activate_volunteers.html', context)
+    
     
 def activate_volunteer(request, id):
     role = role_authenticate(request)
@@ -218,7 +218,6 @@ def activate_volunteer(request, id):
             messages.add_message(request, messages.SUCCESS, 'Volunteer activated!')
             return redirect('activatevols')
     form = ProfileFormVolunteer(instance = profile)
-    
     context = {
         'form': form,
         'profile': profile,

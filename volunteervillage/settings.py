@@ -49,9 +49,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account', 
     'allauth.socialaccount',
-    'cloudinary_storage',
     'django.contrib.staticfiles',
-    'cloudinary',
     'volunteer',
     'coordinator',
     'role',
@@ -103,6 +101,7 @@ TEMPLATES = [
         },
     },
 ]
+
 
 WSGI_APPLICATION = 'volunteervillage.wsgi.application'
 

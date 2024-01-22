@@ -1,15 +1,14 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Role
 from volunteer.models import VolunteerProfile
 from coordinator.models import CoordinatorProfile
 from .forms import RoleForm
 
-# Create your views here.
 
 def home(request):
     return render(request, 'index.html')
+
 
 def role(request):
     form = RoleForm
@@ -37,6 +36,7 @@ def role(request):
     form = RoleForm()
     context = {'form': form,}
     return render(request, 'role/role.html', context)
+
 
 def login_success(request):
     """
@@ -66,3 +66,4 @@ def login_success(request):
             return redirect('index')
     else:
         return redirect('role')
+    

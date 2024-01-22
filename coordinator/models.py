@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class CoordinatorProfile(models.Model):
-    '''Details of the coordinator and link to which charities they are associated with'''
+    '''Details of the coordinator'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     fname = models.CharField(
         max_length=50,
@@ -25,4 +25,3 @@ class CoordinatorProfile(models.Model):
     
     def __str__(self):
         return str(self.fname + " " + self.lname)
-

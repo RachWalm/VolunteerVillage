@@ -1,33 +1,25 @@
 {% extends "base.html" %}
-
 {% block content %}
-
 <div class="d-flex container container-height align-items-center">
     <div class="text-center col-12">
-
         {% if user.is_authenticated and role == 2 %}
-
         <h2 class="mb-3"> Which coordinator do you want to update?</h2>
-
             <h3 class="mb-3">Update a coordinator profile</h3>
             <form method=POST action="{% url 'searchco' %}">
                 {% csrf_token %}
                 <input type="search" placeholder="First name" aria-label="Coordinator first name search" name="search_co">
                 <button class="btn" type="submit">Search Coordinators</button>
             </form>
-
         {% else %}
         <h3 class="text-center">
             You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
         </h3>                 
         {% endif %}
-
         {% if searched %}
             <h2 class="mb-4">You searched for {{ searched }}</h2>
         {% else %}
             <h2 class="mb-4">You didn't enter a name</h2>
         {% endif %}
-        
         {% for alls in co_profile_all %}
             <div class="row mt-2">
             <div class="col-4 col-md-3">
@@ -45,7 +37,7 @@
             </div> 
         </div>
         {% endfor %}
-
+        <!-- Modal taken from blog-->
         <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">

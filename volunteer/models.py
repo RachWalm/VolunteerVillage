@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.conf import settings
-# from cloudinary.models import CloudinaryField
 from django.core.validators import MaxValueValidator
 
 
@@ -152,7 +150,7 @@ class VolunteerProfile(models.Model):
         verbose_name="Sunday evening",
     )
 
+
 def __str__(self):
     return self.name
-    
     

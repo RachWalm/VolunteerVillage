@@ -1,20 +1,15 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="d-flex container container-height align-items-center">
     <div class="col-12">
         {% if user.is_authenticated and role == 2 %}
-
         <h2>Update a charity</h2>
-
         <h3>No changes made will take effect or be saved until submit is pressed</h3>
-
         <form method="post">
             {{ form.as_p }}
             {% csrf_token %}
             <button type="submit" class="btn btn-outline-info">Submit</button>
         </form>
-
         {% else %}
         <h3 class="text-center">
             You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.
@@ -22,5 +17,4 @@
         {% endif %}
     </div>
 </div>
-
 {% endblock %}

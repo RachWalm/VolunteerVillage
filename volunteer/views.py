@@ -1,12 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.models import User
 from django.contrib import messages
-from django.views import generic, View
-from django.http import HttpResponseRedirect
-from .models import VolunteerProfile, SkillChoices
-from role.models import Role
+from .models import VolunteerProfile
 from .forms import ProfileForm
-# Create your views here.
 
 
 def home(request):
@@ -17,6 +12,7 @@ def get_verbose_name(name):
     session = VolunteerProfile._meta.get_field(name)
     verbose = session.verbose_name
     return verbose
+
 
 def read_profile(request):
     pk_logged_in = request.user.pk
@@ -39,6 +35,7 @@ def read_profile(request):
     }
     return render(request, 'volunteer/read_profile.html', context)
 
+
 def add_profile(request):
     form= ProfileForm
     if request.method == 'POST':
@@ -57,7 +54,6 @@ def add_profile(request):
     return render(request, 'volunteer/add_profile.html', context)
 
 
-
 def edit_profile(request):
     pk_logged_in = request.user.pk
     availabilities = get_object_or_404(VolunteerProfile, user_name_id =pk_logged_in)
@@ -74,6 +70,7 @@ def edit_profile(request):
         'pk_logged_in': pk_logged_in
     }
     return render(request, 'volunteer/edit_profile.html', context)
+
 
 def delete_profile(request):
     pk_logged_in = request.user.pk

@@ -1,12 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
 <div class="d-flex container container-height align-items-center">
     <div class="col-12">
         {% if user.is_authenticated and role == 2 %}
-
         <h2 class="mb-4"> Coordinator - {{ profile }}</h2>
-
         <div class=row>
             <div class="col-3">
                 <h4> Coordinators first name </h4>
@@ -40,5 +37,4 @@
         </div>
     </div>
 </div>
-
 {%endblock%}

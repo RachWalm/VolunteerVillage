@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.conf import settings
 
-# Create your models here.
 
 class RoleChoices(models.Model):
     '''List of the role choices model'''
@@ -20,3 +19,4 @@ class Role(models.Model):
     
     def __str__(self):
         return self.name
+    
