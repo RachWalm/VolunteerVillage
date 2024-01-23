@@ -18,5 +18,5 @@ class Role(models.Model):
     role = models.IntegerField(choices=RoleChoices.ROLE_CHOICES, default = 1)
     
     def __str__(self):
-        return self.name
+        return self.role
     
