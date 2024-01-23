@@ -1,0 +1,8 @@
+body {
+    background-color: rgb(250, 255, 247);
+    margin-bottom: 5em;
+}
+
+.container-height {
+    min-height: 65vh;
+}
