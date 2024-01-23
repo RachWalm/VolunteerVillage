@@ -8,6 +8,18 @@
             <div class="d-flex col-4">
                 <div class="col">
                     <div class="col">
+                        <h3>Number of volunteers awaiting activation</h3>
+                    </div>
+                    <div class="col text-center text-warning fs-1">
+                        <p><strong>{{ vol_not_activated }}</strong></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+            </div>
+            <div class="d-flex col-4">
+                <div class="col">
+                    <div class="col">
                         <h3>Number of Coordinator profiles awaiting activation</h3>
                     </div>
                     <div class="col text-center text-warning fs-1">
@@ -18,42 +30,36 @@
                     </div>
                     <div class="col">
                         {% for co_not_activate in co_not_activated %}
-
                         <p> {{ co_not_activate.fname }} </p>
-
                         {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-            </div>
-            <div class="d-flex col-4">
-                <div class="col">
-                    <div class="col">
-                        <h3>Number of volunteers awaiting activation</h3>
-                    </div>
-                    <div class="col text-center text-warning fs-1">
-                        <p><strong>{{ vol_not_activated }}</strong></p>
                     </div>
                 </div>
             </div>
         </div>
         <nav class="nav">
-            <button class="btn btn-outline-info m-2">
-                <a class="nav-link" href="{% url 'add_charity' %}">Add Charity profile</a>
-            </button>
-            <button class="btn btn-outline-info m-2">
-                <a class="nav-link" href="{% url 'search_charity' %}">Update Charity profile</a>
-            </button>
-            <button class="btn btn-outline-info m-2">
-                <a class="nav-link" href="{% url 'searchvol' %}">Search for a volunteer</a>
-            </button>
-            <button class="btn btn-outline-info m-2">
-                <a class="nav-link" href="{% url 'activatevols' %}">Activate volunteers</a>
-            </button>
-            <button class="btn btn-outline-info m-2">
-                <a class="nav-link" href="{% url 'searchco' %}">Coordinator profiles</a>
-            </button>
+            <div class="col-lg-4">
+                <button class="btn btn-outline-info m-2">
+                    <a class="nav-link" href="{% url 'searchvol' %}">Search for a volunteer</a>
+                </button>
+                {% if vol_not_activated != 0 %}
+                    <button class="btn btn-outline-info m-2">
+                        <a class="nav-link" href="{% url 'activatevols' %}">Activate volunteers</a>
+                    </button>
+                {% endif %}
+            </div>
+            <div class="col-lg-4">
+                <button class="btn btn-outline-info m-2">
+                    <a class="nav-link" href="{% url 'add_charity' %}">Add Charity profile</a>
+                </button>
+                <button class="btn btn-outline-info m-2">
+                    <a class="nav-link" href="{% url 'search_charity' %}">View/Update/Delete Charity profile</a>
+                </button>
+            </div>
+            <div class="col-lg-4">
+                <button class="btn btn-outline-info m-2">
+                    <a class="nav-link" href="{% url 'searchco' %}">Search for Coordinator profiles</a>
+                </button>
+            </div>
         </nav>
         {% else %}
         <h3 class="text-center">

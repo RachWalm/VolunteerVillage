@@ -39,16 +39,19 @@
         <table class="table table-striped">
         {% for intersection in intersections %}
             <tr>
-                <td><strong>{{ intersection.fname}} {{ intersection.lname}}</strong></td><td></td>
+                <td><strong>{{ intersection.fname }} {{ intersection.lname }}</strong></td><td></td>
             </tr>
             <tr>
-                <td>First name</td><td>{{ intersection.fname}}</td>
+                <td>First name</td><td>{{ intersection.fname }}</td>
             </tr>
             <tr>
-                <td>Last name</td><td>{{ intersection.lname}}</td>
+                <td>Last name</td><td>{{ intersection.lname }}</td>
             </tr>
             <tr>
-                <td>Phone number</td><td>{{ intersection.phone}}</td>
+                <td>Phone number</td><td>{{ intersection.phone }}</td>
+            </tr>
+            <tr>
+                <td>E-mail (optional)</td><td>{{ User.email }}</td>
             </tr>
             <tr>
                 <td>Description of skills</td><td>{{ intersection.special_skills_description }}</td>
