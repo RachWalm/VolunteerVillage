@@ -65,9 +65,10 @@ Most activities that involve change contain a flash message. If the user perform
 
 #### Superuser/admin activities
 
-Most activities can be performed by the users in one role or another.
+Most activities can be performed by the users in one role or another, with the exception of various searches and filters which are on the specific pages. 
 
-Added and updated a list of activities through the skill choices model in the admin area as a super user.
+- Added, deleted and updated the list of activities through the skill choices model in the admin area as a super user.
+
 
 Database updates/creations/deletions can also be performed in the admin section of the site.
 
