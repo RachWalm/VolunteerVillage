@@ -365,6 +365,8 @@ Searches for all volunteers or coordinators can use the code that is already in 
 
 ## Bugs
 
+index no css colour
+
 ## Technologies
 
 ### Languages used

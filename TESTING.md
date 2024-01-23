@@ -16,6 +16,8 @@ check each page against role to view it and logged in and activated
 
 #### Index page
 
+No css colour?
+
 #### Sign up page
 
 #### Log in page
@@ -65,14 +67,13 @@ Most activities that involve change contain a flash message. If the user perform
 
 Most activities can be performed by the users in one role or another.
 
-One activity that is superuser exclusively able to do is the option for the super user to change the list of activities that can be selected and searched for. This action only needs to be performed once and both selection and search will be updated. 
+Added and updated a list of activities through the skill choices model in the admin area as a super user.
 
 Database updates/creations/deletions can also be performed in the admin section of the site.
 
 If someone has signed up as a coordinator that shouldn't have then the superuser can also remove their username from roles and coordinator profiles and then they can resubmit their details as a volunteer.
 
 ### Testing data added to database
-
 
 
 ## Features testing - Automated
