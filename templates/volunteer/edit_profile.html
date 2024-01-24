@@ -10,7 +10,7 @@
     <div class="col-11">
     <h2 class="ms-5">Edit your profile</h2>
     <h3 class="ms-5">On this page you can edit your profile and preferences. Please be aware than until submit has been clicked no changes will be made to your profile.</h3>
-    <form method="post" id="volunteerForm">
+    <form class="col-10" method="post" id="volunteerForm">
         <div class="m-5 form-control">
             {{ form.as_p }}
             {% csrf_token %}
