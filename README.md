@@ -548,7 +548,15 @@ The env.py needs to contain:
 import os
 
 os.environ["DATABASE_URL"]="link gained from elephantSQL for the database see below"
-os.environ["SECRET_KEY"]="Enter your secret keey here" 
+os.environ["SECRET_KEY"]="Enter your secret key here" 
+```
+
+A .gitignore file must be used and the env.py should be added to it so that the information in there that should be kept private such as the secret key is not put on GitHub.
+
+To run the local deployment in the IDE terminal window :
+
+```
+python3 manage.py runserver
 ```
 
 ### ElephantSQL
@@ -574,6 +582,18 @@ os.environ["SECRET_KEY"]="Enter your secret keey here"
 
 ![stats](document/stats.png)
 ![v12](document/v12.png)
+
+Once you have a database you will need to migrate the models to the database.
+
+This can be done in the IDE terminal windownusing:
+
+``` python3 manage.py makemigrations```
+then
+``` python3 manage.py migrate```
+
+if you are planning on using the admin area a super user will be required which can be created by:
+
+``` python3 manage.py createsuperuser```
 
 ## Testing 
 
