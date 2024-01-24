@@ -20,11 +20,17 @@ No css colour?
 
 #### Sign up page
 
+- Filled out sign up page without an e-mail address.
+- Filled out with a fake e-mail address
+
 #### Log in page
 
 #### Log out page
 
 #### Role choice page
+
+- Chose the role of Volunteer
+- Chose the role of Coordinator
 
 #### Pending activation page
 
@@ -68,6 +74,7 @@ Most activities that involve change contain a flash message. If the user perform
 Most activities can be performed by the users in one role or another, with the exception of various searches and filters which are on the specific pages. 
 
 - Added, deleted and updated the list of activities through the skill choices model in the admin area as a super user.
+- Found and updated a Coordinator profile
 
 
 Database updates/creations/deletions can also be performed in the admin section of the site.

@@ -424,13 +424,6 @@ allauth
 
 go through requirements.txt
 
-https://pypi.org/project/django-select-multiple-field/
-
-this needed django utils six installed
-
-https://docs.djangoproject.com/en/4.2/ref/models/fields/#choices
-https://django-phonenumber-field.readthedocs.io/en/latest/
-
 https://stackoverflow.com/questions/20138049/redirect-user-to-another-url-with-django-allauth-log-in-signal
 
 Django documentation
@@ -439,7 +432,20 @@ Django documentation
 
 ### Heroku deployment
 
-The deployed version can be accessed on Heroku [here](https://black-jack21-fa4b7e8cb0bf.herokuapp.com/)
+The deployed version can be accessed on Heroku [here](https://volunteervillage-8a4d89acc796.herokuapp.com/)
+
+Before deployment you will need to collect all the requirments into requirements.txt
+
+```
+pip3 freeze --local > requirements.txt
+```
+and create a Procfile (with a capital P) containing:
+
+```
+web: gunicorn volunteervillage.wsgi:application
+```
+
+Ensure that the version that you want to deploy has been added, committed and pushed to GitHub (as Heroku will take it from the repository).
 
 1. [Heroku](https://www.heroku.com/) was used to deploy.
 2. Once logged onto the website, using the drop down menu in the top right we went to the dashboard.
@@ -452,7 +458,7 @@ or the drop down menu
 
 ![dropdown](document/create-new-app-dropdown.png)
 
-4. Next the app was named black-jack21 and the Europe region chosen in these fields
+4. Next the app was named volunteervillage and the Europe region chosen in these fields
 
 ![name](document/name-and-region.png)
 
@@ -466,7 +472,7 @@ and the purple 'create' button was pressed.
 
 ![reveal](document/reveal.png)
 
-7. The URL's were set, disable_collectstatic was set to 1, port was set to 8000 and the secret key was provided the value.
+7. The URL's were set, disable_collectstatic was set to 1, port was set to 8000 and the secret key was provided the value. Cloudinary_URL and the Disable_collectstatic were later removed. The database_url was copied from the elephantSQL.
 
 ![configvars](document/config.png)
 
@@ -492,6 +498,8 @@ and the purple 'create' button was pressed.
 
 ![deployed](document/deployed.png)
 
+When it is in the final version it needs to have debug (in settings.py) set to False (was True during development) and as mentioned above the DISABLE_COLLECTSTATIC removed from the config vars.
+
 ### Local Deployment
 
 You will need to pip install the following apps:
@@ -504,29 +512,23 @@ dj database url and psycopg2
 
 ```pip3 install dj_database_url psycopg2```
 
-cloudinary
+bootstrap
 
-```pip3 install dj3-cloudinary-storage```
+```pip3 install django-bootstrap5```
 
-Phone number field
+whitenoise
 
-```pip install "django-phonenumber-field[phonenumberslite]"```
+```pip3 install whitenoise```
 
+allauth
 
-pip install django-bootstrap5
+```pip3 install django-allauth```
 
-pip install whitenoise
-
-pip install django-allauth
-
-<!-- select multiple from a list - not used as required loads of other apps installed see below and some weren't compatible : used multiple choice field from forms instead
-
-```pip install django-select-multiple-field```
-
-select multiple from a list requried additionally django utils six installed
-
-```pip install django-utils-six```
-```pip install django-utils``` -->
+Or if you wish to install them all at once you can use the requirements.txt file (I couldn't as the requirements.txt is made from what is installed).
+In the IDE terminal:
+ ```
+ pip3 install -r requirements.txt
+ ```
 
 ### Cloning
 
@@ -534,12 +536,44 @@ select multiple from a list requried additionally django utils six installed
 2. clicked local
 3. choose HTTPS
 4. link copied
-5. went to terminal (version control) and input the following :git clone https://github.com/RachWalm/VolunteerVillage.git
+5. went to terminal of the IDE and input the following :git clone https://github.com/RachWalm/VolunteerVillage.git
 
 The project was cloned.
 
+For it to work you will need to install the list in local deployment and also set up an env.py and reference it in the settings.
 
-### Forking
+The env.py needs to contain:
+
+```
+import os
+
+os.environ["DATABASE_URL"]="link gained from elephantSQL for the database see below"
+os.environ["SECRET_KEY"]="Enter your secret keey here" 
+```
+
+### ElephantSQL
+
+1. Sign up to ElephantSQL and login
+2. From the dashboard click create new instance:
+
+![create](document/create.png)
+
+3. Choose and name and plan (tags not needed) and click green select region
+
+![nameplan](document/name-plan.png)
+
+4. Select region and click green review button
+
+![region](document/region.png)
+
+5. Back on the dashboard click on the name of the instance that you created and then you can copy the url (icon of multiple sheets of paper) to be used on heroku and in your env.py as the database_url.
+
+![url](document/url.png)
+
+6. It is worth checking that you have a version that is higher than 12.0 as lower versions will not work. On the right hand side menu click on stats:
+
+![stats](document/stats.png)
+![v12](document/v12.png)
 
 ## Testing 
 
@@ -547,6 +581,7 @@ See [Testing](TESTING.MD)
 
 ## Credits
 
+### Images
 
 ## Acknowledgements
 
@@ -558,7 +593,7 @@ My Partner - Ian Harris who has been extremely supportive while I have been work
 
 Code institute - For all the information and course content that has contributed to the creation of this project. 
 
-Django blog extra tutorial on slack which gave me many idea and the delete modal.
+Django blog extra tutorial on slack which gave me many idea and the delete modal code to base my delete modal on.
 
 
 
