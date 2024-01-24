@@ -5,6 +5,7 @@
         {% if user.is_authenticated and role == 2 %}
         <h2 class="mb-3"> Which coordinator do you want to update?</h2>
             <h3 class="mb-3">Update a coordinator profile</h3>
+            <h4>Please use capitals where the user has used them. If you need to see the names of unactivated coordinators they are on the dashboard</h4>
             <form method=POST action="{% url 'searchco' %}">
                 {% csrf_token %}
                 <input type="search" placeholder="First name" aria-label="Coordinator first name search" name="search_co">

@@ -119,28 +119,28 @@ def login_success(request):
     """
     pk_logged_in = request.user.pk
     role_exists = Role.objects.filter(user_name_id=pk_logged_in).exists()
-    if role_exists:
-        title = Role.objects.filter(user_name_id =pk_logged_in).values()
-        VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists()
-        CP_exists = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in).exists()
-        co_profile = CoordinatorProfile.objects.filter(user_name_id =pk_logged_in).values()
-        if title[0]['role'] == 1 and VP_exists:
-            return redirect('read')
-        elif title[0]['role'] == 1 and VP_exists == False:
-            return redirect('add')
-        elif title[0]['role'] == 2 and CP_exists == False:
-            return redirect('addco') #will later take you to coordinator dashboard when set up
-        elif title[0]['role'] == 2 and CP_exists:
-            if co_profile[0]['activated']:
+    if role_exists: # role is chosen
+        title = Role.objects.filter(user_name_id =pk_logged_in).values() # sees whether they signed up as volunteer 1 or coordinator 2
+        VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists() #checks if they have a profile stored
+        CP_exists = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in).exists() # checks if they have a profile stored
+        co_profile = CoordinatorProfile.objects.filter(user_name_id =pk_logged_in).values() # gets profile so can check if activated
+        if title[0]['role'] == 1 and VP_exists: # volunteer with profile
+            return redirect('read') # see volunteer profile
+        elif title[0]['role'] == 1 and VP_exists == False: # volunteer without profile
+            return redirect('add') # form to fill out volunteer profile
+        elif title[0]['role'] == 2 and CP_exists == False: # coordinator without a profile
+            return redirect('addco') # form to fill out coordinator profile
+        elif title[0]['role'] == 2 and CP_exists: # coordinator with a profile
+            if co_profile[0]['activated']: # coordinator with a profile and activated
                 return redirect('dashboard')
-            elif co_profile[0]['activated'] == False:
+            elif co_profile[0]['activated'] == False: # unactivated coordinator so no access
                 return redirect('pending')
             else:
-                return redirect('index')
+                return redirect('index') # just in case
         else:
-            return redirect('index')
+            return redirect('index') # just in case
     else:
-        return redirect('role')
+        return redirect('role') # hasn't chosen role yet
 ```
 
 #### Sign up page
@@ -161,11 +161,13 @@ This page is part of the sign up process. As users can either be signing up as a
 
 This page currently only has the option of volunteer or coordinator, this could be simply updated as each role is associated with a number to allow for additional roles, such as charity login or different types of coordinator should the organisation grow to require that coordinators are more focused or want the activations restricted to certain personnel. 
 
-Currently, 1 is volunteer and 2 is coordinator. Where it is required that access is blocked 0 has been returned as in the function role_authenticate which is used to restrict pages bringing up their content unless it is a coordinator who is activated.
+Currently, it is saved where 1 is volunteer and 2 is coordinator. Where it is required that access is blocked 0 has been returned as in the function role_authenticate which is used to restrict pages bringing up their content unless it is a coordinator who is activated.
 
 #### Coordinator add profile page
 
 As the information on this page will be visible to all the coordinators it doesn't contain excessive personal information, it just requests first and last name. This should be sufficient for information in connection to the coordinators - so people know who to contact when getting the coordinator details. This information is placed into the CoordinatorProfile model.
+
+These fields are saved in the CoordinatorProfile and attached to the User via a one to one field.
 
 #### Pending activation page
 
@@ -183,6 +185,8 @@ The information on form for the phone number is Javascript validated to ensure t
 
 The number of hours and days is restricted to the number of hours and days in a week through Javascript validation.
 
+This is saved in the VolunteerProfile and is connected to the User via a one to one field.
+
 #### Volunteer read their profile page
 
 The volunteer is sent to their profile read page when they have added their profile, or log in with a profile in place. Here they can see the information that is held on them. There is also the option to edit the profile - which sends them to a page to perform that (described below), or delete their profile (which is described below).
@@ -196,6 +200,8 @@ There are a couple of functions involved in producing this page as there are sev
 #### Volunteer edit their profile page
 
 If a volunteer clicks to edit their profile then they are directed to a page that is similar to the form to add their original profile but is populated with the currently held information. To edit they must make the relevant changes to the form and then press submit. Unless submit is pressed no changes will be performed.
+
+This currently does not have the ability to change the e-mail as that is taken from allauth and this form is based on the VolunteerProfile model.
 
 #### Volunteer can delete the profile information
 
@@ -245,7 +251,21 @@ From this page they can perform the following activities by following links to :
 - Activate volunteers - This provides a list of volunteers who need activating's names, the button then takes you to all that persons details to be checked. If activated they are removed from the list.
 - Search volunteers to match with needs - This is an extremely important function as when a requirement for a task comes in then the coordinators can search for people who do that task and are likely to be available, a list of those people and their details is then provided for the coordinator to phone the person and make arrangements.
 
+#### Forms on pages
+
+All forms undergo csrf tokens to avoid any fraudulent behaviour. 
+
+Forms that can be taken directly from the models as they will save to the models are created using forms.py and put in the HTML as that form.
+
+Searches use inputs that are created individually in the HTML and are not saved in the database.
+
 #### Search pages
+
+All search pages are created with individual inputs in the HTML and the lists for the options are created from data that is saved in the database. 
+
+Some search fields are select inputs. Activities are taken from the SkillChoices Model and time and day are done using the fields in the VolunteerProfile model. Where required they are changed into the verbose name so that users can understand them rather than the shortened versions to allow easier coding.
+
+There are also some free text boxes that then look for the combination of letters that has been used. icontain should be able to deal with capitals vs small letters, but there is a message with these free text boxes reminding users to use capitals appropriately, just in case.
 
 #### Coordinator activate/edit coordinator profiles page
 
@@ -261,7 +281,7 @@ In the event there are no coordinators activated this could be performed for one
 
 When a request has been made to the organisation for a type of activity to be performed during a certain part of the week a coordinator can go to the search page and select the activity and the day and whether it is for morning/afternoon/evening and if any of the volunteers fit this description then their name is displayed as a list. The information about the volunteers is then displayed in a non-editable table on screen. Coordinators could then contact the volunteers and organise the activity that is required. 
 
-Whether a volunteer is activated or not
+Whether a volunteer is activated or not they will appear in this search, should the function later be required to only have activated volunteers then this could be easily added as a filter.
 
 #### Coordinator activate volunteers page
 
@@ -299,8 +319,6 @@ The delete function for the volunteers deleting their own information is once ag
 
 The other delete functions have the role_authenticate function in the views.py for that action to ensure that they are logged in as a coordinator to be able to delete. If they are not a coordinator then they are redirected to the index page without the delete going ahead. As the setting up the role can be accessed just through sign up I have not put in defensive programming here and if attempting to set a role without being logged in it will have an error. If you attempt to add a volunteer profile without being logged in when you press submit it leads to an error.
 
-
-
 #### Navigation bars
 The top right navigation bar is for login/signup/logout functionality related to allauth and not specific to the type of user logged in. Or to go to the home page.
 
@@ -318,9 +336,9 @@ Most activities can be performed by the users in one role or another.
 
 One activity that is superuser exclusively able to do is the option for the super user to change the list of activities that can be selected and searched for. This action only needs to be performed once and both selection and search will be updated. 
 
-Database updates/creations/deletions for everything can also be performed in the admin section of the site.
+Database updates/creations/deletions/activations for everything can also be performed in the admin section of the site.
 
-Delete/reset spam profiles.
+Delete/reset spam profiles is a function that can only be performed by within the admin area. 
 
 If someone has signed up as a coordinator by mistake that shouldn't have or maliciously then the superuser can also remove their username from roles and coordinator profiles and then they can resubmit their details as a volunteer - or not if they didn't want to be a volunteer.
 
@@ -341,13 +359,15 @@ It would also be great if feed back or notes on the volunteers could be made by 
 I expect that a similar function where notes on a volunteer from one coordinator to other coordinators could be left that isn't seen by the volunteer. Such as when they have contacted someone about something but it wasn't a match so that a different coordinator doesn't attempt the same match.
 comments and likes area
 
-area to save activity requests from public and charities that haven't been fullfilled. And historic information
+An area to save activity requests from public and charities that haven't been full-filled. Would give an open activities area which could be searched.
+
+And historic information
 
 Improve the model for the days and times as it would be much better if I had managed to use the initial idea of monday = 1 Tuesday = 2 etc and am = 1 pm =2 so then monday am would be 11, this would have given a simpler and lesser number of fields. However, with problems (described in bugs) doing the initial volunteer create profile and time constraints it was decided to go simple for booleans. This would also have made searching for the volunteers that fitted the criteria required simpler. If I had infinite access to more knowledgeable developers I would have discussed this approach with them as I believe it would have saved time in other areas such as the coordinators search of the volunteers.
 
 Once information has been gathered from the text box entries of the coordinators and volunteers entries there, an assessment of the data to look for recurring themes that could be made into fields rather than them typing it out would be a good step.
 
-real time or calendar inputs for emergency or one of events
+Real time or calendar inputs for emergency or one of events
 
 coordinator can change volunteers availability when weekly stuff occurs to already volunteering. and record volunteering being done.
 
@@ -355,13 +375,13 @@ follow up tools for coordinators
 
 volunteers can search the charities with the permission of the charity.
 
-email is an option on sign up but should be possible to update and include or change it later.
+Email is an option on sign up but should be possible to update and include or change it later.
 
-section to request assistance.
+There could be a section to request assistance. This would mean that where charities or individuals needed to contact the organisation out of hours they could leave a message.
 
-relate amount of time available to commited already time.
+Relate amount of time available to committed already time. It would be useful to be able to know if someone already performs activities at a certain time so although their sessions could reflect that they are open at that time to do volunteer work, that they already have a commitment through the system would allow coordinator not to attempt to double book and volunteers to see how productive they are being.
 
-Searches for all volunteers or coordinators can use the code that is already in place and just not filter it down.
+It may be required for some sort of audit to know everyone involved so searches for all volunteers or coordinators can use the code that is already in place. This would mean the search functions don't filter anyone out.
 
 ## Bugs
 

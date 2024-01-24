@@ -6,6 +6,7 @@
         {% if user.is_authenticated and role == 2 %}
         <h2> Which charity do you want to update?</h2>
         <h3>Update a charity</h3>
+        <h4>Please use capitals as they appear in the name.</h4>
         <form method=POST action="{% url 'search_charity' %}">
             {% csrf_token %}
             <input type="search" placeholder="charity name" aria-label="Charity name search" name="search">
