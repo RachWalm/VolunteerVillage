@@ -20,14 +20,14 @@ class VolunteerProfile(models.Model):
         null=False,
         blank=False,
         verbose_name='First Name',
-        help_text='This is require and has a maximum length of 50 characters',
+        help_text='This is required and has a maximum length of 50 characters',
     )
     lname = models.CharField(
         max_length=50,
         null=False,
         blank=False,
         verbose_name='Last Name',
-        help_text='This is require and has a maximum length of 50 characters',
+        help_text='This is required and has a maximum length of 50 characters',
     )
     phone = models.CharField(
         max_length=12,
