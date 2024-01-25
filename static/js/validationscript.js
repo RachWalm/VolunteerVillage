@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             /*validates last name present*/
                             if (skilled != 0) {
                                 /*validates last name present*/
-                                if (days & hours >= 0) {
+                                if (days & hours < 0) {
                                     /*validates time positive or zero*/
                                     var final = document.getElementById("volunteerForm");
                                     final.submit();
