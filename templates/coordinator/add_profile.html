@@ -9,13 +9,14 @@
                 <form method="post">
                     {{ form.as_p }}
                     {% csrf_token %}
-                    <button type="submit" class="btn btn-outline-info">Submit</button>
+                    <button type="submit" id="submithold" class="btn btn-outline-info">Submit</button>
                 </form>
+                <script src="/static/js/validationscript.js"></script>
             {% else %}
-                <h3 class="ms-5"> You already have a profile you will shortly be redirected too that profile. Or please click on 'Your page' to access your profile.</h3>
+                <h3 class="ms-5"> You already have a profile you will shortly be redirected. Or please click on a link.</h3>
                 <script>
                     var redirect = setTimeout(function () {
-                        window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/volunteer/read_profile'
+                        window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/'
                     }, 10000);
                 </script> 
             {% endif %}

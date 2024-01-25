@@ -1,15 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="d-flex container container-height align-items-center">
-    <div class="text-center col-12">
-        <h2>Are you signing up as a Volunteer?</h2>
-        <h3> Please sign up as a Volunteer unless specifically told otherwise</h3>
-        <p> All accounts undergo activation, so don't worry if you make a mistake, your account will not be activated.<p/>
-        <form method="post">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <button type="submit" class="btn btn-outline-info">Submit</button>
-        </form>
+{% if role_exists == False %}
+    <div class="d-flex container container-height align-items-center">
+        <div class="text-center col-12">
+            <h2>Are you signing up as a Volunteer?</h2>
+            <h3> Please sign up as a Volunteer unless specifically told otherwise</h3>
+            <p> All accounts undergo activation, so don't worry if you make a mistake, your account will not be activated.<p/>
+            <form method="post">
+                {{ form.as_p }}
+                {% csrf_token %}
+                <button type="submit" class="btn btn-outline-info">Submit</button>
+            </form>
+        </div>
     </div>
-</div>
+    {% else %}
+    <h3 class="ms-5"> You already have a profile you will shortly be redirected to the home page. Or please click on a link.</h3>
+    <script>
+        var redirect = setTimeout(function () {
+            window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/'
+        }, 10000);
+    </script> 
+{% endif %}
 {% endblock %}

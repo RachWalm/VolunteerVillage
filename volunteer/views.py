@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.models import User
 from django.contrib import messages
 from .models import VolunteerProfile
 from .forms import ProfileForm
@@ -65,6 +66,7 @@ def edit_profile(request):
         form = ProfileForm(request.POST, instance=availabilities)
         if form.is_valid():
             form.save()
+            print(form)
             messages.add_message(request, messages.SUCCESS, 'Profile Updated!')
             return redirect('read')
     form = ProfileForm(instance = availabilities)
@@ -78,7 +80,7 @@ def edit_profile(request):
 
 def delete_profile(request):
     pk_logged_in = request.user.pk
-    volunteer = get_object_or_404(VolunteerProfile, user_name_id=pk_logged_in)
+    volunteer = get_object_or_404(User, user_name_id=pk_logged_in)
     volunteer.delete()
     messages.add_message(request, messages.WARNING, 'Profile deleted!')
     return redirect('add')

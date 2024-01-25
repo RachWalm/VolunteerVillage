@@ -113,34 +113,7 @@ This proved to be very useful.
 4. The log in redirect was probably the most useful as it allowed me to set up a view that used 'if' conditions to determine where to navigate the user. This meant that different roles when to the two separate apps and within that app they were sent to whatever stage of the process that they had completed, depending on filling out details or activation. It took the logged in users information and directed them in role/views.py
 
 ```
-def login_success(request):
-    """
-    Redirects users based on the role that the need to use the site
-    """
-    pk_logged_in = request.user.pk
-    role_exists = Role.objects.filter(user_name_id=pk_logged_in).exists()
-    if role_exists: # role is chosen
-        title = Role.objects.filter(user_name_id =pk_logged_in).values() # sees whether they signed up as volunteer 1 or coordinator 2
-        VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists() #checks if they have a profile stored
-        CP_exists = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in).exists() # checks if they have a profile stored
-        co_profile = CoordinatorProfile.objects.filter(user_name_id =pk_logged_in).values() # gets profile so can check if activated
-        if title[0]['role'] == 1 and VP_exists: # volunteer with profile
-            return redirect('read') # see volunteer profile
-        elif title[0]['role'] == 1 and VP_exists == False: # volunteer without profile
-            return redirect('add') # form to fill out volunteer profile
-        elif title[0]['role'] == 2 and CP_exists == False: # coordinator without a profile
-            return redirect('addco') # form to fill out coordinator profile
-        elif title[0]['role'] == 2 and CP_exists: # coordinator with a profile
-            if co_profile[0]['activated']: # coordinator with a profile and activated
-                return redirect('dashboard')
-            elif co_profile[0]['activated'] == False: # unactivated coordinator so no access
-                return redirect('pending')
-            else:
-                return redirect('index') # just in case
-        else:
-            return redirect('index') # just in case
-    else:
-        return redirect('role') # hasn't chosen role yet
+put function here
 ```
 
 #### Sign up page
@@ -195,7 +168,9 @@ This isn't editable on this page to avoid accidental clicking and making correct
 
 Most of the data is taken from the VolunteerProfile model (except the e-mail which is taken from the User allauth model).
 
-There are a couple of functions involved in producing this page as there are several items that have multiple either inputs or outputs. Therefore iterating through lists both in the html to display them on the page and searching through a list of model fields to check if the one required is 'true' while not getting activated as 'true'
+There are a couple of functions involved in producing this page as there are several items that have multiple either inputs or outputs. Therefore iterating through lists both in the html to display them on the page and searching through a list of model fields to check if the one required is 'true' while not getting activated as 'true'.
+
+If there hasn't been a profile set up for the person or you are not logged in then this page will got to a 404 error, and won't display any erroneous information. This protects information being viewed by anyone but the volunteer through this page.
 
 #### Volunteer edit their profile page
 

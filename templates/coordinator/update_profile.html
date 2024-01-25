@@ -7,8 +7,9 @@
         <form method="post">
             {{ form.as_p }}
             {% csrf_token %}
-            <button type="submit" class="btn btn-outline-info">Update</button>
+            <button type="submit" id="submithold" class="btn btn-outline-info">Update</button>
         </form>
+        <script src="/static/js/covalidationscript.js"></script>
         {% else %}
         <h3 class="text-center">
             You are either not logged in or do not have access to this part of the site. Please log in or if this problem persists contact a supervisor.

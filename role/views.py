@@ -13,6 +13,7 @@ def home(request):
 def role(request):
     form = RoleForm
     pk_logged_in = request.user.pk
+    role_exists = Role.objects.filter(user_name_id=pk_logged_in).exists()
     if request.method == 'POST':
         form_data_role = {
             'user_name': request.user, #links to the allauth model
@@ -35,7 +36,10 @@ def role(request):
         else:
             return redirect('index') # just in case
     form = RoleForm()
-    context = {'form': form,}
+    context = {
+        'form': form,
+        'role_exists': role_exists,
+        }
     return render(request, 'role/role.html', context)
 
 
