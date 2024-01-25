@@ -39,6 +39,8 @@ def read_profile(request):
 
 def add_profile(request):
     form= ProfileForm
+    pk_logged_in = request.user.pk
+    VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists()
     if request.method == 'POST':
         form = ProfileForm(request.POST) 
         if form.is_valid(): 
@@ -51,6 +53,7 @@ def add_profile(request):
         return redirect('read')
     context = {
         'form': form,
+        'VP_exists': VP_exists,
         }
     return render(request, 'volunteer/add_profile.html', context)
 

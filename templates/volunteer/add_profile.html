@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
 <h2 class="ms-5">Create your profile</h2>
-<div class="d-flex col-12 justify-content-center">
-    <div class="col-10">
-        <form method="post" id="volunteerForm">
-            <div class="form-control">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <button type="submit" id="submithold" class="btn btn-outline-info">Submit</button>
-            </div>
-        </form>
+{% if VP_exists == False %}
+    <div class="d-flex col-12 justify-content-center">
+        <div class="col-10">
+            <form method="post" id="volunteerForm">
+                <div class="form-control">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" id="submithold" class="btn btn-outline-info">Submit</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-<script src="/static/js/validationscript.js"></script>
+    <script src="/static/js/validationscript.js"></script>
+{% else %}
+    <h3> You already have a profile you will shortly be redirected too that profile. Or please click on 'Your page' to access your profile.</h3>
+    <script>
+        var redirect = setTimeout(function () {
+            window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/volunteer/read_profile'
+        }, 10000);
+    </script> 
+{% endif %}
 {% endblock %}
