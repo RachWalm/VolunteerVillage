@@ -47,6 +47,8 @@ def home(request):
 
 
 def add_profile_co(request):
+    pk_logged_in = request.user.pk
+    CP_exists = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in).exists()
     form= ProfileFormCo
     if request.method == 'POST':
         form_data_co = {
@@ -63,6 +65,7 @@ def add_profile_co(request):
         return redirect('pending')
     context = {
         'form': form,
+        'CP_exists':CP_exists,
         }
     return render(request, 'coordinator/add_profile.html', context)
 

@@ -4,11 +4,22 @@
     <div class="text-center col-12">
         {% if user.is_authenticated %}
             <h2>Create a profile</h2>
-            <form method="post">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-info">Submit</button>
-            </form>
+            <div>
+            {% if VP_exists == False %}
+                <form method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-info">Submit</button>
+                </form>
+            {% else %}
+                <h3 class="ms-5"> You already have a profile you will shortly be redirected too that profile. Or please click on 'Your page' to access your profile.</h3>
+                <script>
+                    var redirect = setTimeout(function () {
+                        window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/volunteer/read_profile'
+                    }, 10000);
+                </script> 
+            {% endif %}
+            </div> 
         {% endif %}
     </div>
 </div>
