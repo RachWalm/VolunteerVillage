@@ -1,8 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.views import generic, View
-from django.http import HttpResponseRedirect
 from django.db.models import Q
 from .models import CoordinatorProfile
 from volunteer.models import VolunteerProfile, SkillChoices
@@ -87,7 +85,7 @@ def search_coordinators(request):
 
 def edit_profile_co(request, id):
     role = role_authenticate(request)
-    co_profile = id #get_object_or_404(CoordinatorProfile, lname="one").id
+    co_profile = id 
     profile = get_object_or_404(CoordinatorProfile, id=co_profile)
     if request.method == 'POST':
         form = ProfileFormCoUpdate(request.POST, instance=profile)
@@ -112,7 +110,7 @@ def delete_profile_co(request, id):
         profile = get_object_or_404(CoordinatorProfile, id=co_profile)
         profile.delete()
         messages.add_message(request, messages.WARNING, 'Coordinator information deleted!')
-        return redirect('dashboard')
+        return redirect('index')
     else:
         return redirect ('index')
 

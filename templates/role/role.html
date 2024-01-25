@@ -1,24 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
-{% if role_exists == False %}
-    <div class="d-flex container container-height align-items-center">
-        <div class="text-center col-12">
-            <h2>Are you signing up as a Volunteer?</h2>
-            <h3> Please sign up as a Volunteer unless specifically told otherwise</h3>
-            <p> All accounts undergo activation, so don't worry if you make a mistake, your account will not be activated.<p/>
-            <form method="post">
-                {{ form.as_p }}
-                {% csrf_token %}
-                <button type="submit" class="btn btn-outline-info">Submit</button>
-            </form>
+{% if user.is_authenticated %}
+    {% if role_exists == False %}
+        <div class="d-flex container container-height align-items-center">
+            <div class="text-center col-12">
+                <h2>Are you signing up as a Volunteer?</h2>
+                <h3> Please sign up as a Volunteer unless specifically told otherwise</h3>
+                <p> All accounts undergo activation, so don't worry if you make a mistake, your account will not be activated.<p/>
+                <form method="post">
+                    {{ form.as_p }}
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-info">Submit</button>
+                </form>
+            </div>
         </div>
-    </div>
-    {% else %}
-    <h3 class="ms-5"> You already have selected a role you will shortly be redirected to the home page. Or please click on a link.</h3>
-    <script>
-        var redirect = setTimeout(function () {
-            window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/'
-        }, 10000);
-    </script> 
+        {% else %}
+        <h3 class="ms-5"> You already have selected a role you will shortly be redirected to the home page. Or please click on the below button....</h3>
+        <button class="btn btn-outline-info ms-5">
+            <a class="nav-link" href="{% url 'login_success' %}">Your next page</a>
+        </button>
+        <script>
+            var redirect = setTimeout(function () {
+                window.location='{% url 'login_success' %}'
+            }, 10000);
+        </script> 
+    {% endif %}
+{%else%}
+<h3 class="mt-5 text-center"> You are not logged in. Please either sign up or sign in using links in top right corner of page.</h3>
 {% endif %}
 {% endblock %}

@@ -83,4 +83,4 @@ def delete_profile(request):
     volunteer = get_object_or_404(User, id=pk_logged_in)
     volunteer.delete()
     messages.add_message(request, messages.WARNING, 'Profile deleted!')
-    return redirect('add')
+    return redirect('index')

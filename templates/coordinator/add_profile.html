@@ -5,7 +5,7 @@
         {% if user.is_authenticated %}
             <h2>Create a profile</h2>
             <div>
-            {% if VP_exists == False %}
+            {% if CP_exists == False %}
                 <form method="post">
                     {{ form.as_p }}
                     {% csrf_token %}
@@ -13,10 +13,13 @@
                 </form>
                 <script src="/static/js/validationscript.js"></script>
             {% else %}
-                <h3 class="ms-5"> You already have a profile you will shortly be redirected. Or please click on a link.</h3>
+                <h3 class="ms-5"> You already have a profile you will shortly be redirected. Or please click on a link below.....</h3>
+                <button class="btn btn-outline-info ms-5">
+                    <a class="nav-link" href="{% url 'login_success' %}">Your next page</a>
+                </button>
                 <script>
                     var redirect = setTimeout(function () {
-                        window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/'
+                        window.location='{% url 'login_success' %}'
                     }, 10000);
                 </script> 
             {% endif %}
