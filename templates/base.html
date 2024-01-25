@@ -19,7 +19,9 @@
 <body>
 <header class="row d-flex flex-wrap">
     <!--logo-->
-    <img class="rounded-circle img-responsive col-4 col-sm-3 col-md-2 col-xl-1 ms-2 mt-2" id="logo" src="{% static 'images/logo.jpg' %}" alt="logo for volunteer village of hands">
+    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
+        <img class="rounded-circle img-responsive nodistort ms-2 mt-2" id="logo" src="{% static 'images/logo.jpg' %}" alt="logo for volunteer village of hands">
+    </div>
     <div class="col-8 col-lg-6 col-xl-6">
         {% for message in messages %}
             <div class="alert {{ message.tags }} alert-dismissible fade show" id="msg"
@@ -35,7 +37,12 @@
     {% if user.is_authenticated %}
         <p class="shadow p-2 align-middle text-center">Logged in as {{ user }}</p>
     {% else %}
-        <p class="shadow p-2 align-middle text-center">Not logged in</p>
+        <button class="mb-3 btn shadow w-100 btn-outline-info">
+            <a href="{% url 'account_login' %}">Sign in</a>
+        </button>
+        <button class="btn shadow w-100 btn-outline-info">
+            <a href="{% url 'account_signup' %}">Sign up</a>
+        </button>
     {% endif %}
     </div>
     <!-- Navigation bar-->
@@ -45,9 +52,6 @@
             {% if user.is_authenticated %}
                     <a class="nav-link" href="{% url 'account_logout' %}">Sign out</a>
                     <a class="nav-link" href="{% url 'login_success' %}">Your home page</a>
-            {% else %}
-                    <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
-                    <a class="nav-link" href="{% url 'account_login' %}">Sign in</a>
             {% endif %}
     </nav>
     </div>
