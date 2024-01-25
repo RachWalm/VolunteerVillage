@@ -7,3 +7,7 @@ body {
 .container-height {
     min-height: 65vh;
 }
+
+.helptext {
+    color: orange;
+}
