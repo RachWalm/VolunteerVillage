@@ -26,6 +26,12 @@
         </script> 
     {% endif %}
 {%else%}
-<h3 class="mt-5 text-center"> You are not logged in. Please either sign up or sign in using links in top right corner of page.</h3>
+<h3 class="mt-5 text-center"> You are not logged in. Please either sign up or sign in using links in top right corner of page or below.</h3>
+<button class="btn btn-outline-info ms-5">
+    <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+</button>
+<button class="btn btn-outline-info ms-5">
+    <a class="nav-link" href="{% url 'account_login' %}">Sign in</a>
+</button>
 {% endif %}
 {% endblock %}
