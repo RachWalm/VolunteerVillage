@@ -9,7 +9,7 @@ var deleteConfirm = document.getElementById("deleteConfirm");
 
 for (let button of deleteButtons) {
     button.addEventListener("click", (e) => {
-        let id = e.target.getAttribute("coordinator_id");
+        let id = e.target.getAttribute("id");
         deleteConfirm.href = `delete_profile/${id}`;
         deleteModal.show();
     });
