@@ -82,7 +82,7 @@
 
 [activate_volunteers](document/lightactivate-volunteer.png)
 
-###[add_profile](document/)
+###[add_profile](document/lightcoadd-profile.png)
 
 [choose_profile](document/lightchoose-profile.png)
 
