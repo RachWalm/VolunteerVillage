@@ -17,7 +17,7 @@
 ### Charity
 
 [add_charity](document/)
-[choose_charity]document/)
+[choose_charity](document/)
 [read_charity](document/)
 [update_charity](document/)
 
@@ -88,13 +88,13 @@
 
 [dashboard](document/lightdash.png)
 
-###[pending](document/)
+[pending](document/lightpending.png)
 
 [search_volunteers](document/lightsearch-volunteer.png)
 
-###[see_profile](document/)
+[see_profile](document/lightsee-profile.png)
 
-###[update_profile](document/)
+[update_profile](document/lightupdate-profile.png)
 
 ### Errors
 
@@ -104,11 +104,11 @@
 
 ### Role
 
-###[role](document/)
+[role](document/lightrole.png)
 
 ### Volunteer
 
-###[add_profile](document/)
+[add_profile](document/lightadd-profile.png)
 
 [edit_profile](document/lightvoledit-profile.png)
 
