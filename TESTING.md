@@ -4,11 +4,115 @@
 
 ### HTML validation
 
+[index](document/) 
+
+### Allauth
+
+[signup](document/)
+
+[login](document/)
+
+[logout](document/)
+
+### Charity
+
+[add_charity](document/)
+[choose_charity]document/)
+[read_charity](document/)
+[update_charity](document/)
+
+### Coordinator
+
+[activate_volunteer](document/)
+[activate_volunteers](document/)
+[add_profile](document/)
+[choose_profile](document/)
+[dashboard](document/)
+[pending](document/)
+[search_volunteers](document/)
+[see_profile](document/)
+[update_profile](document/)
+
+### Errors
+
+[404](document/)
+[500](document/)
+
+### Role
+
+[role](document/)
+
+### Volunteer
+
+[add_profile](document/)
+[edit_profile](document/)
+[read_profile](document/)
+
 ### CSS validation
 
-### Linter Validation
+### Javascript Validation
+
+### Python Validation
 
 ## Lighthouse and accessibility
+
+[index](document/lightindex.png) - performance could be improved with pictures resized and reformatted - this could be a future improvement.
+
+### Allauth
+
+[signup](document/lightsignup.png)
+
+[login](document/lightlogin.png)
+
+[logout](document/lightlogout.png)
+
+### Charity
+
+[add_charity](document/lightadd-charity.png)
+
+[choose_charity](document/lightchoose-charity.png)
+
+[read_charity](document/lightread-charity.png)
+
+[update_charity](document/lightupdate-charity.png)
+
+### Coordinator
+
+[activate_volunteer](document/lightactivate-volunteers.png)
+
+[activate_volunteers](document/lightactivate-volunteer.png)
+
+###[add_profile](document/)
+
+[choose_profile](document/lightchoose-profile.png)
+
+[dashboard](document/lightdash.png)
+
+###[pending](document/)
+
+[search_volunteers](document/lightsearch-volunteer.png)
+
+###[see_profile](document/)
+
+###[update_profile](document/)
+
+### Errors
+
+###[404](document/)
+
+###[500](document/)
+
+### Role
+
+###[role](document/)
+
+### Volunteer
+
+###[add_profile](document/)
+
+[edit_profile](document/lightvoledit-profile.png)
+
+[read_profile](document/lightvolread-profile.png)
 
 ## Features testing - Manual
 

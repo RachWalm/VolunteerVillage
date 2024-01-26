@@ -7,7 +7,7 @@
             <table class="table table-hover">
                 {% for volunteer in volunteers_for_activation %}
                     <tr>
-                        <td>First name</td><td>{{ volunteer.fname}} {{ volunteer.lname}}</td>
+                        <td>Name</td><td>{{ volunteer.fname}} {{ volunteer.lname}}</td>
                         <td> <a href="/coordinator/activate_volunteer/{{ volunteer.id }}">
                             <button class="btn btn-outline-info" type="submit">See profile and activate </button> 
                         </a>

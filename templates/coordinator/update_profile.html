@@ -4,7 +4,7 @@
     <div class="col-12">
         {% if user.is_authenticated and role == 2 %}
         <h2>Update a coordinator profile</h2>
-        <form method="post">
+        <form method="post" id="coordinatorForm">
             {{ form.as_p }}
             {% csrf_token %}
             <button type="submit" id="submithold" class="btn btn-outline-info">Update</button>
