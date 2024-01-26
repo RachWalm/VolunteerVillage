@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db.models import Q
 from .models import CoordinatorProfile
@@ -72,7 +71,7 @@ def search_coordinators(request):
     role = role_authenticate(request)
     if request.method == "POST":
         searched = request.POST['search_co']
-        co_profile_all=CoordinatorProfile.objects.filter(fname=searched).values()
+        co_profile_all=CoordinatorProfile.objects.filter(fname__icontains=searched).values()
         context = {
             'searched':searched,
             'co_profile_all':co_profile_all,
