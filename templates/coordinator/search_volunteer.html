@@ -7,13 +7,13 @@
         <form method="POST" action="{% url 'searchvol' %}">
             {% csrf_token %}
             <label for="activity_choice">Volunteering activity</label>
-            <select name="activity_choice">
+            <select id="activity_choice"name="activity_choice">
             {% for activity in activity_list %}
                 <option value="{{ activity }}"> {{ activity}}</option>
             {% endfor %}
             </select>   
             <label for="day_choice">Volunteering activity</label>
-            <select name="day_choice">
+            <select id="day_choice" name="day_choice">
                 <option value="mon">Monday</option>
                 <option value="tue">Tuesday</option>
                 <option value="wed">Wednesday</option>
@@ -23,10 +23,10 @@
                 <option value="sun">Sunday</option>
             </select>
             <label for="session_choice">Volunteering activity</label>
-            <select name="session_choice">
-                <option value="_am"><b>Morning</b></option>
-                <option value="_pm"><b>Afternoon</b></option>
-                <option value="_ev"><b>Evening</b></option>
+            <select id="session_choice" name="session_choice">
+                <option value="_am">Morning</option>
+                <option value="_pm">Afternoon</option>
+                <option value="_ev">Evening</option>
             </select>
             <button class="btn btn-outline-info" type="submit" value="Submit">Search Volunteers</button>
         </form>

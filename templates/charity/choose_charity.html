@@ -26,13 +26,13 @@
                     {{ alls.charity_name }}
                 </div>
                 <div class="col-8">
-                    <a href="/charity/read_charity/{{ alls.id }}">
-                        <button class="btn btn-outline-info" type="submit">Look at charity information</button> 
+                    <a class="btn btn-outline-info" href="/charity/read_charity/{{ alls.id }}">
+                        Look at charity information
                     </a>
-                    <a href="/charity/update_charity/{{ alls.id }}">
-                        <button class="btn btn-outline-info" type="submit">Update charity information</button> 
+                    <a class="btn btn-outline-info" href="/charity/update_charity/{{ alls.id }}">
+                        Update charity information
                     </a>
-                    <button class="btn btn-delete btn-danger" charity_id="{{ alls.id }}" type="submit">Delete charity information</button> 
+                    <button class="btn btn-delete btn-danger" charityid="{{ alls.id }}" type="submit">Delete charity information</button> 
                 </div>
             </div>
             {% endfor %}
