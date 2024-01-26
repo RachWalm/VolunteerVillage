@@ -112,6 +112,8 @@ Code was manually copied to the validator/
 
 [404](document/404.png)
 
+[500](document/light500.png)
+
 ### Role
 
 [role](document/lightrole.png)
