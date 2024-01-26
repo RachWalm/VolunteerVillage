@@ -38,27 +38,17 @@
         </div>
         <nav class="nav">
             <div class="col-lg-4">
-                <button class="btn btn-outline-info m-2">
-                    <a class="nav-link" href="{% url 'searchvol' %}">Search for a volunteer</a>
-                </button>
+                <a class="btn btn-outline-info m-2 nav-link" href="{% url 'searchvol' %}">Search for a volunteer</a>
                 {% if vol_not_activated != 0 %}
-                    <button class="btn btn-outline-info m-2">
-                        <a class="nav-link" href="{% url 'activatevols' %}">Activate volunteers</a>
-                    </button>
+                    <a class="btn btn-outline-info m-2 nav-link" href="{% url 'activatevols' %}">Activate volunteers</a>
                 {% endif %}
             </div>
             <div class="col-lg-4">
-                <button class="btn btn-outline-info m-2">
-                    <a class="nav-link" href="{% url 'add_charity' %}">Add Charity profile</a>
-                </button>
-                <button class="btn btn-outline-info m-2">
-                    <a class="nav-link" href="{% url 'search_charity' %}">View/Update/Delete Charity profile</a>
-                </button>
+                <a class="nav-link btn btn-outline-info m-2" href="{% url 'add_charity' %}">Add Charity profile</a>
+                <a class="nav-link btn btn-outline-info m-2" href="{% url 'search_charity' %}">View/Update/Delete Charity profile</a>
             </div>
             <div class="col-lg-4">
-                <button class="btn btn-outline-info m-2">
-                    <a class="nav-link" href="{% url 'searchco' %}">Search for Coordinator profiles</a>
-                </button>
+                <a class="nav-link btn btn-outline-info m-2" href="{% url 'searchco' %}">Search for Coordinator profiles</a>
             </div>
         </nav>
         {% else %}

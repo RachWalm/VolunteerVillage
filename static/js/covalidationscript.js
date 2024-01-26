@@ -3,7 +3,7 @@
 // validation script for coordinator profile first and last name
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("submithold").addEventListener("click", function (event) {
-        event.preventDefault() /* prevents submit*/
+        event.preventDefault(); /* prevents submit*/
         var fname = document.getElementById("id_fname").value;
         var lname = document.getElementById("id_lname").value;
         if (fname != 0) {

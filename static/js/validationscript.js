@@ -6,7 +6,7 @@
  */
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("submithold").addEventListener("click", function (event) {
-        event.preventDefault() /* prevents submit*/
+        event.preventDefault(); /* prevents submit*/
         if (phone()) {
             if (time()) {
                 if (person()) {

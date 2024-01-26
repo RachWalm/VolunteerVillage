@@ -50,7 +50,19 @@
 
 ### CSS validation
 
+Code was manually copied to the validator.
+
+![CSS validation](document/css.png)
+
 ### Javascript Validation
+
+Code was manually copied to the validator/
+
+[Coordinator add profile validation](document/covalidation.png)
+[Volunteer add profile validation](document/volvalidation.png)
+[delete charity check](document/deletecharity.png)
+[delete coordinator check](document/deletecoordinator.png)
+[delete volunteer check](document/deletevolunteer.png)
 
 ### Python Validation
 
@@ -98,9 +110,7 @@
 
 ### Errors
 
-###[404](document/)
-
-###[500](document/)
+[404](document/404.png)
 
 ### Role
 

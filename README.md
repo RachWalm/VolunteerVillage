@@ -360,7 +360,15 @@ It may be required for some sort of audit to know everyone involved so searches 
 
 ## Bugs
 
+limited time after save problem
+
+boot
+
 index no css colour
+
+### Unsolved bugs
+
+At the very end of the project I realised that the boostrap parameters should go in the div tags. Through out I had been putting them on the objects in the HTML. This is a widespread bug throughout the project and would take significant time to rectify. As this was only discovered during the testing and documenting phase there was insufficient time to go through the code to ensure better practise was observed.
 
 ## Technologies
 
