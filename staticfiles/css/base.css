@@ -15,7 +15,3 @@ body {
     width: 100%;
     object-fit: contain;
 }
-
-nav.ul {
-    list-style-type: none;
-}
