@@ -6,7 +6,7 @@
     <a class="nav-link" href="{% url 'edit' %}">Edit profile</a>
 </nav>
 </div>
-<h2 class="ms-5">Your profile - {{ user.username }} </h3>
+<h2 class="ms-5">Your profile - {{ user.username }} </h2>
 <div class="m-5">
 <table class="table table-bordered">
     {% for individual in peoples %}
@@ -63,7 +63,7 @@
 </div>
 <div class="ms-5">
 <a class="btn btn-outline-info" href="{% url 'edit' %}">Edit profile</a>
-<button class="btn btn-delete btn-danger" charity_id="{{ peoples.id }}" type="submit">
+<button class="btn btn-delete btn-danger" id="{{ peoples.id }}" type="submit">
     Delete all profile information
 </button> 
 </div>
