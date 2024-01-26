@@ -6,7 +6,7 @@
             <h2>Create a profile</h2>
             <div>
             {% if CP_exists == False %}
-                <form method="post">
+                <form method="post" id="coordinatorForm">
                     {{ form.as_p }}
                     {% csrf_token %}
                     <button type="submit" id="submithold" class="btn btn-outline-info">Submit</button>

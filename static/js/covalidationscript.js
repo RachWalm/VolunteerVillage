@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
             /*validates first name present*/
             if (lname != 0) {
                 /* validates last name present*/
-                var final = document.getElementById("volunteerForm");
+                var final = document.getElementById("coordinatorForm");
                 final.submit();
             } else {
                 /*alert to inform user last name required*/
