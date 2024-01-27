@@ -62,28 +62,32 @@
 </table>
 </div>
 <div class="ms-5">
-<a class="btn btn-outline-info" href="{% url 'edit' %}">Edit profile</a>
-<button class="btn btn-delete btn-danger" id="{{ peoples.id }}" type="submit">
-    Delete all profile information
-</button> 
+    <span>
+        <a class="btn btn-outline-info" href="{% url 'edit' %}">Edit profile</a>
+    </span>
+    <span>
+        <button class="btn btn-delete btn-danger" id="{{ peoples.id }}" type="submit">
+            Delete all profile information
+        </button>
+    </span>
 </div>
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="deleteModalLabel">Delete your profile?</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete your profile? This action is permanent and cannot be undone.
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
-                    <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
-                </div>
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteModalLabel">Delete your profile?</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete your profile? This action is permanent and cannot be undone.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+                <a id="deleteConfirm" href="#" class="btn btn-danger">Delete</a>
             </div>
         </div>
     </div>
 </div>
+
 <script src="/static/js/deletevolunteer.js"></script>
 {% endblock %}

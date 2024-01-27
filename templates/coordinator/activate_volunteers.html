@@ -8,11 +8,11 @@
                 {% for volunteer in volunteers_for_activation %}
                     <tr>
                         <td>Name</td><td>{{ volunteer.fname}} {{ volunteer.lname}}</td>
-                        <td> <a href="/coordinator/activate_volunteer/{{ volunteer.id }}">
-                            <button class="btn btn-outline-info" type="submit">See profile and activate </button> 
+                        <td> <a class="btn btn-outline-info" href="/coordinator/activate_volunteer/{{ volunteer.id }}">
+                            See profile and activate
                         </a>
-                    </td>
-                    <tr> 
+                        </td>
+                    </tr> 
                 {% endfor %}
             </table>
         {% else %}
