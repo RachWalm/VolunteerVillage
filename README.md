@@ -413,11 +413,7 @@ At the very end of the project I realised that the boostrap parameters should go
 - [PEP8Online.com](https://pep8ci.herokuapp.com/) was used to validate python coding
 - [Jshint](https://jshint.com/) was used to validate the JS.
 - [favicon](https://favicon.io/favicon-converter/) to generate my favicon from my logo.
-- [AmIResponsive](https://ui.dev/amiresponsive).
-
-[coolors](https://coolors.co/)
-
-- [Responsive viewer extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb) 
+- [Responsive viewer extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb) to produce the responsive view for my testing.
 
 ### Images
 

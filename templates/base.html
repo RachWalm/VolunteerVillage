@@ -35,11 +35,11 @@
     </div>
     <div class="col-4 col-md-2 mt-2">
     {% if user.is_authenticated %}
-        <p class="shadow p-2 align-middle text-center">Logged in as {{ user }}</p>
+        <p class="shadow p-2 ms-1 align-middle text-center">Logged in as {{ user }}</p>
     {% else %}
         <nav>
-            <a  class="mt-3 mb-3 btn shadow w-100 btn-outline-info" href="{% url 'account_login' %}">Sign in</a>
-            <a class="btn shadow w-100 btn-outline-info" href="{% url 'account_signup' %}">Sign up</a>
+            <a  class="mt-3 mb-3 ms-1 btn shadow w-100 btn-outline-info" href="{% url 'account_login' %}">Sign in</a>
+            <a class="btn shadow ms-1 w-100 btn-outline-info" href="{% url 'account_signup' %}">Sign up</a>
         </nav>
     {% endif %}
     </div>

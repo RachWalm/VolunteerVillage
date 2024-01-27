@@ -167,6 +167,10 @@ If someone has signed up as a coordinator that shouldn't have then the superuser
 
 ## Responsiveness
 
+For checks on responsiveness see below document:
+
+[responive](document/responsive.pdf)
+
 ## Bugs
 
 ## User stories
