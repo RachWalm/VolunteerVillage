@@ -7,13 +7,13 @@
         <form method="POST" action="{% url 'searchvol' %}">
             {% csrf_token %}
             <label for="activity_choice">Volunteering activity</label>
-            <select id="activity_choice" name="activity_choice">
+            <select class="mb-2" id="activity_choice" name="activity_choice">
             {% for activity in activity_list %}
                 <option value="{{ activity }}"> {{ activity}}</option>
             {% endfor %}
             </select>   
-            <label for="day_choice">Volunteering activity</label>
-            <select id="day_choice" name="day_choice">
+            <label for="day_choice">Day of the week</label>
+            <select class="mb-2" id="day_choice" name="day_choice">
                 <option value="mon">Monday</option>
                 <option value="tue">Tuesday</option>
                 <option value="wed">Wednesday</option>
@@ -22,13 +22,13 @@
                 <option value="sat">Saturday</option>
                 <option value="sun">Sunday</option>
             </select>
-            <label for="session_choice">Volunteering activity</label>
-            <select id="session_choice" name="session_choice">
+            <label for="session_choice">Time of day</label>
+            <select class="mb-2" id="session_choice" name="session_choice">
                 <option value="_am">Morning</option>
                 <option value="_pm">Afternoon</option>
                 <option value="_ev">Evening</option>
             </select>
-            <button class="btn btn-outline-info" type="submit" value="Submit">Search Volunteers</button>
+            <button class="btn btn-outline-info mb-2" type="submit" value="Submit">Search Volunteers</button>
         </form>
         {% if activity_choice %}
             <p> You searched for a volunteer to do {{ activity_choice }} on {{ verbose_time }} </p>
