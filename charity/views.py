@@ -47,6 +47,7 @@ def add_charity(request):
             charity.save()
             messages.add_message(request, messages.SUCCESS,
                                  'Charity information added')
+        return redirect('dashboard')
     context = {
         'form': form,
         'role': role,

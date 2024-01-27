@@ -4,49 +4,9 @@
 
 ### HTML validation
 
-[index](document/) 
+The HTML validation is below in a pdf.
 
-### Allauth
-
-[signup](document/)
-
-[login](document/)
-
-[logout](document/)
-
-### Charity
-
-[add_charity](document/)
-[choose_charity](document/)
-[read_charity](document/)
-[update_charity](document/)
-
-### Coordinator
-
-[activate_volunteer](document/)
-[activate_volunteers](document/)
-[add_profile](document/)
-[choose_profile](document/)
-[dashboard](document/)
-[pending](document/)
-[search_volunteers](document/)
-[see_profile](document/)
-[update_profile](document/)
-
-### Errors
-
-[404](document/)
-[500](document/)
-
-### Role
-
-[role](document/)
-
-### Volunteer
-
-[add_profile](document/)
-[edit_profile](document/)
-[read_profile](document/)
+[html validation]()
 
 ### CSS validation
 
@@ -202,9 +162,6 @@ Database updates/creations/deletions can also be performed in the admin section 
 If someone has signed up as a coordinator that shouldn't have then the superuser can also remove their username from roles and coordinator profiles and then they can resubmit their details as a volunteer.
 
 ### Testing data added to database
-
-
-## Features testing - Automated
 
 ## Browsers
 

@@ -83,7 +83,6 @@ def edit_profile(request):
         form = ProfileForm(request.POST, instance=available)
         if form.is_valid():
             form.save()
-            print(form)
             messages.add_message(request, messages.SUCCESS, 'Profile Updated!')
             return redirect('read')
     form = ProfileForm(instance=available)
