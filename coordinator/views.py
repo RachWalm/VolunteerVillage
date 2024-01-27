@@ -112,11 +112,13 @@ def search_coordinators(request):
     if request.method == "POST":
         searched = request.POST['search_co']
         profile = CoordinatorProfile.objects.filter(fname__icontains=searched)
+        found = profile.len()
         co_profile_all = profile.values()
         context = {
             'searched': searched,
             'co_profile_all': co_profile_all,
             'role': role,
+            'found': found,
         }
         return render(request, 'coordinator/choose_profile.html', context)
     else:
