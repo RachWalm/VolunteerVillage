@@ -12,7 +12,13 @@ def pending(request):
     '''A page that while the coordinator hasn't been activated they are
     directed to. Avoids access for spam profiles.
     '''
-    return render(request, 'coordinator/pending.html')
+    pk_logged_in = request.user.pk  # logged in user
+    cp = get_object_or_404(CoordinatorProfile, user_name_id=pk_logged_in)
+    cp_active = cp['activated']
+    if cp_active:
+        return render(request, 'coordinator/dashboard.html')
+    else:
+        return render(request, 'coordinator/pending.html')
 
 
 def role_authenticate(request):
