@@ -17,11 +17,13 @@ def get_verbose_name(name):
 
 def read_profile(request):
     pk_logged_in = request.user.pk
-    profile = get_object_or_404(VolunteerProfile, user_name_id = pk_logged_in)
-    peoples = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).values()
+    profile = get_object_or_404(VolunteerProfile, user_name_id=pk_logged_in)
+    peeps = VolunteerProfile.objects.filter(user_name_id=pk_logged_in)
+    peoples = peeps.values()
     skills = profile.skilled.values()
-    true_pairs = [{key for key, value in people.items() if value is True} for people in peoples]
-    sessions =[]
+    true_pairs = [{key for key, value in people.items() if value is True}
+                  for people in peoples]
+    sessions = []
     for true_pair in true_pairs:
         for pair in true_pair:
             pair = get_verbose_name(pair)
@@ -39,16 +41,18 @@ def read_profile(request):
 
 
 def add_profile(request):
-    form= ProfileForm
+    form = ProfileForm
     pk_logged_in = request.user.pk
-    VP_exists = VolunteerProfile.objects.filter(user_name_id=pk_logged_in).exists()
+    vp = VolunteerProfile.objects.filter(user_name_id=pk_logged_in)
+    VP_exists = vp.exists()
     if request.method == 'POST':
-        form = ProfileForm(request.POST) 
-        if form.is_valid(): 
+        form = ProfileForm(request.POST)
+        if form.is_valid():
             profile = form.save(commit=False)
             profile.user_name = request.user
             form.save()
-            messages.add_message(request, messages.SUCCESS, 'Profile sent for approval -  then you will be matched!')
+            messages.add_message(request, messages.SUCCESS,
+                                 'Profile in approval for volunteering!')
         else:
             print(form.errors)
         return redirect('read')
@@ -61,18 +65,18 @@ def add_profile(request):
 
 def edit_profile(request):
     pk_logged_in = request.user.pk
-    availabilities = get_object_or_404(VolunteerProfile, user_name_id =pk_logged_in)
+    available = get_object_or_404(VolunteerProfile, user_name_id=pk_logged_in)
     if request.method == 'POST':
-        form = ProfileForm(request.POST, instance=availabilities)
+        form = ProfileForm(request.POST, instance=available)
         if form.is_valid():
             form.save()
             print(form)
             messages.add_message(request, messages.SUCCESS, 'Profile Updated!')
             return redirect('read')
-    form = ProfileForm(instance = availabilities)
+    form = ProfileForm(instance=available)
     context = {
         'form': form,
-        'availabilities': availabilities,
+        'availabilities': available,
         'pk_logged_in': pk_logged_in
     }
     return render(request, 'volunteer/edit_profile.html', context)

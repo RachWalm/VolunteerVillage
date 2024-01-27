@@ -120,6 +120,8 @@ put function here
 
 This page is built by allauth, but also has the header and footer as previously described. This was achieved by copying the templates from allauth and extending the custom base.html.
 
+Email verification is set to none in the settings so this field is optional.
+
 #### Log in page
 
 This page is built by allauth, but also has the header and footer as previously described. This was achieved by copying the templates from allauth and extending the custom base.html. On this page the 'forgotten password' link was also removed from the standard template used by allauth - as that functionality has not been set up. It was necessary to go to an old version of allauth to have this visible in the HTML for it to be removed. E-mail is left as optional.

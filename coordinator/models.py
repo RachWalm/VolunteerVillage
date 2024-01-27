@@ -22,6 +22,7 @@ class CoordinatorProfile(models.Model):
     activated = models.BooleanField(
         default=False,
     )
-    
+
+
     def __str__(self):
         return str(self.fname + " " + self.lname)

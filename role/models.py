@@ -15,8 +15,7 @@ class Role(models.Model):
     '''Which role and functions the user has'''
     user_name = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=128)
-    role = models.IntegerField(choices=RoleChoices.ROLE_CHOICES, default = 1)
-    
+    role = models.IntegerField(choices=RoleChoices.ROLE_CHOICES, default=1)
+
     def __str__(self):
         return self.name
-    

@@ -5,8 +5,8 @@ from django.core.validators import MaxValueValidator
 
 class SkillChoices(models.Model):
     '''List of the skill choices model'''
-    name= models.CharField(max_length=50)
-    
+    name = models.CharField(max_length=50)
+
     def __str__(self):
         return self.name
 
@@ -39,7 +39,7 @@ class VolunteerProfile(models.Model):
         auto_now_add=True,
     )
     skilled = models.ManyToManyField(
-        SkillChoices, 
+        SkillChoices,
         help_text='To select multiple activities hold control and click',
         verbose_name=("Activity options"),
         related_name="VolunteerProfiles")
@@ -47,8 +47,8 @@ class VolunteerProfile(models.Model):
         null=False,
         blank=True,
         verbose_name='Information',
-        max_length = 500,
-        help_text='If you wish to provide us with specific information about skills - type it here',
+        max_length=500,
+        help_text='Provide us with information about your skills here',
     )
     activated = models.BooleanField(
         default=False,
@@ -57,13 +57,13 @@ class VolunteerProfile(models.Model):
         default=0,
         verbose_name='Hours per week you can be available',
         validators=[
-            MaxValueValidator(168), #168 hours in a week
-        ])    
+            MaxValueValidator(168),  # 168 hours in a week
+        ])
     time_length_days = models.PositiveSmallIntegerField(
         default=0,
         verbose_name='days per week you can be available',
         validators=[
-            MaxValueValidator(7), #7 days in a week
+            MaxValueValidator(7),  # 7 days in a week
         ])
     mon_am = models.BooleanField(
         default=False,
@@ -150,7 +150,5 @@ class VolunteerProfile(models.Model):
         verbose_name="Sunday evening",
     )
 
-
-def __str__(self):
-    return self.name
-    
+    def __str__(self):
+        return self.name

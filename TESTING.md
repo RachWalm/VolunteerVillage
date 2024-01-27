@@ -56,7 +56,7 @@ Code was manually copied to the validator.
 
 ### Javascript Validation
 
-Code was manually copied to the validator/
+Code was manually copied to the validator.
 
 [Coordinator add profile validation](document/covalidation.png)
 [Volunteer add profile validation](document/volvalidation.png)
@@ -65,6 +65,10 @@ Code was manually copied to the validator/
 [delete volunteer check](document/deletevolunteer.png)
 
 ### Python Validation
+
+Python code copy and pasted into validator and put in the pdf below.
+
+[python validation](document/py.pdf)
 
 ## Lighthouse and accessibility
 

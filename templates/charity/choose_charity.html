@@ -12,13 +12,13 @@
             <input type="search" placeholder="charity name" aria-label="Charity name search" name="search">
             <button class="btn btn-outline-info" type="submit">Search Charity</button>
         </form>
-        {% if searched %}
-            <h2 class="mb-4">You searched for {{ searched }}</h2>
+        {% if search %}
+            <h2 class="mb-4">You searched for {{ search }}</h2>
         {% else %}
             <h2>You need to enter a charity name</h2>
         {% endif %}
 
-        {% if searched and content %}
+        {% if search and content %}
 
             {% for alls in charity_profile_all %}
             <div class="row px-1 mb-2">
