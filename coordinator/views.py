@@ -12,13 +12,14 @@ def pending(request):
     '''A page that while the coordinator hasn't been activated they are
     directed to. Avoids access for spam profiles.
     '''
-    pk_logged_in = request.user.pk  # logged in user
-    cp = get_object_or_404(CoordinatorProfile, user_name_id=pk_logged_in)
-    cp_active = cp['activated']
-    if cp_active:
-        return render(request, 'coordinator/dashboard.html')
-    else:
-        return render(request, 'coordinator/pending.html')
+    profile = CoordinatorProfile.objects.filter(user_name_id=request.user.pk)
+    activates_coordinator = profile.values()  # get data associated
+    for activate_coordinator in activates_coordinator:
+        active = activate_coordinator['activated']
+    context = {
+        'active': active,
+        }
+    return render(request, 'coordinator/pending.html', context)
 
 
 def role_authenticate(request):
@@ -112,14 +113,14 @@ def search_coordinators(request):
     if request.method == "POST":
         searched = request.POST['search_co']
         profile = CoordinatorProfile.objects.filter(fname__icontains=searched)
-        found = profile.len()
+        found = profile.count()
         co_profile_all = profile.values()
         context = {
             'searched': searched,
             'co_profile_all': co_profile_all,
             'role': role,
             'found': found,
-        }
+            }
         return render(request, 'coordinator/choose_profile.html', context)
     else:
         return render(request, 'coordinator/choose_profile.html',

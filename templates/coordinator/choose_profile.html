@@ -19,10 +19,10 @@
 
         {% if searched %}
             <h2 class="mb-4">You searched for {{ searched }}</h2>
+            <h3 class="mb-4">You found {{ found }} entries</h3>
         {% else %}
             <h2 class="mb-4">You didn't enter a name</h2>
         {% endif %}
-        {{ found }}
         {% for alls in co_profile_all %}
             <div class="row mt-2">
             <div class="col-4 col-md-3">
