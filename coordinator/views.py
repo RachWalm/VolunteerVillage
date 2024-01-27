@@ -148,8 +148,8 @@ def edit_profile_co(request, id):
 def delete_profile_co(request, id):
     '''
     This gathers the information on the coordinator that has the id
-    provided alongside the request in the arguments and from the 
-    modal that confirms that the coordinator profile should be 
+    provided alongside the request in the arguments and from the
+    modal that confirms that the coordinator profile should be
     deleted it performs a delete of the profile (not the user).
     '''
     role = role_authenticate(request)  # activated coordinators only
@@ -220,7 +220,7 @@ def search_volunteer(request):
     stored in the database, then takes values from three selects
     which provide the activity, day and part of day. Day and part
     of day are then combined to give a field name which is
-    searched by search_day_session and values that match the 
+    searched by search_day_session and values that match the
     search for activity and day/session are then returned so that
     a coordinator can contact them outside the database from their
     details.
@@ -312,14 +312,15 @@ def activate_volunteer(request, id):
             volunteer = form.save(commit=False)
             form.save()
             volunteer.save()
-            messages.add_message(request, messages.SUCCESS, 'Volunteer activated!')
+            messages.add_message(request, messages.SUCCESS,
+                                 'Volunteer activated!')
             return redirect('activatevols')
     form = ProfileFormVolunteer(instance=profile)
     context = {
         'form': form,
         'profile': profile,
         'skills': skills,
-        'sessions': sessions, 
+        'sessions': sessions,
         'role': role
     }
     return render(request, 'coordinator/activate_volunteer.html', context)

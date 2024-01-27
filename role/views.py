@@ -7,10 +7,16 @@ from .forms import RoleForm
 
 
 def home(request):
+    '''redirects user to landing page'''
     return render(request, 'index.html')
 
 
 def role(request):
+    '''
+    This provides a form to save which role the user is going to be
+    so that this integer can direct them to the correct parts of the
+    site.
+    '''
     form = RoleForm
     pk_logged_in = request.user.pk
     role_exists = Role.objects.filter(user_name_id=pk_logged_in).exists()
@@ -50,7 +56,8 @@ def role(request):
 
 def login_success(request):
     """
-    Redirects users based on the role that the need to use the site
+    Redirects users based on the role and what stage of the sign up
+    process they have completed to area they need to use the site.
     """
     pk_logged_in = request.user.pk
     role_exists = Role.objects.filter(user_name_id=pk_logged_in).exists()

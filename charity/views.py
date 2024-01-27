@@ -18,7 +18,7 @@ def role_authenticate(request):
     role_object = get_object_or_404(Role, user_name_id=pk_logged_in)
     role = role_object.role  # gets integer associated with role
     profile = CoordinatorProfile.objects.filter(user_name_id=request.user.pk)
-    activates = profile.values() # gets actual data from profile
+    activates = profile.values()  # gets actual data from profile
     for activate in activates:
         active = activate['activated']  # if activated true
     if active:

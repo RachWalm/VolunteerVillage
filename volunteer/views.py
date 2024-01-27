@@ -6,23 +6,30 @@ from .forms import ProfileForm
 
 
 def home(request):
+    '''Redirects to landing page'''
     return render(request, 'index.html')
 
 
 def get_verbose_name(name):
+    '''Gets human readable version of field name'''
     session = VolunteerProfile._meta.get_field(name)
     verbose = session.verbose_name
     return verbose
 
 
 def read_profile(request):
+    '''
+    Provides information that the volunteer has entered so that they
+    know what is held on the database about them.
+    Shows all the data that they have chosen without the other options.
+    '''
     pk_logged_in = request.user.pk
     profile = get_object_or_404(VolunteerProfile, user_name_id=pk_logged_in)
     peeps = VolunteerProfile.objects.filter(user_name_id=pk_logged_in)
     peoples = peeps.values()
     skills = profile.skilled.values()
     true_pairs = [{key for key, value in people.items() if value is True}
-                  for people in peoples]
+                  for people in peoples]  # gets only sessions they tick
     sessions = []
     for true_pair in true_pairs:
         for pair in true_pair:
@@ -41,6 +48,10 @@ def read_profile(request):
 
 
 def add_profile(request):
+    '''
+    Provides empty form for them to enter all their personal
+    details, when available and what they want to do.
+    '''
     form = ProfileForm
     pk_logged_in = request.user.pk
     vp = VolunteerProfile.objects.filter(user_name_id=pk_logged_in)
@@ -53,8 +64,6 @@ def add_profile(request):
             form.save()
             messages.add_message(request, messages.SUCCESS,
                                  'Profile in approval for volunteering!')
-        else:
-            print(form.errors)
         return redirect('read')
     context = {
         'form': form,
@@ -64,6 +73,10 @@ def add_profile(request):
 
 
 def edit_profile(request):
+    '''
+    Prepopulated form with what they have previously stored but the fields
+    are editable so they can update it.
+    '''
     pk_logged_in = request.user.pk
     available = get_object_or_404(VolunteerProfile, user_name_id=pk_logged_in)
     if request.method == 'POST':
@@ -83,6 +96,10 @@ def edit_profile(request):
 
 
 def delete_profile(request):
+    '''
+    Allows delete only of the person logged in's account from modal
+    confirmation.
+    '''
     pk_logged_in = request.user.pk
     volunteer = get_object_or_404(User, id=pk_logged_in)
     volunteer.delete()

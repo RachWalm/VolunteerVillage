@@ -3,6 +3,9 @@ from django import forms
 
 
 class ProfileForm(forms.ModelForm):
+    '''
+    Form to collect details of person, when they are
+    available and what they want to do'''
     class Meta:
         model = VolunteerProfile
         fields = ('fname', 'lname', 'phone', 'skilled',

@@ -23,6 +23,5 @@ class CoordinatorProfile(models.Model):
         default=False,
     )
 
-
     def __str__(self):
         return str(self.fname + " " + self.lname)
