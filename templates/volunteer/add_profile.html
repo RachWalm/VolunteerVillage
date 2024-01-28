@@ -1,26 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
-<h2 class="ms-5">Create your profile</h2>
-{% if VP_exists == False %}
-    <div class="d-flex col-12 justify-content-center">
-        <div class="col-10">
-            <form method="post" id="volunteerForm">
-                <div class="form-control">
-                    {{ form.as_p }}
-                    {% csrf_token %}
-                    <button type="submit" id="submithold" class="btn btn-outline-info">Submit</button>
-                </div>
-            </form>
+{% if user.is_authenticated %}
+    <h2 class="ms-5">Create your profile</h2>
+    {% if VP_exists == False %}
+        <div class="d-flex col-12 justify-content-center">
+            <div class="col-10">
+                <form method="post" id="volunteerForm">
+                    <div class="form-control">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <button type="submit" id="submithold" class="btn btn-outline-info">Submit</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
-    <script src="/static/js/validationscript.js"></script>
-{% else %}
-    <h3 class="ms-5"> You already have a profile you will shortly be redirected to that profile. Or please click on the button below....</h3>
-    <a class="btn btn-outline-info ms-5 nav-link" href="{% url 'read' %}">Your profile page</a>
-    <script>
-        var redirect = setTimeout(function () {
-            window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/volunteer/read_profile'
-        }, 10000);
-    </script> 
+        <script src="/static/js/validationscript.js"></script>
+    {% else %}
+        <h3 class="ms-5"> You already have a profile you will shortly be redirected to that profile. Or please click on the button below....</h3>
+        <a class="btn btn-outline-info ms-5 nav-link" href="{% url 'read' %}">Your profile page</a>
+        <script>
+            var redirect = setTimeout(function () {
+                window.location='https://volunteervillage-8a4d89acc796.herokuapp.com/volunteer/read_profile'
+            }, 10000);
+        </script> 
+    {% endif %}
 {% endif %}
 {% endblock %}

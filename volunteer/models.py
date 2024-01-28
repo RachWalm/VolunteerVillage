@@ -150,5 +150,5 @@ class VolunteerProfile(models.Model):
         verbose_name="Sunday evening",
     )
 
-    def __str__(self):
-        return self.name
+def __str__(self):
+    return self.name
