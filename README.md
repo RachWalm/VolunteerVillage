@@ -8,7 +8,7 @@ It can be accessed through [Volunteer Village](https://volunteervillage-8a4d89ac
 
 ![title](document/title.png)
 
-The volunteer village site was designed to be used by people in two roles in a charity. 
+The volunteer village site was designed to be used by people in two roles for a charity that connects volunteers with those in need. 
 
 The first role is as a volunteer looking to provide voluntary assistance. The second is as a coordinator at Volunteer Village who's attempting to match people and charitable organisations who are in need of assistance with appropriate assistance. The volunteer signs up and provides contact information and details of the kind of assistance they are able to provide and when they are likely to be available on a weekly basis in a profile form which is saved. 
 
@@ -66,19 +66,19 @@ The Epics were assembled about a week into the project when the scope became app
 
 |Issue| Title |
 |--------|-------|
-|[[#66](https://github.com/RachWalm/VolunteerVillage/issues/66)](Epic : new to the site )|As a potential volunteer , I can see the site aims and navigate to how it works page so that I can decide whether to use it. |
-|[[#61](https://github.com/RachWalm/VolunteerVillage/issues/61)](epic:Volunteer joins site)|As a volunteer, I can join the site and put in my profile so that I can be ready to volunteer.  |
-|[[#65](https://github.com/RachWalm/VolunteerVillage/issues/65)](Epic: Volunteers can only see/update/delete their own information and only when logged in )|As a volunteer, I can join the site and put in my profile so that I can be ready to volunteer.  |
-|[[#63](https://github.com/RachWalm/VolunteerVillage/issues/63)](Epic: Volunteer reads their profile)|As a Volunteer, I can look at the preferences I have chosen so that I can be confident they are correct.|
-|[[#62](https://github.com/RachWalm/VolunteerVillage/issues/62)](Epic: Volunteer update their profile)|As a volunteer, I can update my profile so that I can make any changes as time goes by.  |
-|[[#64](https://github.com/RachWalm/VolunteerVillage/issues/64)](Epic : user can delete profile )|As a Volunteer, I can delete my profile so that I can stop using the site and stop them having access to my details.  |
-|[[#67](https://github.com/RachWalm/VolunteerVillage/issues/67)](Epic : Coordinators can be registered and log in and out)|As a Coordinator, I can register and log in and out so that I can do my job.  |
-|[[#69](https://github.com/RachWalm/VolunteerVillage/issues/69)](Epic: coordinators can be approved)|As a approver, I can get coordinators onto the system so that I can get them coordinating.  |
-|[[#68](https://github.com/RachWalm/VolunteerVillage/issues/68)](Epic : coordinator can search the profiles to find someone to do the volunteering)|As a coordinator, I can search for a suitable volunteer so that I can match the activity to a volunteer.  |
-|[[#104](https://github.com/RachWalm/VolunteerVillage/issues/104)](Epic: Coordinators can activate the volunteers profile)|As a Coordinator, I can look at new profiles and consider them for old projects and then activate them so that I can check for spam and see what is newly available.  |
-|[[#85](https://github.com/RachWalm/VolunteerVillage/issues/85)](Epic: if user isn't logged in but URL for a logged in page typed send to error page)|As a site user, I can **type the url but not be logged in ** so that I can see a useful information error page rather than url not found etc..  |
-|[[#70](https://github.com/RachWalm/VolunteerVillage/issues/70)](Epic: charities section of website set up)|As a coordinator, I can create update and delete and read info on charities so that I can use this as a source of information.  |
-|[[#71](https://github.com/RachWalm/VolunteerVillage/issues/71)](Epic: ratings and notes area of website created)|As a coordinator, I can make notes and rating the volunteers so that I can keep details and keep track of how many hours of volunteering they have done.  |
+|[#66](https://github.com/RachWalm/VolunteerVillage/issues/66)(Epic : new to the site )|As a potential volunteer , I can see the site aims and navigate to how it works page so that I can decide whether to use it. |
+|[#61](https://github.com/RachWalm/VolunteerVillage/issues/61)(epic:Volunteer joins site)|As a volunteer, I can join the site and put in my profile so that I can be ready to volunteer.  |
+|[#65](https://github.com/RachWalm/VolunteerVillage/issues/65)(Epic: Volunteers can only see/update/delete their own information and only when logged in )|As a volunteer, I can join the site and put in my profile so that I can be ready to volunteer.  |
+|[#63](https://github.com/RachWalm/VolunteerVillage/issues/63)(Epic: Volunteer reads their profile)|As a Volunteer, I can look at the preferences I have chosen so that I can be confident they are correct.|
+|[#62](https://github.com/RachWalm/VolunteerVillage/issues/62)(Epic: Volunteer update their profile)|As a volunteer, I can update my profile so that I can make any changes as time goes by.  |
+|[#64](https://github.com/RachWalm/VolunteerVillage/issues/64)(Epic : user can delete profile )|As a Volunteer, I can delete my profile so that I can stop using the site and stop them having access to my details.  |
+|[#67](https://github.com/RachWalm/VolunteerVillage/issues/67)(Epic : Coordinators can be registered and log in and out)|As a Coordinator, I can register and log in and out so that I can do my job.  |
+|[#69](https://github.com/RachWalm/VolunteerVillage/issues/69)(Epic: coordinators can be approved)|As a approver, I can get coordinators onto the system so that I can get them coordinating.  |
+|[#68](https://github.com/RachWalm/VolunteerVillage/issues/68)(Epic : coordinator can search the profiles to find someone to do the volunteering)|As a coordinator, I can search for a suitable volunteer so that I can match the activity to a volunteer.  |
+|[#104](https://github.com/RachWalm/VolunteerVillage/issues/104)(Epic: Coordinators can activate the volunteers profile)|As a Coordinator, I can look at new profiles and consider them for old projects and then activate them so that I can check for spam and see what is newly available.  |
+|[#85](https://github.com/RachWalm/VolunteerVillage/issues/85)(Epic: if user isn't logged in but URL for a logged in page typed send to error page)|As a site user, I can **type the url but not be logged in ** so that I can see a useful information error page rather than url not found etc..  |
+|[#70](https://github.com/RachWalm/VolunteerVillage/issues/70)(Epic: charities section of website set up)|As a coordinator, I can create update and delete and read info on charities so that I can use this as a source of information.  |
+|[#71](https://github.com/RachWalm/VolunteerVillage/issues/71)(Epic: ratings and notes area of website created)|As a coordinator, I can make notes and rating the volunteers so that I can keep details and keep track of how many hours of volunteering they have done.  |
 
 ### User stories and tasks
 
@@ -97,6 +97,8 @@ The index page has the same basic heading and footer that is on every page.
 The heading contains a logo, title and the home page and allauth navigation links. It also contains a message as to whether the user is logged in (and who they are logged in as) or if they are not logged in. This area also has flash messages when they are relevant.
 
 The rest of the page is text and images chosen to draw a new user into the idea of volunteering and provide information on what volunteering roles are likely to be available.
+
+![index](document/title.png)
 
 The footer has information about the developer and states that the website is a project is for Code Institute.
 
@@ -168,19 +170,27 @@ def login_success(request):
 
 This page is built by allauth, but also has the header and footer as previously described. This was achieved by copying the templates from allauth and extending the custom base.html.
 
+![signup](document/signup.png)
+
 Email verification is set to none in the settings so this field is optional.
 
-#### Log in page
+#### Sign in page
 
-This page is built by allauth, but also has the header and footer as previously described. This was achieved by copying the templates from allauth and extending the custom base.html. On this page the 'forgotten password' link was also removed from the standard template used by allauth - as that functionality has not been set up. It was necessary to go to an old version of allauth to have this visible in the HTML for it to be removed. E-mail is left as optional.
+This page is built by allauth, but also has the header and footer as previously described. This was achieved by copying the templates from allauth and extending the custom base.html. On this page the 'forgotten password' link was also removed from the standard template used by allauth - as that functionality has not been set up. It was necessary to go to an old version of allauth to have this visible in the HTML for it to be removed. 
 
-#### Log out page
+![signin](document/signin.png)
+
+#### Sign out page
 
 This page is built by allauth, but also has the header and footer as previously described. This was achieved by copying the templates from allauth and extending the custom base.html.
+
+![signout](document/signout.png)
 
 #### Role choice page
 
 This page is part of the sign up process. As users can either be signing up as a volunteer or as a part of the organisation as a coordinator. The dropdown select has volunteer as the default, and only one visible when they arrive at the page. Volunteer is the main option chosen and one we want the public to focus on. Other option selected by coordinators as needed.
+
+![role](document/role.png)
 
 This page currently only has the option of volunteer or coordinator. This could be simply updated as each role is associated with a number to allow for additional roles (such as charity login or different types of coordinator should the organisation grow to require multiple more focused coordinators or should the orgnaisation want the activities restricted to certain personnel of differing responsibilities). 
 
@@ -196,9 +206,13 @@ These fields are saved in the CoordinatorProfile and attached to the User via a 
 
 As the coordinators will have access to almost all functions and large quantities of data, there is then a step where another coordinator needs to activate the incoming coordinator. This will prevent accidental or malicious access as a coordinator. This Pending page is the page that the coordinator is directed to between them signing up and being activated - even if they log out and back in unless they are activated they will go to the Pending page. If they inform another coordinator that they need activating other coordinators can perform this (see below).
 
+![pending](document/pending.png)
+
 #### Volunteer add profile page
 
 If the role of volunteer has been picked then this takes them to the volunteer add profile page. There is little action that a volunteer would want to take without a profile so this is the first place directed to. This page requests information such as name, phone number to contact to volunteer with volunteering opportunities. It also establishes which of the activities from the list they would like to do and when they are regularly available. There is a free text box to add any special skills etc that they want to have highlighted. 
+
+![voladd](document/voladd.png)
 
 The list of activities that they can pick from is taken from the database which holds a list of activities and they can select several by holding down control (holding control is stated in the help text on the page).
 
@@ -216,6 +230,8 @@ The volunteer is sent to their profile read page when they have added their prof
 
 This isn't editable on this page to avoid accidental clicking and making inadvertent alterations.
 
+![volread](document/volread.png)
+
 Most of the data is taken from the VolunteerProfile model (except the e-mail which is taken from the User allauth model).
 
 There are a couple of functions involved in producing this page as there are several items that have multiple either inputs or outputs. Therefore iterating through lists both in the html to display them on the page and searching through a list of model fields to check if the one required is 'true' while not getting activated as 'true'.
@@ -225,6 +241,8 @@ If there hasn't been a profile set up for the person or the user not logged in t
 #### Volunteer edit their profile page
 
 If a volunteer clicks to edit their profile then they are directed to a page that is similar to the form where they added their original profile and is populated with the currently held information. To edit they must make the relevant changes to the form and then press submit. Unless submit is pressed no changes will be performed.
+
+![voledit](document/voledit.png)
 
 This currently does not have the ability to change the e-mail as that is taken from allauth and this form is based on the VolunteerProfile model.
 
@@ -258,11 +276,13 @@ The code for the delete modals were taken from the extra tutorial which carried 
 </div>
 ```
 
-This code was taken out of the tutorial and adjusted to the three delete modals (volunteer profile, coordinator profile and charity). As the delete button pointed to the modal not directly to a delete, Javascript was then used with an event listener on the modal delete button which then pointed to the url. Which for the volunteers was related to who was logged in and for the coordinators and charities it requires an ID to be put in the url relating to which item to delete. The views.py also has defensive code so it can only be an activated coordinator deleting the coordinator or charity (not required for volunteer as they have to be logged in for it to know which data to delete) - see defensive programming below. 
+This code was taken out of the tutorial that was posted on slack as an extension of the blog walkthrough and adjusted to the three delete modals (volunteer profile, coordinator profile and charity). As the delete button pointed to the modal not directly to a delete, Javascript was then used with an event listener on the modal delete button which then pointed to the url. Which for the volunteers was related to who was logged in and for the coordinators and charities it requires an ID to be put in the url relating to which item to delete. The views.py also has defensive code so it can only be an activated coordinator deleting the coordinator or charity (not required for volunteer as they have to be logged in for it to know which data to delete) - see defensive programming below. 
 
 #### Coordinator dashboard page
 
 This is where active coordinators are directed when they log in (and are activated) and is the centre for all the links that they will need to perform routine requirements.
+
+![dashboard](document/dashboard.png)
 
 This page also informs them about the state of the volunteer and coordinator activations for processing. The number of activations of both the volunteers and the coordinators that need actioning is displayed on the screen. The names of the coordinators are also on the screen so that as they will be able to search coordinators in order to activate them. This will ensure the correct spelling when searching. There are likely to only be a few at a time so this list doesn't take much space. If there are a large number of spam profiles they can determine who is legitimate without waiting for a superuser to deal with the spam profiles.
 
@@ -288,6 +308,8 @@ Searches use inputs that are created individually in the HTML and are not saved 
 
 All search pages are created with individual inputs in the HTML and the lists for the options are created from data that is saved in the database. 
 
+![searchco](document/searchco.png)
+
 Some search fields are select inputs. Activities are taken from the SkillChoices Model and time and day are done using the fields in the VolunteerProfile model. Where required they are changed into the verbose name so that users can understand them rather than the shortened versions to allow easier coding.
 
 There are also some free text boxes that then look for the combination of letters that has been used. icontain should be able to deal with capitals vs small letters, but there is a message with these free text boxes reminding users to use capitals appropriately, just in case.
@@ -295,6 +317,8 @@ There are also some free text boxes that then look for the combination of letter
 #### Coordinator activate/edit coordinator profiles page
 
 If a coordinator signs up to the site there needs to be a restriction on their access as they will have functionality and data access that shouldn't be freely available, so another coordinator has to activate them by ticking the box and submitting. This page can also be used if the coordinator wishes to change their name - marriage, legally changed name etc. As it isn't anticipated that any organisation like this would necessarily have an HR role, name changes will be by the coordinators. Should a coordinator leave temporarily (such as parental leave), then the account will need to be deactivated to restrict access to the information. 
+
+![activateco](document/activateco.png)
 
 There is a many to many relationship between charities and coordinators which as it is attached to the charities model this page (unlike the see coordinator profile page) does not have which charities the coordinator is associated with.
 
@@ -306,19 +330,29 @@ In the event there are no coordinators activated this could be performed for one
 
 When a request has been made to the organisation for a type of activity to be performed during a certain part of the week a coordinator can go to the search page and select the activity and the day and whether it is for morning/afternoon/evening and if any of the volunteers fit this description then their name is displayed as a list. The information about the volunteers is then displayed in a non-editable table on screen. Coordinators could then contact the volunteers and organise the activity that is required. 
 
+![searchvol](document/searchvol.png)
+
 Whether a volunteer is activated or not they will appear in this search. Should the function later be required to display only activated volunteers then this requirement could be easily added as a filter - using the reverse of the filter that lists unactivated volunteers on the dashboard page.
 
 #### Coordinator activate volunteers page
 
+![activatevols](document/activatevols.png)
+
 Coordinators are required the activate the volunteers for two reasons: to look at incoming volunteers and see if there are any unfulfilled volunteering opportunities that would suit them (providing volunteer activity promptly to volunteers as they join the site which will increase thier enthusiasm for the process), and to ensure that the database doesn't get filled up with spam profiles. Reading the information provided in the text box by volunteers may also be more useful that just having their choice of activity if they have a special skill that can be matched.
+
+![activatevol](document/activatevol.png)
 
 #### Coordinator add charity page
 
 Should a new charity wish to be involved then the coordinator can click on the link in the dashboard and add the charity name and a few details in the text box about the charity's needs and information. The charity can also be assigned a coordinator (or two with a back up, or many for a big charity). Then the information is there to enable the most appropriate person to deal with a charity's request (or if that person is away, provide enough information in the text box for someone else to assist).
 
+![addcharity](document/addcharity.png)
+
 #### Coordinator choose charity page
 
 Once a charity is in the database then coordinators will want access to the information to read/edit/delete. This page allows coordinators to search by the name (partial or full) of the charity and returns a list of the charities that fit the searched text. For each charity there is a look at charity information (which is non-editable to avoid accidental update), an edit and delete button if they need to change the information or if the charity decides to no longer continue the connection.
+
+![searchcharity](document/searchcharity.png)
 
 #### Coordinator view charity page
 
@@ -355,6 +389,21 @@ In the top right of the screen next to the nav bar there is an information messa
 
 Most activities that involve change contain a flash message. If the user performs an allauth related activity (login/logout etc.) or if the user updates the database in some way a flash message should appear on the screen for 2.5 seconds. Other activities such as searches are apparent by the messages on the screen or results being displayed.
 
+#### Search text function
+
+This was adapted for the various searches throughout the site that are text inputs from a tutorial on youtube [youtube](https://www.youtube.com/watch?v=AGtae4L5BbI).
+
+```HTML
+        <form method=POST action="{% url 'search_charity' %}">
+            {% csrf_token %}
+            <input type="search" placeholder="charity name" aria-label="Charity name search" name="search">
+            <button class="btn btn-outline-info" type="submit">Search Charity</button>
+        </form>
+```
+```py
+search = request.POST['search']
+```
+
 #### Superuser/admin activities
 
 Most activities can be performed by the users in one role or another.
@@ -371,30 +420,27 @@ If there are no coordinators activated (so no one can activate other coordinator
 
 ### Potential Future Feature Developments 
 
-There were some ideas that would make the site more useful but are outside prime objective of the site to allow volunteers to sign up and then be matched with requests. These were still initially thought through to avoid coding in such a way as to require an extensive recode to introduce them later.
+There were some functions that could potentially make the site more useful but were outside the prime objective of the site to allow volunteers to sign up and then be matched with requests. These other possible functions were still initially thought through to avoid coding in such a way as to require an extensive recode to introduce them later.
 
-In an ideal extension the coordinators will also have their own charities that they work with, there is a section for them to record information in a text box about their charities. This text box section is to record information on their charities for their own memory and if it needs to be cross-referenced/used by other coordinators should the primary coordinator be away or a deputy be working with them. There is a link showing which coordinators and charities work together.
+It may also be a useful function if feed back or notes on the volunteers could be made by the coordinators. Possibilities are allowing them to have a star system to show how many activities they have undertaken - reaching certain levels could congratulate the volunteers or entitle them to a different badge or title. Where praise has been given by the people they assist that this could be fed back to the volunteers through their page.
 
-It would also be great if feed back or notes on the volunteers could be made by the coordinators. Maybe allowing them to have a star system to show how many activities they have undertaken maybe reaching certain levels gives you a different badge or title. Also where praise has been given by the people they assist that this could be fed back to the volunteers through their page.
+A similar function may be useful where notes on a volunteer from one coordinator to other coordinators could be left that could not be seen by the volunteer. Such as when they have contacted someone about something but it wasn't a match to avoid a different coordinator attempting the same match.
 
-I expect that a similar function where notes on a volunteer from one coordinator to other coordinators could be left that isn't seen by the volunteer. Such as when they have contacted someone about something but it wasn't a match so that a different coordinator doesn't attempt the same match.
-comments and likes area
+An area to save activity requests from public and charities that haven't been fulfilled would give an open activities area which could be searched could be useful.
 
-An area to save activity requests from public and charities that haven't been full-filled. Would give an open activities area which could be searched.
+An area containing success stories and historic information could be quite motivational for the volunteers.
 
-And historic information
+It might be possible to improve the model for the days and times as it would be much better if I had managed to use the initial idea of Monday = 1 Tuesday = 2 etc and am = 1 pm =2 so then Monday-AM would be 11, this would have given a simpler and lesser number of fields. However, with problems (described in bugs) doing the initial volunteer create profile and time constraints it was decided to go simple for booleans. This would also have made searching for the volunteers that fitted the criteria required simpler. If I had infinite access to more knowledgeable developers I would have discussed this approach with them as I believe it would have saved time in other areas such as the coordinators search of the volunteers.
 
-Improve the model for the days and times as it would be much better if I had managed to use the initial idea of monday = 1 Tuesday = 2 etc and am = 1 pm =2 so then monday am would be 11, this would have given a simpler and lesser number of fields. However, with problems (described in bugs) doing the initial volunteer create profile and time constraints it was decided to go simple for booleans. This would also have made searching for the volunteers that fitted the criteria required simpler. If I had infinite access to more knowledgeable developers I would have discussed this approach with them as I believe it would have saved time in other areas such as the coordinators search of the volunteers.
+Further improvements could be acheived once information gathered from the text box entries of the coordinators' and volunteers' entries - could be assessed to look for recurring themes that could be made into fields rather than these being typed repeatedly.
 
-Once information has been gathered from the text box entries of the coordinators and volunteers entries there, an assessment of the data to look for recurring themes that could be made into fields rather than them typing it out would be a good step.
+Real time or calendar inputs for emergency or one off events might be helpful.
 
-Real time or calendar inputs for emergency or one of events
+It might add clarity if coordinators can change volunteers' availability when weekly commitments to volunteering activities occur. Record volunteering already being done by that individual.
 
-coordinator can change volunteers availability when weekly stuff occurs to already volunteering. and record volunteering being done.
+Some follow up tools for coordinators to check back that events worked well or if there could be improvements to the service might be helpful.
 
-follow up tools for coordinators
-
-volunteers can search the charities with the permission of the charity.
+Volunteers might wish to search the charities (with the permission of the charity) to know who they might be able to volunteer for.
 
 Email is an option on sign up but should be possible to update and include or change it later.
 
@@ -402,19 +448,80 @@ There could be a section to request assistance. This would mean that where chari
 
 Relate amount of time available to committed already time. It would be useful to be able to know if someone already performs activities at a certain time so although their sessions could reflect that they are open at that time to do volunteer work, that they already have a commitment through the system would allow coordinator not to attempt to double book and volunteers to see how productive they are being.
 
-It may be required for some sort of audit to know everyone involved so searches for all volunteers or coordinators can use the code that is already in place. This would mean the search functions don't filter anyone out.
+It may be required for some sort of audit to be able to search everyone involved. These searches for all volunteers or coordinators can use the code that is already in place. This could be achieved by the search functions already in place not filtering anyone out.
 
 ## Bugs
 
-limited time after save problem
+### Saving form issues
 
-boot
+This issue involved a lot of support from the code institute tutor team who put in a lot of work.
 
-index no css colour
+Initially the volunteer app was split into three models, VolunteerProfile, Skills and Timeperiod. These all required data to be put into the models from the volunteers.
+
+Firstly, the is_valid function which is required for the save to work would return False for the forms. This meant that it wouldn't save. There were three forms on one page. Therefore, each form was commented out one by one and gotten to work. However, when all three forms were there together then it wouldn't save. 
+
+The initial problem was that the below statement was missing:
+
+```py
+profile = form.save(commit=False)
+```
+
+Then there were some problems with the need to get the VolunteerProfile to save that worked with allauth so that the logged in user was connected to the data being added.
+
+Some tutors felt that the problem might be solved by saving an empty set of data first so this was introduced to the function.
+
+Then it looked like the indentation had got out of order with so many edits.
+
+Got some of it saving but the select for skills wasn't populated so nothing could be saved from that. Tried putting choices= in the model and many other things adjusted through out the model for Skills and SkillChoices.
+
+This unfortunately made the database have incongruous number of columns in the tables and caused significant problems. This was intially fixed by going into the migrations and adding data, but that was not a permanent fix.
+
+In the end all migrations had to be deleted from all apps and the sqllite database deleted. Then restarting with makemigrations and migrate and creating a super user.
+
+Unfortunately with continued adjustment of the models to attempt to get it to work with taking the choices = in and out several times the database needed deleting (along with migrations) several times.
+
+With the choices = the options were available but you could only make one choice and it was not working properly.
+
+Unsure of how many to many relationships worked I tried to put a many to many at each end of the relationship and got a circular issue.
+
+By this point the code was extremely messy. As I had a working form on another app by this point I decided type that into this form and remove the other parts. This didn't solve the problem. I decided to retype the form out from scratch with all the models merged into one as I could see no difference in the code. Retyping the code seemed to solve the problem and so there must have been an error in the code that I couldn't see and was just propagating by typing into it.
+
+### Admin site didn't look right on Heroku
+
+The admin site on Heroku was just plain text it had no styling. It would appear that for some reason the css for the admin had disappeared. When this was reinstated on the Heroku version the styling reappeared.
+
+### Admin site no longer had VolunteerProfile
+
+As I had been dealing with another error I had commented out the VolunteerProfile in volunteer/admin.py. As soon as this was reinstated it worked again.
+
+### Admin had 403 error
+
+This required that 
+
+```py
+CSRF_TRUSTED_ORIGINS = ['https://volunteervillage-8a4d89acc796.herokuapp.com', 'https://127.0.0.1'] 
+```
+was added to the settings.py. This was instantly solved by the tutors at code institute and they explained the necessity to include the https.
+
+### Deployed version on Heroku had application error
+
+Initially the requirements.txt was suspected as being at fault as using 
+```py
+pip3 freeze --local > requirements.txt
+```
+had meant that everything that I had experimented with along the way was in this file.
+
+The problem persisted only on the deployed version (codeanywhere and VSCode were fine). There was a 'phonenumberfield' that I had looked into and removed from requirements.txt but not INSTALLED_APPS in settings.py
+
+This worked when that had been removed from INSTALLED_APPS.
+
+### Display of Coordinator profile page not working
+
+This was the feature that was attempting to check if the coordinator was associated with any of the charities. In the case that the user didn't have any charities assigned then it was creating an attribute error. This was worked round with a try: and except Attribute error:statement.
 
 ### Unsolved bugs
 
-At the very end of the project I realised that the boostrap parameters should go in the div tags. Through out I had been putting them on the objects in the HTML. This is a widespread bug throughout the project and would take significant time to rectify. As this was only discovered during the testing and documenting phase there was insufficient time to go through the code to ensure better practise was observed.
+At the very end of the project I realised that the boostrap parameters should go in the div tags. Through out I had been putting them on the objects in the HTML. This is a widespread bug throughout the project and would take significant time to rectify. As this was only discovered as the final testing and documenting phase started there was insufficient time to go through the code to ensure better practise was observed.
 
 ## Technologies
 
@@ -458,20 +565,13 @@ At the very end of the project I realised that the boostrap parameters should go
 - [Jshint](https://jshint.com/) was used to validate the JS.
 - [favicon](https://favicon.io/favicon-converter/) to generate my favicon from my logo.
 - [Responsive viewer extension](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb) to produce the responsive view for my testing.
+- [image compressor](https://compressnow.com/) to reduce the size of the images.
+- [Canava](https://www.canva.com/en_gb/) used to generate logo
 
 ### Images
 
 <a href="https://www.freepik.com/free-photo/man-cutting-grass-with-lawn-mover-back-yard_8828103.htm#query=mowing%20lawn&position=0&from_view=search&track=ais&uuid=1f1d6d2e-ade9-4baf-b4d2-4fda06f92667#position=0&query=mowing%20lawn">Image by senivpetro</a> on Freepik
 
-### Libraries
-
-allauth
-
-go through requirements.txt
-
-https://stackoverflow.com/questions/20138049/redirect-user-to-another-url-with-django-allauth-log-in-signal
-
-Django documentation
 
 ## Deployment
 
@@ -543,7 +643,7 @@ and the purple 'create' button was pressed.
 
 ![deployed](document/deployed.png)
 
-When it is in the final version it needs to have debug (in settings.py) set to False (was True during development) and as mentioned above the DISABLE_COLLECTSTATIC removed from the config vars.
+In the final version it needs to have debug (in settings.py) set to False (was True during development) and as mentioned above the DISABLE_COLLECTSTATIC removed from the config vars.
 
 ### Local Deployment
 
@@ -648,6 +748,52 @@ See [Testing](TESTING.MD)
 
 ### Images
 
+**Mowing lawn** <a href="https://www.freepik.com/free-photo/man-cutting-grass-with-lawn-mover-back-yard_8828103.htm#query=mow%20lawn&position=5&from_view=search&track=ais&uuid=03f81e86-fe3a-4a06-9b57-072a7f548a15">Image by senivpetro</a> on Freepik
+
+**Women receiving shopping**
+Image by <a href="https://www.freepik.com/free-photo/people-bringing-supplies-neighbors_19535236.htm#query=companionship%20volunteering&position=17&from_view=search&track=ais&uuid=2f1dea90-1275-4815-984c-bcc37292cb49">Freepik</a>
+
+
+**Drinking tea**
+No attribution required	
+https://pxhere.com/en/photo/180168
+
+**Driving** Image by <a href="https://www.freepik.com/free-photo/people-helping-old-neighbor_19535511.htm#query=driving%20volunteering&position=1&from_view=search&track=ais&uuid=addf44f7-640b-4aa8-9100-d3ec883618e9">Freepik</a>
+
+**Man fixing sink**
+<a href="https://www.freepik.com/free-photo/man-fixing-kitchen-sink_2893988.htm#page=2&query=DIY&position=26&from_view=search&track=sph&uuid=2ee109c1-c1dc-42e7-b7d4-3f96cf994dce">Image by rawpixel.com</a> on Freepik
+
+**Desk**
+https://pxhere.com/en/photo/1294988?utm_content=shareClip&utm_medium=referral&utm_source=pxhere
+
+**Fundraising**
+<a href="https://www.freepik.com/free-vector/hand-drawn-minimalist-fundraising-goals-thermometer-vertical-timeline_44590282.htm#query=fundraising&position=23&from_view=search&track=sph&uuid=7136730d-014b-41a6-ad43-7f7a41eb1b75">Image by Wepik</a> on Freepik
+
+**Helping at a stall**
+Image by <a href="https://www.freepik.com/free-photo/people-meeting-community-center_20146042.htm#page=2&query=fundraising&position=1&from_view=search&track=sph&uuid=b3a76a17-f264-4772-8f79-331eaa395a38">Freepik</a>
+
+**Litter picking**
+
+Image by <a href="https://pixabay.com/users/antranias-50356/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=250044">Manfred Antranias Zimmer</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=250044">Pixabay</a>
+
+**Laughing litter pickers**
+
+<a href="https://www.freepik.com/free-photo/man-woman-picking-up-trash-from-park-they-collecting-litter-garbage-bag_6889450.htm#page=3&query=environmental&position=18&from_view=search&track=sph&uuid=e79066ba-0560-4981-89b0-f0660cac7f7d">Image by teksomolika</a> on Freepik
+
+**Tutor**
+<a href="https://www.freepik.com/free-photo/education-concept-student-studying-brainstorming-campus-concept-close-up-students-discussing-their-subject-books-textbooks-selective-focus_1239167.htm#query=tutoring&position=2&from_view=search&track=sph&uuid=5051e72e-6ca4-4128-a144-0e9e94891ca5">Image by mindandi</a> on Freepik
+
+**Adult tutoring**
+Image by <a href="https://www.freepik.com/free-photo/back-view-teacher-student-home_7871378.htm#query=tutoring&position=9&from_view=search&track=sph&uuid=5051e72e-6ca4-4128-a144-0e9e94891ca5">Freepik</a>
+
+
+**Women reading**
+Image by <a href="https://pixabay.com/users/nigelcohen-2990028/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7321085">Nigel Cohen</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7321085">Pixabay
+
+**Event unloading car**
+
+Image by <a href="https://www.freepik.com/free-photo/group-people-volunteering-foodbank-poor-people_15574024.htm#from_view=detail_serie">Freepik</a>
+
 ## Acknowledgements
 
 My Mentor - Juliia Konn has been extremely enthusiastic and provided encouragement and a great deal of support.
@@ -658,68 +804,11 @@ My Partner - Ian Harris who has been extremely supportive while I have been work
 
 Code institute - For all the information and course content that has contributed to the creation of this project. 
 
+Code institute tutors - Who worked very hard and often were very motivational and increased my faith in myself.
+
 Django blog extra tutorial on slack which gave me many idea and the delete modal code to base my delete modal on.
 
+W3 website for many clarifications of syntax.
 
+Django documentation and bootstrap documentation from which I learnt a great deal.
 
-Women receiving shopping
-Image by <a href="https://www.freepik.com/free-photo/people-bringing-supplies-neighbors_19535236.htm#query=companionship%20volunteering&position=17&from_view=search&track=ais&uuid=2f1dea90-1275-4815-984c-bcc37292cb49">Freepik</a>
-
-Drinking tea
-No attribution required	
-https://pxhere.com/en/photo/180168
-
-driving
-
-Image by <a href="https://www.freepik.com/free-photo/people-helping-old-neighbor_19535511.htm#query=driving%20volunteering&position=1&from_view=search&track=ais&uuid=addf44f7-640b-4aa8-9100-d3ec883618e9">Freepik</a>
-
-Man fixing sink
-<a href="https://www.freepik.com/free-photo/man-fixing-kitchen-sink_2893988.htm#page=2&query=DIY&position=26&from_view=search&track=sph&uuid=2ee109c1-c1dc-42e7-b7d4-3f96cf994dce">Image by rawpixel.com</a> on Freepik
-
-Messy desk
-https://pxhere.com/en/photo/1294988?utm_content=shareClip&utm_medium=referral&utm_source=pxhere
-
-fundraising
-<a href="https://www.freepik.com/free-vector/hand-drawn-minimalist-fundraising-goals-thermometer-vertical-timeline_44590282.htm#query=fundraising&position=23&from_view=search&track=sph&uuid=7136730d-014b-41a6-ad43-7f7a41eb1b75">Image by Wepik</a> on Freepik
-
-Helping at a stall
-Image by <a href="https://www.freepik.com/free-photo/people-meeting-community-center_20146042.htm#page=2&query=fundraising&position=1&from_view=search&track=sph&uuid=b3a76a17-f264-4772-8f79-331eaa395a38">Freepik</a>
-
-Litter picking
-
-Image by <a href="https://pixabay.com/users/antranias-50356/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=250044">Manfred Antranias Zimmer</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=250044">Pixabay</a>
-
-Laughing litter pickers
-
-<a href="https://www.freepik.com/free-photo/man-woman-picking-up-trash-from-park-they-collecting-litter-garbage-bag_6889450.htm#page=3&query=environmental&position=18&from_view=search&track=sph&uuid=e79066ba-0560-4981-89b0-f0660cac7f7d">Image by teksomolika</a> on Freepik
-
-Man covered in litter
-
-<a href="https://www.freepik.com/free-photo/photo-surprised-red-haired-man-has-thick-beard-overloaded-with-much-garbage-collects-plastic_11486288.htm#page=4&query=environmental&position=25&from_view=search&track=sph&uuid=f2a5049c-196e-4901-8b94-7425e235573b">Image by wayhomestudio</a> on Freepik
-
-Tutor
-<a href="https://www.freepik.com/free-photo/education-concept-student-studying-brainstorming-campus-concept-close-up-students-discussing-their-subject-books-textbooks-selective-focus_1239167.htm#query=tutoring&position=2&from_view=search&track=sph&uuid=5051e72e-6ca4-4128-a144-0e9e94891ca5">Image by mindandi</a> on Freepik
-
-Adult tutoring
-Image by <a href="https://www.freepik.com/free-photo/back-view-teacher-student-home_7871378.htm#query=tutoring&position=9&from_view=search&track=sph&uuid=5051e72e-6ca4-4128-a144-0e9e94891ca5">Freepik</a>
-
-Smiling child tutoring
-Image by <a href="https://www.freepik.com/free-photo/close-up-father-helping-kid-with-homework_20081813.htm#query=tutoring&position=26&from_view=search&track=sph&uuid=5051e72e-6ca4-4128-a144-0e9e94891ca5">Freepik</a>
-
-Women reading
-Image by <a href="https://pixabay.com/users/nigelcohen-2990028/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7321085">Nigel Cohen</a> from <a href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=7321085">Pixabay
-
-event
-Image by <a href="https://www.freepik.com/free-photo/group-people-volunteering-foodbank-poor-people_15574024.htm#from_view=detail_serie">Freepik</a>
-
-https://compressnow.com/
-
-canava design the logo
-
-search bar
-
-https://www.youtube.com/watch?v=AGtae4L5BbI
-
-https://favicon.io/favicon-converter/
-
-modal for delete from extra blog post on slack
