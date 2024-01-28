@@ -317,7 +317,7 @@ Database updates/creations/deletions/activations for everything can also be perf
 
 Delete/reset spam profiles is a function that can only be performed by within the admin area. 
 
-If someone has signed up as a coordinator by mistake that shouldn't have or maliciously then the superuser can also remove their username from roles and coordinator profiles and then they can resubmit their details as a volunteer - or not if they didn't want to be a volunteer.
+If someone has signed up as a coordinator by mistake that shouldn't have (accidentally meant to be a volunteer) or maliciously then the superuser can also remove their username from roles and coordinator profiles and then they can resubmit their details as a volunteer - or not if they didn't want to be a volunteer.
 
 If there are no coordinators activated (so no one can activate other coordinators) a coordinator can also be activated in the admin panel in the coordinators profile, then the usual procedure for activating coordinators can proceed.
 
