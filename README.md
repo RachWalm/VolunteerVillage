@@ -321,9 +321,6 @@ If someone has signed up as a coordinator by mistake that shouldn't have (accide
 
 If there are no coordinators activated (so no one can activate other coordinators) a coordinator can also be activated in the admin panel in the coordinators profile, then the usual procedure for activating coordinators can proceed.
 
-### Testing data added to database
-
-
 ### Potential Future Feature Developments 
 
 
