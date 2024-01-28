@@ -107,6 +107,66 @@ Each page is tested for it's functionality for all features including python and
 
 ### Pages
 
+All pages were checked that they went to the next logical one which was simple for all apart from log in. Log in used login_success to direct people according to role and what stage they are at. Here is the function and testing:
+
+```
+def login_success(request):
+    """
+    Redirects users based on the role and what stage of the sign up
+    process they have completed to area they need to use the site.
+    """
+    pk_logged_in = request.user.pk
+    role_exists = Role.objects.filter(user_name_id=pk_logged_in).exists()
+    if role_exists:  # role is chosen
+        # sees whether they signed up as volunteer 1 or coordinator 2
+        title = Role.objects.filter(user_name_id=pk_logged_in).values()
+        # checks if they have a profile stored
+        vp = VolunteerProfile.objects.filter(user_name_id=pk_logged_in)
+        VP_exists = vp.exists()
+        # checks if they have a profile stored
+        cp = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in)
+        CP_exists = cp.exists()
+        # gets profile so can check if activated
+        co = CoordinatorProfile.objects.filter(user_name_id=pk_logged_in)
+        co_profile = co.values()
+        # volunteer with profile
+        if title[0]['role'] == 1 and VP_exists:
+            # see volunteer profile
+            return redirect('read')
+        # volunteer without profile
+        elif title[0]['role'] == 1 and VP_exists is False:
+            # form to fill out volunteer profile
+            return redirect('add')
+        # coordinator without a profile
+        elif title[0]['role'] == 2 and CP_exists is False:
+            return redirect('addco')  # form to fill out coordinator profile
+        elif title[0]['role'] == 2 and CP_exists:  # coordinator with a profile
+            # coordinator with a profile and activated
+            if co_profile[0]['activated']:
+                return redirect('dashboard')
+            # unactivated coordinator so no access
+            elif co_profile[0]['activated'] is False:
+                return redirect('pending')
+            else:
+                return redirect('index')  # just in case
+        else:
+            return redirect('index')  # just in case
+    else:
+        return redirect('role')  # hasn't chosen role yet
+
+```
+
+- if not signed up it won't let you log in - Yes
+- if no role exists should return role - Yes
+- if role exists as volunteer and a volunteer profile exists return read - Yes
+- if role exists as volunteer but no volunteer profile exists return add - Yes
+- if role exists as coordinator but no coordinator profile exists return addco - Yes
+- if role exists as coordinator with a coordinator profile who is activated return dashboard - Yes
+- if role exists as coordinator with a coordinator profile who isn't activated return pending - Yes
+
+This covers all the senarios I can imagine but if something doesn't follow that then it should redirect to index, but I am not sure how to force that.
+
+
 #### Base.html on every page
 
 Unless stated, base.html tested on index page, but visual check on every page - will be noted if doesn't work on any page tried.
@@ -481,6 +541,8 @@ Unless stated, base.html tested on index page, but visual check on every page - 
 |Delete|When complete moves you to index|Yes||
 |message|generates update message at top of screen for 2.5 seconds when deleted|Yes||
 
+Unlike with the volunteer delete which completely removes the user this one is intended to just remove the personal details. This did leave the role and login details intact.
+
 
 #### Flash messages
 
@@ -543,20 +605,20 @@ The epic user stories are described below and covered by the manual testing of t
 
 The user story level and task level issues [issues](https://github.com/RachWalm/VolunteerVillage/issues?q=is%3Aissue+is%3Aopen) were from these epics and so by covering the epics they have been tested. The bugs were all tested after fix and again as above manual testing.
 
-|Issue| Title |Testing comments|
-|--------|-------|
+|Issue|Title|Testing comments|
+|------|-----|-----|
 |[[#66](https://github.com/RachWalm/VolunteerVillage/issues/66)](Epic : new to the site )|As a potential volunteer , I can see the site aims and navigate to how it works page so that I can decide whether to use it. | How it works page wasn't implement - therefore, not tested|
-|[[#61](https://github.com/RachWalm/VolunteerVillage/issues/61)](epic:Volunteer joins site)|As a volunteer, I can join the site and put in my profile so that I can be ready to volunteer.  ||
-|[[#65](https://github.com/RachWalm/VolunteerVillage/issues/65)](Epic: Volunteers can only see/update/delete their own information and only when logged in )|As a volunteer, I can join the site and put in my profile so that I can be ready to volunteer.  ||
-|[[#63](https://github.com/RachWalm/VolunteerVillage/issues/63)](Epic: Volunteer reads their profile)|As a Volunteer, I can look at the preferences I have chosen so that I can be confident they are correct.||
-|[[#62](https://github.com/RachWalm/VolunteerVillage/issues/62)](Epic: Volunteer update their profile)|As a volunteer, I can update my profile so that I can make any changes as time goes by.  ||
-|[[#64](https://github.com/RachWalm/VolunteerVillage/issues/64)](Epic : user can delete profile )|As a Volunteer, I can delete my profile so that I can stop using the site and stop them having access to my details.  ||
-|[[#67](https://github.com/RachWalm/VolunteerVillage/issues/67)](Epic : Coordinators can be registered and log in and out)|As a Coordinator, I can register and log in and out so that I can do my job.  ||
-|[[#69](https://github.com/RachWalm/VolunteerVillage/issues/69)](Epic: coordinators can be approved)|As a approver, I can get coordinators onto the system so that I can get them coordinating.  ||
-|[[#68](https://github.com/RachWalm/VolunteerVillage/issues/68)](Epic : coordinator can search the profiles to find someone to do the volunteering)|As a coordinator, I can search for a suitable volunteer so that I can match the activity to a volunteer.  ||
-|[[#104](https://github.com/RachWalm/VolunteerVillage/issues/104)](Epic: Coordinators can activate the volunteers profile)|As a Coordinator, I can look at new profiles and consider them for old projects and then activate them so that I can check for spam and see what is newly available.  ||
-|[[#85](https://github.com/RachWalm/VolunteerVillage/issues/85)](Epic: if user isn't logged in but URL for a logged in page typed send to error page)|As a site user, I can **type the url but not be logged in ** so that I can see a useful information error page rather than url not found etc..  ||
-|[[#70](https://github.com/RachWalm/VolunteerVillage/issues/70)](Epic: charities section of website set up)|As a coordinator, I can create update and delete and read info on charities so that I can use this as a source of information.  ||
+|[[#61](https://github.com/RachWalm/VolunteerVillage/issues/61)](epic:Volunteer joins site)|As a volunteer, I can join the site and put in my profile so that I can be ready to volunteer.  |Follows manual testing|
+|[[#65](https://github.com/RachWalm/VolunteerVillage/issues/65)](Epic: Volunteers can only see/update/delete their own information and only when logged in )|As a volunteer, I can join the site and put in my profile so that I can be ready to volunteer.  |Follows manual testing|
+|[[#63](https://github.com/RachWalm/VolunteerVillage/issues/63)](Epic: Volunteer reads their profile)|As a Volunteer, I can look at the preferences I have chosen so that I can be confident they are correct.|Follows manual testing|
+|[[#62](https://github.com/RachWalm/VolunteerVillage/issues/62)](Epic: Volunteer update their profile)|As a volunteer, I can update my profile so that I can make any changes as time goes by.  |Follows manual testing|
+|[[#64](https://github.com/RachWalm/VolunteerVillage/issues/64)](Epic : user can delete profile )|As a Volunteer, I can delete my profile so that I can stop using the site and stop them having access to my details.  |Follows manual testing|
+|[[#67](https://github.com/RachWalm/VolunteerVillage/issues/67)](Epic : Coordinators can be registered and log in and out)|As a Coordinator, I can register and log in and out so that I can do my job.  |Follows manual testing|
+|[[#69](https://github.com/RachWalm/VolunteerVillage/issues/69)](Epic: coordinators can be approved)|As a approver, I can get coordinators onto the system so that I can get them coordinating.  |Follows manual testing|
+|[[#68](https://github.com/RachWalm/VolunteerVillage/issues/68)](Epic : coordinator can search the profiles to find someone to do the volunteering)|As a coordinator, I can search for a suitable volunteer so that I can match the activity to a volunteer.  |Follows manual testing|
+|[[#104](https://github.com/RachWalm/VolunteerVillage/issues/104)](Epic: Coordinators can activate the volunteers profile)|As a Coordinator, I can look at new profiles and consider them for old projects and then activate them so that I can check for spam and see what is newly available.  |Follows manual testing|
+|[[#85](https://github.com/RachWalm/VolunteerVillage/issues/85)](Epic: if user isn't logged in but URL for a logged in page typed send to error page)|As a site user, I can **type the url but not be logged in ** so that I can see a useful information error page rather than url not found etc..  |Follows manual testing|
+|[[#70](https://github.com/RachWalm/VolunteerVillage/issues/70)](Epic: charities section of website set up)|As a coordinator, I can create update and delete and read info on charities so that I can use this as a source of information.  |Follows manual testing|
 |[[#71](https://github.com/RachWalm/VolunteerVillage/issues/71)](Epic: ratings and notes area of website created)|As a coordinator, I can make notes and rating the volunteers so that I can keep details and keep track of how many hours of volunteering they have done.  |This was a nice to have that wasn't implemented so wasn't tested.|
 
 Since I have started testing the site I would have put in more user stories to deal with malicious or accidental occurences on the site.
