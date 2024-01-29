@@ -18,11 +18,13 @@ The second role of coordinator can search the volunteers' profiles to be given a
 
 The aim is to have a landing page that is enthusiastic about volunteering. This should hook the volunteer without making it seem like hard work. From there a new user (coordinator or volunteer) can sign up, select their role and fill out a profile form.
 
-On every page there is the logo for volunteer village which is based around a helping hand coming out of the dark surrounded by holding hands circle motif and has the words volunteer village in the centre. This is mirrored in the favicon on the tab. Also on every page there is a box (surrounded by shadow - to emphasize it isn't part of the nav) which lets users know if they are logged in and what user name they are logged in as incase they have different logins for different roles. The nav is permanently there to take the user to the homepage and relevant pages to the area of the site they are on and who they are logged in as.
+When not logged in n the index page the user has two buttons to sign up or sign in as calls to action in the top right.
+
+On every page there is the logo for volunteer village which is based around a helping hand coming out of the dark surrounded by holding hands circle motif and has the words volunteer village in the centre. This is mirrored in the favicon on the tab. Also on every page when the user is logged in there is a box (surrounded by shadow - to emphasize it isn't part of the nav) which lets users know what user name they are logged in as incase they have different logins for different roles. The nav is permanently there to take the user to the homepage and relevant pages to the area of the site they are on and who they are logged in as. As far as possible things were kept consistent to allow the user a sense of continuity.
 
 As a volunteer they can then see their profile, edit it and delete their personal details from the account, having created it at the beginning of the process.
 
-As a coordinator the user can activate accounts of other coordinators, modify and delete other coordinators / their own account. It is anticipated that coordinator would be working for a small voluntary organisation so there is unlikely to be any HR/IT department to modify other coordinators.Joining or leaving or name changes would need to be editable by coordinators for each other. 
+As a coordinator the user can activate accounts of other coordinators, modify and delete other coordinators / their own account. It is anticipated that coordinator would be working for a small voluntary organisation so there is unlikely to be any HR/IT department to modify other coordinators. Joining or leaving or name changes would need to be editable by coordinators for each other. 
 
 Next a coordinator will need to be able to search the list of volunteers by activity and when they are likely to be available, then read their contact details to contact them. So there is a search for volunteers. This doesn't allow any modification/creation/deletion function as their personal data is to stay under control of the individual volunteers.
 
@@ -38,19 +40,28 @@ The required functionality and beginning of the nice to have functionality is in
 
 ### Wireframes
 
-The initial [wireframes](document/initial-wireframes.pdf) that were built were for an index page to draw in the volunteer, for a volunteer profile page that can be created and updated by people wishing to volunteer, a page explaining how to use the system and a coordinators page. Some of these had both large monitor and small device setups displayed. Wireframes were not created for the nice to have pages at this stage such as the charities section and feedback and likes sections. 
+The initial [wireframes](document/initial-wireframes.pdf) that were built were for an index page to draw in the volunteer, for a volunteer profile page that can be created and updated by people wishing to volunteer, a page explaining how to use the system (not currently implemented) and a coordinators page. Some of these had both large monitor and small device setups displayed. Wireframes were not created for the nice to have pages at this stage such as the charities section and feedback and likes sections. 
 
-As some of the nice to have ideas were incorporated and some of the fields that were initially designed in became redundant, it was necessary to deviate from some of the initial wireframes (the Index page followed the wireframe idea). The create volunteer profile page only had one major change to the layout and that was rather than toggles for the activities it was decided that a select list would be more pleasing on the page (as there are already so many radio buttons for the days and times). The coordinator page was completely redesigned as additional functionality other than just the search has been coded. Therefore, the coordinator page now shows how many people need activating and links to perform tasks. The volunteer search page just provides textual results as it was decided that the picture/avatar of the volunteer didn't add any value due to it only being seen by the individual volunteer and coordinators who were unlikely to ever meet the volunteers. 
+As some of the nice to have ideas were incorporated some of the initial layout/wireframes designed became redundant, it was necessary to deviate from some of the initial wireframes (the Index page followed the wireframe idea). The create volunteer profile page only had one major change to the layout and that was rather than toggles for the activities it was decided that a select list would be more pleasing on the page (as there are already so many radio buttons for the days and times). The coordinator page was completely redesigned as additional functionality other than just the search has been coded (additional nice to haves such as charity section). Therefore, the coordinator page now shows how many people need activating and links to perform tasks. The volunteer search page just provides textual results as it was decided that the picture/avatar of the volunteer didn't add any value due to it only being seen by the individual volunteer and coordinators who were unlikely to ever meet the volunteers. 
 
-The nice to haves were not wireframed what they would look like is not relevant in the initial design for minimum working site.
+The nice to haves were not wireframed - what they would look like is not relevant in the initial design for minimum working site meeting volunteers matching activities requirement.
 
 ### Relationship diagram
 
 The different apps and relationships were discussed and as the idea formed a rough initial relationship diagram was developed.
 
+#### Initial idea diagram
+
 ![relationship diagram](document/relationships.png)
 
-As can be seen from the relationship diagram sketch the additional Charity section and Star Rating section were considered to avoid future problems should they be added at a later stage. The main bulk of the project centered around getting volunteers to sign up with details and coordinators to search them. Therefore we started with a user, this was intended to be through allauth and would sign up everyone that used the site (except admin/userusers). The user then had a one to one relationship with a profile (whether a coordinator profile or a volunteer profile). It was anticipated to store very little information on the coordinators. The volunteers the initial idea was to split into three sections to keep it modular. One for personal details, one for the skills they were offering and one for timeperiods that they were regularly available. This was ultimately combined as the wireframe had the information all being collected on one page which then has some trouble saving. Three forms on one HTML page just added to the complexity of debugging the view and forms. Multiple models also added complexity to searching the information through three models, so one model containing the personal details/skills/time was created by merging the others.
+As can be seen from the relationship diagram sketch the additional Charity section and Star Rating section were considered to avoid future problems should they be added at a later stage. The main bulk of the project centered around getting volunteers to sign up with details and coordinators to search them. Therefore we started with a user, this was intended to be through allauth and would sign up everyone that used the site (except admin/superusers). The user then had a one to one relationship with a profile (whether a coordinator profile or a volunteer profile). 
+
+- It was anticipated to store very little information on the coordinators profile. 
+
+- For the volunteers data, the initial idea was to split into three sections to keep it modular. One for personal details, one for the skills they were offering and one for timeperiods that they were regularly available. This was ultimately combined as the wireframe had the information all being collected on one page which then has some trouble saving. Three forms on one HTML page just added to the complexity of debugging the view and forms. Multiple models also added complexity to searching the information through three models, so one model containing the personal details/skills/time was created by merging the others ultimately.
+
+#### Final implemented diagram
+
 
 ![final relationship diagram](document/final-relationship.png)
 
@@ -58,11 +69,11 @@ As can be seen from the relationship diagram sketch the additional Charity secti
 
 Each issue that was raised for the git projects boards contained acceptance criteria and steps to be taken to complete the issue. In the title they were described as Epics, user stories, or tasks depending on the depth of the requirement.
 
-These were put into milestones and labelled as iterations each one being closed on a Monday with planning of what user stories and tasks would be prioritised that week and the backlog being considered of unfinished work from previous iterations. Prioritisation was acheived using labels (which were also used to define bugs). This can be seen on [projects](https://github.com/users/RachWalm/projects/3).  
+These were put into milestones and labelled as iterations each one to be closed on a Monday with planning of what user stories and tasks would be prioritised that week and the backlog being considered of unfinished work from previous iterations. Prioritisation was acheived using labels of priority that week (labels were also used to define bugs). This can be seen on [projects](https://github.com/users/RachWalm/projects/3).  
 
 ### Epics
 
-The Epics were assembled about a week into the project when the scope became apparent as to how much could be achieved. All apart from the last of the epics below were implemented. Until that point userstories were put in place for any work immediately apparent.
+The Epics were assembled about a week into the project when the scope became apparent as to how much could be achieved. All apart from the last [#71](https://github.com/RachWalm/VolunteerVillage/issues/71) of the epics below were implemented. Until that point userstories were put in place for any work immediately apparent.
 
 |Issue| Title |
 |--------|-------|
@@ -94,7 +105,7 @@ Every page that should be restricted use to coordinators ensured that that only 
 
 The index page has the same basic heading and footer that is on every page. 
 
-The heading contains a logo, title and the home page and allauth navigation links. It also contains a message as to whether the user is logged in (and who they are logged in as) or if they are not logged in. This area also has flash messages when they are relevant.
+The heading contains a logo, title and the home page and allauth navigation links. It also contains a message as to who they are logged in as or if they are not logged in a call to action with sign up and sign in buttons. This area also has flash messages in the center when they are relevant.
 
 The rest of the page is text and images chosen to draw a new user into the idea of volunteering and provide information on what volunteering roles are likely to be available.
 
@@ -106,7 +117,7 @@ The footer has information about the developer and states that the website is a 
 
 The allauth require that certain settings are put in the project settings.py:
 
-```
+```python
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 LOGIN_REDIRECT_URL = 'login_success'
@@ -115,12 +126,12 @@ ACCOUNT_SIGNUP_REDIRECT_URL = '/role/role'
 ```
 This proved to be very useful. 
 
-1. The e-mail is optional, and although displayed in the signup page, can be left blank. This also means that e-mail account verification and forgotten password cannot be used. If they put an e-mail in here it is displayed in their profile, but the display box is left blank if they haven't included it. 
-2. Sign up could be directed to the role page so that the first decision to be made after getting an account is which role they want - Volunteer or Coordinator.
+1. The e-mail is optional, and although displayed in the sign up page, can be left blank. This also means that e-mail account verification and forgotten password cannot be used. If they put an e-mail in here it is displayed in their profile, but the display box is left blank if they haven't included it. This means that coordinators will see the e-mail in the display of volunteer details, but as this isn't currently editable and most opportunities will require discussion it is unlikely to be used. Therefore, future development may use e-mail but it is currently just there for information.
+2. Sign up could be directed to the role page so that the first decision to be made after getting an account is which role they want - Volunteer or Coordinator - See above code for redirects.
 3. Log out it was logical just to go to the landing page as it is generally set up.
 4. The log in redirect was probably the most useful as it allowed me to set up a view that used 'if' conditions to determine where to direct the user. This meant that different roles went to the two separate apps, and within that app they were directed to whatever stage of the process that they had completed (depending on filling out details or activation). It took the logged in users information and directed them in role/views.py and this function:
 
-```
+```python
 def login_success(request):
     """
     Redirects users based on the role and what stage of the sign up
@@ -172,7 +183,7 @@ This page is built by allauth, but also has the header and footer as previously 
 
 ![signup](document/signup.png)
 
-Email verification is set to none in the settings so this field is optional.
+Email verification is set to none in the settings, this field is optional.
 
 #### Sign in page
 
@@ -218,9 +229,11 @@ The list of activities that they can pick from is taken from the database which 
 
 The sessions that they are able to attend are boolean fields so that they can be easily switched on and off. I had imagined that they would be laid out in a grid that would account for days being on a row with the times throughout the day being in columns, but with the form display being the most efficient option, this idea was discarded.
 
-The information on form for the phone number is Javascript validated to ensure that the phone field is likely to be a phone number - by make it have to conform to being numerical and 11 digits which is what UK phone numbers are (excluding +44). 
+JS validation
 
-The number of hours and days is restricted to the number of hours and days in a week through Javascript validation.
+- The information on form for the phone number is Javascript validated to ensure that the phone field is likely to be a phone number - by making it have to conform to being numerical and 11 digits which is what UK phone numbers are (excluding +44) or an alert is triggered. 
+
+- The number of hours and days is restricted to the number of hours and days in a week through Javascript validation.
 
 This is saved in the VolunteerProfile and is connected to the User via a one to one field.
 
@@ -234,7 +247,7 @@ This isn't editable on this page to avoid accidental clicking and making inadver
 
 Most of the data is taken from the VolunteerProfile model (except the e-mail which is taken from the User allauth model).
 
-There are a couple of functions involved in producing this page as there are several items that have multiple either inputs or outputs. Therefore iterating through lists both in the html to display them on the page and searching through a list of model fields to check if the one required is 'true' while not getting activated as 'true'.
+There are a couple of functions involved in producing this page as there are several items that have multiple either inputs or outputs. Therefore iterating through lists both in the html to display them on the page and searching through a list of model fields to check if the one required is 'true' while not displaying the field activated as 'true'.
 
 If there hasn't been a profile set up for the person or the user not logged in then this page will go to a 404 error, and won't display any erroneous information. This protects information being viewed by anyone but the volunteer through this page.
 
@@ -244,13 +257,13 @@ If a volunteer clicks to edit their profile then they are directed to a page tha
 
 ![voledit](document/voledit.png)
 
-This currently does not have the ability to change the e-mail as that is taken from allauth and this form is based on the VolunteerProfile model.
+This currently does not have the ability to change the e-mail as that is taken from allauth and this form is based on the VolunteerProfile model, so that is not on the form.
 
 #### Volunteer can delete the profile information
 
-If a volunteer no longer wants their information to be held then they can choose to delete the information. In the read volunteer profile page there is a delete button, this leads exclusively to their details on the database so they can't delete others details. The delete button doesn't instantly delete it goes to a Javascript coded modal which informs them that the delete cannot be undone and then has the delete button or a cancel button. This prevents unintentional deletion by an accidental button click.
+If a volunteer no longer wants their information to be held then they can choose to delete the information. In the read volunteer profile page there is a delete button, this leads exclusively to their (logged on as) details on the database so they can't delete others details. The delete button doesn't instantly delete it goes to a Javascript coded modal which informs them that the delete cannot be undone and then has the delete button or a cancel button. This prevents unintentional deletion by an accidental button click.
 
-It does allow the user to remove their information but retain their sign in. Once they have confirmed the delete it takes them back to be able to fill out a blank profile as there is little that they can use the site for without a profile.
+It does allow the user to remove their information and also deletes the details for username and password etc.. Once they have confirmed the delete it takes them back to home page where they could sign up again.
 
 #### Delete modals
 
@@ -276,7 +289,11 @@ The code for the delete modals were taken from the extra tutorial which carried 
 </div>
 ```
 
-This code was taken out of the tutorial that was posted on slack as an extension of the blog walkthrough and adjusted to the three delete modals (volunteer profile, coordinator profile and charity). As the delete button pointed to the modal not directly to a delete, Javascript was then used with an event listener on the modal delete button which then pointed to the url. Which for the volunteers was related to who was logged in and for the coordinators and charities it requires an ID to be put in the url relating to which item to delete. The views.py also has defensive code so it can only be an activated coordinator deleting the coordinator or charity (not required for volunteer as they have to be logged in for it to know which data to delete) - see defensive programming below. 
+This code was taken out of the tutorial that was posted on slack as an extension of the blog walkthrough and adjusted to the three delete modals (volunteer profile, coordinator profile and charity). As the delete button pointed to the modal not directly to a delete, Javascript was then used with an event listener on the modal delete button which then pointed to the url.
+
+- For the volunteers delete was related to who was logged in.
+
+- For the coordinators and charities it requires an ID to be put in the url relating to which item to delete. The views.py also has defensive code so it can only be an activated coordinator deleting the coordinator or charity (not required for volunteer as they have to be logged in for it to know which data to delete) - see defensive programming below. 
 
 #### Coordinator dashboard page
 
@@ -284,7 +301,7 @@ This is where active coordinators are directed when they log in (and are activat
 
 ![dashboard](document/dashboard.png)
 
-This page also informs them about the state of the volunteer and coordinator activations for processing. The number of activations of both the volunteers and the coordinators that need actioning is displayed on the screen. The names of the coordinators are also on the screen so that as they will be able to search coordinators in order to activate them. This will ensure the correct spelling when searching. There are likely to only be a few at a time so this list doesn't take much space. If there are a large number of spam profiles they can determine who is legitimate without waiting for a superuser to deal with the spam profiles.
+This page also informs them about the state of the volunteer and coordinator activations for processing. The number of activations of both the volunteers and the coordinators that need actioning is displayed on the screen. The names of the coordinators are also on the screen so that as they will be able to search coordinators (as the first name is displayed on dashboard copied to search) in order to activate them. This will ensure the correct spelling when searching. There are likely to only be a few at a time so this list doesn't take much space. If there are a large number of spam profiles they can determine who is legitimate without waiting for a superuser to deal with the spam profiles.
 
 The volunteer activation page provides a list of all volunteers that need activating so there is no list of the volunteers on this page and it is expected that this would hopefully be a much larger list. If there are no volunteers that need activating then the count of volunteers will read 0 and the button to go to the volunteer activation page will not be displayed. Not displaying that button avoids going to a search page that is empty and could cause confusion to users.
 
@@ -300,9 +317,9 @@ From this page they can perform the following activities by following links to :
 
 All forms undergo csrf tokens to avoid any fraudulent behaviour. 
 
-Forms that can be taken directly from the models as they will save to the models are created using forms.py and put in the HTML as that form.
+Forms that can be taken directly from the models are, as they will save to the models and are created using forms.py and put in the HTML as that form.
 
-Searches use inputs that are created individually in the HTML and are not saved in the database.
+Searches use text inputs are created individually in the HTML and are not saved in the database.
 
 #### Search pages
 
@@ -310,9 +327,9 @@ All search pages are created with individual inputs in the HTML and the lists fo
 
 ![searchco](document/searchco.png)
 
-Some search fields are select inputs. Activities are taken from the SkillChoices Model and time and day are done using the fields in the VolunteerProfile model. Where required they are changed into the verbose name so that users can understand them rather than the shortened versions to allow easier coding.
+- Some search fields are select inputs. Activities are taken from the SkillChoices Model and time and day are done using the fields in the VolunteerProfile model. Where required they are changed into the verbose name so that users can understand them rather than the shortened versions to allow easier coding.
 
-There are also some free text boxes that then look for the combination of letters that has been used. icontain should be able to deal with capitals vs small letters, but there is a message with these free text boxes reminding users to use capitals appropriately, just in case.
+- There are also some free text input boxes that then look for the combination of letters that has been used. icontain should be able to deal with capitals vs small letters, but there is a message with these free text boxes reminding users to use capitals appropriately, just in case.
 
 #### Coordinator activate/edit coordinator profiles page
 
@@ -322,7 +339,7 @@ If a coordinator signs up to the site there needs to be a restriction on their a
 
 There is a many to many relationship between charities and coordinators which as it is attached to the charities model this page (unlike the see coordinator profile page) does not have which charities the coordinator is associated with.
 
-Although the functionality to delete coordinators is currently in place, this may need to be deactivated if the function to enable commenting on the volunteers activities were to be implemented. As if that were implemented and coordinators were making the comments and being recorded as making the comments then deleting the coordinator could be problematic. This delete coordinator functionality is included currently as it has no impact on other functionality and might be useful. Were it necessary to remove the delete coordinator functionality to allow other things that require legacy data to function properly then the activate function could be used to deactivate a coordinator restricting their access but not their history.
+Although the functionality to delete coordinators is currently in place (a necessary security risk if there is no IT or HR dept), this may need to be deactivated if the function to enable commenting on the volunteers activities were to be implemented. As if that were implemented and coordinators were making the comments and being recorded as making the comments then deleting the coordinator could be problematic. This delete coordinator functionality is included currently as it has no impact on other functionality and might be required. Were it necessary to remove the delete coordinator functionality to allow other things that require legacy data to function properly then the activate function could be used to deactivate a coordinator restricting their access but not their history.
 
 In the event there are no coordinators activated this could be performed for one coordinator by the superuser in the admin section. 
 
@@ -338,13 +355,13 @@ Whether a volunteer is activated or not they will appear in this search. Should 
 
 ![activatevols](document/activatevols.png)
 
-Coordinators are required the activate the volunteers for two reasons: to look at incoming volunteers and see if there are any unfulfilled volunteering opportunities that would suit them (providing volunteer activity promptly to volunteers as they join the site which will increase thier enthusiasm for the process), and to ensure that the database doesn't get filled up with spam profiles. Reading the information provided in the text box by volunteers may also be more useful that just having their choice of activity if they have a special skill that can be matched.
+Coordinators are required the activate the volunteers for two reasons: to look at incoming volunteers and see if there are any unfulfilled volunteering opportunities that would suit them (providing volunteering activity promptly to volunteers as they join the site which will increase thier enthusiasm for the process), and to ensure that the database doesn't get filled up with spam profiles. Reading the information provided in the text box by volunteers may also be more useful that just having their choice of activity if they have a special skill that can be matched.
 
 ![activatevol](document/activatevol.png)
 
 #### Coordinator add charity page
 
-Should a new charity wish to be involved then the coordinator can click on the link in the dashboard and add the charity name and a few details in the text box about the charity's needs and information. The charity can also be assigned a coordinator (or two with a back up, or many for a big charity). Then the information is there to enable the most appropriate person to deal with a charity's request (or if that person is away, provide enough information in the text box for someone else to assist).
+Should a new charity wish to be involved then the coordinator can click on the link in the dashboard and add the charity name and a few details in the text box about the charity's needs and information. The charity can also be assigned a coordinator (or a couple as back ups, or many for a big charity). Then the information is there to enable the most appropriate person to deal with a charity's request (or if that person is away, provide enough information in the text box for someone else to assist).
 
 ![addcharity](document/addcharity.png)
 
@@ -354,17 +371,25 @@ Once a charity is in the database then coordinators will want access to the info
 
 ![searchcharity](document/searchcharity.png)
 
+.icontain should deal with partial or capital vs small letter searches.
+
 #### Coordinator view charity page
 
 When the Look at charity information button is pressed a read only version of the information is presented.
+
+![readcharity](document/readcharity.png)
 
 #### Coordinator edit charity page
 
 On the choose charity page there is the option to edit the charity. This takes the user to a form that is the same format as the add charity form, except it is populated with the currently held information, which can be altered. No changes will take effect until the submit button is pressed.
 
+![editcharity](document/editcharity.png)
+
 #### Coordinator delete charity 
 
 In the choose charity page there is a delete button, this leads only to the details of the selected charity so they can't delete others details. The delete button doesn't instantly delete it goes to a Javascript coded modal which informs them that the delete cannot be undone and then has the delete button or a cancel button. This prevents unintentional deletion by an accidental button click.
+
+![deletemodal](document/deletemodal.png)
 
 Deleting a charity does not delete any of the coordinators that are stated in the many to many relationship as this is not a ON_CASCADE relationship and the data of who is associated is stored against the charity. Therefore, on look up from the coordinators end for the see profile of coordinators it just won't be there any more.
 
@@ -400,79 +425,81 @@ This was adapted for the various searches throughout the site that are text inpu
             <button class="btn btn-outline-info" type="submit">Search Charity</button>
         </form>
 ```
-```py
+```python
 search = request.POST['search']
 ```
 
 #### Superuser/admin activities
 
-Most activities can be performed by the users in one role or another.
+Most activities can be performed by the users in one role or another. The below actions need to be restricted so are exclusive to admin area:
 
-One activity that a superuser exclusively able to do is the option to change the list of activities that can be selected and searched for. This action only needs to be performed once and both selection and search will be updated. 
+- One activity that a superuser exclusively able to do is the option to change the list of activities that can be selected and searched for. This action only needs to be performed once and both selection and search will be updated. 
 
-Database updates/creations/deletions/activations for everything can also be performed in the admin section of the site.
+- Database updates/creations/deletions/activations for everything can also be performed in the admin section of the site.
 
-Delete/reset spam profiles is a function that can only be performed by within the admin area. 
+- Delete/reset spam profiles is a function that can only be performed by within the admin area. 
 
-If someone has signed up as a coordinator erroneously (accidentally chosen coordinator but meant to be a volunteer or maliciously) then the superuser can also remove their username from roles and coordinator profiles. Then the user can resubmit their details as a volunteer if they desire.
+- If someone has signed up as a coordinator erroneously (accidentally chosen coordinator but meant to be a volunteer or maliciously) then the superuser can also remove their username from roles and coordinator profiles. Then the user can resubmit their details as a volunteer if they desire.
 
-If there are no coordinators activated (so no one can activate other coordinators) a coordinator can also be activated in the admin panel in the coordinators profile, then the usual procedure for activating coordinators can proceed.
+- If there are no coordinators activated (so no one can activate other coordinators) a coordinator can also be activated in the admin panel in the coordinators profile, then the usual procedure for activating coordinators can proceed.
 
 ### Potential Future Feature Developments 
 
 There were some functions that could potentially make the site more useful but were outside the prime objective of the site to allow volunteers to sign up and then be matched with requests. These other possible functions were still initially thought through to avoid coding in such a way as to require an extensive recode to introduce them later.
 
-It may also be a useful function if feed back or notes on the volunteers could be made by the coordinators. Possibilities are allowing them to have a star system to show how many activities they have undertaken - reaching certain levels could congratulate the volunteers or entitle them to a different badge or title. Where praise has been given by the people they assist that this could be fed back to the volunteers through their page.
+1. It may also be a useful function if feed back or notes on the volunteers could be made by the coordinators. Possibilities are allowing them to have a star system to show how many activities they have undertaken - reaching certain levels could congratulate the volunteers or entitle them to a different badge or title. Where praise has been given by the people they assist that this could be fed back to the volunteers through their page.
 
-A similar function may be useful where notes on a volunteer from one coordinator to other coordinators could be left that could not be seen by the volunteer. Such as when they have contacted someone about something but it wasn't a match to avoid a different coordinator attempting the same match.
+2. A similar function may be useful where notes on a volunteer from one coordinator to other coordinators could be left that could not be seen by the volunteer. Such as when they have contacted someone about something but it wasn't a match to avoid a different coordinator attempting the same match.
 
-An area to save activity requests from public and charities that haven't been fulfilled would give an open activities area which could be searched could be useful.
+3. An area to save activity requests from public and charities that haven't been fulfilled would give an open activities area which could be searched.
 
-An area containing success stories and historic information could be quite motivational for the volunteers.
+4. An area containing success stories and historic information could be quite motivational for the volunteers.
 
-It might be possible to improve the model for the days and times as it would be much better if I had managed to use the initial idea of Monday = 1 Tuesday = 2 etc and am = 1 pm =2 so then Monday-AM would be 11, this would have given a simpler and lesser number of fields. However, with problems (described in bugs) doing the initial volunteer create profile and time constraints it was decided to go simple for booleans. This would also have made searching for the volunteers that fitted the criteria required simpler. If I had infinite access to more knowledgeable developers I would have discussed this approach with them as I believe it would have saved time in other areas such as the coordinators search of the volunteers.
+5. It might be possible to improve the model for the days and times as it would be much better if I had managed to use the initial idea of Monday = 1 Tuesday = 2 etc and am = 1 pm =2 so then Monday-AM would be 11, this would have given a simpler and lesser number of fields. However, with problems (described in bugs) doing the initial volunteer create profile and time constraints it was decided to go simple for booleans. This would also have made searching for the volunteers that fitted the criteria required simpler. 
 
-Further improvements could be acheived once information gathered from the text box entries of the coordinators' and volunteers' entries - could be assessed to look for recurring themes that could be made into fields rather than these being typed repeatedly.
+6. A set of instructions on how to follow the process and what the process involves page would give users confidence that it was working.
 
-Real time or calendar inputs for emergency or one off events might be helpful.
+7. Further improvements could be achieved once information gathered from the text box entries of the coordinators' and volunteers' entries - could be assessed to look for recurring themes that could be made into fields rather than these being typed repeatedly.
 
-It might add clarity if coordinators can change volunteers' availability when weekly commitments to volunteering activities occur. Record volunteering already being done by that individual.
+8. Real time or calendar inputs for emergency or one off events might be helpful.
 
-Some follow up tools for coordinators to check back that events worked well or if there could be improvements to the service might be helpful.
+9. It might add clarity if coordinators can change volunteers' availability when weekly commitments to volunteering activities occur. Record volunteering already being done by that individual.
 
-Volunteers might wish to search the charities (with the permission of the charity) to know who they might be able to volunteer for.
+10. Some follow up tools for coordinators to check back that events worked well or if there could be improvements to the service might be helpful.
 
-Email is an option on sign up but should be possible to update and include or change it later.
+11. Volunteers might wish to search the charities (with the permission of the charity) to know who they might be able to volunteer for.
 
-There could be a section to request assistance. This would mean that where charities or individuals needed to contact the organisation out of hours they could leave a message.
+12. Email is an option on sign up but should be possible to update and include or change it later.
 
-Relate amount of time available to committed already time. It would be useful to be able to know if someone already performs activities at a certain time so although their sessions could reflect that they are open at that time to do volunteer work, that they already have a commitment through the system would allow coordinator not to attempt to double book and volunteers to see how productive they are being.
+13. There could be a section to request assistance. This would mean that where charities or individuals needed to contact the organisation out of hours they could leave a message.
 
-It may be required for some sort of audit to be able to search everyone involved. These searches for all volunteers or coordinators can use the code that is already in place. This could be achieved by the search functions already in place not filtering anyone out.
+14. Relate amount of time available to committed already time. It would be useful to be able to know if someone already performs activities at a certain time so although their sessions could reflect that they are open at that time to do volunteer work, that they already have a commitment through the system would allow coordinator not to attempt to double book and volunteers to see how productive they are being.
+
+15. It may be required for some sort of audit to be able to search everyone involved. These searches for all volunteers or coordinators can use the code that is already in place. This could be achieved by the search functions already in place not filtering anyone out.
 
 ## Bugs
 
-### Saving form issues
+### Bug 1 - Saving form issues
 
 This issue involved a lot of support from the code institute tutor team who put in a lot of work.
 
-Initially the volunteer app was split into three models, VolunteerProfile, Skills and Timeperiod. These all required data to be put into the models from the volunteers.
+Initially the volunteer app was split into three models, VolunteerProfile, Skills and Timeperiod. These all required data to be put into the models from the volunteers via forms.
 
-Firstly, the is_valid function which is required for the save to work would return False for the forms. This meant that it wouldn't save. There were three forms on one page. Therefore, each form was commented out one by one and gotten to work. However, when all three forms were there together then it wouldn't save. 
+1. Firstly, the is_valid function which is required for the save to work would return False for the forms. This meant that it wouldn't save. There were three forms on one page. Therefore, each form was commented out one by one and gotten to work. However, when all three forms were there together then it wouldn't save. 
 
 The initial problem was that the below statement was missing:
 
-```py
+```python
 profile = form.save(commit=False)
 ```
 
-Then there were some problems with the need to get the VolunteerProfile to save that worked with allauth so that the logged in user was connected to the data being added.
+2. Then there were some problems with the need to get the VolunteerProfile to save that worked with allauth so that the logged in user was connected to the data being added.
 
 Some tutors felt that the problem might be solved by saving an empty set of data first so this was introduced to the function.
 
-Then it looked like the indentation had got out of order with so many edits.
+3. Then it looked like the indentation had got out of order with so many edits.
 
-Got some of it saving but the select for skills wasn't populated so nothing could be saved from that. Tried putting choices= in the model and many other things adjusted through out the model for Skills and SkillChoices.
+4. Got some of it saving but the select for skills wasn't populated so nothing could be saved from that. Tried putting choices= in the model and many other things adjusted through out the model for Skills and SkillChoices.
 
 This unfortunately made the database have incongruous number of columns in the tables and caused significant problems. This was intially fixed by going into the migrations and adding data, but that was not a permanent fix.
 
@@ -480,48 +507,56 @@ In the end all migrations had to be deleted from all apps and the sqllite databa
 
 Unfortunately with continued adjustment of the models to attempt to get it to work with taking the choices = in and out several times the database needed deleting (along with migrations) several times.
 
-With the choices = the options were available but you could only make one choice and it was not working properly.
+5. With the choices = the options were available but you could only make one choice and it was not working properly.
 
-Unsure of how many to many relationships worked I tried to put a many to many at each end of the relationship and got a circular issue.
+6. Unsure of how many to many relationships worked I tried to put a many to many at each end of the relationship and got a circular issue.
 
-By this point the code was extremely messy. As I had a working form on another app by this point I decided type that into this form and remove the other parts. This didn't solve the problem. I decided to retype the form out from scratch with all the models merged into one as I could see no difference in the code. Retyping the code seemed to solve the problem and so there must have been an error in the code that I couldn't see and was just propagating by typing into it.
+7. As I had a working form on another app by this point I decided type that code out for this form and remove the other parts.
 
-### Admin site didn't look right on Heroku
+**Solution**
+
+By this point the code was extremely messy. 
+
+I decided to retype the form out from scratch with all the models merged into one as I could see no difference in the code that worked and didn't. Retyping the code seemed to solve the problem and so there must have been an error in the code that I couldn't see and was just propagating by typing into it.
+
+### Bug 2- Admin site didn't look right on Heroku
 
 The admin site on Heroku was just plain text it had no styling. It would appear that for some reason the css for the admin had disappeared. When this was reinstated on the Heroku version the styling reappeared.
 
-### Admin site no longer had VolunteerProfile
+### Bug 3- Admin site no longer had VolunteerProfile
 
-As I had been dealing with another error I had commented out the VolunteerProfile in volunteer/admin.py. As soon as this was reinstated it worked again.
+As I had been dealing with another error I had commented out the VolunteerProfile in volunteer/admin.py. As soon as this was reinstated it reappeared.
 
-### Admin had 403 error
+### Bug 4 - Admin site had 403 error
 
 This required that 
 
-```py
+```python
 CSRF_TRUSTED_ORIGINS = ['https://volunteervillage-8a4d89acc796.herokuapp.com', 'https://127.0.0.1'] 
 ```
 was added to the settings.py. This was instantly solved by the tutors at code institute and they explained the necessity to include the https.
 
-### Deployed version on Heroku had application error
+### Bug 5 - Deployed version on Heroku had application error
 
 Initially the requirements.txt was suspected as being at fault as using 
-```py
+```python
 pip3 freeze --local > requirements.txt
 ```
 had meant that everything that I had experimented with along the way was in this file.
 
 The problem persisted only on the deployed version (codeanywhere and VSCode were fine). There was a 'phonenumberfield' that I had looked into and removed from requirements.txt but not INSTALLED_APPS in settings.py
 
-This worked when that had been removed from INSTALLED_APPS.
+**Solution**
 
-### Display of Coordinator profile page not working
+This worked when Phonenumberfeild had been removed from INSTALLED_APPS.
+
+### Bug 6 - Display of Coordinator profile page not working
 
 This was the feature that was attempting to check if the coordinator was associated with any of the charities. In the case that the user didn't have any charities assigned then it was creating an attribute error. This was worked round with a try: and except Attribute error:statement.
 
 ### Unsolved bugs
 
-At the very end of the project I realised that the boostrap parameters should go in the div tags. Through out I had been putting them on the objects in the HTML. This is a widespread bug throughout the project and would take significant time to rectify. As this was only discovered as the final testing and documenting phase started there was insufficient time to go through the code to ensure better practise was observed.
+At the very end of the project I realised that the boostrap parameters should go in the div tags (they had often been placed in other tags throughout). This is a widespread bug throughout the project and would take significant time to rectify. As this was only discovered as the final testing and documenting phase started there was insufficient time to go through the code to ensure better practise.
 
 ## Technologies
 
@@ -568,10 +603,6 @@ At the very end of the project I realised that the boostrap parameters should go
 - [image compressor](https://compressnow.com/) to reduce the size of the images.
 - [Canava](https://www.canva.com/en_gb/) used to generate logo
 
-### Images
-
-<a href="https://www.freepik.com/free-photo/man-cutting-grass-with-lawn-mover-back-yard_8828103.htm#query=mowing%20lawn&position=0&from_view=search&track=ais&uuid=1f1d6d2e-ade9-4baf-b4d2-4fda06f92667#position=0&query=mowing%20lawn">Image by senivpetro</a> on Freepik
-
 
 ## Deployment
 
@@ -581,12 +612,12 @@ The deployed version can be accessed on Heroku [here](https://volunteervillage-8
 
 Before deployment you will need to collect all the requirments into requirements.txt
 
-```
+```python
 pip3 freeze --local > requirements.txt
 ```
 and create a Procfile (with a capital P) containing:
 
-```
+```python
 web: gunicorn volunteervillage.wsgi:application
 ```
 
@@ -607,7 +638,7 @@ or the drop down menu
 
 ![name](document/name-and-region.png)
 
-and the purple 'create' button was pressed.
+and the purple 'create app' button was pressed.
 
 5. In the menu navigation bar the 'settings' was selected
 
@@ -689,7 +720,7 @@ It will be necessary to install the list in local deployment and also set up an 
 
 The env.py needs to contain:
 
-```
+```python
 import os
 
 os.environ["DATABASE_URL"]="link gained from elephantSQL for the database see below"
@@ -730,7 +761,7 @@ python3 manage.py runserver
 
 Once you have a database you will need to migrate the models to the database.
 
-This can be done in the IDE terminal windownusing:
+This can be done in the IDE terminal window using:
 
 ``` python3 manage.py makemigrations```
 then
