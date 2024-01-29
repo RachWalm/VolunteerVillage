@@ -568,7 +568,7 @@ At the very end of the project I realised that the boostrap parameters should go
 - [JS](https://developer.mozilla.org/en-US/docs/Web/javascript) to incorporate the modal and validate the time and phone number.
 ### Frameworks and libraries
 - [Django](https://www.djangoproject.com/) Framework based on python.
-- [Boostrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/)
+- [Boostrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) for styling the site.
 
 
 ### Databases
@@ -773,7 +773,7 @@ if you are planning on using the admin area a super user will be required which 
 
 ## Testing 
 
-See [Testing](TESTING.MD)
+See [Testing](TESTING.md)
 
 ## Credits
 
